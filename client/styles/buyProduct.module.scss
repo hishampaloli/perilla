@@ -1,0 +1,70 @@
+.buyProduct {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .buyerFormDiv {
+    width: 40%;
+    max-width: 700px;
+    h1 {
+      padding: 20px;
+      margin: 10px 0;
+      text-align: center;
+      color: white;
+    }
+  }
+
+  .buyerForm {
+    border-radius: 5px;
+    background-color: #16191c;
+    padding: 40px;
+    width: 100%;
+    background-color: #16191c;
+
+    button {
+        background-color: #00c5fb;
+        color: white;
+        padding: 1rem;
+        width: 100%;
+        border: none;
+        margin-top: 20px;
+        border-radius: 5px;
+      }
+  }
+
+  .optForm {
+    display: flex;
+    align-items: center;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      label {
+        color: white;
+      }
+
+      input {
+        background-color: #2e3439;
+        color: #bbc4cc;
+        font-size: 15px;
+        padding: 1rem 1.3rem;
+        width: 72%;
+        margin-left: 5%;
+        border: none;
+        border-radius: 5px;
+      }
+    }
+    button {
+      height: 50px;
+      width: 150px;
+      margin-left: 20px;
+      background-color: #00a0eb;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+  }
+}
