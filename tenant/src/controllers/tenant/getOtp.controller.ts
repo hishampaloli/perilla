@@ -4,7 +4,7 @@ import { TenantData } from "../../libs/entities";
 
 export = (dependencies: any): any => {
   const {
-    useCases: { getOtp_UseCase },
+    useCases: { getOtp_UseCase, getTenant_UseCase },
   } = dependencies;
 
   const createProduct = async (
@@ -13,9 +13,15 @@ export = (dependencies: any): any => {
     next: NextFunction
   ) => {
     try {
-      const { number } = req.body;
+      const { number, companyName } = req.body;
 
+      const tenantData = await getTenant_UseCase(dependencies).execute(
+        number,
+        companyName
+      );
 
+      if (tenantData)
+        throw new BadRequestError("Number or Company name already exists");
 
       const recivedOtp = await getOtp_UseCase(dependencies).execute(number);
 

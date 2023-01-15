@@ -3,24 +3,21 @@ import { ErrorState, TenantData } from "../../models/tenants";
 
 import { TenantActionsTypes } from "../constants/tenantTypes";
 
-interface BuyProductRequestAction {
-  type: TenantActionsTypes.BUY_PRODUCT_REQUETS;
+interface AuthRequestAction {
+  type: TenantActionsTypes.AUTH_REQUETS;
 }
 
-interface BuyProductSuccessAction {
-  type: TenantActionsTypes.BUY_PRODUCT_SUCCESS;
+interface AuthSuccessAction {
+  type: TenantActionsTypes.AUTH_SUCCESS;
   payload: TenantData;
 }
 
-interface BuyProductFailAction {
-  type: TenantActionsTypes.BUY_PRODUCT_FAIL;
+interface AuthFailAction {
+  type: TenantActionsTypes.AUTH_FAIL;
   error: ErrorState[];
 }
 
-export type BuyProductAction =
-  | BuyProductRequestAction
-  | BuyProductFailAction
-  | BuyProductSuccessAction;
+export type AuthAction = AuthRequestAction | AuthFailAction | AuthSuccessAction;
 
 interface GetOtpRequestAction {
   type: TenantActionsTypes.GET_OTP_REQUEST;

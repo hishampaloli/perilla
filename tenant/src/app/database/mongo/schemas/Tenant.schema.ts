@@ -78,15 +78,12 @@ const tenantSchema = new mongoose.Schema(
     },
     paymentId: {
       type: String,
-      required: [true, 'Please provide a paymentId'],
     },
     paymentDetails: {
       type: Array,
-      required: true,
     },
     purchaseDate: {
       type: Date,
-      required: [true, 'Please provide a Date'],
     },
   },
   {

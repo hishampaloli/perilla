@@ -1,15 +1,16 @@
 import { Request, Response, NextFunction } from "express";
 import { BadRequestError, NotAuthorizedError } from "@hr-management/common";
 import { TenantData } from "../../libs/entities";
+import generateToken from "../../libs/utils/jsonwebtoken";
 // import { ProductCreatedPublisher } from "../../../events/publisher.ts/product-created-event";
 // import { natsWrapper } from "../../../nats-wrapper";
 
 export = (dependencies: any): any => {
   const {
-    useCases: { createTenant_UseCase },
+    useCases: { createTenant_UseCase, verifyOtp_UseCase, getTenant_UseCase },
   } = dependencies;
 
-  const createProduct = async (
+  const createTenant = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -23,17 +24,25 @@ export = (dependencies: any): any => {
         country,
         email,
         password,
-        paymentDetails,
-        paymentId,
         phone,
         postalCode,
-        purchaseDate,
       }: TenantData = req.body;
+      const { otpNumber } = req.body;
 
-      if (typeof phone !== "number")
-        throw new BadRequestError("Please provide a valid phone number");
-      if (typeof postalCode !== "number")
-        throw new BadRequestError("Please provide a valid postal code");
+      const tenantPresent = await getTenant_UseCase(dependencies).execute(
+        phone,
+        companyName
+      );
+
+      if (tenantPresent)
+        throw new BadRequestError("Number or Company name already exists");
+
+      const verifyOtp = await verifyOtp_UseCase(dependencies).execute(
+        otpNumber
+      );
+
+      console.log(verifyOtp)
+      if (!verifyOtp) throw new BadRequestError("incorrect otp");
 
       const addedTenant = await createTenant_UseCase(dependencies).execute(
         req.body
@@ -43,10 +52,17 @@ export = (dependencies: any): any => {
         throw new BadRequestError("Something went wrong");
       }
 
-      res.json({ addedTenant });
+      let token = generateToken(addedTenant);
+
+      req.session = {
+        tenantJwt: token,
+        userDetails: addedTenant,
+      };
+
+      res.json({ data: addedTenant });
     } catch (error: any) {
       throw new Error(error);
     }
   };
-  return createProduct;
+  return createTenant;
 };

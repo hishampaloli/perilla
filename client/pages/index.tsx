@@ -2,18 +2,23 @@ import { Inter } from "@next/font/google";
 import Layout from "../components/layout/Layout";
 import { wrapper } from "../redux/store";
 import { useEffect } from "react";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { BuyProductState } from "../models/tenants";
 import axios from "axios";
 import buildClient from "../api/buildClient";
+import { useTenantData } from "../hooks/useTenantData";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const { data, error }: BuyProductState = useTypedSelector(
-    (state) => state.buyProduct
-  );
+  const { tenantDatas } = useTenantData();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (tenantDatas) {
+      router.push(`/${tenantDatas?.companyName}`);
+    }
+  }, []);
 
   return (
     <>

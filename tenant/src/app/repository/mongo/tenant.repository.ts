@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { Password } from "../../../libs/utils/password";
 
 import { schemas } from "../../database/mongo";
 
@@ -15,8 +16,30 @@ export = {
     return mongooseObject;
   },
 
-  getTenantData: async (phone: number) => {
-    const mongooseObject = await Tenant.findOne({ phone });
+  loginTenant: async (phone: number, companyName: string, password: string) => {
+    const existingTenant: any = await Tenant.findOne({
+      $and: [{ phone }, { companyName }],
+    });
+
+    if (existingTenant) {
+      const passwordsMatch = await Password.compare(
+        existingTenant.password,
+        password
+      );
+      if (passwordsMatch) {
+        return existingTenant;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  },
+
+  getTenantData: async (phone: number, companyName: string) => {
+    const mongooseObject = await Tenant.findOne({
+      $or: [{ phone }, { companyName }],
+    });
     return mongooseObject;
   },
 };

@@ -12,12 +12,19 @@ export interface TenantData {
   purchaseDate: Date;
 }
 
+export interface LoginData {
+  companyName: string;
+  phone: string;
+  password: string;
+  otpNumber?: string
+}
+
 export interface ErrorState {
   message: string;
 }
 
-export interface BuyProductState {
-  data: {} | null;
+export interface AuthState {
+  data: TenantData | null;
   error: ErrorState[] | null;
   loading: boolean;
 }

@@ -5,17 +5,22 @@ const client = require("twilio")(
 
 const TWILIO_SERVICE_SID = process.env.TWILIO_SERVICE_SID;
 
-export const getOtp_UseCase = (dependencies: any) => {
+export const verifyOtp_UseCase = (dependencies: any) => {
   const {
     repository: { tenantRepository },
   } = dependencies;
 
-  const execute = async (number: number) => {
+  const execute = async (otp: number) => {
+    if (!otp) throw new Error("Please provide a valid OTP number");
+    console.log(otp);
+
+    if (otp == 1234) return true;
+
     // console.log(TWILIO_SERVICE_SID)
     //     const verification = await client.verify
     //       .services(TWILIO_SERVICE_SID)
     //       .verifications.create({ to: `+91${number}`, channel: "sms" });
-    return "verification";
+    return false;
   };
 
   return {

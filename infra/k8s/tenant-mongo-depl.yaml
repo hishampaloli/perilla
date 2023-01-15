@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tenant-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tenant-mongo
+  template:
+    metadata:
+      labels:
+        app: tenant-mongo
+    spec:
+      containers:
+        - name: tenant-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tenant-mongo-srv
+spec:
+  selector:
+    app: tenant-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017

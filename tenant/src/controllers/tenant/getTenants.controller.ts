@@ -4,16 +4,16 @@ import { TenantData } from "../../libs/entities";
 
 export = (dependencies: any): any => {
   const {
-    useCases: { getTenant_UseCase },
+    useCases: { getTenants_UseCase },
   } = dependencies;
 
-  const createProduct = async (
+  const getTenants = async (
     req: Request,
     res: Response,
     next: NextFunction
   ) => {
     try {
-      const tenants = await getTenant_UseCase(dependencies).execute();
+      const tenants = await getTenants_UseCase(dependencies).execute();
 
       if (!tenants) {
         throw new BadRequestError("No data found");
@@ -24,5 +24,5 @@ export = (dependencies: any): any => {
       throw new Error(error);
     }
   };
-  return createProduct;
+  return getTenants;
 };

@@ -25,6 +25,7 @@ const reducer = (state: any, action: any): any => {
   }
 };
 
+
 const initStore = () => {
   return createStore(reducer, {}, bindMiddlware([thunk]));
 };

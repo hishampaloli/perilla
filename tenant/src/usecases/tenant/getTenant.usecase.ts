@@ -1,5 +1,3 @@
-
-
 export const getTenant_UseCase = (dependencies: any) => {
   const {
     repository: { tenantRepository },
@@ -8,8 +6,9 @@ export const getTenant_UseCase = (dependencies: any) => {
   if (!tenantRepository)
     throw new Error("The product repository should be dependencie");
 
-  const execute = () => {
-    return tenantRepository.getTenants();
+  const execute = (number: number, companyName: string) => {
+    console.log(number, companyName)
+    return tenantRepository.getTenantData(number, companyName);
   };
   return {
     execute,

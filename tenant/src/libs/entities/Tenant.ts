@@ -8,9 +8,6 @@ export interface TenantData {
   postalCode: number;
   address: string;
   password: string;
-  paymentId: string;
-  paymentDetails: string;
-  purchaseDate: Date;
 }
 
 export class Tenant {
@@ -23,9 +20,6 @@ export class Tenant {
   postalCode: number;
   address: string;
   password: string;
-  paymentId: string;
-  paymentDetails: string;
-  purchaseDate: Date;
 
   constructor({
     companyName,
@@ -35,11 +29,8 @@ export class Tenant {
     country,
     email,
     password,
-    paymentDetails,
-    paymentId,
     phone,
     postalCode,
-    purchaseDate,
   }: TenantData) {
     this.companyName = companyName;
     this.adminName = adminName;
@@ -50,8 +41,5 @@ export class Tenant {
     this.postalCode = postalCode;
     this.address = address;
     this.password = password;
-    this.paymentId = paymentId;
-    this.paymentDetails = paymentDetails;
-    this.purchaseDate = purchaseDate;
   }
 }

@@ -1,3 +1,4 @@
+import { BadRequestError } from "@hr-management/common";
 import { Tenant, TenantData } from "../../libs/entities";
 
 export const createTenant_UseCase = (dependencies: any) => {
@@ -8,7 +9,7 @@ export const createTenant_UseCase = (dependencies: any) => {
   if (!tenantRepository)
     throw new Error("The product repository should be dependencie");
 
-  const execute = ({
+  const execute = async ({
     address,
     adminName,
     city,
@@ -16,11 +17,8 @@ export const createTenant_UseCase = (dependencies: any) => {
     country,
     email,
     password,
-    paymentDetails,
-    paymentId,
     phone,
     postalCode,
-    purchaseDate,
   }: TenantData) => {
     const tenant = new Tenant({
       address,
@@ -30,11 +28,8 @@ export const createTenant_UseCase = (dependencies: any) => {
       country,
       email,
       password,
-      paymentDetails,
-      paymentId,
       phone,
       postalCode,
-      purchaseDate,
     });
     return tenantRepository.createTenant(tenant);
   };
