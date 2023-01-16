@@ -16,8 +16,6 @@ const LoginComponent = () => {
 
   const userState: AuthState = useTypedSelector((state) => state.user);
 
-  console.log(userState?.error);
-  console.log(">?>?>?>?>?>?>");
   const router = useRouter();
   const [phone, setPhone] = useState<string>("");
   const [otpForm, setOtpForm] = useState<boolean>(false);

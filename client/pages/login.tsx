@@ -3,18 +3,14 @@ import React, { useEffect } from "react";
 import Layout from "../components/layout/Layout";
 import LogoImage from "../components/layout/LogoImage";
 import LoginComponent from "../components/LoginComponents/LoginComponent";
+import { useIsLogged } from "../hooks/useAuth";
 import { useTenantData } from "../hooks/useTenantData";
 import styles from "../styles/buyProduct.module.scss";
 
 const login = () => {
-  const { tenantDatas } = useTenantData();
-  const router = useRouter();
 
-  useEffect(() => {
-    if (tenantDatas?.email) {
-      router.push("/");
-    }
-  }, []);
+
+  useIsLogged()
 
   return (
     <Layout title="Login">

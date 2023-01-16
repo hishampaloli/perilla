@@ -11,7 +11,6 @@ import { useTenantData } from "../hooks/useTenantData";
 const inter = Inter({ subsets: ["latin"] });
 
 
-// console.log(buyProductState);
 
 export default function Home() {
   return (

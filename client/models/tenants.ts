@@ -1,15 +1,18 @@
 export interface TenantData {
-  companyName: string;
-  adminName: string;
-  phone: number;
-  email: string;
-  country: string;
-  city: string;
-  postalCode: number;
-  address: string;
-  paymentId: string;
-  paymentDetails: string;
-  purchaseDate: Date;
+  data: {
+    companyName: string;
+    adminName: string;
+    phone: number;
+    email: string;
+    country: string;
+    city: string;
+    postalCode: number;
+    address: string;
+    paymentId: string;
+    paymentDetails: string;
+    purchaseDate: Date;
+    isPurchased: boolean;
+  };
 }
 
 export interface LoginData {

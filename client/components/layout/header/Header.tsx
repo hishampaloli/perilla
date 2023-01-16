@@ -21,9 +21,6 @@ const Header = () => {
 
   const userState: AuthState = useTypedSelector((state) => state.user);
 
-  useEffect(() => {
-    console.log(userState?.data);
-  },[logoutHandler])
 
 
   return (

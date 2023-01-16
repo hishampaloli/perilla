@@ -19,6 +19,7 @@ export const tenantLoginVerification =
         config
       );
 
+      console.log(data);
       localStorage.setItem("userInfo", JSON.stringify(data));
 
       dispatch({
@@ -32,6 +33,6 @@ export const tenantLoginVerification =
         error: error?.response?.data?.error?.msg,
       });
 
-      return false
+      return false;
     }
   };

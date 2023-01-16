@@ -7,15 +7,10 @@ import LogoImage from "../components/layout/LogoImage";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useTenantData } from "../hooks/useTenantData";
 import Router from "next/router";
+import { useIsLogged } from "../hooks/useAuth";
 
 const Register = () => {
-  const { tenantDatas } = useTenantData();
-
-useEffect(() => {
-  if(tenantDatas?.email){
-    Router.push('/')
-  }
-}, [])
+  useIsLogged();
 
   return (
     <Layout title="Buy Product">
