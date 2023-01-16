@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
-import { TenantRegisReducer, getOtpReducer } from "./tenantReducer";
+import { TenantInitalData } from "../../models/tenants";
+import { getOtpReducer, userReducer } from "./tenants";
 
 const reducers = combineReducers({
-  buyProduct: TenantRegisReducer,
   getOtp: getOtpReducer,
+  user: userReducer,
 });
 
 export default reducers;

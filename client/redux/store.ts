@@ -3,6 +3,7 @@ import { HYDRATE, createWrapper } from "next-redux-wrapper";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import reducers from "./reducers/reducers";
+import { TenantInitalData } from "../models/tenants";
 
 const bindMiddlware = (middlware: any[]) => {
   if (process.env.NODE_ENV !== "production") {

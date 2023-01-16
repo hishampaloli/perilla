@@ -16,7 +16,7 @@ export interface LoginData {
   companyName: string;
   phone: string;
   password: string;
-  otpNumber?: string
+  otpNumber?: string;
 }
 
 export interface ErrorState {
@@ -30,7 +30,23 @@ export interface AuthState {
 }
 
 export interface GetOtpState {
-  data: {} | null;
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+export interface TenantInitalData {
+  data: {
+    adminName: string;
+    companyName: string;
+    email: string;
+    id: string;
+    phone: number;
+    isPurchased: boolean;
+  };
+}
+
+export interface UserDataState {
+  data: TenantInitalData | null;
   error: ErrorState[] | null;
   loading: boolean;
 }

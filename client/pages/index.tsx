@@ -10,16 +10,10 @@ import { useTenantData } from "../hooks/useTenantData";
 
 const inter = Inter({ subsets: ["latin"] });
 
+
+// console.log(buyProductState);
+
 export default function Home() {
-  const { tenantDatas } = useTenantData();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (tenantDatas) {
-      router.push(`/${tenantDatas?.companyName}`);
-    }
-  }, []);
-
   return (
     <>
       <Layout title={"Shopit"}>

@@ -3,6 +3,17 @@ import { ErrorState, TenantData } from "../../models/tenants";
 
 import { TenantActionsTypes } from "../constants/tenantTypes";
 
+interface GetOtpRequestAction {
+  type: TenantActionsTypes.GET_OTP_REQUEST;
+}
+
+interface GetOtpFailAction {
+  type: TenantActionsTypes.GET_OTP_FAIL;
+  error: ErrorState[];
+}
+
+export type GetOtpAction = GetOtpRequestAction | GetOtpFailAction;
+
 interface AuthRequestAction {
   type: TenantActionsTypes.AUTH_REQUETS;
 }
@@ -19,21 +30,16 @@ interface AuthFailAction {
 
 export type AuthAction = AuthRequestAction | AuthFailAction | AuthSuccessAction;
 
-interface GetOtpRequestAction {
-  type: TenantActionsTypes.GET_OTP_REQUEST;
+interface LogoutSuccessAction {
+  type: TenantActionsTypes.LOGOUT_SUCCESS;
+  payload: any;
 }
 
-interface GetOtpSuccessAction {
-  type: TenantActionsTypes.GET_OTP_SUCCESS;
-  payload: string;
-}
-
-interface GetOtpFailAction {
-  type: TenantActionsTypes.GET_OTP_FAIL;
+interface LogoutFailedAction {
+  type: TenantActionsTypes.AUTH_FAIL;
   error: ErrorState[];
 }
 
-export type GetOtpAction =
-  | GetOtpRequestAction
-  | GetOtpSuccessAction
-  | GetOtpFailAction;
+export type LogoutAction =
+  | LogoutSuccessAction
+  | LogoutFailedAction;

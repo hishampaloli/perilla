@@ -7,11 +7,11 @@ const index = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!tenantDatas?.email) {
+    if (!tenantDatas?.email || tenantDatas?.isPurchased === false) {
       router.push("/");
     }
   }, []);
-  
+
   return (
     <div>
       <h1>786</h1>

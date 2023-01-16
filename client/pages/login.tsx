@@ -1,10 +1,21 @@
-import React from 'react'
-import Layout from '../components/layout/Layout';
-import LogoImage from '../components/layout/LogoImage';
-import LoginComponent from '../components/LoginComponents/LoginComponent';
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+import Layout from "../components/layout/Layout";
+import LogoImage from "../components/layout/LogoImage";
+import LoginComponent from "../components/LoginComponents/LoginComponent";
+import { useTenantData } from "../hooks/useTenantData";
 import styles from "../styles/buyProduct.module.scss";
 
 const login = () => {
+  const { tenantDatas } = useTenantData();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (tenantDatas?.email) {
+      router.push("/");
+    }
+  }, []);
+
   return (
     <Layout title="Login">
       <div className={styles.buyProduct}>
@@ -12,7 +23,7 @@ const login = () => {
         <LoginComponent />
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default login
+export default login;

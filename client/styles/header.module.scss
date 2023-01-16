@@ -1,0 +1,36 @@
+.header {
+  background: #16191c;
+  border-bottom: 1px solid #2e3840;
+  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 20%);
+  left: 0;
+  position: fixed;
+  right: 0;
+  padding: 1rem;
+  top: 0;
+  z-index: 1002;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .headerImg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      color: white;
+      margin-left: 20px;
+    }
+  }
+
+  .notLogged {
+    display: flex;
+
+    li {
+      list-style: none;
+      color: white;
+      font-size: large;
+      font-weight: 400;
+      margin-right: 20px;
+    }
+  }
+}

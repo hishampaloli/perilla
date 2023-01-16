@@ -1,1 +1,1 @@
-export * from "./tenantActions";
+export * from "./tenants";

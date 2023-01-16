@@ -24,16 +24,14 @@ const BuyProductComponent = () => {
   const [password, setPassword] = useState<string>("");
   const [postalCode, setPostalCode] = useState<string>("");
 
-  const { getOtp, tenantRegister } = useActions();
-  const { error, loading, data }: GetOtpState = useTypedSelector(
+  const { getRegisterOtp, tenantRegister } = useActions();
+  const { error, loading }: GetOtpState = useTypedSelector(
     (state) => state.getOtp
   );
 
-  const buyProductState: AuthState = useTypedSelector(
-    (state) => state.buyProduct
-  );
+  const userState: AuthState = useTypedSelector((state) => state.user);
 
-  console.log(buyProductState?.data?.companyName);
+  console.log(userState?.data);
   const validate = useTenantRegisterValidator({
     companyName,
     adminName,
@@ -52,7 +50,7 @@ const BuyProductComponent = () => {
     if (validate) {
       toast.error(validate);
     } else {
-      const datas = await getOtp("jksd", phone, companyName);
+      const datas = await getRegisterOtp("jksd", phone, companyName);
       if (!datas) {
         toast.error(`${error ? error : "Oops somthing went wrong"}`);
       } else {
@@ -76,11 +74,12 @@ const BuyProductComponent = () => {
       otpNumber,
     });
 
-    if (buyProductState?.error) {
-      toast.error(`${buyProductState?.error}`);
+    console.log(registerData);
+    if (userState?.error || `${!registerData}`) {
+      toast.error(`${userState?.error ? userState?.error : "Invalid OTP"}`);
     }
 
-    if (`${registerData} === 'success`) {
+    if (`${registerData}` === "success") {
       router.push(`/`);
     }
   };

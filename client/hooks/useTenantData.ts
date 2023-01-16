@@ -5,6 +5,7 @@ interface TenantInitalData {
     email: string;
     id: string;
     phone: number;
+    isPurchased: boolean;
   };
 }
 

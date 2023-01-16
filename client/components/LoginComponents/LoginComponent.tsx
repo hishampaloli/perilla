@@ -10,23 +10,21 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useRouter } from "next/router";
 
 const LoginComponent = () => {
-  const { error, loading, data }: GetOtpState = useTypedSelector(
+  const { error, loading }: GetOtpState = useTypedSelector(
     (state) => state.getOtp
   );
 
-  console.log("error^^^^^^^^^^^^^^6");
-  const buyProductState: AuthState = useTypedSelector(
-    (state) => state.buyProduct
-  );
+  const userState: AuthState = useTypedSelector((state) => state.user);
 
-  console.log(buyProductState);
+  console.log(userState?.error);
+  console.log(">?>?>?>?>?>?>");
   const router = useRouter();
   const [phone, setPhone] = useState<string>("");
   const [otpForm, setOtpForm] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
   const [companyName, setCompanyName] = useState<string>("");
   const [otpNumber, setOtpNumber] = useState<string>("");
-  const { tenantLogin, tenantLoginVerification } = useActions();
+  const { tenantLoginVerification, tenantLoginOtp } = useActions();
 
   const handleLogin = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -34,15 +32,13 @@ const LoginComponent = () => {
     if (validate) {
       toast.error(validate);
     } else {
-      const datas = await tenantLogin("sdf", { phone, companyName, password });
+      const datas = await tenantLoginOtp("sdf", {
+        phone,
+        companyName,
+        password,
+      });
       if (!datas) {
-        toast.error(
-          `${
-            buyProductState?.error
-              ? buyProductState?.error
-              : "Oops somthing went wrong"
-          }`
-        );
+        toast.error(`${error ? error : "Oops somthing went wrong"}`);
       } else {
         toast.success("otp send");
         setOtpForm(true);
@@ -57,13 +53,12 @@ const LoginComponent = () => {
       otpNumber,
     });
 
-    if (buyProductState?.error) {
-      toast.error(`${buyProductState?.error}`);
+    if (userState?.error || `${!verificationData}`) {
+      toast.error(`${userState?.error ? userState?.error : "Invalid OTP"}`);
     }
 
-    console.log(verificationData);
-    if (`${verificationData}` === 'success') {
-        router.push(`/`);
+    if (`${verificationData}` === "success") {
+      router.push(`/`);
     }
   };
 

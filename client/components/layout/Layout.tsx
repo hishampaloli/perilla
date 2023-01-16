@@ -1,10 +1,9 @@
 import React from "react";
 import Head from "next/head";
-import Header from "./Header";
+import Header from "./header/Header";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 
 const Layout = ({
   children,

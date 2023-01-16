@@ -13,6 +13,7 @@ interface TenantAttrs {
   address: string;
   password: string;
   paymentId: string;
+  isPurchased: boolean;
   paymentDetails: string;
   purchaseDate: Date;
 }
@@ -35,6 +36,7 @@ interface TenantDoc extends mongoose.Document {
   paymentDetails: string;
   purchaseDate: Date;
   updatedAt: string;
+  isPurchased: boolean;
   version: number;
 }
 
@@ -42,45 +44,49 @@ const tenantSchema = new mongoose.Schema(
   {
     companyName: {
       type: String,
-      required: [true, 'Please provide a company name'],
+      required: [true, "Please provide a company name"],
     },
     adminName: {
       type: String,
-      required: [true, 'Please provide a admin name'],
+      required: [true, "Please provide a admin name"],
     },
     phone: {
       type: Number,
-      required: [true, 'Please provide a valid phone number'],
+      required: [true, "Please provide a valid phone number"],
     },
     email: {
       type: String,
-      required: [true, 'Please provide a valid email'],
+      required: [true, "Please provide a valid email"],
     },
     country: {
       type: String,
-      required: [true, 'Please provide a country'],
+      required: [true, "Please provide a country"],
     },
     city: {
       type: String,
-      required: [true, 'Please provide a city'],
+      required: [true, "Please provide a city"],
     },
     postalCode: {
       type: Number,
-      required: [true, 'Please provide a postalCode'],
+      required: [true, "Please provide a postalCode"],
     },
     address: {
       type: String,
-      required: [true, 'Please provide a address'],
+      required: [true, "Please provide a address"],
     },
     password: {
       type: String,
-      required: [true, 'Please provide a password'],
+      required: [true, "Please provide a password"],
     },
     paymentId: {
       type: String,
     },
     paymentDetails: {
       type: Array,
+    },
+    isPurchased: {
+      type: Boolean,
+      default: false,
     },
     purchaseDate: {
       type: Date,
