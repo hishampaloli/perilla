@@ -19,6 +19,8 @@ export = (dependencies: any) => {
     tenantLogoutController,
     tenantLoginVerificationController,
     getPaidTenantDataConroller,
+    stripePaymentController,
+    stripePayementVerificationController,
   } = tenantController(dependencies);
 
   router.post("/createTenant", createTenantController);
@@ -34,5 +36,12 @@ export = (dependencies: any) => {
   router.post("/tenantVerifyLogin", tenantLoginVerificationController);
   router.post("/tenantLogout", tenantLogoutController);
   router.get("/getTenant", getPaidTenantDataConroller);
+  router.post("/payment", stripePaymentController);
+  router.get(
+    "/stripeVerification",
+    currentTenant,
+    requireTenantAuth,
+    stripePayementVerificationController
+  );
   return router;
 };

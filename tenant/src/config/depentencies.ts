@@ -7,6 +7,7 @@ import {
   getTenants_UseCase,
   tenantLogin_UseCase,
   getPayedTenant_UseCase,
+  verifyStripe_UseCase,
 } from "../usecases";
 
 const useCases: any = {
@@ -17,6 +18,7 @@ const useCases: any = {
   getTenants_UseCase,
   tenantLogin_UseCase,
   getPayedTenant_UseCase,
+  verifyStripe_UseCase,
 };
 
 const repository: any = {

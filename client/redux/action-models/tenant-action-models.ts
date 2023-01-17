@@ -1,4 +1,3 @@
-import { type } from "os";
 import { ErrorState, TenantData } from "../../models/tenants";
 
 import { TenantActionsTypes } from "../constants/tenantTypes";
@@ -53,3 +52,28 @@ interface getPaidTenentSuccess {
 }
 
 export type GetPaidTenantAction = getPaidTenentFail | getPaidTenentSuccess;
+
+interface stripePaymentLinkSuccess {
+  type: TenantActionsTypes.SENT_STRIPE_LINK_SUCCESS;
+  payload: { url: string };
+}
+
+interface stripePaymentLinkFail {
+  type: TenantActionsTypes.SENT_STRIPE_LINK_FAIL;
+  error: ErrorState[];
+}
+
+export type StripeLinkAction = stripePaymentLinkSuccess | stripePaymentLinkFail;
+
+interface stripePaymentVerificationSuccess {
+  type: TenantActionsTypes.AUTH_SUCCESS;
+  payload: TenantData;
+}
+
+interface stripePaymentVerificationClearLink {
+  type: TenantActionsTypes.SENT_STRIPE_LINK_FAIL;
+  error: ErrorState[] | null;
+}
+export type StripeVerificationAction =
+  | stripePaymentVerificationSuccess
+  | stripePaymentVerificationClearLink;

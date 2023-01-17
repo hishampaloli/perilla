@@ -6,6 +6,7 @@ import {
   getTenants_UseCase,
   tenantLogin_UseCase,
   getPayedTenant_UseCase,
+  verifyStripe_UseCase
 } from "./tenant";
 
 export {
@@ -16,4 +17,5 @@ export {
   tenantLogin_UseCase,
   getPayedTenant_UseCase,
   getTenants_UseCase,
+  verifyStripe_UseCase
 };

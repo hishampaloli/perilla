@@ -20,7 +20,7 @@ export const useIsPurchased = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (data?.data?.isPurchased || !data?.data) router.back();
+    if (data?.data?.isPurchased || !data?.data) router.push('/');
   }, []);
 };
 
@@ -42,7 +42,7 @@ export const useIsPaidTenant = () => {
     if (data?.data?.isPurchased) {
       console.log("show login");
     } else {
-      router.push("/");
+      // router.push("/");
     }
   }
 };

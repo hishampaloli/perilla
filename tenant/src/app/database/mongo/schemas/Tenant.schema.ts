@@ -12,7 +12,6 @@ interface TenantAttrs {
   postalCode: number;
   address: string;
   password: string;
-  paymentId: string;
   isPurchased: boolean;
   paymentDetails: string;
   purchaseDate: Date;
@@ -32,7 +31,6 @@ interface TenantDoc extends mongoose.Document {
   postalCode: number;
   address: string;
   password: string;
-  paymentId: string;
   paymentDetails: string;
   purchaseDate: Date;
   updatedAt: string;
@@ -77,9 +75,6 @@ const tenantSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Please provide a password"],
-    },
-    paymentId: {
-      type: String,
     },
     paymentDetails: {
       type: Array,

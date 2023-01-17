@@ -10,12 +10,10 @@ import { useTenantData } from "../hooks/useTenantData";
 
 const inter = Inter({ subsets: ["latin"] });
 
-
-
 export default function Home() {
   return (
     <>
-      <Layout title={"Shopit"}>
+      <Layout title={"Perilla"}>
         <div
           style={{
             display: "flex",

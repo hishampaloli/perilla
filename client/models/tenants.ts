@@ -58,3 +58,8 @@ export interface GetPaidTenantState {
   data: TenantData | null;
   error: ErrorState[] | null;
 }
+
+export interface StripeLinkState {
+  data: { url: string } | null;
+  error: ErrorState[] | null;
+}
