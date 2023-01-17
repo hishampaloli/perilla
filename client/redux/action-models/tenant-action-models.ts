@@ -40,6 +40,16 @@ interface LogoutFailedAction {
   error: ErrorState[];
 }
 
-export type LogoutAction =
-  | LogoutSuccessAction
-  | LogoutFailedAction;
+export type LogoutAction = LogoutSuccessAction | LogoutFailedAction;
+
+interface getPaidTenentFail {
+  type: TenantActionsTypes.GET_PAID_TENANT_SUCCESS;
+  payload: TenantData;
+}
+
+interface getPaidTenentSuccess {
+  type: TenantActionsTypes.GET_PAID_TENANT_FAIL;
+  error: ErrorState[];
+}
+
+export type GetPaidTenantAction = getPaidTenentFail | getPaidTenentSuccess;

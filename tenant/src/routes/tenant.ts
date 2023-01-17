@@ -18,6 +18,7 @@ export = (dependencies: any) => {
     tenantLoginController,
     tenantLogoutController,
     tenantLoginVerificationController,
+    getPaidTenantDataConroller,
   } = tenantController(dependencies);
 
   router.post("/createTenant", createTenantController);
@@ -32,5 +33,6 @@ export = (dependencies: any) => {
   router.post("/tenantLogin", tenantLoginController);
   router.post("/tenantVerifyLogin", tenantLoginVerificationController);
   router.post("/tenantLogout", tenantLogoutController);
+  router.get("/getTenant", getPaidTenantDataConroller);
   return router;
 };

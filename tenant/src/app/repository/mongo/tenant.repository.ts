@@ -42,4 +42,11 @@ export = {
     });
     return mongooseObject;
   },
+
+  getPayedTenantProfile: async (companyName: string) => {
+    const mongooseObject = await Tenant.findOne({
+      $and: [{ companyName }, { isPurchased: false }],
+    });
+    return mongooseObject;
+  },
 };

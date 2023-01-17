@@ -53,3 +53,8 @@ export interface UserDataState {
   error: ErrorState[] | null;
   loading: boolean;
 }
+
+export interface GetPaidTenantState {
+  data: TenantData | null;
+  error: ErrorState[] | null;
+}

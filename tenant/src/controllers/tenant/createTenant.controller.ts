@@ -41,7 +41,7 @@ export = (dependencies: any): any => {
         otpNumber
       );
 
-      console.log(verifyOtp)
+      console.log(verifyOtp);
       if (!verifyOtp) throw new BadRequestError("incorrect otp");
 
       const addedTenant = await createTenant_UseCase(dependencies).execute(

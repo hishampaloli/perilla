@@ -5,6 +5,7 @@ import currentuserController from "./currentuser.controller";
 import tenantLoginVerificationController from "./LoginVerification.controller";
 import tenantLogoutController from "./tenantLogout.controller";
 import tenantLoginController from "./tenantLogin.controller";
+import getPaidTenantDataConroller from "./getPaidTenantData.conroller";
 
 export = (dependencies: any) => {
   return {
@@ -16,5 +17,6 @@ export = (dependencies: any) => {
     tenantLogoutController: tenantLogoutController(dependencies),
     tenantLoginVerificationController:
       tenantLoginVerificationController(dependencies),
+    getPaidTenantDataConroller: getPaidTenantDataConroller(dependencies),
   };
 };
