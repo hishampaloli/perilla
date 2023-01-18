@@ -32,7 +32,7 @@ interface EmployeeDoc extends mongoose.Document {
   bankDetails: string;
   company: string;
   emergencyContact: string;
-  isBlocked: boolean
+  isBlocked: boolean;
 }
 
 const employeeSchema = new mongoose.Schema(
@@ -42,6 +42,10 @@ const employeeSchema = new mongoose.Schema(
       required: true,
     },
     name: {
+      type: String,
+      required: true,
+    },
+    password: {
       type: String,
       required: true,
     },

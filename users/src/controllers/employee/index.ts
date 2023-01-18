@@ -3,6 +3,7 @@ import getAllEmployeeController from "./getAllEmployee.controller";
 import getEmployeeController from "./getEmployee.controller";
 import editEmployeeController from "./editEmployee.controller";
 import removeEmployeeController from "./removeEmployee.controller";
+import changeEmployeePasswordController from "./changeEmployeePassword.controller";
 
 export = (dependencies: any) => {
   return {
@@ -11,5 +12,7 @@ export = (dependencies: any) => {
     getAllEmployeeController: getAllEmployeeController(dependencies),
     editEmployeeController: editEmployeeController(dependencies),
     removeEmployeeController: removeEmployeeController(dependencies),
+    changeEmployeePasswordController:
+      changeEmployeePasswordController(dependencies),
   };
 };

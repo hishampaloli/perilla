@@ -15,6 +15,11 @@ export = {
 
     if (!employee) return null;
 
+    if (data.password) {
+      employee.password = data.password;
+      return await employee?.save();
+    }
+
     const mongooseObj = await Employee.findOneAndUpdate(
       { $and: [{ _id: employeeId }, { company: company }] },
       data,
@@ -23,7 +28,15 @@ export = {
         runValidators: true,
       }
     );
+
     return mongooseObj;
+  },
+
+  changePassword: async (company: string, employeeId: string, data: any) => {
+    const mongooseObj = await Employee.findById(employeeId);
+    if (!mongooseObj) return null;
+    mongooseObj.password = data.password;
+    return await mongooseObj?.save();
   },
 
   getEmployee: async ({

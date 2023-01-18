@@ -18,6 +18,7 @@ export = (dependencies: any) => {
     getAllEmployeeController,
     editEmployeeController,
     removeEmployeeController,
+    changeEmployeePasswordController,
   } = employeeController(dependencies);
 
   router.post(
@@ -59,5 +60,11 @@ export = (dependencies: any) => {
     removeEmployeeController
   );
 
+  router.patch(
+    "/changePassword/:employeeId",
+    currentTenant,
+    requireTenantAuth,
+    changeEmployeePasswordController
+  );
   return router;
 };
