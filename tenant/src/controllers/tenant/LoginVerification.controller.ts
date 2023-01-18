@@ -31,13 +31,12 @@ export = (dependencies: any): any => {
 
       if (!verifyOtp) throw new BadRequestError("incorrect otp");
 
-      const email = await sendMail_UseCase(dependencies).execute({
-        userEmail: istenant.email,
-        subject: "New Login found",
-        response: LoginResponse,
-      });
-
-      console.log(email);
+      // TODO: UNCOMMENT BELOW CODE TO GET EMAILS
+      // const email = await sendMail_UseCase(dependencies).execute({
+      //   userEmail: istenant.email,
+      //   subject: "New Login found",
+      //   response: LoginResponse,
+      // });
 
       let token = generateToken(istenant);
 
