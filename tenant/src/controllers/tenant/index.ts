@@ -8,6 +8,7 @@ import tenantLoginController from "./tenantLogin.controller";
 import getPaidTenantDataConroller from "./getPaidTenantData.conroller";
 import stripePaymentController from "./stripePayment.controller";
 import stripePayementVerificationController from "./stripePayementVerification.controller";
+import sendWelcomeMailController from "./sendWelcomeMail.controller";
 
 export = (dependencies: any) => {
   return {
@@ -23,5 +24,6 @@ export = (dependencies: any) => {
     stripePaymentController: stripePaymentController(dependencies),
     stripePayementVerificationController:
       stripePayementVerificationController(dependencies),
+    sendWelcomeMailController: sendWelcomeMailController(dependencies),
   };
 };

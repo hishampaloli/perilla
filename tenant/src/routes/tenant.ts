@@ -21,6 +21,7 @@ export = (dependencies: any) => {
     getPaidTenantDataConroller,
     stripePaymentController,
     stripePayementVerificationController,
+    sendWelcomeMailController,
   } = tenantController(dependencies);
 
   router.post("/createTenant", createTenantController);
@@ -43,5 +44,6 @@ export = (dependencies: any) => {
     requireTenantAuth,
     stripePayementVerificationController
   );
+  router.post("/email", sendWelcomeMailController);
   return router;
 };
