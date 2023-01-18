@@ -2,10 +2,11 @@ import { Request, Response, NextFunction } from "express";
 import { BadRequestError, NotAuthorizedError } from "@hr-management/common";
 import { TenantData } from "../../libs/entities";
 import generateToken from "../../libs/utils/jsonwebtoken";
+import { LoginResponse } from "../../libs/utils/mailService";
 
 export = (dependencies: any): any => {
   const {
-    useCases: { tenantLogin_UseCase, verifyOtp_UseCase },
+    useCases: { tenantLogin_UseCase, verifyOtp_UseCase, sendMail_UseCase },
   } = dependencies;
 
   const tenantLoginVerification = async (
@@ -29,6 +30,14 @@ export = (dependencies: any): any => {
       );
 
       if (!verifyOtp) throw new BadRequestError("incorrect otp");
+
+      const email = await sendMail_UseCase(dependencies).execute({
+        userEmail: istenant.email,
+        subject: "New Login found",
+        response: LoginResponse,
+      });
+
+      console.log(email);
 
       let token = generateToken(istenant);
 

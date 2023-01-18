@@ -12,7 +12,7 @@ export const MailGenerator = new Mailgen({
   theme: "default",
   product: {
     name: "PERILLA",
-    link: "https://mailgen.js",
+    link: "https://www.linkedin.com/in/hisham-paloli-141090231/",
   },
 });
 
@@ -25,6 +25,56 @@ export const PurchaseResponse = {
     },
   },
   outro: "Thank you for your trust",
+};
+
+export const LoginResponse = {
+  body: {
+    name: "CUSTOMER",
+    intro: "Login successful",
+    table: {
+      data: [
+        {
+          Info: "You have successfully Logged in, if your are not the one , then please contact our support team",
+        },
+      ],
+    },
+  },
+  outro: "Thank you for your trust",
+};
+
+export const SignUpResponse = ({
+  companyName,
+  address,
+  adminName,
+  email,
+  phone,
+}: {
+  companyName: string;
+  address: string;
+  adminName: string;
+  email: string;
+  phone: number;
+}) => {
+  const data = {
+    body: {
+      name: "CUSTOMER",
+      intro: "Your company have been registered successfully",
+      table: {
+        data: [
+          {
+            companyName,
+            address,
+            adminName,
+            email,
+            phone,
+          },
+        ],
+      },
+    },
+    outro: "Thank you for your trust",
+  };
+
+  return data;
 };
 
 export const getMessage = ({

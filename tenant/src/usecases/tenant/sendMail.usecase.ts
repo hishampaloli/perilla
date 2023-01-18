@@ -13,7 +13,7 @@ export const sendMail_UseCase = (dependencies: any) => {
   if (!tenantRepository)
     throw new Error("The product repository should be dependencie");
 
-  const execute = ({
+  const execute = async ({
     response,
     userEmail,
     subject,
@@ -25,7 +25,6 @@ export const sendMail_UseCase = (dependencies: any) => {
     const transporter = nodemailer.createTransport(mailConfig);
     let mail = MailGenerator.generate(response);
     let message = getMessage({ userEmail, subject, mail });
-    
     transporter
       .sendMail(message)
       .then((info) => {

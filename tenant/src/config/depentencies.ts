@@ -8,7 +8,7 @@ import {
   tenantLogin_UseCase,
   getPayedTenant_UseCase,
   verifyStripe_UseCase,
-  sendMail_UseCase,
+  sendMail_UseCase
 } from "../usecases";
 
 const useCases: any = {

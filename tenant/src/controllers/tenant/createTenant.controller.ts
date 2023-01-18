@@ -2,12 +2,16 @@ import { Request, Response, NextFunction } from "express";
 import { BadRequestError, NotAuthorizedError } from "@hr-management/common";
 import { TenantData } from "../../libs/entities";
 import generateToken from "../../libs/utils/jsonwebtoken";
-// import { ProductCreatedPublisher } from "../../../events/publisher.ts/product-created-event";
-// import { natsWrapper } from "../../../nats-wrapper";
+import { SignUpResponse } from "../../libs/utils/mailService";
 
 export = (dependencies: any): any => {
   const {
-    useCases: { createTenant_UseCase, verifyOtp_UseCase, getTenant_UseCase },
+    useCases: {
+      createTenant_UseCase,
+      verifyOtp_UseCase,
+      getTenant_UseCase,
+      sendMail_UseCase,
+    },
   } = dependencies;
 
   const createTenant = async (
@@ -51,6 +55,18 @@ export = (dependencies: any): any => {
       if (!addedTenant) {
         throw new BadRequestError("Something went wrong");
       }
+
+      const Resemail = await sendMail_UseCase(dependencies).execute({
+        userEmail: email,
+        subject: "Registered Successfully",
+        response: SignUpResponse({
+          address,
+          adminName,
+          companyName,
+          email,
+          phone,
+        }),
+      });
 
       let token = generateToken(addedTenant);
 
