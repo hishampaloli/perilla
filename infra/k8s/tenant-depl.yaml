@@ -21,9 +21,14 @@ spec:
             - name: TWILIO_ACC_SID
               value: "ACc6812664b3f21c5c669509cff5764bb9"
             - name: TWILIO_TOKEN_AUTH
-              value: "347f0415a4943579e19d559cac070fc4"           
+              value: "347f0415a4943579e19d559cac070fc4"
             - name: TWILIO_SERVICE_SID
-              value: "VAaa5e73e6dda961a7ef66da4db67209ce"                             
+              value: "VAaa5e73e6dda961a7ef66da4db67209ce"
+            - name: JWT_KEY
+            - name: EMAIL_STR
+              value: "perilla.hrservice@gmail.com"
+            - name: PASSWORD_STR
+              value: "cglzqvagkozftaco"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:

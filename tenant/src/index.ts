@@ -28,6 +28,16 @@ const start = async () => {
     throw new Error("TWILIO_SERVICE_SID must be defined");
   }
 
+  if (!process.env.EMAIL_STR) {
+    throw new Error("EMAIL_STR must be defined");
+  }
+
+  if (!process.env.PASSWORD_STR) {
+    throw new Error("PASSWORD_STR must be defined");
+  }
+
+  
+
 
   
   try {
