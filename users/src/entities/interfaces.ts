@@ -1,17 +1,16 @@
 export interface DepenteniciesData {
-    useCases: useCaseData;
-    repository: any;
-  }
-  
-  export interface useCaseData {
-    getUser_UseCase: any;
-    signUp_UseCase: any;
-    signIn_UseCase: any;
-  }
-  
-  export interface repositoryData {
-    EmployeeRepository: any;
-    
-  }
-  
-  
+  useCases: useCaseData;
+  repository: repositoryData;
+}
+
+export interface useCaseData {
+  createEmployee_UseCase: any;
+  getEmployee_UseCase: any;
+  createEmployeeData_UseCase: any;
+  getAllEmployees_UseCase: any;
+  editEmployees_UseCase: any
+}
+
+export interface repositoryData {
+  employeeRepository: any;
+}

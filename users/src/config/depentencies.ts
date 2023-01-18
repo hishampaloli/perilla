@@ -1,9 +1,25 @@
-// import { tenantRepository } from "../app/repository/mongo";
-// import {} from "../usecases";
+import { employeeRepository } from "../app/repository/mongo";
+import {
+  createEmployee_UseCase,
+  getEmployee_UseCase,
+  createEmployeeData_UseCase,
+  getAllEmployees_UseCase,
+  editEmployees_UseCase,
+} from "../usecases";
 
-const useCases: any = {};
+import { repositoryData, useCaseData } from "../entities/interfaces";
 
-const repository: any = {};
+const useCases: useCaseData = {
+  createEmployee_UseCase,
+  getEmployee_UseCase,
+  createEmployeeData_UseCase,
+  getAllEmployees_UseCase,
+  editEmployees_UseCase
+};
+
+const repository: repositoryData = {
+  employeeRepository,
+};
 
 export = {
   repository,

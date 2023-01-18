@@ -6,9 +6,9 @@ import {
   ErrorHandler,
   NotFoundError,
 } from "@hr-management/common/build";
-// import { routes } from "./routes";
+import { routes } from "./app/routes";
 import cookieSession from "cookie-session";
-// import depentencies from "./config/depentencies";
+import depentencies from "./config/depentencies";
 
 const app = express();
 
@@ -20,11 +20,9 @@ app.use(
   })
 );
 
-// app.use("/api", routes(depentencies));
+app.use("/api/user", routes(depentencies));
 
-app.get('/api/user', (req, res) => {
-  res.send('786')
-})
+
 
 app.all("*", async (req, res) => {
   throw new NotFoundError();

@@ -41,25 +41,25 @@ const start = async () => {
 
   
   try {
-    await natsWrapper.connect(
-      "hr",
-      process.env.NATS_CLIENT_ID,
-      "http://nats-srv:4222"
-    );
+    // await natsWrapper.connect(
+    //   "hr",
+    //   process.env.NATS_CLIENT_ID,
+    //   "http://nats-srv:4222"
+    // );
 
-    natsWrapper.client.on("close", () => {
-      console.log("NATS connetion closed!");
-      process.exit();
-    });
+    // natsWrapper.client.on("close", () => {
+    //   console.log("NATS connetion closed!");
+    //   process.exit();
+    // });
 
-    process.on("SIGINT", () => natsWrapper.client.close());
-    process.on("SIGTERM", () => natsWrapper.client.close());
+    // process.on("SIGINT", () => natsWrapper.client.close());
+    // process.on("SIGTERM", () => natsWrapper.client.close());
 
     // new ProfileCreatedListener(natsWrapper.client).listen();
     // new ProfileUpdateListener(natsWrapper.client).listen();
 
 
-    connectDB();
+    connectDB()
   } catch (err) {
     console.error(err);
   }

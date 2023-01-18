@@ -9,12 +9,9 @@ interface EmployeeAttrs {
   password: string;
   phone: number;
   employeeId: string;
-  image: string;
   joiningDate: string;
   designation: string;
-  personalInformation: string;
-  bankDetails: string;
-  emergencyContact: string;
+  company: string;
 }
 
 interface EmployeeModal extends mongoose.Model<EmployeeDoc> {
@@ -33,7 +30,9 @@ interface EmployeeDoc extends mongoose.Document {
   designation: string;
   personalInformation: string;
   bankDetails: string;
+  company: string;
   emergencyContact: string;
+  isBlocked: boolean
 }
 
 const employeeSchema = new mongoose.Schema(
@@ -83,6 +82,15 @@ const employeeSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "EmergencyContact",
     },
+    company: {
+      type: String,
+      required: true,
+    },
+    isBlocked: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
   },
   {
     toJSON: {
@@ -113,12 +121,9 @@ employeeSchema.statics.build = (attrs: EmployeeAttrs) => {
     password: attrs.password,
     phone: attrs.phone,
     employeeId: attrs.employeeId,
-    image: attrs.image,
     joiningDate: attrs.joiningDate,
     designation: attrs.designation,
-    personalInformation: attrs.personalInformation,
-    bankDetails: attrs.bankDetails,
-    emergencyContact: attrs.emergencyContact,
+    company: attrs.company,
   });
 };
 

@@ -3,8 +3,6 @@ import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 interface bankDetailsAttrs {
   employee: string;
-  isApproved: boolean;
-  approvedBy: string;
   bankName: string;
   accountNumber: number;
   ifcsCode: string;

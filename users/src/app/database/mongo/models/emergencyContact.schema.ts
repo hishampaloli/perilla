@@ -8,8 +8,6 @@ interface ContactDetails {
 }
 interface emergencyContactAttrs {
   employee: string;
-  primary: ContactDetails;
-  secondary: ContactDetails;
 }
 
 interface emergencyContactModal extends mongoose.Model<emergencyContactDoc> {

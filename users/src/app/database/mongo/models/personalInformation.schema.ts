@@ -2,12 +2,6 @@ import mongoose from "mongoose";
 import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 interface personalInfoAttrs {
-  nationality: string;
-  religion: string;
-  martialStatus: string;
-  employementOfPartner: string;
-  passportNumber: number;
-  noOfChildren: number;
   employee: string;
 }
 
@@ -52,12 +46,12 @@ const personalInformationSchema = new mongoose.Schema(
     passportNumber: {
       type: Number,
       required: true,
-      default: "Please add your passport number",
+      default: "00000000000",
     },
     noOfChildren: {
       type: Number,
       required: true,
-      default: "Please add this details",
+      default: 0,
     },
     employee: {
       type: mongoose.Schema.Types.ObjectId,
