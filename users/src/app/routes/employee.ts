@@ -20,6 +20,9 @@ export = (dependencies: any) => {
     getMyProfileDataController,
     editPersonalInfoController,
     editEmergancyContactController,
+    getBankDetailsController,
+    editBankDetailsController,
+    sendBankDetailsController,
   } = employeeController(dependencies);
 
   router.get(
@@ -52,5 +55,27 @@ export = (dependencies: any) => {
     requireUserAuth,
     editEmergancyContactController
   );
+
+  router.get(
+    "/bankDetails",
+    currentUser,
+    requireUserAuth,
+    getBankDetailsController
+  );
+  router.put(
+    "/editBankDetails",
+    currentUser,
+    requireUserAuth,
+    editBankDetailsController
+  );
+
+  router.patch(
+    "/sendBankDetails",
+    currentUser,
+    requireUserAuth,
+    sendBankDetailsController
+  );
+
+  
   return router;
 };

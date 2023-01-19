@@ -24,18 +24,3 @@ export default function Home() {
   );
 }
 
-// Home.getInitialProps = wrapper.getInitialPageProps(
-//   (store) => async (context: any) => {
-//     const config = {
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     };
-//     const { data } = await buildClient(context).post<string>(
-//       "/api/tenant/getOtp",
-//       // number,
-//       config
-//     );
-//     return {};
-//   }
-// );

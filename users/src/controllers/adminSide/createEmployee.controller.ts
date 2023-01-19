@@ -50,7 +50,7 @@ export = (dependencies: DepenteniciesData): any => {
 
       const updatedUser = await createEmployeeData_UseCase(
         dependencies
-      ).execute(createdUser.id);
+      ).execute(createdUser.id, req.currentTenant?.id.companyName);
       res.json({ data: updatedUser });
     } catch (error: any) {
       throw new Error(error);

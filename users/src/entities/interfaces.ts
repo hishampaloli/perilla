@@ -15,6 +15,9 @@ export interface useCaseData {
   getMyProfileData_UseCase: any;
   editPersonalInfo_UseCase: any;
   editEmergencyContact_UseCase: any;
+  getBankDetails_UseCase: any;
+  editBankDetails_UseCase: any;
+  getAllBankDetailsApprovalRequest_UseCase: any;
 }
 
 export interface repositoryData {

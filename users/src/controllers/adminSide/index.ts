@@ -5,6 +5,7 @@ import editEmployeeController from "./editEmployee.controller";
 import removeEmployeeController from "./removeEmployee.controller";
 import changeEmployeePasswordController from "./changeEmployeePassword.controller";
 import getEmployeeProfileDataController from "./getEmployeeProfileData.controller";
+import getBankDetailsRequestsController from "./getBankDetailsRequests.controller";
 
 export = (dependencies: any) => {
   return {
@@ -17,5 +18,7 @@ export = (dependencies: any) => {
       changeEmployeePasswordController(dependencies),
     getEmployeeProfileDataController:
       getEmployeeProfileDataController(dependencies),
+    getBankDetailsRequestsController:
+      getBankDetailsRequestsController(dependencies),
   };
 };

@@ -11,6 +11,9 @@ import {
   getMyProfileData_UseCase,
   editPersonalInfo_UseCase,
   editEmergencyContact_UseCase,
+  getBankDetails_UseCase,
+  editBankDetails_UseCase,
+  getAllBankDetailsApprovalRequest_UseCase
 } from "../usecases";
 
 import { repositoryData, useCaseData } from "../entities/interfaces";
@@ -27,6 +30,10 @@ const useCases: useCaseData = {
   getMyProfileData_UseCase,
   editPersonalInfo_UseCase,
   editEmergencyContact_UseCase,
+  getBankDetails_UseCase,
+  editBankDetails_UseCase,
+  getAllBankDetailsApprovalRequest_UseCase
+
 };
 
 const repository: repositoryData = {

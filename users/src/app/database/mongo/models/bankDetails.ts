@@ -3,10 +3,7 @@ import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 interface bankDetailsAttrs {
   employee: string;
-  bankName: string;
-  accountNumber: number;
-  ifcsCode: string;
-  panNumber: string;
+  companyName: string;
 }
 
 interface bankDetailsModal extends mongoose.Model<bankDetailsDoc> {
@@ -15,13 +12,14 @@ interface bankDetailsModal extends mongoose.Model<bankDetailsDoc> {
 
 interface bankDetailsDoc extends mongoose.Document {
   employee: string;
+  companyName: string;
   isApproved: boolean;
-  approvedBy: string;
   bankName: string;
   accountNumber: number;
   ifcsCode: string;
   panNumber: string;
   updatedAt: string;
+  approvalReq: boolean;
   version: number;
 }
 
@@ -31,24 +29,29 @@ const bankDetailsSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Employee",
     },
-    approvedBy: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Employee",
-    },
     isApproved: {
       type: Boolean,
       required: true,
       default: false,
+    },
+    companyName: {
+      type: String,
+      required: true,
     },
     bankName: {
       type: String,
       required: true,
       default: "Please add your bank name",
     },
+    approvalReq: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
     accountNumber: {
       type: Number,
       required: true,
-      default: "Please add your bank account number",
+      default: "9999999999999",
     },
     ifcsCode: {
       type: String,

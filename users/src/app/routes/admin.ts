@@ -21,6 +21,7 @@ export = (dependencies: any) => {
     removeEmployeeController,
     changeEmployeePasswordController,
     getEmployeeProfileDataController,
+    getBankDetailsRequestsController,
   } = adminController(dependencies);
 
   router.post("/createEmployee", requireTenantAuth, createEmployeeController);
@@ -63,5 +64,10 @@ export = (dependencies: any) => {
     getEmployeeProfileDataController
   );
 
+  router.get(
+    "/allBankReq",
+    requireTenantAuth,
+    getBankDetailsRequestsController
+  );
   return router;
 };

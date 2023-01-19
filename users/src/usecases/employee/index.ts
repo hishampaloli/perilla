@@ -4,6 +4,8 @@ import { verifyTwilioOtp_UseCase } from "./verifiyTwilioOtp.usecase";
 import { getMyProfileData_UseCase } from "./getMyProfileData.usecase";
 import { editPersonalInfo_UseCase } from "./editPersonalInfo.usecase";
 import { editEmergencyContact_UseCase } from "./editEmergencycontact.usecase";
+import { getBankDetails_UseCase } from "./getBankDetails.usecase";
+import { editBankDetails_UseCase } from "./editBankDetails.usecase";
 
 export {
   employeeLogin_UseCase,
@@ -12,4 +14,6 @@ export {
   getMyProfileData_UseCase,
   editPersonalInfo_UseCase,
   editEmergencyContact_UseCase,
+  getBankDetails_UseCase,
+  editBankDetails_UseCase,
 };

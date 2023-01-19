@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import { schemas } from "../../database/mongo";
 import { Password } from "../../externalServices/password";
 
-const { Employee, PersonalInfo, EmergencyContact } = schemas;
+const { Employee, PersonalInfo, EmergencyContact, BankDetails } = schemas;
 
 export = {
   createEmployee: async (user: any) => {
@@ -89,7 +89,6 @@ export = {
   },
 
   editPersonalInfo: async (employeeId: string, data: any) => {
-    
     const mongooseObj = await PersonalInfo.findOneAndUpdate(
       { employee: employeeId },
       data,
@@ -116,10 +115,60 @@ export = {
   },
 
   editEmergencyContact: async (employeeId: string, data: any) => {
-    console.log(data);
-    
     const mongooseObj = await EmergencyContact.findOneAndUpdate(
       { employee: employeeId },
+      data,
+      {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      }
+    );
+
+    return mongooseObj;
+  },
+
+  createBankDetails: async (employeeId: string, companyName: string) => {
+    const mongooseObj = BankDetails.build({
+      employee: employeeId,
+      companyName,
+    });
+    return await mongooseObj.save();
+  },
+
+  getBankDetails: async (companyName: string, employeeId: string) => {
+    console.log(employeeId, companyName);
+
+    const mongooseObj = await BankDetails.findOne({
+      $and: [{ employee: employeeId }],
+    });
+    console.log(mongooseObj);
+
+    return mongooseObj;
+  },
+
+  reqestedBankDetails: async (companyName: string) => {
+    const mongooseObj = await BankDetails.aggregate([
+      {
+        $match: {
+          $and: [{ companyName: companyName }, { approvalReq: true }],
+        },
+      },
+    ]);
+    console.log(mongooseObj);
+
+    return mongooseObj;
+  },
+
+  editBankDetails: async (employeeId: string, data: any) => {
+    const isApproved = await BankDetails.findOne({
+      $and: [{ employee: employeeId }, { isApproved: true }],
+    });
+
+    if (isApproved) return false;
+
+    const mongooseObj = await BankDetails.findOneAndUpdate(
+      { employee: employeeId, isApproved: false },
       data,
       {
         new: true,
