@@ -1,7 +1,7 @@
 import { Employee } from "../../entities/Employee";
 import { DepenteniciesData } from "../../entities/interfaces";
 
-export const getEmployee_UseCase = (dependencies: DepenteniciesData) => {
+export const employeeLogin_UseCase = (dependencies: DepenteniciesData) => {
   const {
     repository: { employeeRepository },
   } = dependencies;
@@ -9,16 +9,8 @@ export const getEmployee_UseCase = (dependencies: DepenteniciesData) => {
   if (!employeeRepository)
     throw new Error("The user repository should be dependencie");
 
-  const execute = ({
-    company,
-    phone,
-    email,
-  }: {
-    company: string;
-    phone: number;
-    email: string;
-  }) => {
-    return employeeRepository.getEmployee({ company, phone, email });
+  const execute = (company: string, phone: number, password: string) => {
+    return employeeRepository.employeeLogin(company, phone, password);
   };
   return {
     execute,

@@ -3,27 +3,27 @@ import { DepenteniciesData } from "../../entities/interfaces";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
-    useCases: { getEmployee_UseCase },
+    useCases: { getMyProfileData_UseCase },
   } = dependencies;
 
-  const getMyProfile = async (
+  const getMyProfileData = async (
     req: Request,
     res: Response,
     next: NextFunction
   ) => {
     try {
+      const companyName = req.currentUser?.id.companyName;
+      const employeeId = req.currentUser?.id.id;
 
-        
-      const myProfile = await getEmployee_UseCase(dependencies).execute({
-        company: req.currentUser?.id.companyName,
-        phone: req.currentUser?.id.phone,
-        email: req.currentUser?.id.email,
-      });
+      const myProfile = await getMyProfileData_UseCase(dependencies).execute(
+        companyName,
+        employeeId
+      );
 
       res.json({ data: myProfile });
     } catch (error: any) {
       throw new Error(error);
     }
   };
-  return getMyProfile;
+  return getMyProfileData;
 };

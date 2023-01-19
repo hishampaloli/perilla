@@ -30,7 +30,7 @@ interface EmployeeDoc extends mongoose.Document {
   designation: string;
   personalInformation: string;
   bankDetails: string;
-  company: string;
+  companyName: string;
   emergencyContact: string;
   isBlocked: boolean;
 }
@@ -86,7 +86,7 @@ const employeeSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "EmergencyContact",
     },
-    company: {
+    companyName: {
       type: String,
       required: true,
     },
@@ -127,7 +127,7 @@ employeeSchema.statics.build = (attrs: EmployeeAttrs) => {
     employeeId: attrs.employeeId,
     joiningDate: attrs.joiningDate,
     designation: attrs.designation,
-    company: attrs.company,
+    companyName: attrs.company,
   });
 };
 

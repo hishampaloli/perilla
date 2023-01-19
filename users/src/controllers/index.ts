@@ -1,2 +1,3 @@
 import employeeController from "./employee";
-export { employeeController };
+import adminController from "./adminSide";
+export { employeeController, adminController };

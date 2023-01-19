@@ -8,7 +8,13 @@ export interface useCaseData {
   getEmployee_UseCase: any;
   createEmployeeData_UseCase: any;
   getAllEmployees_UseCase: any;
-  editEmployees_UseCase: any
+  editEmployees_UseCase: any;
+  employeeLogin_UseCase: any;
+  getTwilioOtp_UseCase: any;
+  verifyTwilioOtp_UseCase: any;
+  getMyProfileData_UseCase: any;
+  editPersonalInfo_UseCase: any;
+  editEmergencyContact_UseCase: any;
 }
 
 export interface repositoryData {

@@ -14,66 +14,43 @@ import { employeeController } from "../../controllers";
 export = (dependencies: any) => {
   const router = express.Router();
   const {
-    createEmployeeController,
-    getEmployeeController,
-    getAllEmployeeController,
-    editEmployeeController,
-    removeEmployeeController,
-    changeEmployeePasswordController,
     getMyProfileController,
+    employeeLoginController,
+    verifyEmployeeLoginController,
+    getMyProfileDataController,
+    editPersonalInfoController,
+    editEmergancyContactController,
   } = employeeController(dependencies);
-
-  router.post(
-    "/createEmployee",
-    currentTenant,
-    requireTenantAuth,
-    createEmployeeController
-  );
-
-  router.get(
-    "/getEmployee",
-    currentTenant,
-    currentUser,
-    requireTenantOrUser,
-    isHrOrAdmin,
-    getEmployeeController
-  );
-
-  router.get(
-    "/getAllEmployees",
-    currentTenant,
-    currentUser,
-    requireTenantOrUser,
-    isHrOrAdmin,
-    getAllEmployeeController
-  );
-
-  router.put(
-    "/edit/:employeeId",
-    currentTenant,
-    requireTenantAuth,
-    editEmployeeController
-  );
-
-  router.patch(
-    "/remove/:employeeId",
-    currentTenant,
-    requireTenantAuth,
-    removeEmployeeController
-  );
-
-  router.patch(
-    "/changePassword/:employeeId",
-    currentTenant,
-    requireTenantAuth,
-    changeEmployeePasswordController
-  );
 
   router.get(
     "/myProfile",
     currentUser,
     requireUserAuth,
     getMyProfileController
+  );
+
+  router.get(
+    "/myProfileData",
+    currentUser,
+    requireUserAuth,
+    getMyProfileDataController
+  );
+
+  router.post("/login", employeeLoginController);
+  router.post("/verifyOtp", verifyEmployeeLoginController);
+
+  router.patch(
+    "/addPersonalInfo",
+    currentUser,
+    requireUserAuth,
+    editPersonalInfoController
+  );
+
+  router.patch(
+    "/addEmergencyContact",
+    currentUser,
+    requireUserAuth,
+    editEmergancyContactController
   );
   return router;
 };

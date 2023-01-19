@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 import { schemas } from "../../database/mongo";
+import { Password } from "../../externalServices/password";
 
 const { Employee, PersonalInfo, EmergencyContact } = schemas;
 
@@ -21,7 +22,7 @@ export = {
     }
 
     const mongooseObj = await Employee.findOneAndUpdate(
-      { $and: [{ _id: employeeId }, { company: company }] },
+      { $and: [{ _id: employeeId }, { companyName: company }] },
       data,
       {
         new: true,
@@ -48,11 +49,13 @@ export = {
     phone: number;
     email: string;
   }) => {
+    console.log(company, phone, email);
+
     const mongooseObj = await Employee.aggregate([
       {
         $match: {
           $and: [
-            { company: company },
+            { companyName: company },
             {
               $or: [{ phone: Number(phone) }, { email: email }],
             },
@@ -78,8 +81,25 @@ export = {
     return await mongooseObj.save();
   },
 
-  getPersonalInfo: async (employeeId: string) => {
-    const mongooseObj = await PersonalInfo.findOne({ employee: employeeId });
+  getPersonalInfo: async (companyName: string, employeeId: string) => {
+    const mongooseObj = await PersonalInfo.findOne({
+      $and: [{ employee: employeeId }, { companyName }],
+    });
+    return mongooseObj;
+  },
+
+  editPersonalInfo: async (employeeId: string, data: any) => {
+    
+    const mongooseObj = await PersonalInfo.findOneAndUpdate(
+      { employee: employeeId },
+      data,
+      {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      }
+    );
+
     return mongooseObj;
   },
 
@@ -88,10 +108,26 @@ export = {
     return await mongooseObj.save();
   },
 
-  getEmergencyContact: async (employeeId: string) => {
+  getEmergencyContact: async (companyName: string, employeeId: string) => {
     const mongooseObj = await EmergencyContact.findOne({
-      employee: employeeId,
+      $and: [{ employee: employeeId }, { companyName }],
     });
+    return mongooseObj;
+  },
+
+  editEmergencyContact: async (employeeId: string, data: any) => {
+    console.log(data);
+    
+    const mongooseObj = await EmergencyContact.findOneAndUpdate(
+      { employee: employeeId },
+      data,
+      {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      }
+    );
+
     return mongooseObj;
   },
 
@@ -100,10 +136,40 @@ export = {
     const mongooseObj = await Employee.aggregate([
       {
         $match: {
-          $and: [{ company: company }, { role: role }, { isBlocked: false }],
+          $and: [
+            { companyName: company },
+            { role: role },
+            { isBlocked: false },
+          ],
         },
       },
     ]);
     return mongooseObj;
+  },
+
+  employeeLogin: async (
+    companyName: string,
+    phone: number,
+    password: string
+  ) => {
+    // console.log(company + "//////////");
+
+    const mongooseObj: any = await Employee.findOne({
+      $and: [{ companyName }, { phone }, { isBlocked: false }],
+    });
+
+    if (mongooseObj) {
+      const passwordsMatch = await Password.compare(
+        mongooseObj?.password,
+        password
+      );
+      if (passwordsMatch) {
+        return mongooseObj;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
   },
 };
