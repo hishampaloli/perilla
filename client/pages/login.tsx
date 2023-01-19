@@ -1,3 +1,4 @@
+import { Head } from "next/document";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import Layout from "../components/layout/Layout";
@@ -8,12 +9,11 @@ import { useTenantData } from "../hooks/useTenantData";
 import styles from "../styles/buyProduct.module.scss";
 
 const login = () => {
-
-
-  useIsLogged()
+  useIsLogged();
 
   return (
     <Layout title="Login">
+
       <div className={styles.buyProduct}>
         <LogoImage />
         <LoginComponent />

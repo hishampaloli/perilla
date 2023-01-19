@@ -1,12 +1,7 @@
 import { Inter } from "@next/font/google";
 import Layout from "../components/layout/Layout";
-import { wrapper } from "../redux/store";
-import { useEffect } from "react";
-import Router, { useRouter } from "next/router";
-import { useTypedSelector } from "../hooks/useTypedSelector";
-import axios from "axios";
-import buildClient from "../api/buildClient";
-import { useTenantData } from "../hooks/useTenantData";
+import Script from "next/script";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,14 +9,15 @@ export default function Home() {
   return (
     <>
       <Layout title={"Perilla"}>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-          }}
-        >
-          <h1>786</h1>
+        {" "}
+        {/* <Script
+          async
+          src="https://embed.tawk.to/63bd4f0b47425128790ca5ed/1gmdnpi97"
+          charSet="UTF_8"
+          crossOrigin="*"
+        /> */}
+        <div>
+        <h1>786</h1>
         </div>
       </Layout>
     </>

@@ -5,7 +5,7 @@ import Header from "./header/Header";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Layout = ({
+const BotLayout = ({
   children,
   title,
 }: {
@@ -18,6 +18,12 @@ const Layout = ({
         <title>{title}</title>
         <meta charSet="utf-8" />{" "}
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <script
+          async
+          src="https://embed.tawk.to/63bd4f0b47425128790ca5ed/1gmdnpi97"
+          charSet="UTF_8"
+          crossOrigin="*"
+        ></script>
       </Head>
 
       <Header />
@@ -27,4 +33,4 @@ const Layout = ({
   );
 };
 
-export default Layout;
+export default BotLayout;
