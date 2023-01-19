@@ -26,7 +26,8 @@ export = (dependencies: any): any => {
         throw new BadRequestError("Invalid credentials");
       }
       const verifyOtp = await verifyOtp_UseCase(dependencies).execute(
-        otpNumber
+        otpNumber,
+        phone
       );
 
       if (!verifyOtp) throw new BadRequestError("incorrect otp");

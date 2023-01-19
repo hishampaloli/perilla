@@ -26,7 +26,7 @@ export = (dependencies: DepenteniciesData): any => {
 
       const otpverification = await verifyTwilioOtp_UseCase(
         dependencies
-      ).execute(otp);
+      ).execute(otp, phone);
 
       if (!otpverification) throw new BadRequestError("Invalid OTP ");
 

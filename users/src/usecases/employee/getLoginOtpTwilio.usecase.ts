@@ -16,15 +16,15 @@ export const getTwilioOtp_UseCase = (dependencies: DepenteniciesData) => {
     throw new Error("The employee repository should be dependencie");
 
   const execute = async (number: number) => {
-    // console.log(TWILIO_SERVICE_SID, number)
-    //   await client.verify.services(TWILIO_SERVICE_SID)
-    //         .verifications
-    //         .create({ to: `+91${number}`, channel: 'sms' })
-    //         .then((verification: any) => console.log(verification))
-    //         .catch((e: any) => {
-    //             console.log(e);                
-    //             return false
-    //         });
+    console.log(TWILIO_SERVICE_SID, number)
+      await client.verify.services(TWILIO_SERVICE_SID)
+            .verifications
+            .create({ to: `+91${number}`, channel: 'sms' })
+            .then((verification: any) => console.log(verification))
+            .catch((e: any) => {
+                console.log(e);                
+                return false
+            });
           
     return "verification";
   };

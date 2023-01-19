@@ -10,16 +10,20 @@ export const verifyOtp_UseCase = (dependencies: any) => {
     repository: { tenantRepository },
   } = dependencies;
 
-  const execute = async (otp: number) => {
+  const execute = async (otp: number, number: number) => {
     if (!otp) throw new Error("Please provide a valid OTP number");
     console.log(otp);
 
     if (otp == 1234) return true;
 
-    // console.log(TWILIO_SERVICE_SID)
-    //     const verification = await client.verify
-    //       .services(TWILIO_SERVICE_SID)
-    //       .verifications.create({ to: `+91${number}`, channel: "sms" });
+    //     const check = await client.verify.services(TWILIO_SERVICE_SID)
+    //     .verificationChecks
+    //     .create({ to: `+91${number}`, code: otp })
+    //     .catch((e: any) => {
+    //         console.log(e);
+    //     });
+    // if(check.status === 'approved') return true
+
     return false;
   };
 
