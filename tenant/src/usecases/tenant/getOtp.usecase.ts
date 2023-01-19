@@ -1,9 +1,5 @@
-const client = require("twilio")(
-  process.env.TWILIO_ACC_SID,
-  process.env.TWILIO_TOKEN_AUTH
-);
+import { sendTwilioOtp } from "../../libs/utils/twilioService";
 
-const TWILIO_SERVICE_SID = process.env.TWILIO_SERVICE_SID;
 
 export const getOtp_UseCase = (dependencies: any) => {
   const {
@@ -11,11 +7,10 @@ export const getOtp_UseCase = (dependencies: any) => {
   } = dependencies;
 
   const execute = async (number: number) => {
-    // console.log(TWILIO_SERVICE_SID)
-    //     const verification = await client.verify
-    //       .services(TWILIO_SERVICE_SID)
-    //       .verifications.create({ to: `+91${number}`, channel: "sms" });
-    return "verification";
+    let result = sendTwilioOtp(number);
+    console.log(786);
+    
+    return result;
   };
 
   return {

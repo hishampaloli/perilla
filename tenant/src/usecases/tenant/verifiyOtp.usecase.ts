@@ -1,3 +1,5 @@
+import { verifyTwilioOtp } from "../../libs/utils/twilioService";
+
 const client = require("twilio")(
   process.env.TWILIO_ACC_SID,
   process.env.TWILIO_TOKEN_AUTH
@@ -16,15 +18,8 @@ export const verifyOtp_UseCase = (dependencies: any) => {
 
     if (otp == 1234) return true;
 
-    //     const check = await client.verify.services(TWILIO_SERVICE_SID)
-    //     .verificationChecks
-    //     .create({ to: `+91${number}`, code: otp })
-    //     .catch((e: any) => {
-    //         console.log(e);
-    //     });
-    // if(check.status === 'approved') return true
-
-    return false;
+    const result = await verifyTwilioOtp(number, otp);
+    return result;
   };
 
   return {

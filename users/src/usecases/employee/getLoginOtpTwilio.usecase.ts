@@ -5,6 +5,7 @@ const client = require("twilio")(
 
 const TWILIO_SERVICE_SID = process.env.TWILIO_SERVICE_SID;
 
+import { sendTwilioOtp } from "../../app/externalServices/twilioService";
 import { DepenteniciesData } from "../../entities/interfaces";
 
 export const getTwilioOtp_UseCase = (dependencies: DepenteniciesData) => {
@@ -16,17 +17,11 @@ export const getTwilioOtp_UseCase = (dependencies: DepenteniciesData) => {
     throw new Error("The employee repository should be dependencie");
 
   const execute = async (number: number) => {
-    console.log(TWILIO_SERVICE_SID, number)
-      await client.verify.services(TWILIO_SERVICE_SID)
-            .verifications
-            .create({ to: `+91${number}`, channel: 'sms' })
-            .then((verification: any) => console.log(verification))
-            .catch((e: any) => {
-                console.log(e);                
-                return false
-            });
-          
-    return "verification";
+    console.log(TWILIO_SERVICE_SID, number);
+    const result = await sendTwilioOtp(number);
+    
+
+    return result;
   };
 
   return {
