@@ -13,7 +13,9 @@ import {
   editEmergencyContact_UseCase,
   getBankDetails_UseCase,
   editBankDetails_UseCase,
-  getAllBankDetailsApprovalRequest_UseCase
+  getAllBankDetailsApprovalRequest_UseCase,
+  createNotification_UseCase,
+  getMyNotification_UseCase,
 } from "../usecases";
 
 import { repositoryData, useCaseData } from "../entities/interfaces";
@@ -32,8 +34,9 @@ const useCases: useCaseData = {
   editEmergencyContact_UseCase,
   getBankDetails_UseCase,
   editBankDetails_UseCase,
-  getAllBankDetailsApprovalRequest_UseCase
-
+  getAllBankDetailsApprovalRequest_UseCase,
+  createNotification_UseCase,
+  getMyNotification_UseCase,
 };
 
 const repository: repositoryData = {

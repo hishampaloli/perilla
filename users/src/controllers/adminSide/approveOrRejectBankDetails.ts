@@ -3,7 +3,7 @@ import { DepenteniciesData } from "../../entities/interfaces";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
-    useCases: { editBankDetails_UseCase },
+    useCases: { editBankDetails_UseCase, createNotification_UseCase },
   } = dependencies;
 
   const ApproveOrRejectBankDetails = async (
@@ -25,6 +25,21 @@ export = (dependencies: DepenteniciesData): any => {
           approvalReq: status === "approved" ? true : false,
         }
       );
+
+      console.log(bankData);
+      
+
+      const notification =
+        status === "approved"
+          ? "Your bank details were accepted"
+          : "Your bank details were rejected. Please re-fill than soon.";
+
+
+      const messageRes = await createNotification_UseCase(dependencies).execute(
+        { companyName, message: notification, employee: employeeId }
+      );
+
+      console.log(messageRes);
 
       res.json({ data: bankData });
     } catch (error: any) {

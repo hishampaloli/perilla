@@ -23,6 +23,7 @@ export = (dependencies: any) => {
     getBankDetailsController,
     editBankDetailsController,
     sendBankDetailsController,
+    getMyNotificationController,
   } = employeeController(dependencies);
 
   router.get(
@@ -76,6 +77,11 @@ export = (dependencies: any) => {
     sendBankDetailsController
   );
 
-  
+  router.get(
+    "/notifications",
+    currentUser,
+    requireUserAuth,
+    getMyNotificationController
+  );
   return router;
 };

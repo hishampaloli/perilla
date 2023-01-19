@@ -6,6 +6,7 @@ import { editPersonalInfo_UseCase } from "./editPersonalInfo.usecase";
 import { editEmergencyContact_UseCase } from "./editEmergencycontact.usecase";
 import { getBankDetails_UseCase } from "./getBankDetails.usecase";
 import { editBankDetails_UseCase } from "./editBankDetails.usecase";
+import { getMyNotification_UseCase } from "./getMyNotification.usecase";
 
 export {
   employeeLogin_UseCase,
@@ -16,4 +17,5 @@ export {
   editEmergencyContact_UseCase,
   getBankDetails_UseCase,
   editBankDetails_UseCase,
+  getMyNotification_UseCase,
 };

@@ -7,6 +7,7 @@ import editEmergancyContactController from "./editEmergancyContact.controller";
 import getBankDetailsController from "./getBankDetails.controller";
 import editBankDetailsController from "./editBankDetails.controller";
 import sendBankDetailsController from "./sendBankDetails.controller";
+import getMyNotificationController from "./getMyNotification.controller";
 
 export = (dependencies: any) => {
   return {
@@ -20,5 +21,6 @@ export = (dependencies: any) => {
     getBankDetailsController: getBankDetailsController(dependencies),
     editBankDetailsController: editBankDetailsController(dependencies),
     sendBankDetailsController: sendBankDetailsController(dependencies),
+    getMyNotificationController: getMyNotificationController(dependencies),
   };
 };

@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 import { schemas } from "../../database/mongo";
 import { Password } from "../../externalServices/password";
 
-const { Employee, PersonalInfo, EmergencyContact, BankDetails } = schemas;
+const { Employee, PersonalInfo, EmergencyContact, BankDetails, Notification } =
+  schemas;
 
 export = {
   createEmployee: async (user: any) => {
@@ -224,5 +225,17 @@ export = {
     } else {
       return false;
     }
+  },
+
+  createNotification: async (data: any) => {
+    const mongooseObj = Notification.build(data);
+    return await mongooseObj.save();
+  },
+
+  getMyNotification: async (companyName: string, employee: string) => {
+    const mongooseObj = Notification.find({
+      $and: [{ companyName }, { employee: employee }],
+    });
+    return await mongooseObj;
   },
 };

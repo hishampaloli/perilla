@@ -18,6 +18,8 @@ export interface useCaseData {
   getBankDetails_UseCase: any;
   editBankDetails_UseCase: any;
   getAllBankDetailsApprovalRequest_UseCase: any;
+  createNotification_UseCase: any;
+  getMyNotification_UseCase: any
 }
 
 export interface repositoryData {
