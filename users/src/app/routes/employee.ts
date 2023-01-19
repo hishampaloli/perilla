@@ -6,6 +6,7 @@ import {
   currentUser,
   isHrOrAdmin,
   requireTenantOrUser,
+  requireUserAuth,
 } from "@hr-management/common";
 
 import { employeeController } from "../../controllers";
@@ -19,6 +20,7 @@ export = (dependencies: any) => {
     editEmployeeController,
     removeEmployeeController,
     changeEmployeePasswordController,
+    getMyProfileController,
   } = employeeController(dependencies);
 
   router.post(
@@ -65,6 +67,13 @@ export = (dependencies: any) => {
     currentTenant,
     requireTenantAuth,
     changeEmployeePasswordController
+  );
+
+  router.get(
+    "/myProfile",
+    currentUser,
+    requireUserAuth,
+    getMyProfileController
   );
   return router;
 };
