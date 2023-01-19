@@ -151,7 +151,11 @@ export = {
     const mongooseObj = await BankDetails.aggregate([
       {
         $match: {
-          $and: [{ companyName: companyName }, { approvalReq: true }],
+          $and: [
+            { companyName: companyName },
+            { approvalReq: true },
+            { isApproved: false },
+          ],
         },
       },
     ]);
