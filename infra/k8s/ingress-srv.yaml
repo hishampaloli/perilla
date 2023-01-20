@@ -23,7 +23,14 @@ spec:
               service:
                 name: user-srv
                 port:
-                  number: 3000                  
+                  number: 3000           
+          - path: /api/project/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: project-srv
+                port:
+                  number: 3000                                 
           - path: /?(.*)
             pathType: Prefix
             backend:
