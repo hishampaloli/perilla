@@ -24,6 +24,7 @@ export = (dependencies: any) => {
     editBankDetailsController,
     sendBankDetailsController,
     getMyNotificationController,
+    deleteNotificationController,
   } = employeeController(dependencies);
 
   router.get(
@@ -82,6 +83,13 @@ export = (dependencies: any) => {
     currentUser,
     requireUserAuth,
     getMyNotificationController
+  );
+
+  router.delete(
+    "/notifications/:id",
+    currentUser,
+    requireUserAuth,
+    deleteNotificationController
   );
   return router;
 };

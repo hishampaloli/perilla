@@ -16,6 +16,7 @@ import {
   getAllBankDetailsApprovalRequest_UseCase,
   createNotification_UseCase,
   getMyNotification_UseCase,
+  deleteMyNotification_UseCase,
 } from "../usecases";
 
 import { repositoryData, useCaseData } from "../entities/interfaces";
@@ -37,6 +38,7 @@ const useCases: useCaseData = {
   getAllBankDetailsApprovalRequest_UseCase,
   createNotification_UseCase,
   getMyNotification_UseCase,
+  deleteMyNotification_UseCase,
 };
 
 const repository: repositoryData = {

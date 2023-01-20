@@ -3,8 +3,14 @@ import mongoose from "mongoose";
 import { schemas } from "../../database/mongo";
 import { Password } from "../../externalServices/password";
 
-const { Employee, PersonalInfo, EmergencyContact, BankDetails, Notification } =
-  schemas;
+const {
+  Employee,
+  PersonalInfo,
+  EmergencyContact,
+  BankDetails,
+  Notification,
+  SalaryDetails,
+} = schemas;
 
 export = {
   createEmployee: async (user: any) => {
@@ -237,5 +243,22 @@ export = {
       $and: [{ companyName }, { employee: employee }],
     });
     return await mongooseObj;
+  },
+
+  deleteMyNotification: async (
+    companyName: string,
+    employee: string,
+    id: string
+  ) => {
+    const mongooseObj = await Notification.findOneAndDelete({
+      $and: [{ companyName }, { employee }, { _id: id }],
+    });
+    console.log(mongooseObj);
+    return mongooseObj;
+  },
+
+  createSalaryDetails: async (data: any) => {
+    const mongooseObj = SalaryDetails.build(data);
+    return await mongooseObj.save();
   },
 };
