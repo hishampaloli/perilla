@@ -6,7 +6,7 @@ import {
   ErrorHandler,
   NotFoundError,
 } from "@hr-management/common/build";
-// import { routes } from "./app/routes";
+import { routes } from "./app/routes";
 import cookieSession from "cookie-session";
 import depentencies from "./config/depentencies";
 
@@ -20,7 +20,7 @@ app.use(
   })
 );
 
-// app.use("/api/user", routes(depentencies));
+app.use("/api/project", routes(depentencies));
 
 
 

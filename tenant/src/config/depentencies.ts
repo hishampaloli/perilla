@@ -8,7 +8,8 @@ import {
   tenantLogin_UseCase,
   getPayedTenant_UseCase,
   verifyStripe_UseCase,
-  sendMail_UseCase
+  sendMail_UseCase,
+  verifyFireBaseOtp_UseCase,
 } from "../usecases";
 
 const useCases: any = {
@@ -21,6 +22,7 @@ const useCases: any = {
   getPayedTenant_UseCase,
   verifyStripe_UseCase,
   sendMail_UseCase,
+  verifyFireBaseOtp_UseCase,
 };
 
 const repository: any = {

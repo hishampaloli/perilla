@@ -6,7 +6,12 @@ import { LoginResponse } from "../../libs/utils/mailService";
 
 export = (dependencies: any): any => {
   const {
-    useCases: { tenantLogin_UseCase, verifyOtp_UseCase, sendMail_UseCase },
+    useCases: {
+      tenantLogin_UseCase,
+      verifyOtp_UseCase,
+      sendMail_UseCase,
+      verifyFireBaseOtp_UseCase,
+    },
   } = dependencies;
 
   const tenantLoginVerification = async (
@@ -25,10 +30,18 @@ export = (dependencies: any): any => {
       if (!istenant) {
         throw new BadRequestError("Invalid credentials");
       }
-      const verifyOtp = await verifyOtp_UseCase(dependencies).execute(
+      // const verifyOtp = await verifyOtp_UseCase(dependencies).execute(
+      //   otpNumber,
+      //   phone
+      // );
+
+      // if (!verifyOtp) throw new BadRequestError("incorrect otp");
+
+      const verifyOtp = await verifyFireBaseOtp_UseCase(dependencies).execute(
         otpNumber,
         phone
       );
+console.log(verifyOtp);
 
       if (!verifyOtp) throw new BadRequestError("incorrect otp");
 

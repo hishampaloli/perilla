@@ -44,7 +44,7 @@ const clientDetailsSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    clientCompnay: {
+    clientCompany: {
       type: String,
       required: true,
     },

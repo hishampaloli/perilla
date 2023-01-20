@@ -11,6 +11,7 @@ export = (dependencies: any): any => {
       verifyOtp_UseCase,
       getTenant_UseCase,
       sendMail_UseCase,
+      verifyFireBaseOtp_UseCase,
     },
   } = dependencies;
 
@@ -41,8 +42,9 @@ export = (dependencies: any): any => {
       if (tenantPresent)
         throw new BadRequestError("Number or Company name already exists");
 
-      const verifyOtp = await verifyOtp_UseCase(dependencies).execute(
-        otpNumber
+      const verifyOtp = await verifyFireBaseOtp_UseCase(dependencies).execute(
+        otpNumber,
+        phone
       );
 
       console.log(verifyOtp);
