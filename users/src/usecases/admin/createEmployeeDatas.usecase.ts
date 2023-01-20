@@ -22,12 +22,18 @@ export const createEmployeeData_UseCase = (dependencies: DepenteniciesData) => {
       companyName
     );
 
-    console.log(createdBankDetails);
+    const createSalaryDetails = await employeeRepository.createSalaryDetails({
+      companyName,
+      employee: employeeId,
+    });
 
+
+    
     const data = {
       personalInformation: personalDetails.id,
       emergencyContact: createdEmergencyContact.id,
       bankDetails: createdBankDetails.id,
+      salaryDetails: createSalaryDetails.id,
     };
 
     return employeeRepository.createEmployeeDatas(employeeId, data);

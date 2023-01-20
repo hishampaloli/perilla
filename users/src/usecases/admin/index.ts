@@ -5,6 +5,8 @@ import { getAllEmployees_UseCase } from "./getAllEmployees.usecase";
 import { editEmployees_UseCase } from "./editEmployee.useCase";
 import { getAllBankDetailsApprovalRequest_UseCase } from "./getBankDetailsApprovelRequest.usecase";
 import { createNotification_UseCase } from "./createNotification.usecase";
+import { editSalary_UseCase } from "./editSalary.usecase";
+
 export {
   createEmployeeData_UseCase,
   getEmployee_UseCase,
@@ -13,4 +15,5 @@ export {
   createEmployee_UseCase,
   getAllBankDetailsApprovalRequest_UseCase,
   createNotification_UseCase,
+  editSalary_UseCase,
 };

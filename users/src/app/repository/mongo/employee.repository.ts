@@ -253,12 +253,39 @@ export = {
     const mongooseObj = await Notification.findOneAndDelete({
       $and: [{ companyName }, { employee }, { _id: id }],
     });
-    console.log(mongooseObj);
     return mongooseObj;
   },
 
   createSalaryDetails: async (data: any) => {
     const mongooseObj = SalaryDetails.build(data);
     return await mongooseObj.save();
+  },
+
+  getSalaryDetails: async (companyName: string, employee: string) => {
+    const mongooseObj = await SalaryDetails.findOne({
+      $and: [{ companyName }, { employee }],
+    });
+    console.log(mongooseObj);
+    
+    return mongooseObj;
+  },
+
+  editSalaryDetails: async (
+    companyName: string,
+    employee: string,
+    data: any
+  ) => {
+    const mongooseObj = await SalaryDetails.findOneAndUpdate(
+      {
+        $and: [{ companyName }, { employee }],
+      },
+      data,
+      {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      }
+    );
+    return mongooseObj
   },
 };

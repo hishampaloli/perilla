@@ -23,6 +23,7 @@ export = (dependencies: any) => {
     getEmployeeProfileDataController,
     getBankDetailsRequestsController,
     approveOrRejectBankDetails,
+    editSalaryDetailsController,
   } = adminController(dependencies);
 
   router.post("/createEmployee", requireTenantAuth, createEmployeeController);
@@ -76,6 +77,12 @@ export = (dependencies: any) => {
     requireTenantAuth,
     approveOrRejectBankDetails
   );
-  
+
+  router.put(
+    "/salryDetails/:employeeId",
+    requireTenantAuth,
+    editSalaryDetailsController
+  );
+
   return router;
 };

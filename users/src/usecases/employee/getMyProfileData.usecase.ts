@@ -22,7 +22,9 @@ export const getMyProfileData_UseCase = (dependencies: DepenteniciesData) => {
       employeeId
     );
 
-    return { personalInfo, ContactInfo };
+    const salaryInfo = await employeeRepository.getSalaryDetails(company, employeeId);
+
+    return { personalInfo, ContactInfo, salaryInfo };
   };
   return {
     execute,

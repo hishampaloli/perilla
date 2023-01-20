@@ -32,6 +32,7 @@ interface EmployeeDoc extends mongoose.Document {
   bankDetails: string;
   companyName: string;
   emergencyContact: string;
+  salaryDetails: string
   isBlocked: boolean;
 }
 
@@ -85,6 +86,10 @@ const employeeSchema = new mongoose.Schema(
     emergencyContact: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "EmergencyContact",
+    },
+    salaryDetails: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "SalaryDetails",
     },
     companyName: {
       type: String,

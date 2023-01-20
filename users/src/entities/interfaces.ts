@@ -21,6 +21,7 @@ export interface useCaseData {
   createNotification_UseCase: any;
   getMyNotification_UseCase: any;
   deleteMyNotification_UseCase: any;
+  editSalary_UseCase: any;
 }
 
 export interface repositoryData {
