@@ -4,7 +4,7 @@ import { TenantData } from "../../libs/entities";
 
 export = (dependencies: any): any => {
   const {
-    useCases: { getOtp_UseCase, getTenant_UseCase },
+    useCases: { getTwilioOtp_UseCase, getTenant_UseCase },
   } = dependencies;
 
   const createProduct = async (
@@ -23,11 +23,11 @@ export = (dependencies: any): any => {
       if (tenantData)
         throw new BadRequestError("Number or Company name already exists");
 
-      const recivedOtp = await getOtp_UseCase(dependencies).execute(number);
+      // const recivedOtp = await getTwilioOtp_UseCase(dependencies).execute(number);
 
-      if (!recivedOtp) {
-        throw new BadRequestError("Otp request failed");
-      }
+      // if (!recivedOtp) {
+      //   throw new BadRequestError("Otp request failed");
+      // }
 
       res.json({ otpRecived: true });
     } catch (error: any) {

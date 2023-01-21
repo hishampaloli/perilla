@@ -5,7 +5,7 @@ import generateToken from "../../libs/utils/jsonwebtoken";
 
 export = (dependencies: any): any => {
   const {
-    useCases: { tenantLogin_UseCase, getOtp_UseCase },
+    useCases: { tenantLogin_UseCase, getTwilioOtp_UseCase },
   } = dependencies;
 
   const tenantLogin = async (
@@ -24,11 +24,11 @@ export = (dependencies: any): any => {
       if (!istenant) {
         throw new BadRequestError("Invalid credentials");
       }
-      const recivedOtp = await getOtp_UseCase(dependencies).execute(phone);
+      // const recivedOtp = await getTwilioOtp_UseCase(dependencies).execute(phone);
 
-      if (!recivedOtp) {
-        throw new BadRequestError("Otp request failed");
-      }
+      // if (!recivedOtp) {
+      //   throw new BadRequestError("Otp request failed");
+      // }
 
       res.json({ otpSend: true });
     } catch (error: any) {

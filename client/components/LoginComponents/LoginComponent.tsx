@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 import { AuthState, GetOtpState } from "../../models/tenants";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useRouter } from "next/router";
+import { useFireBaseGetOtp } from "../../hooks/useFireBaseAuth";
+import useVerifyFirbaseOtp from "../../hooks/useVerifyFirbaseOtp";
 
 const LoginComponent = () => {
   const { error, loading }: GetOtpState = useTypedSelector(
@@ -38,25 +40,35 @@ const LoginComponent = () => {
       if (!datas) {
         toast.error(`${error ? error : "Oops somthing went wrong"}`);
       } else {
-        toast.success("otp send");
-        setOtpForm(true);
+        let fireOtp = await useFireBaseGetOtp(phone);
+        console.log(fireOtp);
+        if (fireOtp!) {
+          toast.success("otp send");
+          setOtpForm(true);
+        }
       }
     }
   };
+
   const handleOtpLogin = async () => {
-    const verificationData = await tenantLoginVerification("", {
-      companyName,
-      password,
-      phone,
-      otpNumber,
-    });
+    const code = await useVerifyFirbaseOtp(otpNumber);
 
-    if (userState?.error || `${!verificationData}`) {
-      toast.error(`${userState?.error ? userState?.error : "Invalid OTP"}`);
-    }
+    if (code) {
+      const verificationData = await tenantLoginVerification("", {
+        companyName,
+        password,
+        phone,
+        otpNumber: code,
+      });
+      if (userState?.error || `${!verificationData}`) {
+        toast.error(`${userState?.error ? userState?.error : "Invalid OTP"}`);
+      }
 
-    if (`${verificationData}` === "success") {
-      router.push(`/`);
+      if (`${verificationData}` === "success") {
+        router.push(`/`);
+      }
+    } else {
+      toast.error(`Invalid OTP`);
     }
   };
 
@@ -75,6 +87,7 @@ const LoginComponent = () => {
           setPhone={setPhone}
         />
       )}
+      <div id="recaptcha-container"></div>
     </div>
   );
 };

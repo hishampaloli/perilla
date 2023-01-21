@@ -9,6 +9,8 @@ import { toast } from "react-toastify";
 import { AuthState, GetOtpState } from "../../models/tenants";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useRouter } from "next/router";
+import { useFireBaseGetOtp } from "../../hooks/useFireBaseAuth";
+import useVerifyFirbaseOtp from "../../hooks/useVerifyFirbaseOtp";
 
 const BuyProductComponent = () => {
   const router = useRouter();
@@ -54,33 +56,42 @@ const BuyProductComponent = () => {
       if (!datas) {
         toast.error(`${error ? error : "Oops somthing went wrong"}`);
       } else {
-        toast.success("otp send");
-        setOtp(true);
+        let fireOtp = await useFireBaseGetOtp(phone);
+        console.log(fireOtp);
+        if (fireOtp) {
+          toast.success("otp send");
+          setOtp(true);
+        }
       }
     }
   };
 
   const handleSubmit = async () => {
-    const registerData = await tenantRegister("", {
-      companyName,
-      adminName,
-      phone,
-      email,
-      country,
-      city,
-      address,
-      password,
-      postalCode,
-      otpNumber,
-    });
+    const code = await useVerifyFirbaseOtp(otpNumber);
+console.log(code);
 
-    console.log(registerData);
-    if (userState?.error || `${!registerData}`) {
-      toast.error(`${userState?.error ? userState?.error : "Invalid OTP"}`);
-    }
+    if (code) {
+      const registerData = await tenantRegister("", {
+        companyName,
+        adminName,
+        phone,
+        email,
+        country,
+        city,
+        address,
+        password,
+        postalCode,
+        otpNumber: code,
+      });
 
-    if (`${registerData}` === "success") {
-      router.push(`/`);
+      console.log(registerData);
+      if (userState?.error || `${!registerData}`) {
+        toast.error(`${userState?.error ? userState?.error : "Invalid OTP"}`);
+      }
+
+      if (`${registerData}` === "success") {
+        router.push(`/`);
+      }
     }
   };
 
@@ -103,6 +114,7 @@ const BuyProductComponent = () => {
           setCompanyName={setCompanyName}
         />
       )}
+      <div id="recaptcha-container"></div>
     </div>
   );
 };
