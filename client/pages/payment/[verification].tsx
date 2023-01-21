@@ -19,7 +19,7 @@ const Verification = () => {
     if (`${datas}` === "true") {
       toast.success("payemnt successfull");
       setTimeout(() => {
-        router.push(`/${data?.data.companyName}/admin`);
+        router.push(`/${data?.data.companyName}/admin/dashboard`);
       }, 2000);
     }
     if (`${datas}` === "false") {

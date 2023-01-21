@@ -66,7 +66,7 @@ export const useIsAdmin = () => {
   useEffect(() => {
     if (router.isReady) {
       if (data?.data.isPurchased) {
-        router.push(`/${data.data.companyName}/admin`);
+        router.push(`/${data.data.companyName}/admin/dashboard`);
       }
     }
   }, [router.isReady]);
