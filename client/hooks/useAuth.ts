@@ -15,12 +15,22 @@ export const useIsLogged = () => {
   }, []);
 };
 
+export const RequireLogin = () => {
+  const { data }: AuthState = useTypedSelector((state) => state.user);
+  const router = useRouter();
+  useEffect(() => {
+    if (!data?.data || !data.data.isPurchased) {
+      router.push("/");
+    }
+  }, []);
+};
+
 export const useIsPurchased = () => {
   const { data }: AuthState = useTypedSelector((state) => state.user);
   const router = useRouter();
 
   useEffect(() => {
-    if (data?.data?.isPurchased || !data?.data) router.push('/');
+    if (data?.data?.isPurchased || !data?.data) router.push("/");
   }, []);
 };
 
@@ -44,5 +54,23 @@ export const useIsPaidTenant = () => {
     } else {
       // router.push("/");
     }
+  }
+};
+
+export const useIsAdmin = () => {
+  const router = useRouter();
+  const { data }: AuthState = useTypedSelector((state) => state.user);
+
+  console.log(data?.data.isPurchased);
+
+  useEffect(() => {
+    if (router.isReady) {
+      if (data?.data.isPurchased) {
+        router.push(`/${data.data.companyName}/admin`);
+      }
+    }
+  }, [router.isReady]);
+
+  if (router.isReady) {
   }
 };

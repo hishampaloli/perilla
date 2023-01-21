@@ -1,11 +1,19 @@
 import { Inter } from "@next/font/google";
 import Layout from "../components/layout/Layout";
 import Script from "next/script";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useIsAdmin } from "../hooks/useAuth";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  console.log(3434);
+
+  useIsAdmin();
+  useEffect(() => {
+    console.log(3434);
+  },[]);
+
   return (
     <>
       <Layout title={"Perilla"}>
@@ -17,10 +25,9 @@ export default function Home() {
           crossOrigin="*"
         /> */}
         <div>
-        <h1>786</h1>
+          <h1>786</h1>
         </div>
       </Layout>
     </>
   );
 }
-
