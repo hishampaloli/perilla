@@ -23,7 +23,7 @@ export = (dependencies: DepenteniciesData): any => {
         role
       );
 
-      res.json({ allEmployees });
+      res.json({ data: allEmployees });
     } catch (error: any) {
       throw new Error(error);
     }

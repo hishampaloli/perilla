@@ -3,13 +3,13 @@ import AllEmployeesComponent from "../../../components/AdminSideComponents/Emplo
 import SubHeader from "../../../components/layout/CommonSubHeader/SubHeader";
 import AdminLayout from "../../../components/layout/MainLayout";
 
-const allEmployee = () => {
+const allClients = () => {
   return (
-    <AdminLayout title="All Employee">
-      <SubHeader text="All Emlpoyees" />
-      <AllEmployeesComponent type="Employees" />
+    <AdminLayout title="All Client">
+      <SubHeader text="Clients" />
+      <AllEmployeesComponent type="Client" />
     </AdminLayout>
   );
 };
 
-export default allEmployee;
+export default allClients;

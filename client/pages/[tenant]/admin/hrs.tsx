@@ -5,9 +5,9 @@ import AdminLayout from "../../../components/layout/MainLayout";
 
 const allEmployee = () => {
   return (
-    <AdminLayout title="All Employee">
-      <SubHeader text="All Emlpoyees" />
-      <AllEmployeesComponent type="Employees" />
+    <AdminLayout title="All HRs">
+      <SubHeader text="All HRs" />
+      <AllEmployeesComponent type="HR" />
     </AdminLayout>
   );
 };
