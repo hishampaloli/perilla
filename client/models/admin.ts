@@ -12,6 +12,7 @@ export interface EmployeeData {
   emergencyContact: string;
   personalInformation: string;
   salaryDetails: string;
+  companyName: string;
 }
 
 export interface EmployeeDataArray {

@@ -18,7 +18,6 @@ export const getEmployee_UseCase = (dependencies: DepenteniciesData) => {
     phone: number;
     email: string;
   }) => {
-    console.log(company, phone, email);
 
     return employeeRepository.getEmployee({ company, phone, email });
   };

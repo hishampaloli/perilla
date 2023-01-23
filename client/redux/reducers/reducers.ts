@@ -13,6 +13,8 @@ import {
   addEmployeeReducer,
 } from "./admin";
 
+import { getEmployeeProfileReducer } from "./profile";
+
 const reducers = combineReducers({
   getOtp: getOtpReducer,
   user: userReducer,
@@ -21,6 +23,7 @@ const reducers = combineReducers({
   allEmployees: getAllEmployeesReducer,
   allClients: getAllClientsReducer,
   addEmployees: addEmployeeReducer,
+  employeeProfile: getEmployeeProfileReducer,
 });
 
 export default reducers;

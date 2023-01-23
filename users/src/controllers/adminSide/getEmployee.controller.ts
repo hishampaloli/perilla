@@ -16,7 +16,7 @@ export = (dependencies: DepenteniciesData): any => {
     try {
       const { phone } = req.query;
       const companyName =
-        req.currentTenant?.id?.companyName || req.currentUser?.id?.companyName
+        req.currentTenant?.id?.companyName || req.currentUser?.id?.companyName;
       console.log(companyName);
       const userPresent = await getEmployee_UseCase(dependencies).execute({
         company: companyName,
@@ -24,7 +24,7 @@ export = (dependencies: DepenteniciesData): any => {
         email: "",
       });
 
-      res.json({ userPresent });
+      res.json({ data: userPresent[0] });
     } catch (error: any) {
       throw new Error(error);
     }

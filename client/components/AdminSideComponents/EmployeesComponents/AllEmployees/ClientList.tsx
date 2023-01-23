@@ -5,6 +5,8 @@ import { useActions } from "../../../../hooks/useAction";
 import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 import { AllClientsState, AllEmployeesState } from "../../../../models/admin";
 import { AuthState } from "../../../../models/tenants";
+import Spinner from "../../../layout/SpinnerComponent";
+import NoDataCopmonent from "../../../layout/NoDataCopmonent";
 
 const ClientList = ({ type }: { type: string }) => {
   const { getAllEmployees, getAllClients } = useActions();
@@ -20,20 +22,25 @@ const ClientList = ({ type }: { type: string }) => {
   }, []);
   return (
     <div className={style.employeeListMain}>
-      {loading && <h1>loading</h1>}
+      {loading && <Spinner />}
 
-      {data?.data?.length && !loading
-        ? data?.data?.map((el) => {
-            return (
-              <EmployeeBox
-                key={el?.phone}
-                name={el?.clientName}
-                designation={el?.clientCompany}
-                image={el?.image}
-              />
-            );
-          })
-        : "No Clients found"}
+      {data?.data?.length && !loading ? (
+        data?.data?.map((el) => {
+          return (
+            <EmployeeBox
+              type="client"
+              companyName={el?.companyName}
+              phone={el?.phone}
+              key={el?.phone}
+              name={el?.clientName}
+              designation={el?.clientCompany}
+              image={el?.image}
+            />
+          );
+        })
+      ) : (
+        <NoDataCopmonent text="No Clients found!" />
+      )}
     </div>
   );
 };

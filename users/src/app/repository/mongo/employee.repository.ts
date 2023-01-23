@@ -70,6 +70,10 @@ export = {
         },
       },
     ]);
+    await Employee.populate(mongooseObj, { path: "personalInformation" });
+    await Employee.populate(mongooseObj, { path: "emergencyContact" });
+    await Employee.populate(mongooseObj, { path: "bankDetails" });
+
     return mongooseObj;
   },
 
@@ -266,7 +270,7 @@ export = {
       $and: [{ companyName }, { employee }],
     });
     console.log(mongooseObj);
-    
+
     return mongooseObj;
   },
 
@@ -286,6 +290,6 @@ export = {
         useFindAndModify: false,
       }
     );
-    return mongooseObj
+    return mongooseObj;
   },
 };

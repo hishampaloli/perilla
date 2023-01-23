@@ -5,19 +5,17 @@ import { useActions } from "../../../../hooks/useAction";
 import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 import { AllClientsState, AllEmployeesState } from "../../../../models/admin";
 import { AuthState } from "../../../../models/tenants";
+import Spinner from "../../../layout/SpinnerComponent";
+import NoDataCopmonent from "../../../layout/NoDataCopmonent";
 
-const EmployeeList = ({
-  type,
-}: {
-  type: string;
-}) => {
+const EmployeeList = ({ type }: { type: string }) => {
   const { getAllEmployees, getAllClients } = useActions();
   const { data, error, loading }: AllEmployeesState = useTypedSelector(
     (state) => state.allEmployees
   );
 
   console.log(data);
-  
+
   useEffect(() => {
     if (type === "Employees") {
       getAllEmployees("sd", "employees");
@@ -28,19 +26,24 @@ const EmployeeList = ({
   }, []);
   return (
     <div className={style.employeeListMain}>
-      {loading && <h1>loading</h1>}{" "}
-      {data?.data?.length && !loading
-        ? data?.data?.map((el) => {
-            return (
-              <EmployeeBox
-                key={el?.phone}
-                name={el?.name}
-                designation={el?.designation}
-                image={el?.image}
-              />
-            );
-          })
-        : "No users found"}
+      {loading && <Spinner />}{" "}
+      {data?.data?.length && !loading ? (
+        data?.data?.map((el) => {
+          return (
+            <EmployeeBox
+              type="employee"
+              phone={el?.phone}
+              companyName={el?.companyName}
+              key={el?.phone}
+              name={el?.name}
+              designation={el?.designation}
+              image={el?.image}
+            />
+          );
+        })
+      ) : (
+        <NoDataCopmonent text={`No ${type} found`} />
+      )}
     </div>
   );
 };
