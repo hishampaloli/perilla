@@ -31,6 +31,7 @@ const EmployeeList = ({ type }: { type: string }) => {
         data?.data?.map((el) => {
           return (
             <EmployeeBox
+            id={''}
               type="employee"
               phone={el?.phone}
               companyName={el?.companyName}

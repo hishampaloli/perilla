@@ -40,9 +40,10 @@ export interface ClientData {
   clientName: string;
   phone: number;
   email: string;
-  address: object;
+  address: string;
   gender: string;
   image: string;
+  _id: string;
 }
 
 export interface ClientDataArr {

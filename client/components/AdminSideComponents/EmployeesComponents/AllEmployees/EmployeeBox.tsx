@@ -9,17 +9,19 @@ const EmployeeBox = ({
   phone,
   type,
   companyName,
+  id,
 }: {
   name: string;
   designation: string;
   image: string;
   phone: number;
   type: string;
+  id: string;
   companyName: string;
 }) => {
   return (
     <Link
-      href={`/${companyName}/profile/${type}/${phone}`}
+      href={`/${companyName}/profile/${type}/${type !== "client" ? phone : id}`}
       className={style.employeeBox}
     >
       <img src={image} alt="" />

@@ -2,22 +2,29 @@ import React from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { GetEmployeeProfileState } from "../../models/profile";
 import style from "../../styles/profile.module.scss";
-import SubmitButton from "../AddFormComponent/SubmitButton";
+import EditIcon from "@mui/icons-material/Edit";
+import Spinner from "../layout/SpinnerComponent";
+import { AuthState } from "../../models/tenants";
 
-const ProfileBox = () => {
+const ProfileBox = ({ setEdit }: { setEdit: any }) => {
   const { data, error, loading }: GetEmployeeProfileState = useTypedSelector(
     (state) => state.employeeProfile
   );
+
+  const user: AuthState = useTypedSelector((state) => state.user);
 
   const employeeData = data?.data;
 
   return (
     <div className={style.profileBox}>
+      {user.data?.data.adminName && (
+        <span onClick={() => setEdit(true)} className={style.edtIcon}>
+          <EditIcon />
+        </span>
+      )}
+
       <div className={style.profileLeft}>
-        <img
-          src="https://www.gravatar.com/avatar/c2238a57f4607103adc137e3955581c0?d=retro"
-          alt=""
-        />
+        <img src={employeeData?.image} alt="" />
 
         <div>
           <h2>{employeeData?.name}</h2>

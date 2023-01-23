@@ -29,6 +29,7 @@ const ClientList = ({ type }: { type: string }) => {
           return (
             <EmployeeBox
               type="client"
+              id={el?._id}
               companyName={el?.companyName}
               phone={el?.phone}
               key={el?.phone}

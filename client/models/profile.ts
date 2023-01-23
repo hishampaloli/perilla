@@ -1,3 +1,4 @@
+import { CLientDataObj } from "./admin";
 import { ErrorState } from "./tenants";
 
 export interface BankDetails {
@@ -57,6 +58,12 @@ export interface EmployeeProfileDataObj {
 
 export interface GetEmployeeProfileState {
   data: EmployeeProfileDataObj | null;
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+export interface GetClientProfileState {
+  data: CLientDataObj | null;
   error: ErrorState[] | null;
   loading: boolean;
 }
