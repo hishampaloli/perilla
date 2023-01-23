@@ -7,7 +7,7 @@ export interface BankDetails {
   companyName: string;
   approvalReq: boolean;
   accountNumber: number;
-  ifscCode: string;
+  ifcsCode: string;
   panNumber: string;
   id: string;
 }
@@ -21,6 +21,7 @@ export interface Contact {
 export interface EmergencyContact {
   primary: Contact;
   secondary: Contact;
+  id: string;
 }
 
 export interface PersonalInformation {
@@ -31,6 +32,7 @@ export interface PersonalInformation {
   passportNumber: number;
   noOfChildren: number;
   employee: string;
+  id: string;
 }
 export interface EmployeeProfileData {
   email: string;
@@ -42,7 +44,7 @@ export interface EmployeeProfileData {
   joiningDate: Date;
   designation: string;
   isBlocked: boolean;
-  bankDetaild: BankDetails;
+  bankDetails: BankDetails;
   emergencyContact: EmergencyContact;
   personalInformation: PersonalInformation;
   salaryDetails: string;

@@ -30,9 +30,19 @@ const emergencyContactSchema = new mongoose.Schema(
     },
     primary: {
       type: Object,
+      default: {
+        name: "Please add a contact name",
+        phone: "Please add a number",
+        otherInfo: "Please add other Info",
+      },
     },
     secondary: {
       type: Object,
+      default: {
+        name: "Please add a contact name",
+        phone: "Please add a number",
+        otherInfo: "Please add other Info",
+      },
     },
   },
   {

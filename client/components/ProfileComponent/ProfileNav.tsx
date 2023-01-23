@@ -1,8 +1,16 @@
 import React, { useState } from "react";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { GetEmployeeProfileState } from "../../models/profile";
 import style from "../../styles/profile.module.scss";
+import BankDetailsComponent from "./BankDetailsComponent";
 import PersonalDataComponent from "./PersonalDataComponent";
 
 const ProfileNav = () => {
+  const { data, error, loading }: GetEmployeeProfileState = useTypedSelector(
+    (state) => state.employeeProfile
+  );
+
+  const employeeData = data?.data;
   const [nav, setNav] = useState<string>("profile");
   return (
     <>
@@ -33,7 +41,7 @@ const ProfileNav = () => {
         ) : nav === "project" ? (
           "Project"
         ) : (
-          "bank"
+          <BankDetailsComponent bankDetails={employeeData?.bankDetails!} />
         )}
       </div>
     </>
