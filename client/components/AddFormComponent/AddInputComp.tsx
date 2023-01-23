@@ -5,16 +5,19 @@ const AddInputComp = ({
   text,
   handler,
   type,
+  value,
 }: {
   text: string;
   handler: any;
   type: string;
+  value: any;
 }) => {
   return (
     <div className={style.addInputComp}>
       <li>{text}</li>
       <input
         type={type}
+        value={value}
         onChange={(e) => handler(e.target.value)}
         name=""
         id=""

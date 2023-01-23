@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { BadRequestError, NotAuthorizedError } from "@hpshops/common";
 import { natsWrapper } from "../../nats-wrapper";
 import { DepenteniciesData } from "../../entities/interfaces";
+import md5 from "md5";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
@@ -32,6 +33,12 @@ export = (dependencies: DepenteniciesData): any => {
           "An employee with the given email or phone number already exists !"
         );
       }
+      const avatar = `https://www.gravatar.com/avatar/${md5(
+        email.trim().toLowerCase()
+      )}?d=retro`;
+
+      console.log(avatar);
+      
 
       const createdUser = await createEmployee_UseCase(dependencies).execute({
         role,
@@ -43,6 +50,7 @@ export = (dependencies: DepenteniciesData): any => {
         designation,
         joiningDate: Date(),
         company: req.currentTenant?.id.companyName,
+        image: avatar,
       });
       if (!createdUser) {
         throw new BadRequestError("Opps somthing went wrong!");

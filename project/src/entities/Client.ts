@@ -5,7 +5,7 @@ export interface ClientData {
   clientName: string;
   phone: string;
   email: string;
-  address: object;
+  address: string;
   gender: string;
   image: string;
 }
@@ -17,7 +17,7 @@ export class Client {
   clientName: string;
   phone: string;
   email: string;
-  address: object;
+  address: string;
   gender: string;
   image: string;
 

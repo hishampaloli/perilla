@@ -8,7 +8,7 @@ interface clientDetailsAttrs {
   clientName: string;
   phone: string;
   email: string;
-  address: object;
+  address: string;
   gender: string;
   image: string;
 }
@@ -24,7 +24,7 @@ interface clientDetailsDoc extends mongoose.Document {
   clientName: string;
   phone: string;
   email: string;
-  address: object;
+  address: string;
   gender: string;
   image: string;
   projects: any;
@@ -65,7 +65,7 @@ const clientDetailsSchema = new mongoose.Schema(
       required: true,
     },
     address: {
-      type: Object,
+      type: String,
       required: true,
     },
     gender: {

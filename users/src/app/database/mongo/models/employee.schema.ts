@@ -11,6 +11,7 @@ interface EmployeeAttrs {
   employeeId: string;
   joiningDate: string;
   designation: string;
+  image: string;
   company: string;
 }
 
@@ -32,7 +33,7 @@ interface EmployeeDoc extends mongoose.Document {
   bankDetails: string;
   companyName: string;
   emergencyContact: string;
-  salaryDetails: string
+  salaryDetails: string;
   isBlocked: boolean;
 }
 
@@ -57,7 +58,6 @@ const employeeSchema = new mongoose.Schema(
     image: {
       type: String,
       required: true,
-      default: "https://i.stack.imgur.com/frlIf.png",
     },
     role: {
       type: String,
@@ -133,6 +133,7 @@ employeeSchema.statics.build = (attrs: EmployeeAttrs) => {
     joiningDate: attrs.joiningDate,
     designation: attrs.designation,
     companyName: attrs.company,
+    image: attrs.image,
   });
 };
 

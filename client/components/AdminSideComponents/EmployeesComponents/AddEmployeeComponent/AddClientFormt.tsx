@@ -2,34 +2,91 @@ import React, { useState } from "react";
 import AddInputComp from "../../../AddFormComponent/AddInputComp";
 import style from "../../../../styles/addForm.module.scss";
 import SubmitButton from "../../../AddFormComponent/SubmitButton";
+import { useActions } from "../../../../hooks/useAction";
+import toast from "react-hot-toast";
 
-const ClientForm = () => {
-  const [name, setName] = useState<string>("");
+const ClientForm = ({ close }: { close: any }) => {
+  const { addClient } = useActions();
+  const [clientName, setClientName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<number>();
-  const [employeeId, setEmployeeId] = useState<string>("");
-  const [designation, setDesignation] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [clientId, setClientId] = useState<string>("");
+  const [clientCompany, setClientCompany] = useState<string>("");
+  const [gender, setGender] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+
+  const handleSubmit = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    const res = await addClient("sd", {
+      clientCompany,
+      clientId,
+      clientName,
+      email,
+      phone,
+      gender,
+      address,
+    });
+
+    if (`${res}` !== "success") {
+      toast.error(`${res}`);
+    } else {
+      toast.success("Successfully added the user");
+      close(false);
+    }
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className={style.InputGroup}>
-        <AddInputComp text="Client Name" type="text" handler={setName} />
-        <AddInputComp text="Company Name" type="text" handler={setEmail} />
+        <AddInputComp
+          value={clientName}
+          text="Client Name"
+          type="text"
+          handler={setClientName}
+        />
+        <AddInputComp
+          value={clientCompany}
+          text="Company Name"
+          type="text"
+          handler={setClientCompany}
+        />
       </div>
 
       <div className={style.InputGroup}>
-        <AddInputComp text="Email" type="email" handler={setPhone} />
-        <AddInputComp text="Phone" type="number" handler={setEmployeeId} />
+        <AddInputComp
+          value={email}
+          text="Email"
+          type="email"
+          handler={setEmail}
+        />
+        <AddInputComp
+          text="Phone"
+          value={phone}
+          type="number"
+          handler={setPhone}
+        />
       </div>
 
       <div className={style.InputGroup}>
-        <AddInputComp text="Client Id" type="text" handler={setDesignation} />
-        <AddInputComp text="Gender" type="text" handler={setPassword} />
+        <AddInputComp
+          value={clientId}
+          text="Client Id"
+          type="text"
+          handler={setClientId}
+        />
+        <AddInputComp
+          value={gender}
+          text="Gender"
+          type="text"
+          handler={setGender}
+        />
       </div>
-
       <div className={style.InputGroup}>
-        <AddInputComp text="Address" type="text" handler={setDesignation} />
-        <AddInputComp text="Image" type="file" handler={setPassword} />
+        <AddInputComp
+          value={address}
+          text="Address"
+          type="text"
+          handler={setAddress}
+        />
       </div>
 
       <SubmitButton submit={""} />

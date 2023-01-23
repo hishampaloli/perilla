@@ -1,6 +1,7 @@
 import { BadRequestError } from "@hr-management/common";
 import { Request, Response, NextFunction } from "express";
 import { DepenteniciesData } from "../../entities/interfaces";
+import md5 from "md5";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
@@ -21,8 +22,14 @@ export = (dependencies: DepenteniciesData): any => {
         clientId,
         address,
         gender,
-        image,
       } = req.body;
+
+      const avatar = `https://www.gravatar.com/avatar/${md5(
+        email.trim().toLowerCase()
+      )}?d=retro`;
+
+      console.log(avatar);
+      
 
       const createdClient = await createClient_UseCase(dependencies).execute({
         companyName: req.currentTenant?.id?.companyName,
@@ -33,7 +40,7 @@ export = (dependencies: DepenteniciesData): any => {
         clientId,
         address,
         gender,
-        image,
+        image: avatar,
       });
 
       if (!createdClient) {

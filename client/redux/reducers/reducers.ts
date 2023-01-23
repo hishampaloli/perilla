@@ -7,7 +7,11 @@ import {
   getStripeLinkReducer,
 } from "./tenants";
 
-import { getAllClientsReducer, getAllEmployeesReducer } from "./admin";
+import {
+  getAllClientsReducer,
+  getAllEmployeesReducer,
+  addEmployeeReducer,
+} from "./admin";
 
 const reducers = combineReducers({
   getOtp: getOtpReducer,
@@ -16,6 +20,7 @@ const reducers = combineReducers({
   stripeLink: getStripeLinkReducer,
   allEmployees: getAllEmployeesReducer,
   allClients: getAllClientsReducer,
+  addEmployees: addEmployeeReducer,
 });
 
 export default reducers;

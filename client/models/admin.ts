@@ -18,6 +18,10 @@ export interface EmployeeDataArray {
   data: EmployeeData[];
 }
 
+export interface EmployeeDataObj {
+  data: EmployeeData;
+}
+
 export interface ErrorState {
   message: string;
 }
@@ -44,8 +48,24 @@ export interface ClientDataArr {
   data: ClientData[];
 }
 
+export interface CLientDataObj {
+  data: ClientData;
+}
+
 export interface AllClientsState {
   data: ClientDataArr | null;
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+export interface AddEmployeesState {
+  data: EmployeeDataObj | null;
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+export interface AddClientsState {
+  data: CLientDataObj | null;
   error: ErrorState[] | null;
   loading: boolean;
 }

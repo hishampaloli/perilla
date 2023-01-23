@@ -7,7 +7,6 @@ import EmployeeForm from "./EmployeeForm";
 import ClientForm from "./AddClientFormt";
 
 const AddForm = ({ close, type }: { close: any; type: string }) => {
-   
   return (
     <div className={style.addFormMain}>
       <i onClick={() => close(false)}>
@@ -16,7 +15,11 @@ const AddForm = ({ close, type }: { close: any; type: string }) => {
 
       <h1>Add {type}</h1>
 
-      {type === "Client" ? <ClientForm /> : <EmployeeForm />}
+      {type === "Client" ? (
+        <ClientForm close={close} />
+      ) : (
+        <EmployeeForm close={close} type={type} />
+      )}
     </div>
   );
 };

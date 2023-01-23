@@ -4,10 +4,14 @@ import AddIcon from "@mui/icons-material/Add";
 import AddEmployeeBtn from "./AddEmployeeBtn";
 import AddEmployeeForm from "./AddEmployeeForm";
 
-const AddEmployeeComponent = ({ type }: { type: string }) => {
+const AddEmployeeComponent = ({
+  type,
+}: {
+  type: string;
+}) => {
   const [addBox, setAddBox] = useState(false);
   console.log(type);
-  
+
   return (
     <div className={style.addEmployees}>
       <AddEmployeeBtn text={type} setAdd={setAddBox} />

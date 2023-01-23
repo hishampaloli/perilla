@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import EmployeeBox from "./EmployeeBox";
 import style from "../../../../styles/allEmployee.module.scss";
 import { useActions } from "../../../../hooks/useAction";
@@ -6,15 +6,21 @@ import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 import { AllClientsState, AllEmployeesState } from "../../../../models/admin";
 import { AuthState } from "../../../../models/tenants";
 
-const EmployeeList = ({ type }: { type: string }) => {
+const EmployeeList = ({
+  type,
+}: {
+  type: string;
+}) => {
   const { getAllEmployees, getAllClients } = useActions();
   const { data, error, loading }: AllEmployeesState = useTypedSelector(
     (state) => state.allEmployees
   );
 
+  console.log(data);
+  
   useEffect(() => {
     if (type === "Employees") {
-      getAllEmployees("sd", "employee");
+      getAllEmployees("sd", "employees");
     }
     if (type === "HR") {
       getAllEmployees("sd", "hr");
