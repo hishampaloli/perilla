@@ -40,3 +40,35 @@ export type GetClientProfileAction =
   | GetClientProfileRequestAction
   | GetClientProfileSuccessAction
   | GetClientProfileFailAction;
+
+interface EditEmployeeProfileRequest {
+  type: ProfileActionsTypes.EDIT_EMPLOYEE_PROFILE_REQUETS;
+}
+interface EditEmployeeProfileSuccess {
+  type: ProfileActionsTypes.EDIT_EMPLOYEE_PROFILE_SUCCESS;
+}
+
+interface EditEmployeeProfileFail {
+  type: ProfileActionsTypes.EDIT_EMPLOYEE_PROFILE_FAIL;
+  error: ErrorState[];
+}
+
+export type EditEmployeeProfileAction =
+  | EditEmployeeProfileRequest
+  | EditEmployeeProfileSuccess
+  | GetEmployeeProfileSuccessAction
+  | EditEmployeeProfileFail;
+
+interface EditClientRequestAction {
+  type: ProfileActionsTypes.EDIT_CLIENT_PROFILE_REQUETS;
+}
+
+interface EditClientFailAction {
+  type: ProfileActionsTypes.EDIT_CLIENT_PROFILE_FAIL;
+  error: ErrorState[];
+}
+
+export type EditClientAction =
+  | EditClientFailAction
+  | EditClientRequestAction
+  | GetClientProfileSuccessAction;

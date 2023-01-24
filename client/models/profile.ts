@@ -36,6 +36,7 @@ export interface PersonalInformation {
   id: string;
 }
 export interface EmployeeProfileData {
+  _id: string;
   email: string;
   name: string;
   phone: number;
@@ -64,6 +65,16 @@ export interface GetEmployeeProfileState {
 
 export interface GetClientProfileState {
   data: CLientDataObj | null;
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+export interface EditEmployeeProfileState {
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+export interface EditClientState {
   error: ErrorState[] | null;
   loading: boolean;
 }

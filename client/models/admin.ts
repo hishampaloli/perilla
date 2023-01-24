@@ -34,16 +34,16 @@ export interface AllEmployeesState {
 }
 
 export interface ClientData {
-  companyName: string;
+  companyName?: string;
   clientCompany: string;
   clientId: string;
   clientName: string;
-  phone: number;
+  phone?: number;
   email: string;
   address: string;
   gender: string;
-  image: string;
-  _id: string;
+  image?: string;
+  id?: string;
 }
 
 export interface ClientDataArr {

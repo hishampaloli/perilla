@@ -13,7 +13,7 @@ const EditClientFormComponent = ({ setEdit }: { setEdit: any }) => {
 
       <h1>Edit Profile</h1>
 
-      <EditProfileForm />
+      <EditProfileForm setEdit= {setEdit} />
     </div>
   );
 };
