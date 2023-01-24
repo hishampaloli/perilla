@@ -1,8 +1,8 @@
-import { CLientDataObj } from "./admin";
+import { CLientDataObj, EmployeeData } from "./admin";
 import { ErrorState } from "./tenants";
 
 export interface BankDetails {
-  employee: string;
+  employee: EmployeeData;
   isApproved: boolean;
   bankName: boolean;
   companyName: string;
@@ -35,6 +35,10 @@ export interface PersonalInformation {
   employee: string;
   id: string;
 }
+
+export interface BankDetailsArr {
+  data: BankDetails[];
+}
 export interface EmployeeProfileData {
   _id: string;
   email: string;
@@ -49,8 +53,22 @@ export interface EmployeeProfileData {
   bankDetails: BankDetails;
   emergencyContact: EmergencyContact;
   personalInformation: PersonalInformation;
-  salaryDetails: string;
+  salaryDetails: SalaryDetailsData;
   companyName: string;
+}
+
+export interface SalaryDetailsData {
+  grossSalary?: number;
+  HRA?: number;
+  paymentType?: string;
+  PfRate?: number;
+  baseSalary?: number;
+  bonus?: number;
+  employee?: string;
+}
+
+export interface SalaryDetailsDataObj {
+  data: SalaryDetailsData;
 }
 
 export interface EmployeeProfileDataObj {
@@ -77,4 +95,25 @@ export interface EditEmployeeProfileState {
 export interface EditClientState {
   error: ErrorState[] | null;
   loading: boolean;
+}
+
+export interface RemoveEmployeeState {
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+export interface ChangeEmployeePasswordState {
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+export interface EditSalaryDetailsState {
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+export interface AllBankDetailsRequestState {
+  error: ErrorState[] | null;
+  loading: boolean;
+  data: BankDetailsArr | null;
 }

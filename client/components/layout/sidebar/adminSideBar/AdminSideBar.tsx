@@ -38,7 +38,7 @@ const AdminSideBar = () => {
       <LinkDiv text="Holidays" link="holidays" icon={<HouseboatIcon />} />
       <LinkDiv
         text="Bank Details"
-        link="bankdetails"
+        link="bankDetails"
         icon={<AccountBalanceIcon />}
       />
       <LinkDiv text="Settings" link="settings" icon={<SettingsIcon />} />

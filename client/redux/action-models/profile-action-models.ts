@@ -1,5 +1,6 @@
+import { type } from "os";
 import { CLientDataObj } from "../../models/admin";
-import { EmployeeProfileDataObj } from "../../models/profile";
+import { BankDetailsArr, EmployeeProfileDataObj } from "../../models/profile";
 import { ErrorState } from "../../models/tenants";
 import { ProfileActionsTypes } from "../constants";
 
@@ -72,3 +73,68 @@ export type EditClientAction =
   | EditClientFailAction
   | EditClientRequestAction
   | GetClientProfileSuccessAction;
+
+interface RemoveEmployeeRequestAction {
+  type: ProfileActionsTypes.REMOVE_EMPLOYEE_PROFILE_REQUETS;
+}
+
+interface RemoveEmployeeFailAction {
+  type: ProfileActionsTypes.REMOVE_EMPLOYEE_PROFILE_FAIL;
+  error: ErrorState[];
+}
+
+export type RemoveEmployeeAction =
+  | RemoveEmployeeFailAction
+  | RemoveEmployeeRequestAction
+  | GetEmployeeProfileSuccessAction;
+
+interface ChangeEmployeePasswordRequestAction {
+  type: ProfileActionsTypes.CHANGE_EMPLOYEE_PASSWORD_REQUEST;
+}
+
+interface ChangeEmployeePasswordSuccessAction {
+  type: ProfileActionsTypes.CHANGE_EMPLOYEE_PASSWORD_SUCCESS;
+}
+
+interface ChangeEmployeePasswordFailAction {
+  type: ProfileActionsTypes.CHANGE_EMPLOYEE_PASSWORD_FAIL;
+  error: ErrorState[];
+}
+
+export type ChangeEmployeePasswordAction =
+  | ChangeEmployeePasswordRequestAction
+  | ChangeEmployeePasswordSuccessAction
+  | ChangeEmployeePasswordFailAction;
+
+interface EditSalaryDetailsRequestAction {
+  type: ProfileActionsTypes.EDIT_SALARY_DETAILS_REQUETS;
+}
+
+interface EditSalaryDetailsFailAction {
+  type: ProfileActionsTypes.EDIT_SALARY_DETAILS_FAIL;
+  error: ErrorState[];
+}
+
+export type EditSalaryDetailsAction =
+  | EditSalaryDetailsFailAction
+  | GetEmployeeProfileSuccessAction
+  | EditSalaryDetailsRequestAction;
+
+interface GetAllBankDetailsReqRequestAction {
+  type: ProfileActionsTypes.GET_ALL_BANK_DETAILS_REQUETS;
+}
+
+interface GetAllBankDetailsReqSuccessAction {
+  type: ProfileActionsTypes.GET_ALL_BANK_DETAILS_SUCCESS;
+  payload: BankDetailsArr;
+}
+
+interface GetAllBankDetailsReqFailAction {
+  type: ProfileActionsTypes.GET_ALL_BANK_DETAILS_FAIL;
+  error: ErrorState[];
+}
+
+export type GetAllBankDetailsReqAction =
+  | GetAllBankDetailsReqRequestAction
+  | GetAllBankDetailsReqFailAction
+  | GetAllBankDetailsReqSuccessAction;

@@ -4,7 +4,10 @@ import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 interface salaryDetailsAttrs {
   companyName: string;
   employee: string;
-  salary: number;
+  baseSalary: number;
+  bonus: number;
+  grossSalary: number;
+  HRA: number;
   payementType: string;
   PfRate: number;
 }
@@ -16,7 +19,10 @@ interface salaryDetailsModal extends mongoose.Model<salaryDetailsDoc> {
 interface salaryDetailsDoc extends mongoose.Document {
   companyName: string;
   employee: string;
-  salary: number;
+  baseSalary: number;
+  bonus: number;
+  grossSalary: number;
+  HRA: number;
   payementType: string;
   PfRate: number;
   payrolls: any;
@@ -30,7 +36,22 @@ const salaryDetailsSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Employee",
     },
-    salary: {
+    baseSalary: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    grossSalary: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    bonus: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    HRA: {
       type: Number,
       required: true,
       default: 0,

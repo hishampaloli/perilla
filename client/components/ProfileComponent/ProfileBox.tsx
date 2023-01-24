@@ -5,8 +5,14 @@ import style from "../../styles/profile.module.scss";
 import EditIcon from "@mui/icons-material/Edit";
 import Spinner from "../layout/SpinnerComponent";
 import { AuthState } from "../../models/tenants";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ListPTagComponent from "../SegemanticComponents/ListPTagComponent";
+import swal from "sweetalert";
+import { useDeleteEmployee } from "../../hooks/useSwal";
+import { useActions } from "../../hooks/useAction";
+import KeyIcon from "@mui/icons-material/Key";
 
-const ProfileBox = ({ setEdit }: { setEdit: any }) => {
+const ProfileBox = ({ setEdit, setPass }: { setEdit: any; setPass: any }) => {
   const { data, error, loading }: GetEmployeeProfileState = useTypedSelector(
     (state) => state.employeeProfile
   );
@@ -14,13 +20,35 @@ const ProfileBox = ({ setEdit }: { setEdit: any }) => {
   const user: AuthState = useTypedSelector((state) => state.user);
 
   const employeeData = data?.data;
+  const { removeEmployee } = useActions();
+
+  const handleDelete = () => {
+    useDeleteEmployee(employeeData?._id!, removeEmployee);
+  };
 
   return (
     <div className={style.profileBox}>
       {user.data?.data.adminName && (
-        <span onClick={() => setEdit(true)} className={style.edtIcon}>
-          <EditIcon />
-        </span>
+        <div className={style.edtIconDiv}>
+          <span
+            onClick={() => setPass(true)}
+            className={`${style.Icon} ${style.passIcon}`}
+          >
+            <KeyIcon />
+          </span>{" "}
+          <span
+            onClick={handleDelete}
+            className={`${style.Icon} ${style.dltIcon}`}
+          >
+            <DeleteIcon />
+          </span>
+          <span
+            onClick={() => setEdit(true)}
+            className={`${style.Icon} ${style.edtIcon}`}
+          >
+            <EditIcon />
+          </span>{" "}
+        </div>
       )}
 
       <div className={style.profileLeft}>
@@ -39,23 +67,21 @@ const ProfileBox = ({ setEdit }: { setEdit: any }) => {
         </div>
       </div>
       <div className={style.profileRight}>
-        <p>
-          <strong>Phone :</strong> <span>{employeeData?.phone}</span>
-        </p>
-        <p>
-          <strong>Email :</strong> <span>{employeeData?.email}</span>
-        </p>
-        <p>
-          <strong>Is Active :</strong>{" "}
-          <span>{!employeeData?.isBlocked ? "True" : "False"}</span>
-        </p>
-        <p>
-          <strong>Role :</strong>{" "}
-          <span>{employeeData?.role === "hr" ? "Hr" : "Employee"}</span>
-        </p>
-        <p>
-          <strong>Password :</strong> <span>XXXXXXX</span>
-        </p>
+        <ListPTagComponent
+          strong="Phone"
+          span={employeeData?.phone.toString()!}
+        />
+        <ListPTagComponent strong="Email" span={employeeData?.email!} />
+        <ListPTagComponent
+          strong="Is Active"
+          span={!employeeData?.isBlocked ? "True" : "False"}
+        />
+        <ListPTagComponent
+          strong="Role"
+          span={employeeData?.role === "hr" ? "Hr" : "Employee"}
+        />
+
+        <ListPTagComponent strong="Password" span={"XXXXXXXXXXX"} />
       </div>
     </div>
   );

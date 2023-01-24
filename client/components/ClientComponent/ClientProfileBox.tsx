@@ -21,9 +21,11 @@ const ClientProfileBox = ({ setEdit }: { setEdit: any }) => {
   return (
     <div className={style.profileBox}>
       {user.data?.data.adminName && (
-        <span onClick={() => setEdit(true)} className={style.edtIcon}>
+        <div className={style.edtIconDiv}>
+        <span onClick={() => setEdit(true)} className={`${style.Icon} ${style.edtIcon}`}>
           <EditIcon />
         </span>
+        </div>
       )}
       <div className={style.profileLeft}>
         <img src={clientData?.image} alt="" />

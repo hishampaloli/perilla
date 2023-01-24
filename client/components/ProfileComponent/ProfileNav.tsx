@@ -4,6 +4,7 @@ import { GetEmployeeProfileState } from "../../models/profile";
 import style from "../../styles/profile.module.scss";
 import BankDetailsComponent from "./BankDetailsComponent";
 import PersonalDataComponent from "./PersonalDataComponent";
+import SalaryDetailsComponent from "./SalaryDetailsComponent";
 
 const ProfileNav = () => {
   const { data, error, loading }: GetEmployeeProfileState = useTypedSelector(
@@ -33,6 +34,13 @@ const ProfileNav = () => {
         >
           Bank detail
         </h2>
+
+        <h2
+          className={nav === "salary" ? style.isActive : ""}
+          onClick={() => setNav("salary")}
+        >
+          Salary Details
+        </h2>
       </div>
 
       <div>
@@ -40,8 +48,10 @@ const ProfileNav = () => {
           <PersonalDataComponent />
         ) : nav === "project" ? (
           "Project"
-        ) : (
+        ) : nav === "bank" ? (
           <BankDetailsComponent bankDetails={employeeData?.bankDetails!} />
+        ) : (
+          <SalaryDetailsComponent />
         )}
       </div>
     </>

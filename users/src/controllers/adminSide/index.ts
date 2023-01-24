@@ -8,6 +8,7 @@ import getEmployeeProfileDataController from "./getEmployeeProfileData.controlle
 import getBankDetailsRequestsController from "./getBankDetailsRequests.controller";
 import approveOrRejectBankDetails from "./approveOrRejectBankDetails";
 import editSalaryDetailsController from "./editSalaryDetails.controller";
+import getSalaryDetailsController from "./getSalaryDetails.controller";
 
 export = (dependencies: any) => {
   return {
@@ -24,5 +25,6 @@ export = (dependencies: any) => {
       getBankDetailsRequestsController(dependencies),
     approveOrRejectBankDetails: approveOrRejectBankDetails(dependencies),
     editSalaryDetailsController: editSalaryDetailsController(dependencies),
+    getSalaryDetailsController: getSalaryDetailsController(dependencies),
   };
 };

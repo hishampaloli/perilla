@@ -73,6 +73,7 @@ export = {
     await Employee.populate(mongooseObj, { path: "personalInformation" });
     await Employee.populate(mongooseObj, { path: "emergencyContact" });
     await Employee.populate(mongooseObj, { path: "bankDetails" });
+    await Employee.populate(mongooseObj, { path: "salaryDetails" });
 
     return mongooseObj;
   },
@@ -170,7 +171,8 @@ export = {
         },
       },
     ]);
-    console.log(mongooseObj);
+
+    await BankDetails.populate(mongooseObj, { path: "employee" });
 
     return mongooseObj;
   },

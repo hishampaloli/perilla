@@ -4,6 +4,7 @@ import { useActions } from "../../hooks/useAction";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { GetEmployeeProfileState } from "../../models/profile";
 import style from "../../styles/profile.module.scss";
+import ChangePassComponent from "./ChangePassComponent";
 import EditClientFormComponent from "./EditProfileComponent";
 import ProfileBox from "./ProfileBox";
 import ProfileNav from "./ProfileNav";
@@ -13,6 +14,7 @@ const ProfileComponent = () => {
   const { employee } = router.query;
   const { getEmployeeProfileData } = useActions();
   const [edit, setEdit] = useState<boolean>(false);
+  const [changePassword, setChangePassword] = useState<boolean>(false);
 
   useEffect(() => {
     if (router.isReady) getEmployeeProfileData("sd", employee);
@@ -20,10 +22,11 @@ const ProfileComponent = () => {
 
   return (
     <div className={style.ProfileComponentMain}>
-      <ProfileBox setEdit={setEdit} />
+      <ProfileBox setPass={setChangePassword} setEdit={setEdit} />
       <ProfileNav />
 
       {edit && <EditClientFormComponent setEdit={setEdit} />}
+      {changePassword && <ChangePassComponent setEdit={setChangePassword} />}
     </div>
   );
 };

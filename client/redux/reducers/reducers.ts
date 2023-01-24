@@ -11,6 +11,7 @@ import {
   getAllClientsReducer,
   getAllEmployeesReducer,
   addEmployeeReducer,
+  getAllBankDetailsReqReducer,
 } from "./admin";
 
 import {
@@ -18,6 +19,8 @@ import {
   getClientProfileReducer,
   EditEmployeeProfileReducer,
   EditClientReducer,
+  ChangeEmployeePasswordReducer,
+  EditSalaryDetails,
 } from "./profile";
 
 const reducers = combineReducers({
@@ -32,6 +35,9 @@ const reducers = combineReducers({
   clientProfile: getClientProfileReducer,
   editEmployeeProfile: EditEmployeeProfileReducer,
   editClient: EditClientReducer,
+  changeEmployeePassword: ChangeEmployeePasswordReducer,
+  editSalaryDetails: EditSalaryDetails,
+  allBankDetails: getAllBankDetailsReqReducer,
 });
 
 export default reducers;

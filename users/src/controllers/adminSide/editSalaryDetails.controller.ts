@@ -13,14 +13,18 @@ export = (dependencies: DepenteniciesData): any => {
     next: NextFunction
   ) => {
     try {
-      const { salary, paymentType, PfRate  } = req.body;
+      const { baseSalary, bonus, HRA, grossSalary, paymentType, PfRate } =
+        req.body;
 
       const companyName = req.currentTenant?.id?.companyName;
 
       const editedSalaryDetails = await editSalary_UseCase(
         dependencies
       ).execute(companyName, req.params.employeeId, {
-        salary,
+        baseSalary,
+        bonus,
+        HRA,
+        grossSalary,
         paymentType,
         PfRate,
       });
