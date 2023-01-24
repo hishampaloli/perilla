@@ -21,19 +21,16 @@ export = (dependencies: DepenteniciesData): any => {
       const bankData = await editBankDetails_UseCase(dependencies).execute(
         employeeId,
         {
-          isApproved: status === "approved" ? true : false,
-          approvalReq: status === "approved" ? true : false,
+          isApproved: status,
+          approvalReq: status,
         }
       );
 
       console.log(bankData);
-      
 
-      const notification =
-        status === "approved"
-          ? "Your bank details were accepted"
-          : "Your bank details were rejected. Please re-fill than soon.";
-
+      const notification = status
+        ? "Your bank details were accepted"
+        : "Your bank details were rejected. Please re-fill than soon.";
 
       const messageRes = await createNotification_UseCase(dependencies).execute(
         { companyName, message: notification, employee: employeeId }

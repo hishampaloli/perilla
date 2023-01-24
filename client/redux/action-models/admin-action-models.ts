@@ -6,8 +6,13 @@ import {
   ClientDataArr,
   EmployeeDataObj,
 } from "../../models/admin";
+import { BankDetailsArr } from "../../models/profile";
 
 import { AdminActionsTypes } from "../constants/adminTypes";
+import {
+  GetEmployeeProfileAction,
+  GetEmployeeProfileSuccessAction,
+} from "./profile-action-models";
 
 interface GetAllEmployeesRequestAction {
   type: AdminActionsTypes.GET_ALL_EMPLOYEE_REQUEST;
@@ -75,3 +80,35 @@ export type AddClientAction =
   | GetAllClientsSuccessAction
   | AddClientFailAction;
 
+interface GetAllBankDetailsReqRequestAction {
+  type: AdminActionsTypes.GET_ALL_BANK_DETAILS_REQUETS;
+}
+
+interface GetAllBankDetailsReqSuccessAction {
+  type: AdminActionsTypes.GET_ALL_BANK_DETAILS_SUCCESS;
+  payload: BankDetailsArr;
+}
+
+interface GetAllBankDetailsReqFailAction {
+  type: AdminActionsTypes.GET_ALL_BANK_DETAILS_FAIL;
+  error: ErrorState[];
+}
+
+export type GetAllBankDetailsReqAction =
+  | GetAllBankDetailsReqRequestAction
+  | GetAllBankDetailsReqFailAction
+  | GetAllBankDetailsReqSuccessAction;
+
+interface ApproveBankDetailsRequestAction {
+  type: AdminActionsTypes.APPROVE_BANK_DETAILS_REQUETS;
+}
+
+interface ApproveBankDetailsFailAction {
+  type: AdminActionsTypes.APPROVE_BANK_DETAILS_FAIL;
+  error: ErrorState[];
+}
+
+export type ApproveBankDetailsAction =
+  | ApproveBankDetailsRequestAction
+  | ApproveBankDetailsFailAction
+  | GetEmployeeProfileSuccessAction;

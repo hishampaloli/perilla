@@ -8,7 +8,7 @@ interface GetEmployeeProfileRequestAction {
   type: ProfileActionsTypes.GET_EMPLOYEE_PROFILE_REQUETS;
 }
 
-interface GetEmployeeProfileSuccessAction {
+export interface GetEmployeeProfileSuccessAction {
   type: ProfileActionsTypes.GET_EMPLOYEE_PROFILE_SUCCESS;
   payload: EmployeeProfileDataObj;
 }
@@ -120,21 +120,3 @@ export type EditSalaryDetailsAction =
   | GetEmployeeProfileSuccessAction
   | EditSalaryDetailsRequestAction;
 
-interface GetAllBankDetailsReqRequestAction {
-  type: ProfileActionsTypes.GET_ALL_BANK_DETAILS_REQUETS;
-}
-
-interface GetAllBankDetailsReqSuccessAction {
-  type: ProfileActionsTypes.GET_ALL_BANK_DETAILS_SUCCESS;
-  payload: BankDetailsArr;
-}
-
-interface GetAllBankDetailsReqFailAction {
-  type: ProfileActionsTypes.GET_ALL_BANK_DETAILS_FAIL;
-  error: ErrorState[];
-}
-
-export type GetAllBankDetailsReqAction =
-  | GetAllBankDetailsReqRequestAction
-  | GetAllBankDetailsReqFailAction
-  | GetAllBankDetailsReqSuccessAction;

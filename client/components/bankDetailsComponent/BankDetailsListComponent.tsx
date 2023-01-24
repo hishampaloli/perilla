@@ -5,6 +5,7 @@ import { AllBankDetailsRequestState } from "../../models/profile";
 import Spinner from "../layout/SpinnerComponent";
 import BankDetailDiv from "./BankDetailDiv";
 import style from "../../styles/bankDetails.module.scss";
+import NoDataCopmonent from "../layout/NoDataCopmonent";
 
 const BankDetailsListComponent = () => {
   const { data, loading, error }: AllBankDetailsRequestState = useTypedSelector(
@@ -20,6 +21,7 @@ const BankDetailsListComponent = () => {
   return (
     <div className={style.bankDetailsList}>
       {loading && <Spinner />}
+
       <div className={style.bankDetailsListHead}>
         <p>Employee Name</p>
         <p>Employee Type</p>
@@ -30,6 +32,11 @@ const BankDetailsListComponent = () => {
       {data?.data.map((el: any) => {
         return <BankDetailDiv bankData={el} />;
       })}
+      {!loading && !data?.data.length && (
+        <div style={{marginTop: '30px'}}>
+          <NoDataCopmonent text="No Request Found" />
+        </div>
+      )}
     </div>
   );
 };

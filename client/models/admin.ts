@@ -71,3 +71,8 @@ export interface AddClientsState {
   error: ErrorState[] | null;
   loading: boolean;
 }
+
+export interface ApproveBankDetailsState {
+  error: ErrorState[] | null;
+  loading: boolean;
+}
