@@ -25,7 +25,16 @@
   .notLogged {
     display: flex;
     text-decoration: none;
+    align-items: center;
 
+    p {
+      color: white;
+      margin-right: 20px;
+      cursor: pointer;
+      div {
+        transform: scale(1.3);
+      }
+    }
     a {
       text-decoration: none;
     }

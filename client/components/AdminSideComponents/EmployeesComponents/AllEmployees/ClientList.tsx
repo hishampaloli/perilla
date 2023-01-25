@@ -29,13 +29,13 @@ const ClientList = ({ type }: { type: string }) => {
           return (
             <EmployeeBox
               type="client"
-              id={el?._id}
-              companyName={el?.companyName}
-              phone={el?.phone}
+              id={el?.id!}
+              companyName={el?.companyName!}
+              phone={el?.phone!}
               key={el?.phone}
               name={el?.clientName}
               designation={el?.clientCompany}
-              image={el?.image}
+              image={el?.image!}
             />
           );
         })

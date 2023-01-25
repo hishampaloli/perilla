@@ -10,6 +10,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useRouter } from "next/router";
 import { useFireBaseGetOtp } from "../../hooks/useFireBaseAuth";
 import useVerifyFirbaseOtp from "../../hooks/useVerifyFirbaseOtp";
+import FixedSpinner from "../layout/FixedSpinner";
 
 const LoginComponent = () => {
   const { error, loading }: GetOtpState = useTypedSelector(
@@ -87,7 +88,10 @@ const LoginComponent = () => {
           setPhone={setPhone}
         />
       )}
-      <div id="recaptcha-container"></div>
+      <div
+        id="recaptcha-container"
+        style={{ position: "fixed", top: "300px", zIndex: "100" }}
+      ></div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import { EmployeeAuthState } from "../models/employee";
 import { AuthState, GetPaidTenantState } from "../models/tenants";
 import { useActions } from "./useAction";
 import { useTypedSelector } from "./useTypedSelector";
@@ -48,7 +49,6 @@ export const useIsPaidTenant = () => {
     }
   }, [router.isReady]);
 
-
   useEffect(() => {
     if (data) {
       if (data?.data?.isPurchased) {
@@ -60,7 +60,7 @@ export const useIsPaidTenant = () => {
     if (error) {
       // router.push("/");
     }
-  }, [data,error]);
+  }, [data, error]);
 };
 
 export const useIsAdmin = () => {
@@ -79,4 +79,44 @@ export const useIsAdmin = () => {
 
   if (router.isReady) {
   }
+};
+
+export const useIsEmployee = () => {
+  const router = useRouter();
+  const { data }: EmployeeAuthState = useTypedSelector(
+    (state) => state.employee
+  );
+  useEffect(() => {
+    if (router.isReady) {
+      if (data?.email) {
+        router.push(`/${data?.companyName}/employee/dashboard`);
+      }
+    }
+  }, [router.isReady]);
+};
+
+export const useRequireAdmin = () => {
+  const router = useRouter();
+  const { data }: AuthState = useTypedSelector((state) => state.user);
+  useEffect(() => {
+    if (router.isReady) {
+      if (!data?.data.adminName) {
+        router.push(`/`);
+      }
+    }
+  }, [router.isReady]);
+};
+
+export const useRequireEmployee = () => {
+  const router = useRouter();
+  const { data }: EmployeeAuthState = useTypedSelector(
+    (state) => state.employee
+  );
+  useEffect(() => {
+    if (router.isReady) {
+      if (!data?.email) {
+        router.push(`/`);
+      }
+    }
+  }, [router.isReady]);
 };

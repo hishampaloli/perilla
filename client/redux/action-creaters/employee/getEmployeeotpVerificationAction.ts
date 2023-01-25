@@ -10,13 +10,19 @@ export const getEmployeeOtpVerfication =
     try {
       dispatch({ type: EmployeeActionsTypes.GET_OTP_VERIFICATION_REQUETS });
 
-      const { data } = await buildClient(req).post<string>(
+      const { data } = await buildClient(req).post<any>(
         "/api/user/employee/verifyOtp",
         loginData,
         config
       );
 
+      localStorage.setItem("employeeInfo", JSON.stringify(data.data));
+
       dispatch({ type: EmployeeActionsTypes.GET_OTP_VERIFICATION_SUCCESS });
+      dispatch({
+        type: EmployeeActionsTypes.EMPLOYEE_LOGIN_SUCCESS,
+        payload: data.data,
+      });
 
       return "success";
     } catch (error: any) {

@@ -2,7 +2,7 @@ import { Inter } from "@next/font/google";
 import Layout from "../components/layout/Layout";
 import Script from "next/script";
 import { useEffect, useState } from "react";
-import { useIsAdmin } from "../hooks/useAuth";
+import { useIsAdmin, useIsEmployee } from "../hooks/useAuth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,9 +10,10 @@ export default function Home() {
   console.log(3434);
 
   useIsAdmin();
+  useIsEmployee();
   useEffect(() => {
     console.log(3434);
-  },[]);
+  }, []);
 
   return (
     <>

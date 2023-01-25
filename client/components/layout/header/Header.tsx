@@ -12,25 +12,40 @@ import LoggedHeader from "./LoggedHeader";
 import NotLoggedHeader from "./NotLoggedHeader";
 import LeftHeader from "./LeftHeader";
 import { AuthState } from "../../../models/tenants";
+import { EmployeeAuthState } from "../../../models/employee";
 
 const Header = () => {
-  const { tenantLogout } = useActions();
+  const { tenantLogout, logoutEmployee } = useActions();
   const logoutHandler = () => {
     tenantLogout("we");
   };
 
+  const employeeLogout = () => {
+    logoutEmployee("sd");
+  };
+
+  const { data }: EmployeeAuthState = useTypedSelector(
+    (state) => state.employee
+  );
   const userState: AuthState = useTypedSelector((state) => state.user);
-
-
 
   return (
     <div className={style.header}>
       <LeftHeader />
 
-      {userState?.data ? (
-        <LoggedHeader logoutHandler={logoutHandler} />
-      ) : (
-        <NotLoggedHeader />
+      {data?.email && (
+        <LoggedHeader type="employee" employeelogoutHandler={employeeLogout} />
+      )}
+
+      {!data?.email && (
+        <>
+          {" "}
+          {userState?.data ? (
+            <LoggedHeader type="tenant" logoutHandler={logoutHandler} />
+          ) : (
+            <NotLoggedHeader />
+          )}
+        </>
       )}
     </div>
   );

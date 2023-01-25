@@ -44,7 +44,6 @@ export const userReducer = (
       };
 
     case TenantActionsTypes.AUTH_FAIL:
-      console.log("&&&&&&&&&&&&&&&&&&77");
       return {
         error: action.error,
         loading: false,

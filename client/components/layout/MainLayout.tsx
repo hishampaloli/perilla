@@ -5,9 +5,16 @@ import Header from "./header/Header";
 import SideBar from "./sidebar/SideBar";
 import style from "../../styles/sideBar.module.scss";
 import toast, { Toaster } from "react-hot-toast";
+import { EmployeeAuthState } from "../../models/employee";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { AuthState } from "../../models/tenants";
 
-const AdminLayout = ({ children, title }: { children: any; title: string }) => {
+const MainLayout = ({ children, title }: { children: any; title: string }) => {
   const [small, setSmall] = useState(false);
+  const { data }: EmployeeAuthState = useTypedSelector(
+    (state) => state.employee
+  );
+  const tenant: AuthState = useTypedSelector((state) => state.user);
   return (
     <div>
       <Head>
@@ -30,4 +37,4 @@ const AdminLayout = ({ children, title }: { children: any; title: string }) => {
   );
 };
 
-export default AdminLayout;
+export default MainLayout;

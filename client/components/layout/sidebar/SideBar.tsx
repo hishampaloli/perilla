@@ -5,9 +5,14 @@ import style from "../../../styles/sideBar.module.scss";
 import AdminSideBar from "./adminSideBar/AdminSideBar";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { EmployeeAuthState } from "../../../models/employee";
+import EmployeeSideBar from "./employeeSideBar/EmployeeSideBar";
 
 const SideBar = ({ mainSmall }: { mainSmall: any }) => {
   const { data }: AuthState = useTypedSelector((state) => state.user);
+  const employee: EmployeeAuthState = useTypedSelector(
+    (state) => state.employee
+  );
   const [small, setSmall] = useState(false);
   return (
     <div className={small ? style.sidebarMain : style.sidebarMainSmall}>
@@ -22,6 +27,7 @@ const SideBar = ({ mainSmall }: { mainSmall: any }) => {
       </button>
 
       {data?.data.companyName && <AdminSideBar />}
+      {employee.data?.email && <EmployeeSideBar />}
     </div>
   );
 };

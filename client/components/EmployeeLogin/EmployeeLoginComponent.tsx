@@ -19,6 +19,7 @@ const EmployeeLoginComponent = () => {
   );
 
   const { tenant } = router.query;
+  
   const { getEmployeeOtpVerfication } = useActions();
   const handleOtp = async () => {
     const res = await getEmployeeOtpVerfication("d", {
@@ -29,7 +30,7 @@ const EmployeeLoginComponent = () => {
     });
     if (`${res}` === "success") {
       toast.success("Welcome back");
-      router.push(`${tenant}/admin/dashboard`);
+      router.push(`/${tenant}/employee/dashboard`);
     } else {
       toast.error(`${res}`);
     }

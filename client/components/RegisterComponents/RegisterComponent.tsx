@@ -11,6 +11,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useRouter } from "next/router";
 import { useFireBaseGetOtp } from "../../hooks/useFireBaseAuth";
 import useVerifyFirbaseOtp from "../../hooks/useVerifyFirbaseOtp";
+import FixedSpinner from "../layout/FixedSpinner";
 
 const BuyProductComponent = () => {
   const router = useRouter();
@@ -68,8 +69,6 @@ const BuyProductComponent = () => {
 
   const handleSubmit = async () => {
     const code = await useVerifyFirbaseOtp(otpNumber);
-console.log(code);
-
     if (code) {
       const registerData = await tenantRegister("", {
         companyName,

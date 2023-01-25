@@ -25,6 +25,7 @@ export = (dependencies: any) => {
     sendBankDetailsController,
     getMyNotificationController,
     deleteNotificationController,
+    employeeLogoutController,
   } = employeeController(dependencies);
 
   router.get(
@@ -33,6 +34,8 @@ export = (dependencies: any) => {
     requireUserAuth,
     getMyProfileController
   );
+
+  router.post("/logout", employeeLogoutController);
 
   router.get(
     "/myProfileData",
