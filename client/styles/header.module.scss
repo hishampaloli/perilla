@@ -24,7 +24,11 @@
 
   .notLogged {
     display: flex;
+    text-decoration: none;
 
+    a {
+      text-decoration: none;
+    }
     li {
       list-style: none;
       color: white;

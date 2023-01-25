@@ -30,6 +30,8 @@ export = (dependencies: any): any => {
       if (!istenant) {
         throw new BadRequestError("Invalid credentials");
       }
+
+      // TODO: Twilio OTP
       // const verifyOtp = await verifyOtp_UseCase(dependencies).execute(
       //   otpNumber,
       //   phone
@@ -41,7 +43,6 @@ export = (dependencies: any): any => {
         otpNumber,
         phone
       );
-console.log(verifyOtp);
 
       if (!verifyOtp) throw new BadRequestError("incorrect otp");
 

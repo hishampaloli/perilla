@@ -51,7 +51,6 @@ export = {
   },
 
   createPaidTenant: async (paymentDetails: any, companyName: string) => {
-
     const mongooseObject = await Tenant.findOneAndUpdate(
       { $and: [{ companyName }, { isPurchased: false }] },
       { isPurchased: true, $push: { paymentDetails: paymentDetails } },

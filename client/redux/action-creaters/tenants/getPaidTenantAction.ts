@@ -18,6 +18,9 @@ export const getPaidTenantData =
         config
       );
 
+      console.log(data);
+      
+
       dispatch({
         type: TenantActionsTypes.GET_PAID_TENANT_SUCCESS,
         payload: data,

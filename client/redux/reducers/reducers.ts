@@ -23,6 +23,8 @@ import {
   EditSalaryDetails,
 } from "./profile";
 
+import { getLoginOtpReducer, getLoginOtpVerificationReducer } from "./employee";
+
 const reducers = combineReducers({
   getOtp: getOtpReducer,
   user: userReducer,
@@ -38,6 +40,8 @@ const reducers = combineReducers({
   changeEmployeePassword: ChangeEmployeePasswordReducer,
   editSalaryDetails: EditSalaryDetails,
   allBankDetails: getAllBankDetailsReqReducer,
+  employeeLoginOtp: getLoginOtpReducer,
+  employeeLoginOtpVerification: getLoginOtpVerificationReducer,
 });
 
 export default reducers;

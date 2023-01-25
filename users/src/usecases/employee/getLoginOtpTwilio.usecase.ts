@@ -17,9 +17,8 @@ export const getTwilioOtp_UseCase = (dependencies: DepenteniciesData) => {
     throw new Error("The employee repository should be dependencie");
 
   const execute = async (number: number) => {
-    console.log(TWILIO_SERVICE_SID, number);
     const result = await sendTwilioOtp(number);
-    
+   
 
     return result;
   };

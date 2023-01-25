@@ -6,13 +6,22 @@ const client = require("twilio")(
 const TWILIO_SERVICE_SID = process.env.TWILIO_SERVICE_SID;
 
 export const sendTwilioOtp = async (number: number): Promise<boolean> => {
+  console.log(TWILIO_SERVICE_SID);
+
+  console.log(process.env.TWILIO_ACC_SID);
+  console.log(process.env.TWILIO_TOKEN_AUTH);
   const check = await client.verify
     .services(TWILIO_SERVICE_SID)
+
     .verifications.create({ to: `+91${number}`, channel: "sms" })
     .then((verification: any) => {
+      console.log(verification)
+
       return true;
     })
     .catch((e: any) => {
+      console.log(e);
+
       return false;
     });
 

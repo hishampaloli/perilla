@@ -36,7 +36,7 @@ export const useIsPurchased = () => {
 
 export const useIsPaidTenant = () => {
   const router = useRouter();
-  const { data }: GetPaidTenantState = useTypedSelector(
+  const { data, error }: GetPaidTenantState = useTypedSelector(
     (state) => state.paidTenant
   );
   const { tenant } = router.query;
@@ -48,13 +48,19 @@ export const useIsPaidTenant = () => {
     }
   }, [router.isReady]);
 
-  if (router.isReady) {
-    if (data?.data?.isPurchased) {
-      console.log("show login");
-    } else {
+
+  useEffect(() => {
+    if (data) {
+      if (data?.data?.isPurchased) {
+        console.log("show login");
+      } else {
+        // router.push("/");
+      }
+    }
+    if (error) {
       // router.push("/");
     }
-  }
+  }, [data,error]);
 };
 
 export const useIsAdmin = () => {

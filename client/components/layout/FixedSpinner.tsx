@@ -6,12 +6,24 @@ const FixedSpinner = () => {
     <div
       style={{
         position: "fixed",
-        top: "200px",
-        left: "50%",
-        transform: "translateX(-50%)",
+        width: "100%",
+        top: "0",
+        left: "0",
+        right: "0",
+        height: "100vh",
+        backgroundColor: "rgba(0, 0, 0, 0.403)",
       }}
     >
-      <Spinner />
+      <div
+        style={{
+          position: "fixed",
+          top: "200px",
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+      >
+        <Spinner />
+      </div>
     </div>
   );
 };

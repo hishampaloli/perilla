@@ -11,11 +11,11 @@ const NotLoggedHeader = () => {
   return (
     <div className={style.notLogged}>
       <Link href={"/register"}>
-        {" "}
+   
         <li>Register</li>
       </Link>
       <Link href={"/login"}>
-        {" "}
+       
         <li>Login</li>
       </Link>
     </div>
