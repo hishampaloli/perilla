@@ -21,9 +21,9 @@ spec:
             - name: TWILIO_ACC_SID
               value: "ACc6812664b3f21c5c669509cff5764bb9"
             - name: TWILIO_TOKEN_AUTH
-              value: "17bd53cdd16abf02341b7b1d92ac7354"
+              value: "893178a26196fe093ab221691626b8de"
             - name: TWILIO_SERVICE_SID
-              value: "VA0d594a9f4f46049f2e3897e848d0f7b3"
+              value: "VA5597e0ac8e160a7236be137d237e034e"
             - name: EMAIL_STR
               value: "perilla.hrservice@gmail.com"
             - name: PASSWORD_STR

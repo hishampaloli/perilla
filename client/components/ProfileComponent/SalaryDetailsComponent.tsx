@@ -10,7 +10,6 @@ import SalaryDetailsBox from "./SalaryDetailsBox";
 
 const SalaryDetailsComponent = () => {
   const [edit, setEdit] = useState<boolean>(false);
-  console.log(edit);
 
   const user: AuthState = useTypedSelector((state) => state.user);
 

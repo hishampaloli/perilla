@@ -12,15 +12,13 @@ export = (dependencies: DepenteniciesData): any => {
     next: NextFunction
   ) => {
     try {
-
-        
       const myProfile = await getEmployee_UseCase(dependencies).execute({
         company: req.currentUser?.id.companyName,
         phone: req.currentUser?.id.phone,
         email: req.currentUser?.id.email,
       });
 
-      res.json({ data: myProfile });
+      res.json({ data: myProfile[0] });
     } catch (error: any) {
       throw new Error(error);
     }

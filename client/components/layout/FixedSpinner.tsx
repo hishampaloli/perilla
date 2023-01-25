@@ -12,6 +12,7 @@ const FixedSpinner = () => {
         right: "0",
         height: "100vh",
         backgroundColor: "rgba(0, 0, 0, 0.403)",
+        zIndex: "1000",
       }}
     >
       <div
@@ -20,6 +21,7 @@ const FixedSpinner = () => {
           top: "200px",
           left: "50%",
           transform: "translateX(-50%)",
+          zIndex: "1000",
         }}
       >
         <Spinner />

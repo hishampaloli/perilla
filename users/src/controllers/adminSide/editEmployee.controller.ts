@@ -13,16 +13,15 @@ export = (dependencies: DepenteniciesData): any => {
     next: NextFunction
   ) => {
     try {
-      const { phone, role, name, email, employeeId } = req.body;
-      console.log(phone, role, name, email, employeeId);
+      const { phone, role, name, email, employeeId, designation } = req.body;
+      console.log(phone, role, name, email, employeeId, designation);
 
       const companyName = req.currentTenant?.id?.companyName;
 
-   
       const editedEmployee = await editEmployees_UseCase(dependencies).execute(
         companyName,
         req.params.employeeId,
-        { phone, role, name, email, employeeId }
+        { phone, role, name, email, employeeId, designation }
       );
 
       if (!editedEmployee) throw new BadRequestError("No such user found");

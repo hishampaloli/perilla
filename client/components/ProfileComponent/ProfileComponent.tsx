@@ -2,9 +2,10 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useActions } from "../../hooks/useAction";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { EmployeeAuthState } from "../../models/employee";
+import { EmployeeAuthState, GetMyProfileState } from "../../models/employee";
 import { GetEmployeeProfileState } from "../../models/profile";
 import style from "../../styles/profile.module.scss";
+import FixedSpinner from "../layout/FixedSpinner";
 import ChangePassComponent from "./ChangePassComponent";
 import EditClientFormComponent from "./EditProfileComponent";
 import ProfileBox from "./ProfileBox";
@@ -17,16 +18,21 @@ const ProfileComponent = () => {
     (state) => state.employee
   );
 
+  const employeeProfile: GetMyProfileState = useTypedSelector(
+    (state) => state.myProfile
+  );
+
+
   const { employee } = router.query;
-  const { getEmployeeProfileData } = useActions();
+  const { getEmployeeProfileData, getMyProfile } = useActions();
   const [edit, setEdit] = useState<boolean>(false);
   const [changePassword, setChangePassword] = useState<boolean>(false);
 
   useEffect(() => {
     if (router.isReady) {
       if (data?.email) {
-        console.log('me profisle');
-        
+        getMyProfile("ds");
+        console.log("me profisle");
       } else {
         getEmployeeProfileData("sd", employee);
       }
@@ -35,6 +41,7 @@ const ProfileComponent = () => {
 
   return (
     <div className={style.ProfileComponentMain}>
+      {employeeProfile?.loading && <FixedSpinner />}
       <ProfileBox setPass={setChangePassword} setEdit={setEdit} />
       <ProfileNav />
 

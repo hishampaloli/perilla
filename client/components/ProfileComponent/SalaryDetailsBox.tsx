@@ -1,5 +1,6 @@
 import React from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { GetMyProfileState } from "../../models/employee";
 import { GetEmployeeProfileState } from "../../models/profile";
 import style from "../../styles/profile.module.scss";
 
@@ -8,8 +9,16 @@ const SalaryDetailsBox = () => {
     (state) => state.employeeProfile
   );
 
-  const salaryDetails = data?.data.salaryDetails;
+  const employeeProfile: GetMyProfileState = useTypedSelector(
+    (state) => state.myProfile
+  );
 
+  const salaryDetails = data?.data.salaryDetails
+    ? data?.data.salaryDetails
+    : employeeProfile?.data?.data.salaryDetails;
+
+    // console.log(salaryDetails);
+    
   return (
     <div className={style.hi}>
       <h2>Salary Details</h2>

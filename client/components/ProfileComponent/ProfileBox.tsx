@@ -11,15 +11,22 @@ import swal from "sweetalert";
 import { useDeleteEmployee } from "../../hooks/useSwal";
 import { useActions } from "../../hooks/useAction";
 import KeyIcon from "@mui/icons-material/Key";
+import { GetMyProfileState } from "../../models/employee";
 
 const ProfileBox = ({ setEdit, setPass }: { setEdit: any; setPass: any }) => {
   const { data, error, loading }: GetEmployeeProfileState = useTypedSelector(
     (state) => state.employeeProfile
   );
 
+  const employeeProfile: GetMyProfileState = useTypedSelector(
+    (state) => state.myProfile
+  );
+
   const user: AuthState = useTypedSelector((state) => state.user);
 
-  const employeeData = data?.data;
+  const employeeData = data?.data ? data.data : employeeProfile?.data?.data;
+  console.log(employeeData);
+  
   const { removeEmployee } = useActions();
 
   const handleDelete = () => {

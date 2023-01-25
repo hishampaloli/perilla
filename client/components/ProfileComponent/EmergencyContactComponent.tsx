@@ -1,5 +1,8 @@
 import React from "react";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { GetMyProfileState } from "../../models/employee";
 import { EmergencyContact } from "../../models/profile";
+import EditIcon from "@mui/icons-material/Edit";
 import style from "../../styles/profile.module.scss";
 
 const EmergencyContactComponent = ({
@@ -7,10 +10,22 @@ const EmergencyContactComponent = ({
 }: {
   emergencyContact: EmergencyContact;
 }) => {
-  console.log(emergencyContact);
+  const { data, error, loading }: GetMyProfileState = useTypedSelector(
+    (state) => state.myProfile
+  );
 
   return (
     <div className={style.emergencyContact}>
+      {data?.data.email && (
+        <div className={style.edt}>
+          <span
+            // onClick={() => setEdit(true)}
+            className={`${style.Icon} ${style.edtIcon}`}
+          >
+            <EditIcon />
+          </span>{" "}
+        </div>
+      )}
       <h2>Emergency Contact</h2>
 
       <ul className={style.persnalUl}>

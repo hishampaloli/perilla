@@ -27,6 +27,7 @@ import {
   employeeReducer,
   getLoginOtpReducer,
   getLoginOtpVerificationReducer,
+  getMyProfileReducer,
 } from "./employee";
 
 const reducers = combineReducers({
@@ -47,6 +48,7 @@ const reducers = combineReducers({
   allBankDetails: getAllBankDetailsReqReducer,
   employeeLoginOtp: getLoginOtpReducer,
   employeeLoginOtpVerification: getLoginOtpVerificationReducer,
+  myProfile: getMyProfileReducer,
 });
 
 export default reducers;
