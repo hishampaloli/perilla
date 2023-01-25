@@ -7,8 +7,10 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const PersonalInformationComponents = ({
   personalData,
+  setEdit,
 }: {
   personalData: PersonalInformation;
+  setEdit: any;
 }) => {
   const { data, error, loading }: GetMyProfileState = useTypedSelector(
     (state) => state.myProfile
@@ -16,10 +18,10 @@ const PersonalInformationComponents = ({
 
   return (
     <div className={style.peronalInfo}>
-      {data?.data.email && (
+      {data?.data?.email && (
         <div className={style.edt}>
           <span
-            // onClick={() => setEdit(true)}
+            onClick={() => setEdit(true)}
             className={`${style.Icon} ${style.edtIcon}`}
           >
             <EditIcon />

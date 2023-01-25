@@ -33,3 +33,10 @@ export interface GetMyProfileState {
   error: ErrorState[] | null;
   loading: boolean;
 }
+
+export interface SendbankDetailsForAprovalState {
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+

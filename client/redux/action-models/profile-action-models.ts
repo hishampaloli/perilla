@@ -3,6 +3,7 @@ import { CLientDataObj } from "../../models/admin";
 import { BankDetailsArr, EmployeeProfileDataObj } from "../../models/profile";
 import { ErrorState } from "../../models/tenants";
 import { ProfileActionsTypes } from "../constants";
+import { GetMyProfileSuccessAction } from "./employee-action-model";
 
 interface GetEmployeeProfileRequestAction {
   type: ProfileActionsTypes.GET_EMPLOYEE_PROFILE_REQUETS;
@@ -120,3 +121,61 @@ export type EditSalaryDetailsAction =
   | GetEmployeeProfileSuccessAction
   | EditSalaryDetailsRequestAction;
 
+interface EditBankDetailsRequestAction {
+  type: ProfileActionsTypes.EDIT_BANK_DETAILS_REQUETS;
+}
+
+interface EditBankDetailsSuccessAction {
+  type: ProfileActionsTypes.EDIT_BANK_DETAILS_SUCCESS;
+}
+
+interface EditBankDetailsFailAction {
+  type: ProfileActionsTypes.EDIT_BANK_DETAILS_FAIL;
+  error: ErrorState[];
+}
+
+export type EditBankDetailsAction =
+  | EditBankDetailsRequestAction
+  | EditBankDetailsSuccessAction
+  | GetMyProfileSuccessAction
+  | EditBankDetailsFailAction;
+
+interface EditPersonalInfoRequestAction {
+  type: ProfileActionsTypes.EDIT_PERSONALINFO_REQUETS;
+}
+
+interface EditPersonalInfoSuccessAction {
+  type: ProfileActionsTypes.EDIT_PERSONALINFO_SUCCESS;
+}
+
+interface EditPersonalInfoFailAction {
+  type: ProfileActionsTypes.EDIT_PERSONALINFO_FAIL;
+  error: ErrorState[];
+}
+
+export type EditPersonalInfoAction =
+  | EditPersonalInfoRequestAction
+  | EditPersonalInfoSuccessAction
+  | GetMyProfileSuccessAction
+  | EditPersonalInfoFailAction;
+
+interface EditEmergencyContactRequestAction {
+  type: ProfileActionsTypes.EDIT_EMERGENCY_CONTACT_REQUETS;
+}
+
+interface EditEmergencyContactSuccessAction {
+  type: ProfileActionsTypes.EDIT_EMERGENCY_CONTACT_SUCCESS;
+}
+
+interface EditEmergencyContactFailAction {
+  type: ProfileActionsTypes.EDIT_EMERGENCY_CONTACT_FAIL;
+  error: ErrorState[];
+}
+
+
+
+export type EditEmergencyContactAction =
+  | EditEmergencyContactRequestAction
+  | EditEmergencyContactSuccessAction
+  | GetMyProfileSuccessAction
+  | EditEmergencyContactFailAction;

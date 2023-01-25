@@ -4,10 +4,10 @@ import { ErrorState } from "./tenants";
 export interface BankDetails {
   employee: EmployeeData;
   isApproved: boolean;
-  bankName: boolean;
+  bankName: string;
   companyName: string;
   approvalReq: boolean;
-  accountNumber: number;
+  accountNumber: string;
   ifcsCode: string;
   panNumber: string;
   id: string;
@@ -116,4 +116,19 @@ export interface AllBankDetailsRequestState {
   error: ErrorState[] | null;
   loading: boolean;
   data: BankDetailsArr | null;
+}
+
+export interface EditBankDetailsState {
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+export interface EditPersonalInfoState {
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+export interface EditEmergencyContactState {
+  error: ErrorState[] | null;
+  loading: boolean;
 }

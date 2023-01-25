@@ -6,3 +6,6 @@ export * from "./removeEmployeeAction";
 export * from "./changeEmployeePasswordAction";
 export * from "./editSalaryDetailsAction";
 export * from "./getAllBankDetailsReqAction";
+export * from "./editBankDetailsAction";
+export * from './editPersonalInfoAction'
+export * from './editEmergenctContactAction'

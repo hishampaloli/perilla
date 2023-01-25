@@ -21,6 +21,9 @@ import {
   EditClientReducer,
   ChangeEmployeePasswordReducer,
   EditSalaryDetails,
+  EditBankDetailsReducer,
+  EditPersonalInfoReducer,
+  EditEmergencyContactReducer,
 } from "./profile";
 
 import {
@@ -28,6 +31,7 @@ import {
   getLoginOtpReducer,
   getLoginOtpVerificationReducer,
   getMyProfileReducer,
+  sendBankDetailsReducer,
 } from "./employee";
 
 const reducers = combineReducers({
@@ -49,6 +53,10 @@ const reducers = combineReducers({
   employeeLoginOtp: getLoginOtpReducer,
   employeeLoginOtpVerification: getLoginOtpVerificationReducer,
   myProfile: getMyProfileReducer,
+  sendBankDetails: sendBankDetailsReducer,
+  editBankDetails: EditBankDetailsReducer,
+  EditPersonalInfo: EditPersonalInfoReducer,
+  editEmergencyContact: EditEmergencyContactReducer
 });
 
 export default reducers;

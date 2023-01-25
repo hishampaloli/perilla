@@ -7,7 +7,15 @@ import BankDetailsComponent from "./BankDetailsComponent";
 import PersonalDataComponent from "./PersonalDataComponent";
 import SalaryDetailsComponent from "./SalaryDetailsComponent";
 
-const ProfileNav = () => {
+const ProfileNav = ({
+  setEditBank,
+  setEditPersonal,
+  setEditEmergencyContact,
+}: {
+  setEditBank: any;
+  setEditPersonal: any;
+  setEditEmergencyContact: any;
+}) => {
   const { data, error, loading }: GetEmployeeProfileState = useTypedSelector(
     (state) => state.employeeProfile
   );
@@ -18,6 +26,7 @@ const ProfileNav = () => {
 
   const employeeData = data?.data ? data.data : employeeProfile?.data?.data;
   const [nav, setNav] = useState<string>("profile");
+
   return (
     <>
       <div className={style.profileNav}>
@@ -50,11 +59,17 @@ const ProfileNav = () => {
 
       <div>
         {nav === "profile" ? (
-          <PersonalDataComponent />
+          <PersonalDataComponent
+            setEditEmergencyContact={setEditEmergencyContact}
+            setEdit={setEditPersonal}
+          />
         ) : nav === "project" ? (
           "Project"
         ) : nav === "bank" ? (
-          <BankDetailsComponent bankDetails={employeeData?.bankDetails!} />
+          <BankDetailsComponent
+            setEditBank={setEditBank}
+            bankDetails={employeeData?.bankDetails!}
+          />
         ) : (
           <SalaryDetailsComponent />
         )}

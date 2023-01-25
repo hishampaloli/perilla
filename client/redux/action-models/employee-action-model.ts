@@ -54,7 +54,7 @@ interface GetMyProfileRequestAction {
   type: EmployeeActionsTypes.GET_MYPROFILE_REQUETS;
 }
 
-interface GetMyProfileSuccessAction {
+export interface GetMyProfileSuccessAction {
   type: EmployeeActionsTypes.GET_MYPROFILE_SUCCESS;
   payload: EmployeeProfileDataObj;
 }
@@ -68,3 +68,20 @@ export type GetMyProfileAction =
   | GetMyProfileRequestAction
   | GetMyProfileSuccessAction
   | GetMyProfileFailAction;
+
+interface SendbankDetailsSuccessAction {
+  type: EmployeeActionsTypes.SENT_BANKDETAILS_SUCCESS;
+}
+
+interface SendbankDetailsRequestAction {
+  type: EmployeeActionsTypes.SENT_BANKDETAILS_REQUETS;
+}
+interface SendbankDetailsFailAction {
+  type: EmployeeActionsTypes.SENT_BANKDETAILS_FAIL;
+  error: ErrorState[];
+}
+
+export type SendbankDetailsAction =
+  | SendbankDetailsSuccessAction
+  | SendbankDetailsRequestAction
+  | SendbankDetailsFailAction;

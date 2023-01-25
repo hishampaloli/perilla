@@ -5,31 +5,49 @@ import { BankDetails, GetEmployeeProfileState } from "../../models/profile";
 import { AuthState } from "../../models/tenants";
 import style from "../../styles/profile.module.scss";
 import EditIcon from "@mui/icons-material/Edit";
-import { GetMyProfileState } from "../../models/employee";
+import {
+  GetMyProfileState,
+  SendbankDetailsForAprovalState,
+} from "../../models/employee";
+import { toast } from "react-hot-toast";
+import FixedSpinner from "../layout/FixedSpinner";
 
 const BankDetailsComponent = ({
   bankDetails,
+  setEditBank,
 }: {
   bankDetails: BankDetails;
+  setEditBank: any;
 }) => {
   const { data }: AuthState = useTypedSelector((state) => state.user);
-  const { approveBankDetails } = useActions();
+  const { approveBankDetails, sendBankDetails } = useActions();
   const employeeProfile: GetMyProfileState = useTypedSelector(
     (state) => state.myProfile
   );
+  const { loading }: SendbankDetailsForAprovalState = useTypedSelector(
+    (state) => state.sendBankDetails
+  );
 
   const handleApprove = async (status: boolean) => {
-    console.log(status);
     const res = approveBankDetails("sd", bankDetails?.employee!, status);
-    console.log(res);
+  };
+
+  const handleSend = async () => {
+    const res = await sendBankDetails("df");
+    if (`${res}` === "success") {
+      toast.success("Successfully send the request");
+    } else {
+      toast.error(`${res}`);
+    }
   };
 
   return (
     <div className={style.bankDetails}>
+      {loading && <FixedSpinner />}
       {employeeProfile?.data?.data.email && (
         <div className={style.edt}>
           <span
-            // onClick={() => setEdit(true)}
+            onClick={() => setEditBank(true)}
             className={`${style.Icon} ${style.edtIcon}`}
           >
             <EditIcon />
@@ -55,8 +73,8 @@ const BankDetailsComponent = ({
         </div>
       </ul>
 
-      {bankDetails.approvalReq &&
-        !bankDetails.isApproved &&
+      {bankDetails?.approvalReq &&
+        !bankDetails?.isApproved &&
         data?.data.adminName && (
           <div className={style.btnGroup}>
             <button
@@ -74,9 +92,11 @@ const BankDetailsComponent = ({
           </div>
         )}
 
-      {!bankDetails.isApproved && (
+      {!bankDetails?.isApproved && employeeProfile.data?.data.email && (
         <div className={style.btnGroup}>
-          <button className={style.sntBtn}>Send for approval</button>
+          <button onClick={handleSend} className={style.sntBtn}>
+            Send for approval
+          </button>
         </div>
       )}
     </div>

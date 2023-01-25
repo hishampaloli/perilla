@@ -26,7 +26,8 @@ export = (dependencies: DepenteniciesData): any => {
 
       const otpSend = await getTwilioOtp_UseCase(dependencies).execute(phone);
 
-      if (!otpSend) throw new BadRequestError("Oops cannot send OTP ");
+      // FIXME:
+      // if (!otpSend) throw new BadRequestError("Oops cannot send OTP ");
 
       res.json({ data: userPresent });
     } catch (error: any) {

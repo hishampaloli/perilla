@@ -15,7 +15,7 @@ interface bankDetailsDoc extends mongoose.Document {
   companyName: string;
   isApproved: boolean;
   bankName: string;
-  accountNumber: number;
+  accountNumber: string;
   ifcsCode: string;
   panNumber: string;
   updatedAt: string;
@@ -49,9 +49,9 @@ const bankDetailsSchema = new mongoose.Schema(
       default: false,
     },
     accountNumber: {
-      type: Number,
+      type: String,
       required: true,
-      default: "9999999999999",
+      default: "Please Add your account number",
     },
     ifcsCode: {
       type: String,

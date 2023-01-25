@@ -7,8 +7,10 @@ import style from "../../styles/profile.module.scss";
 
 const EmergencyContactComponent = ({
   emergencyContact,
+  setEditEmergencyContact,
 }: {
   emergencyContact: EmergencyContact;
+  setEditEmergencyContact: any;
 }) => {
   const { data, error, loading }: GetMyProfileState = useTypedSelector(
     (state) => state.myProfile
@@ -16,10 +18,10 @@ const EmergencyContactComponent = ({
 
   return (
     <div className={style.emergencyContact}>
-      {data?.data.email && (
+      {data?.data?.email && (
         <div className={style.edt}>
           <span
-            // onClick={() => setEdit(true)}
+            onClick={() => setEditEmergencyContact(true)}
             className={`${style.Icon} ${style.edtIcon}`}
           >
             <EditIcon />

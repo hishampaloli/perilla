@@ -16,7 +16,7 @@ export = (dependencies: DepenteniciesData): any => {
     try {
       const { bankName, accountNumber, ifcsCode, panNumber } = req.body;
 
-      const editedbankDetails= await editBankDetails_UseCase(
+      const editedbankDetails = await editBankDetails_UseCase(
         dependencies
       ).execute(req.currentUser?.id.id, {
         bankName,
@@ -24,6 +24,10 @@ export = (dependencies: DepenteniciesData): any => {
         ifcsCode,
         panNumber,
       });
+
+      console.log(bankName, accountNumber, ifcsCode, panNumber);
+
+      console.log(editedbankDetails);
 
       if (!editedbankDetails)
         throw new BadRequestError("Your bank details are already approved");
