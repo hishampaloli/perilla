@@ -54,13 +54,13 @@ const BuyProductComponent = () => {
       toast.error(validate);
     } else {
       const datas = await getRegisterOtp("jksd", phone, companyName);
-      if (!datas) {
-        toast.error(`${error ? error : "Oops somthing went wrong"}`);
+      if (`${!datas}` === "sucess") {
+        toast.error(`${datas}`);
       } else {
         let fireOtp = await useFireBaseGetOtp(phone);
         console.log(fireOtp);
         if (fireOtp) {
-          toast.success("otp send");
+          toast.success("otp send successfully");
           setOtp(true);
         }
       }
@@ -84,13 +84,15 @@ const BuyProductComponent = () => {
       });
 
       console.log(registerData);
-      if (userState?.error || `${!registerData}`) {
-        toast.error(`${userState?.error ? userState?.error : "Invalid OTP"}`);
-      }
+   
 
       if (`${registerData}` === "success") {
         router.push(`/`);
+      }else {
+        toast.error(`${registerData}`)
       }
+    }else {
+      toast.error(`Invalid OTP`)
     }
   };
 

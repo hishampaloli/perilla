@@ -25,6 +25,6 @@ export const tenantLoginOtp =
         type: TenantActionsTypes.GET_OTP_FAIL,
         error: error?.response?.data?.error?.msg,
       });
-      console.log(error);
+      return error?.response?.data?.error?.msg;
     }
   };

@@ -17,6 +17,7 @@ import PaidIcon from "@mui/icons-material/Paid";
 import HouseboatIcon from "@mui/icons-material/Houseboat";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import SettingsIcon from "@mui/icons-material/Settings";
+import LockIcon from '@mui/icons-material/Lock';
 
 const AdminSideBar = () => {
   const { data }: AuthState = useTypedSelector((state) => state.user);
@@ -42,6 +43,7 @@ const AdminSideBar = () => {
         icon={<AccountBalanceIcon />}
       />
       <LinkDiv text="Settings" link="settings" icon={<SettingsIcon />} />
+      <LinkDiv text="Reset Password" link="resetPassword" icon={<LockIcon />} />
     </div>
   );
 };

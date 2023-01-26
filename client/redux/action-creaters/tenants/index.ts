@@ -6,3 +6,4 @@ export * from "./tenantLogoutAction";
 export * from "./getPaidTenantAction";
 export * from "./StripePaymentAction";
 export * from "./SripeVerificationAction";
+export * from "./resetPasswordAction";

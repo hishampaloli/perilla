@@ -32,6 +32,6 @@ export const tenantLoginVerification =
         error: error?.response?.data?.error?.msg,
       });
 
-      return false;
+      return error?.response?.data?.error?.msg;
     }
   };

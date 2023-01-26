@@ -77,3 +77,16 @@ interface stripePaymentVerificationClearLink {
 export type StripeVerificationAction =
   | stripePaymentVerificationSuccess
   | stripePaymentVerificationClearLink;
+
+interface ResetPasswordRequestAction {
+  type: TenantActionsTypes.RESET_PASSWORD_REQUEST;
+}
+
+interface ResetPasswordFailAction {
+  type: TenantActionsTypes.RESET_PASSWORD_FAIL;
+  error: ErrorState[];
+}
+
+export type ResetPasswordAction =
+  | ResetPasswordRequestAction
+  | ResetPasswordFailAction;

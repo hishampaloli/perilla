@@ -63,3 +63,8 @@ export interface StripeLinkState {
   data: { url: string } | null;
   error: ErrorState[] | null;
 }
+
+export interface ResetPasswordState {
+  error: ErrorState[] | null;
+  loading: boolean;
+}

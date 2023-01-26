@@ -5,6 +5,7 @@ import {
   userReducer,
   getPaidTenantReducer,
   getStripeLinkReducer,
+  resetPasswordReducer,
 } from "./tenants";
 
 import {
@@ -61,6 +62,7 @@ const reducers = combineReducers({
   editEmergencyContact: EditEmergencyContactReducer,
   notification: getMyNotificationReducer,
   deleteNotification: DeleteNotificationReducer,
+  resetPassword: resetPasswordReducer,
 });
 
 export default reducers;

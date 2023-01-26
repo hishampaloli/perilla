@@ -24,7 +24,7 @@ const NotificationListComponent = ({
     const res = await deleteNotification("sd", notification.id);
 
     if (`${res}` === "success") {
-      toast.success("Successfully Updated the password");
+      toast.success("Successfully deleted");
     } else {
       toast.error(`${res}`);
     }

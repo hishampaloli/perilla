@@ -38,8 +38,8 @@ const LoginComponent = () => {
         companyName,
         password,
       });
-      if (!datas) {
-        toast.error(`${error ? error : "Oops somthing went wrong"}`);
+      if (`${datas}` !== "success") {
+        toast.error(`${datas}`);
       } else {
         let fireOtp = await useFireBaseGetOtp(phone);
         console.log(fireOtp);
@@ -61,12 +61,11 @@ const LoginComponent = () => {
         phone,
         otpNumber: code,
       });
-      if (userState?.error || `${!verificationData}`) {
-        toast.error(`${userState?.error ? userState?.error : "Invalid OTP"}`);
-      }
 
       if (`${verificationData}` === "success") {
         router.push(`/`);
+      } else {
+        toast.error(`${verificationData}`);
       }
     } else {
       toast.error(`Invalid OTP`);
