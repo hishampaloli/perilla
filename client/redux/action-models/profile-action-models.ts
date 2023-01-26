@@ -1,6 +1,10 @@
 import { type } from "os";
 import { CLientDataObj } from "../../models/admin";
-import { BankDetailsArr, EmployeeProfileDataObj } from "../../models/profile";
+import {
+  BankDetailsArr,
+  EmployeeProfileDataObj,
+  NotificationDataArr,
+} from "../../models/profile";
 import { ErrorState } from "../../models/tenants";
 import { ProfileActionsTypes } from "../constants";
 import { GetMyProfileSuccessAction } from "./employee-action-model";
@@ -172,10 +176,46 @@ interface EditEmergencyContactFailAction {
   error: ErrorState[];
 }
 
-
-
 export type EditEmergencyContactAction =
   | EditEmergencyContactRequestAction
   | EditEmergencyContactSuccessAction
   | GetMyProfileSuccessAction
   | EditEmergencyContactFailAction;
+
+interface GetNotificationSuccessAction {
+  type: ProfileActionsTypes.GET_MY_NOTIFICATIONS_SUCCESS;
+  payload: NotificationDataArr;
+}
+
+interface GetNotificationRequestAction {
+  type: ProfileActionsTypes.GET_MY_NOTIFICATIONS_REQUETS;
+}
+
+interface GetNotificationFailAction {
+  type: ProfileActionsTypes.GET_MY_NOTIFICATIONS_FAIL;
+  error: ErrorState[];
+}
+
+export type GetNotificationAction =
+  | GetNotificationSuccessAction
+  | GetNotificationRequestAction
+  | GetNotificationFailAction;
+
+interface DeleteNotificationSuccessAction {
+  type: ProfileActionsTypes.DELETE_MY_NOTIFICATIONS_SUCCESS;
+}
+
+interface DeleteNotificationRequestAction {
+  type: ProfileActionsTypes.DELETE_MY_NOTIFICATIONS_REQUETS;
+}
+
+interface DeleteNotificationFailAction {
+  type: ProfileActionsTypes.DELETE_MY_NOTIFICATIONS_FAIL;
+  error: ErrorState[];
+}
+
+export type DeleteNotificationAction =
+  | DeleteNotificationSuccessAction
+  | DeleteNotificationRequestAction
+  | GetNotificationSuccessAction
+  | DeleteNotificationFailAction;

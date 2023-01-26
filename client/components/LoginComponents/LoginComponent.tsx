@@ -88,9 +88,16 @@ const LoginComponent = () => {
           setPhone={setPhone}
         />
       )}
+
       <div
         id="recaptcha-container"
-        style={{ position: "fixed", top: "300px", zIndex: "100" }}
+        style={{
+          position: "fixed",
+          top: "300px",
+          zIndex: "100",
+          left: "50%",
+          transform: `translateX(-50%)`,
+        }}
       ></div>
     </div>
   );

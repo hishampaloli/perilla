@@ -24,6 +24,8 @@ import {
   EditBankDetailsReducer,
   EditPersonalInfoReducer,
   EditEmergencyContactReducer,
+  getMyNotificationReducer,
+  DeleteNotificationReducer,
 } from "./profile";
 
 import {
@@ -56,7 +58,9 @@ const reducers = combineReducers({
   sendBankDetails: sendBankDetailsReducer,
   editBankDetails: EditBankDetailsReducer,
   EditPersonalInfo: EditPersonalInfoReducer,
-  editEmergencyContact: EditEmergencyContactReducer
+  editEmergencyContact: EditEmergencyContactReducer,
+  notification: getMyNotificationReducer,
+  deleteNotification: DeleteNotificationReducer,
 });
 
 export default reducers;

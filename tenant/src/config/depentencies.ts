@@ -10,6 +10,7 @@ import {
   verifyStripe_UseCase,
   sendMail_UseCase,
   verifyFireBaseOtp_UseCase,
+  resetPassword_UseCase,
 } from "../usecases";
 
 const useCases: any = {
@@ -23,6 +24,7 @@ const useCases: any = {
   verifyStripe_UseCase,
   sendMail_UseCase,
   verifyFireBaseOtp_UseCase,
+  resetPassword_UseCase,
 };
 
 const repository: any = {

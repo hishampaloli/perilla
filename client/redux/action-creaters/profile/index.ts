@@ -7,5 +7,7 @@ export * from "./changeEmployeePasswordAction";
 export * from "./editSalaryDetailsAction";
 export * from "./getAllBankDetailsReqAction";
 export * from "./editBankDetailsAction";
-export * from './editPersonalInfoAction'
-export * from './editEmergenctContactAction'
+export * from "./editPersonalInfoAction";
+export * from "./editEmergenctContactAction";
+export * from "./getMyNotificationAction";
+export * from "./deleteNotificationActions";

@@ -56,7 +56,33 @@ export = {
       { isPurchased: true, $push: { paymentDetails: paymentDetails } },
       { new: true }
     );
-
     return mongooseObject;
+  },
+
+  resetPassword: async (
+    phone: number,
+    companyName: string,
+    oldPassword: string,
+    password: string
+  ) => {
+    const existingTenant = await Tenant.findOne({
+      $and: [{ phone }, { companyName }],
+    });
+
+    if (existingTenant) {
+      const passwordsMatch = await Password.compare(
+        existingTenant.password,
+        oldPassword
+      );
+      if (passwordsMatch) {
+        existingTenant.password = password;
+
+        return await existingTenant.save();
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
   },
 };

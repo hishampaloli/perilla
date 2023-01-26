@@ -12,6 +12,7 @@ export = (dependencies: DepenteniciesData): any => {
     next: NextFunction
   ) => {
     try {
+      console.log(req.params.id);
       const myNotification = await deleteMyNotification_UseCase(
         dependencies
       ).execute(

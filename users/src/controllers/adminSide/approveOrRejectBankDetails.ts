@@ -15,6 +15,8 @@ export = (dependencies: DepenteniciesData): any => {
       const { employeeId } = req.params;
       const { status } = req.query;
 
+      console.log(status + "dfdfdfddfdfdfdfdf");
+
       const companyName =
         req.currentTenant?.id?.companyName || req.currentUser?.id?.companyName;
 
@@ -28,9 +30,10 @@ export = (dependencies: DepenteniciesData): any => {
 
       console.log(bankData);
 
-      const notification = status
-        ? "Your bank details were accepted"
-        : "Your bank details were rejected. Please re-fill than soon.";
+      const notification =
+        `${status}` === 'true'
+          ? "Your bank details were accepted"
+          : "Your bank details were rejected. Please re-fill than soon.";
 
       const messageRes = await createNotification_UseCase(dependencies).execute(
         { companyName, message: notification, employee: employeeId }

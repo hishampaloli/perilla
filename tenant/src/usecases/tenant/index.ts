@@ -8,6 +8,7 @@ import { getPayedTenant_UseCase } from "./getPayedTenants.usecase";
 import { verifyStripe_UseCase } from "./verifyStripe.usecase";
 import { sendMail_UseCase } from "./sendMail.usecase";
 import { verifyFireBaseOtp_UseCase } from "./verifyFirebaseOtp.usecase";
+import { resetPassword_UseCase } from "./resetPassword.usecase";
 
 export {
   createTenant_UseCase,
@@ -20,4 +21,5 @@ export {
   verifyStripe_UseCase,
   sendMail_UseCase,
   verifyFireBaseOtp_UseCase,
+  resetPassword_UseCase,
 };

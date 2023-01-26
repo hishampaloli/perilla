@@ -34,6 +34,11 @@
       div {
         transform: scale(1.3);
       }
+      .ActNotiIcon {
+        color: rgb(255, 255, 255);
+        transform: scale(1.3);
+        animation: notificatioAction 5s infinite linear;
+      }
     }
     a {
       text-decoration: none;
@@ -53,5 +58,56 @@
   color: #bbc4cc;
   h2 {
     font-size: 1.5rem;
+  }
+}
+
+@keyframes notificatioAction {
+  0% {
+    transform: scale(1.3) rotate(10deg);
+  }
+  5% {
+    transform: scale(1.3) rotate(0deg);
+  }
+  8% {
+    transform: scale(1.3) rotate(-10deg);
+  }
+
+  12% {
+    transform: scale(1.3) rotate(0deg);
+  }
+  15% {
+    transform: scale(1.3) rotate(10deg);
+  }
+
+  18% {
+    transform: scale(1.3) rotate(0deg);
+  }
+
+  21% {
+    transform: scale(1.3) rotate(-10deg);
+  }
+  24% {
+    transform: scale(1.3) rotate(0deg);
+  }
+
+  25% {
+    transform: scale(1.3) rotate(10deg);
+  }
+  30% {
+    transform: scale(1.3) rotate(0deg);
+  }
+
+  35% {
+    transform: scale(1.3) rotate(-10deg);
+  }
+  40% {
+    transform: scale(1.3) rotate(0deg);
+  }
+
+  45% {
+    transform: scale(1.3) rotate(0deg);
+  }
+  100% {
+    transform: scale(1.3) rotate(0deg);
   }
 }

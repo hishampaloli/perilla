@@ -67,6 +67,16 @@ export interface SalaryDetailsData {
   employee?: string;
 }
 
+export interface NotificationData {
+  employee: string;
+  message: string;
+  id: string;
+}
+
+export interface NotificationDataArr {
+  data: NotificationData[];
+}
+
 export interface SalaryDetailsDataObj {
   data: SalaryDetailsData;
 }
@@ -129,6 +139,17 @@ export interface EditPersonalInfoState {
 }
 
 export interface EditEmergencyContactState {
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+export interface GetMyNotifications {
+  error: ErrorState[] | null;
+  loading: boolean;
+  data: NotificationDataArr | null;
+}
+
+export interface DeleteMyNotificationsState {
   error: ErrorState[] | null;
   loading: boolean;
 }

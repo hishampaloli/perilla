@@ -5,5 +5,7 @@ export * from "./editClientReducer";
 export * from "./changeEmployeePassword";
 export * from "./editSalaryDetailsReducer";
 export * from "./editBankDetailsReducer";
-export * from './editPersonalInfoReducer'
-export * from './editEmergencyContactReducer'
+export * from "./editPersonalInfoReducer";
+export * from "./editEmergencyContactReducer";
+export * from "./getMyNotificationReducer";
+export * from './deleteMyNotificationReducer'
