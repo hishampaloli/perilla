@@ -84,15 +84,14 @@ const BuyProductComponent = () => {
       });
 
       console.log(registerData);
-   
 
       if (`${registerData}` === "success") {
         router.push(`/`);
-      }else {
-        toast.error(`${registerData}`)
+      } else {
+        toast.error(`${registerData}`);
       }
-    }else {
-      toast.error(`Invalid OTP`)
+    } else {
+      toast.error(`Invalid OTP`);
     }
   };
 
@@ -115,7 +114,16 @@ const BuyProductComponent = () => {
           setCompanyName={setCompanyName}
         />
       )}
-      <div id="recaptcha-container"></div>
+      <div
+        id="recaptcha-container"
+        style={{
+          position: "fixed",
+          top: "300px",
+          zIndex: "100",
+          left: "50%",
+          transform: `translateX(-50%)`,
+        }}
+      ></div>
     </div>
   );
 };

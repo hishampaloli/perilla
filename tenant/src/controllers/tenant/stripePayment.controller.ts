@@ -23,7 +23,7 @@ export = (dependencies: any): any => {
             price_data: {
               currency: "usd",
               product_data: {
-                name: "T-shirt",
+                name: "PERILLA",
               },
               unit_amount: 20000,
             },

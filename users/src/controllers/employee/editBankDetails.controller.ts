@@ -25,10 +25,6 @@ export = (dependencies: DepenteniciesData): any => {
         panNumber,
       });
 
-      console.log(bankName, accountNumber, ifcsCode, panNumber);
-
-      console.log(editedbankDetails);
-
       if (!editedbankDetails)
         throw new BadRequestError("Your bank details are already approved");
 

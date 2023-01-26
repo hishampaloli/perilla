@@ -13,7 +13,7 @@ const OtpComponent = ({
       <h1>OTP</h1>
       <p>Verify your account</p>
       <input type="number" onChange={(e) => setOtpNumber(e.target.value)} />
-      <button onClick={handleSubmit}>Enter</button>
+      <button  onClick={handleSubmit}>Enter</button>
       <div>
         <p>Not yet received?</p>{" "}
         <p style={{ marginLeft: "10px" }}>Resent OTP</p>

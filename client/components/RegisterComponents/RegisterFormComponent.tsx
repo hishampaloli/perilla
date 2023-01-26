@@ -6,6 +6,7 @@ import { useTenantRegisterValidator } from "../../hooks/useValidate";
 import { toast } from "react-toastify";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { GetOtpState } from "../../models/tenants";
+import SubmitButton from "../AddFormComponent/SubmitButton";
 
 const BuyFormComponent = ({
   setCompanyName,
@@ -41,63 +42,57 @@ const BuyFormComponent = ({
         type="text"
         callBack={setCompanyName}
       />
-
       <VerticalInputDiv
         label="Admin name"
         placeholder=""
         type="text"
         callBack={setAdminName}
       />
-
       <VerticalInputDiv
         label="Phone"
         placeholder=""
         type="number"
         callBack={setPhone}
       />
-
       <VerticalInputDiv
         label="Email"
         placeholder=""
         type="email"
         callBack={setEmail}
       />
-
       <VerticalInputDiv
         label="Password"
         placeholder=""
         type="password"
         callBack={setPassword}
       />
-
       <VerticalInputDiv
         label="Country"
         placeholder=""
         type="text"
         callBack={setCountry}
       />
-
       <VerticalInputDiv
         label="city"
         placeholder=""
         type="text"
         callBack={setCity}
       />
-
       <VerticalInputDiv
         label="Postal code"
         placeholder=""
         type="number"
         callBack={setPostalCode}
       />
-
       <VerticalInputDiv
         label="address"
         placeholder=""
         type="text"
         callBack={setAddress}
-      />
-      <button type="submit">Submit</button>
+      />{" "}
+      <button type="submit" style={{ cursor: "pointer" }}>
+        Register
+      </button>
     </form>
   );
 };

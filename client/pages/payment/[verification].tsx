@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { toast } from "react-toastify";
+import FixedSpinner from "../../components/layout/FixedSpinner";
 import Layout from "../../components/layout/Layout";
 import { useActions } from "../../hooks/useAction";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
@@ -15,7 +16,7 @@ const Verification = () => {
     const datas = await GetStripeVerification("", verification);
 
     console.log(data?.data.companyName);
-    
+
     if (`${datas}` === "true") {
       toast.success("payemnt successfull");
       setTimeout(() => {
@@ -40,7 +41,7 @@ const Verification = () => {
   return (
     <Layout title="payment">
       <div>
-        <h1>sdsdf</h1>
+        <FixedSpinner />
       </div>
     </Layout>
   );

@@ -23,7 +23,6 @@ const LoginFormComponent = ({
         callBack={setCompanyName}
       />
 
-
       <VerticalInputDiv
         label="Phone"
         placeholder=""
@@ -31,15 +30,16 @@ const LoginFormComponent = ({
         callBack={setPhone}
       />
 
-      
-<VerticalInputDiv
+      <VerticalInputDiv
         label="Password"
         placeholder=""
         type="password"
         callBack={setPassword}
       />
 
-      <button type="submit">Login</button>
+      <button type="submit" style={{ cursor: "pointer" }}>
+        Login
+      </button>
     </form>
   );
 };

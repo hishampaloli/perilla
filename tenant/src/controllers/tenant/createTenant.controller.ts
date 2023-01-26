@@ -60,17 +60,17 @@ export = (dependencies: any): any => {
 
       // TODO: UNCOMMENT BELOW CODE TO GET EMAILS
 
-      // const Resemail = await sendMail_UseCase(dependencies).execute({
-      //   userEmail: email,
-      //   subject: "Registered Successfully",
-      //   response: SignUpResponse({
-      //     address,
-      //     adminName,
-      //     companyName,
-      //     email,
-      //     phone,
-      //   }),
-      // });
+      const Resemail = await sendMail_UseCase(dependencies).execute({
+        userEmail: email,
+        subject: "Registered Successfully",
+        response: SignUpResponse({
+          address,
+          adminName,
+          companyName,
+          email,
+          phone,
+        }),
+      });
 
       let token = generateToken(addedTenant);
 
