@@ -7,6 +7,9 @@ import { toast } from "react-toastify";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { GetOtpState } from "../../models/tenants";
 import SubmitButton from "../AddFormComponent/SubmitButton";
+import { getNames } from "country-list";
+
+const countryName = getNames();
 
 const BuyFormComponent = ({
   setCompanyName,
@@ -66,12 +69,18 @@ const BuyFormComponent = ({
         type="password"
         callBack={setPassword}
       />
-      <VerticalInputDiv
-        label="Country"
-        placeholder=""
-        type="text"
-        callBack={setCountry}
-      />
+      <div>
+        <label htmlFor="">Country</label>
+        <select
+          onChange={(e) => setCountry(e.target.value)}
+          name="cars"
+          id="cars"
+        >
+          {countryName.map((el) => (
+            <option value={el}>{el}</option>
+          ))}
+        </select>
+      </div>
       <VerticalInputDiv
         label="city"
         placeholder=""

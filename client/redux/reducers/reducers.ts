@@ -36,6 +36,7 @@ import {
   getMyProfileReducer,
   sendBankDetailsReducer,
 } from "./employee";
+import { employeeListLayoutReducer } from "./custom";
 
 const reducers = combineReducers({
   getOtp: getOtpReducer,
@@ -63,6 +64,7 @@ const reducers = combineReducers({
   notification: getMyNotificationReducer,
   deleteNotification: DeleteNotificationReducer,
   resetPassword: resetPasswordReducer,
+  employeeListLayout: employeeListLayoutReducer,
 });
 
 export default reducers;

@@ -28,13 +28,13 @@ const ResetPasswordForm = () => {
         <div>
           <VerticalInputDiv
             placeholder=""
-            type="text"
+            type="password"
             label="Old Password"
             callBack={setOldPassword}
           />
           <VerticalInputDiv
             placeholder=""
-            type="text"
+            type="password"
             label="NewPassword"
             callBack={setNewPassword}
           />

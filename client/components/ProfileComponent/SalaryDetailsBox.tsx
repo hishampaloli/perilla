@@ -34,12 +34,12 @@ const SalaryDetailsBox = () => {
         </div>
         <div>
           {" "}
-          <span>{salaryDetails?.baseSalary}</span>
-          <span>{salaryDetails?.paymentType}</span>
-          <span>{salaryDetails?.PfRate}</span>
-          <span>{salaryDetails?.grossSalary}</span>
-          <span>{salaryDetails?.bonus}</span>
-          <span>{salaryDetails?.HRA}</span>
+          <span>$ {salaryDetails?.baseSalary}.00</span>
+          <span>{salaryDetails?.paymentType}.00</span>
+          <span>{salaryDetails?.PfRate}%</span>
+          <span>${salaryDetails?.grossSalary}.00</span>
+          <span>${salaryDetails?.bonus}.00</span>
+          <span>${salaryDetails?.HRA}</span>
         </div>
       </ul>
     </div>

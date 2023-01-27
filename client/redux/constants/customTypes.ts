@@ -1,0 +1,3 @@
+export enum CustomActionsTypes {
+  CHANGE_EMPOYEE_LIST_LAYOUT = "CHANGE_EMPOYEE_LIST_LAYOUT",
+}

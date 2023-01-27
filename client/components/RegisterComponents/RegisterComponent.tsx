@@ -13,6 +13,8 @@ import { useFireBaseGetOtp } from "../../hooks/useFireBaseAuth";
 import useVerifyFirbaseOtp from "../../hooks/useVerifyFirbaseOtp";
 import FixedSpinner from "../layout/FixedSpinner";
 
+
+
 const BuyProductComponent = () => {
   const router = useRouter();
   const [otp, setOtp] = useState<boolean>(false);
@@ -26,6 +28,9 @@ const BuyProductComponent = () => {
   const [address, setAddress] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [postalCode, setPostalCode] = useState<string>("");
+
+  console.log(country)
+  
 
   const { getRegisterOtp, tenantRegister } = useActions();
   const { error, loading }: GetOtpState = useTypedSelector(
