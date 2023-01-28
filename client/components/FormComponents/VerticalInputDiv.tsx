@@ -15,7 +15,7 @@ const VerticalInputDiv = ({
   return (
     <div className={style.verticalInputDiv}>
       <label htmlFor="">{label}</label>
-      <input
+      <input            
         type={type}
         name=""
         placeholder={placeholder}

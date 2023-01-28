@@ -33,6 +33,8 @@ interface EmployeeDoc extends mongoose.Document {
   bankDetails: string;
   companyName: string;
   emergencyContact: string;
+  taskCompleted: string[];
+  projectCompleted: string[];
   salaryDetails: string;
   isBlocked: boolean;
 }
@@ -99,6 +101,12 @@ const employeeSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
       default: false,
+    },
+    projectCompleted: {
+      type: Array,
+    },
+    taskCompleted: {
+      type: Array,
     },
   },
   {

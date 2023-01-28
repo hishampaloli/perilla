@@ -27,7 +27,7 @@ interface clientDetailsDoc extends mongoose.Document {
   address: string;
   gender: string;
   image: string;
-  projects: any;
+  projects: any[];
   updatedAt: string;
   version: number;
 }

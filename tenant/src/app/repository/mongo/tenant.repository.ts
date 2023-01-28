@@ -3,7 +3,7 @@ import { Password } from "../../../libs/utils/password";
 
 import { schemas } from "../../database/mongo";
 
-const { Tenant } = schemas;
+const { Tenant, DashBoard } = schemas;
 
 export = {
   createTenant: async (tenant: any) => {
@@ -84,5 +84,10 @@ export = {
     } else {
       return false;
     }
+  },
+
+  createDashBoardData: async (dashboardData: any) => {
+    const mongooseObj = DashBoard.build(dashboardData);
+    return await mongooseObj.save();
   },
 };

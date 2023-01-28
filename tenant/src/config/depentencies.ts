@@ -1,4 +1,4 @@
-import { tenantRepository } from "../app/repository/mongo";
+import { tenantRepository, dashboardRepository } from "../app/repository/mongo";
 import {
   createTenant_UseCase,
   getTenant_UseCase,
@@ -11,6 +11,8 @@ import {
   sendMail_UseCase,
   verifyFireBaseOtp_UseCase,
   resetPassword_UseCase,
+  createDashboard_UseCase,
+  editDashboard_UseCase,
 } from "../usecases";
 
 const useCases: any = {
@@ -25,10 +27,13 @@ const useCases: any = {
   sendMail_UseCase,
   verifyFireBaseOtp_UseCase,
   resetPassword_UseCase,
+  createDashboard_UseCase,
+  editDashboard_UseCase,
 };
 
 const repository: any = {
   tenantRepository,
+  dashboardRepository,
 };
 
 export = {

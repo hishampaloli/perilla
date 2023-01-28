@@ -8,8 +8,14 @@ export interface useCaseData {
   getAllClient_UseCase: any;
   getClient_UseCase: any;
   editClient_UseCase: any;
+  createEmployee_UseCase: any;
+  getAllEmployee_UseCase: any;
+  editEmployees_UseCase: any;
+  createProject_UseCase: any;
 }
 
 export interface repositoryData {
   clientRepository: any;
+  employeeRepository: any;
+  projectRepository: any;
 }

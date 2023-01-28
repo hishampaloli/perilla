@@ -1,3 +1,5 @@
 import clientController from "./client";
+import employeeController from "./employee";
+import projectController from "./project";
 
-export { clientController };
+export { clientController, employeeController, projectController };

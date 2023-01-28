@@ -12,6 +12,7 @@ export = (dependencies: any): any => {
       getTenant_UseCase,
       sendMail_UseCase,
       verifyFireBaseOtp_UseCase,
+      createDashboard_UseCase,
     },
   } = dependencies;
 
@@ -73,6 +74,12 @@ export = (dependencies: any): any => {
       });
 
       let token = generateToken(addedTenant);
+      const dashboardData = await createDashboard_UseCase(dependencies).execute(
+        {
+          companyName,
+          adminName,
+        }
+      );
 
       req.session = {
         tenantJwt: token,

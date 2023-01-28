@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { BadRequestError, NotAuthorizedError } from "@hpshops/common";
 import { natsWrapper } from "../../nats-wrapper";
 import { DepenteniciesData } from "../../entities/interfaces";
+import { EmployeeCreatedPublisher } from "../../events/publishers/employee-created-event";
 import md5 from "md5";
 
 export = (dependencies: DepenteniciesData): any => {
@@ -37,9 +38,6 @@ export = (dependencies: DepenteniciesData): any => {
         email.trim().toLowerCase()
       )}?d=retro`;
 
-      console.log(avatar);
-      
-
       const createdUser = await createEmployee_UseCase(dependencies).execute({
         role,
         name,
@@ -59,6 +57,19 @@ export = (dependencies: DepenteniciesData): any => {
       const updatedUser = await createEmployeeData_UseCase(
         dependencies
       ).execute(createdUser.id, req.currentTenant?.id.companyName);
+
+        await new EmployeeCreatedPublisher(natsWrapper.client).publish({
+          companyName: createdUser.companyName,
+          email,
+          employeeId,
+          phone,
+          role,
+          name,
+          id: createdUser.id,
+          image: createdUser.image,
+        });
+      
+
       res.json({ data: updatedUser });
     } catch (error: any) {
       throw new Error(error);

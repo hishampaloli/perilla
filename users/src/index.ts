@@ -35,19 +35,19 @@ const start = async () => {
   }
 
   try {
-    // await natsWrapper.connect(
-    //   "ticketing",
-    //   process.env.NATS_CLIENT_ID,
-    //   "http://nats-srv:4222"
-    // )
+    await natsWrapper.connect(
+      "perilla",
+      '123456',
+      "http://nats-srv:4222"
+    )
 
-    // natsWrapper.client.on("close", () => {
-    //   console.log("NATS connetion closed!");
-    //   process.exit();
-    // });
+    natsWrapper.client.on("close", () => {
+      console.log("NATS connetion closed!");
+      process.exit();
+    });
 
-    // process.on("SIGINT", () => natsWrapper.client.close());
-    // process.on("SIGTERM", () => natsWrapper.client.close());
+    process.on("SIGINT", () => natsWrapper.client.close());
+    process.on("SIGTERM", () => natsWrapper.client.close());
 
     connectDB();
   } catch (err) {

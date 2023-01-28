@@ -1,8 +1,12 @@
 import mongoose from "mongoose";
 import { app } from "./app";
 import { natsWrapper } from "./nats-wrapper";
-// import { ProfileCreatedListener } from "./events/listeners/profile-created-event";
-// import { ProfileUpdateListener } from "./events/listeners/profile-updated-event";
+import {
+  EmployeeCreatedListener,
+  EmployeeEditedListener,
+  EmployeeRemovedListener,
+} from "./events/listeners";
+
 import { connectDB } from "./config/db";
 
 const start = async () => {
@@ -36,37 +40,28 @@ const start = async () => {
     throw new Error("PASSWORD_STR must be defined");
   }
 
-  
-
-
-  
   try {
-    // await natsWrapper.connect(
-    //   "hr",
-    //   process.env.NATS_CLIENT_ID,
-    //   "http://nats-srv:4222"
-    // );
+    await natsWrapper.connect("perilla", "123", "http://nats-srv:4222");
 
-    // natsWrapper.client.on("close", () => {
-    //   console.log("NATS connetion closed!");
-    //   process.exit();
-    // });
+    natsWrapper.client.on("close", () => {
+      console.log("NATS connetion closed!");
+      process.exit();
+    });
 
-    // process.on("SIGINT", () => natsWrapper.client.close());
-    // process.on("SIGTERM", () => natsWrapper.client.close());
+    process.on("SIGINT", () => natsWrapper.client.close());
+    process.on("SIGTERM", () => natsWrapper.client.close());
 
-    // new ProfileCreatedListener(natsWrapper.client).listen();
-    // new ProfileUpdateListener(natsWrapper.client).listen();
+    new EmployeeCreatedListener(natsWrapper.client).listen();
+    new EmployeeEditedListener(natsWrapper.client).listen();
+    new EmployeeRemovedListener(natsWrapper.client).listen();
 
-
-    connectDB()
+    connectDB();
   } catch (err) {
     console.error(err);
   }
 
-
   app.listen(3000, () => {
-     console.log("Listening on port 3000 =============");
+    console.log("Listening on port 3000 =============");
   });
 };
 

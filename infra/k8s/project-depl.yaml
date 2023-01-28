@@ -17,7 +17,7 @@ spec:
           image: hishampaloli/project
           env:
             - name: MONGO_URL
-              value: "mongodb://project-mongo-srv:27017/project"
+              value: "mongodb+srv://hishampaloli:hishampaloli@project.eriykuz.mongodb.net/project"
             - name: TWILIO_ACC_SID
               value: "ACc6812664b3f21c5c669509cff5764bb9"
             - name: TWILIO_TOKEN_AUTH

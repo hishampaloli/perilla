@@ -84,7 +84,6 @@ export = {
       runValidators: true,
       useFindAndModify: false,
     });
-
     return mongooseObj;
   },
 

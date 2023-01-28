@@ -4,6 +4,6 @@ import {
   EmployeeRemovedEvent,
 } from "@hr-management/common";
 
-export class ProductCreatedPublisher extends Publisher<EmployeeRemovedEvent> {
+export class EmployeeRemovedPublisher extends Publisher<EmployeeRemovedEvent> {
   subject: Subject.EmployeeRemoved = Subject.EmployeeRemoved;
 }

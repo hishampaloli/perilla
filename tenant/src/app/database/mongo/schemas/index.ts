@@ -1,3 +1,4 @@
 import { Tenant } from "./Tenant.schema";
+import { DashBoard } from "./Dashboard.schema";
 
-export = { Tenant };
+export = { Tenant, DashBoard };
