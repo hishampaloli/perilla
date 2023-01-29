@@ -4,6 +4,7 @@ import getSingleProjectController from "./getSingleProject.controller";
 import editProjectController from "./editProject.controller";
 import addTeamToProjectController from "./addTeamToProject.controller";
 import removeTeamFromProjectController from "./removeTeamFromProject.controller";
+import getMyProjectController from "./getMyProject.controller";
 
 export = (dependencies: any) => {
   return {
@@ -14,5 +15,6 @@ export = (dependencies: any) => {
     addTeamToProjectController: addTeamToProjectController(dependencies),
     removeTeamFromProjectController:
       removeTeamFromProjectController(dependencies),
+    getMyProjectController: getMyProjectController(dependencies),
   };
 };

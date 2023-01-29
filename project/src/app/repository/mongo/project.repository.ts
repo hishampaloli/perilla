@@ -28,7 +28,7 @@ export = {
   getSingleProject: async (id: string) => {
     const mongooseObj = await Project.findById(id);
     await Project.populate(mongooseObj, { path: "createdBy" });
-    await Project.populate(mongooseObj, { path: "team"});
+    await Project.populate(mongooseObj, { path: "team" });
     return mongooseObj;
   },
 
@@ -78,6 +78,20 @@ export = {
         runValidators: true,
       }
     );
+    return mongooseObj;
+  },
+
+  getMyProjects: async (
+    companyName: string,
+    status: string,
+    userId: string
+  ) => {
+    console.log(companyName, status, userId);
+
+    const mongooseObj = await Project.aggregate([
+      { $match: { $and: [{ companyName }] } },
+    ]);
+
     return mongooseObj;
   },
 };

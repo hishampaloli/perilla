@@ -25,6 +25,7 @@ export interface useCaseData {
   reqTaskApprovel_UseCase: any;
   sendMail_UseCase: any;
   getTaskForApproval_UseCase: any;
+  getMyProjects_usecase: any;
 }
 
 export interface repositoryData {

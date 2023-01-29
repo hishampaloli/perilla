@@ -1,5 +1,6 @@
 import { BadRequestError, currentUser } from "@hr-management/common";
 import { Request, Response, NextFunction } from "express";
+import { TaskAddedResponse } from "../../app/externalService/mailService";
 import { DepenteniciesData } from "../../entities/interfaces";
 
 export = (dependencies: DepenteniciesData): any => {
@@ -8,6 +9,7 @@ export = (dependencies: DepenteniciesData): any => {
       createTask_UseCase,
       getSingleEmployees_UseCase,
       getSingleProject_UseCase,
+      sendMail_UseCase,
     },
   } = dependencies;
 
@@ -35,7 +37,6 @@ export = (dependencies: DepenteniciesData): any => {
         dependencies
       ).execute(req.currentUser?.id.companyName, assignedTo);
 
-
       if (!employeeFound) throw new BadRequestError("No such Employee found!");
 
       const taskCreated = await createTask_UseCase(dependencies).execute({
@@ -48,6 +49,13 @@ export = (dependencies: DepenteniciesData): any => {
         deadline,
         startDate: Date(),
       });
+
+      // TODO:  EMAIL
+      // const Resemail = await sendMail_UseCase(dependencies).execute({
+      //   userEmail: employeeFound.email,
+      //   subject: "New Task assigned",
+      //   response: TaskAddedResponse,
+      // });
 
       if (!taskCreated) throw new BadRequestError("Some thing went wrong");
 

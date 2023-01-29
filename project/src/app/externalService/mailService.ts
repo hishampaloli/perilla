@@ -31,6 +31,21 @@ export const ProjectAddedResponse = {
   outro: "Thank you for your trust",
 };
 
+export const TaskAddedResponse = {
+  body: {
+    name: "CUSTOMER",
+    intro: "A task was assigned to you",
+    table: {
+      data: [
+        {
+          Info: "This mail is to remind you that new task was assigned to you.",
+        },
+      ],
+    },
+  },
+  outro: "Thank you for your trust",
+};
+
 export const getMessage = ({
   userEmail,
   subject,

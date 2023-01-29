@@ -20,6 +20,7 @@ export = (dependencies: any) => {
     addTeamToProjectController,
     editProjectController,
     removeTeamFromProjectController,
+    getMyProjectController,
   } = projectController(dependencies);
 
   router.post(
@@ -69,6 +70,13 @@ export = (dependencies: any) => {
     isHr,
     requireUserAuth,
     removeTeamFromProjectController
+  );
+
+  router.get(
+    "/myProjects",
+    currentUser,
+    requireUserAuth,
+    getMyProjectController
   );
   return router;
 };
