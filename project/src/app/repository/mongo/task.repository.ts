@@ -20,6 +20,8 @@ export = {
 
   getSingleTask: async (taskId: string) => {
     const mongooseObj = await Task.findById(taskId);
+    await Task.populate(mongooseObj, { path: "assignedBy" });
+    await Task.populate(mongooseObj, { path: "assignedTo" });
     return mongooseObj;
   },
 
@@ -50,14 +52,11 @@ export = {
     return mongooseObj;
   },
 
-  getTaskForApproval: async (taskId: string, assignedBy: string) => {
+  getTaskForApproval: async (assignedBy: string) => {
+    console.log(assignedBy);
+
     const mongooseObj = await Task.find({
-      $and: [
-        { _id: taskId },
-        { assignedBy },
-        { isCompleted: true },
-        { isApproved: false },
-      ],
+      $and: [{ assignedBy }, { isCompleted: true }, { isApproved: false }],
     });
 
     return mongooseObj;

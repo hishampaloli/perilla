@@ -19,6 +19,7 @@ export = (dependencies: any) => {
     editTaskController,
     getSingleTaskController,
     reqTaskApprovelController,
+    getTasksForApprovalController,
   } = taskController(dependencies);
 
   router.post(
@@ -58,6 +59,14 @@ export = (dependencies: any) => {
     currentUser,
     requireUserAuth,
     reqTaskApprovelController
+  );
+
+  router.get(
+    "/tasksForApproval/",
+    currentUser,
+    isHr,
+    requireUserAuth,
+    getTasksForApprovalController
   );
   return router;
 };
