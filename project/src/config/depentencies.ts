@@ -25,6 +25,7 @@ import {
   editTask_UseCase,
   getSingleTask_UseCase,
   reqTaskApprovel_UseCase,
+  getTaskForApproval_UseCase,
 } from "../usecase";
 
 import { repositoryData, useCaseData } from "../entities/interfaces";
@@ -49,6 +50,7 @@ const useCases: useCaseData = {
   editTask_UseCase,
   getSingleTask_UseCase,
   reqTaskApprovel_UseCase,
+  getTaskForApproval_UseCase,
 };
 
 const repository: repositoryData = {
