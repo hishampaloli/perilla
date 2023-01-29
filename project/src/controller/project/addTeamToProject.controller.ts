@@ -1,10 +1,15 @@
 import { BadRequestError } from "@hr-management/common";
 import { Request, Response, NextFunction } from "express";
+import { ProjectAddedResponse } from "../../app/externalService/mailService";
 import { DepenteniciesData } from "../../entities/interfaces";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
-    useCases: { addTeamToProject_UseCase, getSingleEmployees_UseCase },
+    useCases: {
+      addTeamToProject_UseCase,
+      getSingleEmployees_UseCase,
+      sendMail_UseCase,
+    },
   } = dependencies;
 
   const addTeamToProject = async (
@@ -30,6 +35,14 @@ export = (dependencies: DepenteniciesData): any => {
           "You are not the owner of this project or no such projects found"
         );
       }
+
+
+      // TODO:  EMAIL
+      // const Resemail = await sendMail_UseCase(dependencies).execute({
+      //   userEmail: employeeFound.email,
+      //   subject: "Project Update",
+      //   response: ProjectAddedResponse,
+      // });
 
       res.json({ data: projectsData });
     } catch (error: any) {

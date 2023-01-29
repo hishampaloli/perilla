@@ -23,6 +23,7 @@ export interface useCaseData {
   editTask_UseCase: any;
   getSingleTask_UseCase: any;
   reqTaskApprovel_UseCase: any;
+  sendMail_UseCase: any;
   getTaskForApproval_UseCase: any;
 }
 

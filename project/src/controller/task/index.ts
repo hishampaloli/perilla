@@ -4,6 +4,7 @@ import reqTaskApprovelController from "./reqTaskApprovel.controller";
 import getSingleTaskController from "./getSingleTask.controller";
 import editTaskController from "./editTask.controller";
 import getTasksForApprovalController from "./getTasksForApproval.controller";
+import approveTaskController from "./approveTask.controller";
 
 export = (dependencies: any) => {
   return {
@@ -13,5 +14,6 @@ export = (dependencies: any) => {
     getSingleTaskController: getSingleTaskController(dependencies),
     editTaskController: editTaskController(dependencies),
     getTasksForApprovalController: getTasksForApprovalController(dependencies),
+    approveTaskController: approveTaskController(dependencies),
   };
 };

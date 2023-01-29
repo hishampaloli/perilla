@@ -20,6 +20,7 @@ export = (dependencies: any) => {
     getSingleTaskController,
     reqTaskApprovelController,
     getTasksForApprovalController,
+    approveTaskController,
   } = taskController(dependencies);
 
   router.post(
@@ -67,6 +68,14 @@ export = (dependencies: any) => {
     isHr,
     requireUserAuth,
     getTasksForApprovalController
+  );
+
+  router.patch(
+    "/approveTask/:taskId",
+    currentUser,
+    isHr,
+    requireUserAuth,
+    approveTaskController
   );
   return router;
 };
