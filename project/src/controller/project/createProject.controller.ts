@@ -14,7 +14,6 @@ export = (dependencies: DepenteniciesData): any => {
   ) => {
     try {
       const {
-        companyName,
         projectName,
         client,
         startDate,
@@ -22,6 +21,8 @@ export = (dependencies: DepenteniciesData): any => {
         projectDescription,
         rate,
       } = req.body;
+      let companyName =
+        req.currentUser?.id.companyName || req.currentTenant?.id.companyName;
 
       const ClientData = await getClient_UseCase(dependencies).execute(
         companyName,
@@ -46,8 +47,9 @@ export = (dependencies: DepenteniciesData): any => {
       if (!createdProject) {
         throw new BadRequestError("Something went wrong!");
       }
+      
 
-      res.json({ data: createProject });
+      res.json({ data: createdProject });
     } catch (error: any) {
       throw new Error(error);
     }

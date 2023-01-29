@@ -8,27 +8,12 @@ export = {
     return await mongooseObject.save();
   },
 
-  getEmployee: async ({
-    company,
-    phone,
-    email,
-  }: {
-    company: string;
-    phone: number;
-    email: string;
-  }) => {
-    const mongooseObj = await Employee.aggregate([
-      {
-        $match: {
-          $and: [
-            { companyName: company },
-            {
-              $or: [{ phone: Number(phone) }, { email: email }],
-            },
-          ],
-        },
-      },
-    ]);
+  getEmployee: async (companyName: string, employeeId: string) => {
+    const mongooseObj = await Employee.findOne({
+      $and: [{ _id: employeeId }, { companyName }, { role: "employees" }],
+    });
+
+    return mongooseObj;
   },
 
   editEmployee: async (company: string, employeeId: string, data: any) => {

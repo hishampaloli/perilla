@@ -15,8 +15,10 @@ export = (dependencies: any) => {
 
   router.get(
     "/getAllEmployees",
+    currentUser,
     currentTenant,
-    requireTenantAuth,
+    requireTenantOrUser,
+    isHrOrAdmin,
     getAllEmployeesController
   );
 

@@ -13,6 +13,12 @@ import {
   getAllEmployee_UseCase,
   editEmployees_UseCase,
   createProject_UseCase,
+  getAllProject_UseCase,
+  getSingleProject_UseCase,
+  addTeamToProject_UseCase,
+  editProject_UseCase,
+  removeTeamFromProject_UseCase,
+  getSingleEmployees_UseCase,
 } from "../usecase";
 
 import { repositoryData, useCaseData } from "../entities/interfaces";
@@ -26,6 +32,12 @@ const useCases: useCaseData = {
   getAllEmployee_UseCase,
   editEmployees_UseCase,
   createProject_UseCase,
+  getAllProject_UseCase,
+  getSingleProject_UseCase,
+  addTeamToProject_UseCase,
+  editProject_UseCase,
+  removeTeamFromProject_UseCase,
+  getSingleEmployees_UseCase,
 };
 
 const repository: repositoryData = {

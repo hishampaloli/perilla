@@ -14,10 +14,12 @@ export = (dependencies: DepenteniciesData): any => {
   ) => {
     try {
       const { role } = req.query;
+      const companyName =
+        req.currentTenant?.id.companyName || req.currentUser?.id.companyName;
 
       const getAllEmployees = await getAllEmployee_UseCase(
         dependencies
-      ).execute(req.currentTenant?.id.companyName, role);
+      ).execute(companyName, role);
 
       if (!getAllEmployees) {
         throw new BadRequestError("No employees found!");

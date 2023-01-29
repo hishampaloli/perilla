@@ -26,6 +26,7 @@ interface ProjectDoc extends mongoose.Document {
   rate: number;
   team: any[];
   createdBy: string;
+  status: string;
 }
 
 const projectSchema = new mongoose.Schema(
@@ -45,7 +46,7 @@ const projectSchema = new mongoose.Schema(
     startDate: {
       type: Date,
       required: true,
-      default: Date()
+      default: Date(),
     },
     priority: {
       type: String,
@@ -67,9 +68,15 @@ const projectSchema = new mongoose.Schema(
     team: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "ClientDetails",
+        ref: "Employee",
       },
     ],
+    status: {
+      type: String,
+      required: true,
+      default: "pending",
+      enum: ["pending", "completed", "dropped"],
+    },
   },
   {
     toJSON: {
