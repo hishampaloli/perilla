@@ -13,8 +13,13 @@ import { taskController } from "../../controller";
 
 export = (dependencies: any) => {
   const router = express.Router();
-  const { createTaskController, getAllProjectTasksController } =
-    taskController(dependencies);
+  const {
+    createTaskController,
+    getAllProjectTasksController,
+    editTaskController,
+    getSingleTaskController,
+    reqTaskApprovelController,
+  } = taskController(dependencies);
 
   router.post(
     "/create",
@@ -32,5 +37,27 @@ export = (dependencies: any) => {
     getAllProjectTasksController
   );
 
+  router.get(
+    "/singleTask/:taskId",
+    currentUser,
+    currentTenant,
+    requireTenantOrUser,
+    getSingleTaskController
+  );
+
+  router.put(
+    "/edit/:taskId",
+    currentUser,
+    isHr,
+    requireUserAuth,
+    editTaskController
+  );
+
+  router.patch(
+    "/isCompleted/:taskId",
+    currentUser,
+    requireUserAuth,
+    reqTaskApprovelController
+  );
   return router;
 };

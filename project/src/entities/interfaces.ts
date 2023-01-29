@@ -20,6 +20,9 @@ export interface useCaseData {
   getSingleEmployees_UseCase: any;
   createTask_UseCase: any;
   getAllProjectTasks_UseCase: any;
+  editTask_UseCase: any;
+  getSingleTask_UseCase: any;
+  reqTaskApprovel_UseCase: any;
 }
 
 export interface repositoryData {

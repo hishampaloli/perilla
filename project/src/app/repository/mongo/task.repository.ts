@@ -46,5 +46,7 @@ export = {
       { isCompleted: true },
       { new: true, runValidators: true }
     );
+
+    return mongooseObj;
   },
 };

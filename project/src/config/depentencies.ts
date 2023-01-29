@@ -22,6 +22,9 @@ import {
   getSingleEmployees_UseCase,
   getAllProjectTasks_UseCase,
   createTask_UseCase,
+  editTask_UseCase,
+  getSingleTask_UseCase,
+  reqTaskApprovel_UseCase,
 } from "../usecase";
 
 import { repositoryData, useCaseData } from "../entities/interfaces";
@@ -42,7 +45,10 @@ const useCases: useCaseData = {
   removeTeamFromProject_UseCase,
   getSingleEmployees_UseCase,
   createTask_UseCase,
-  getAllProjectTasks_UseCase
+  getAllProjectTasks_UseCase,
+  editTask_UseCase,
+  getSingleTask_UseCase,
+  reqTaskApprovel_UseCase,
 };
 
 const repository: repositoryData = {
