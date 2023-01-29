@@ -18,10 +18,12 @@ export interface useCaseData {
   editProject_UseCase: any;
   removeTeamFromProject_UseCase: any;
   getSingleEmployees_UseCase: any;
+  createTask_UseCase: any;
 }
 
 export interface repositoryData {
   clientRepository: any;
   employeeRepository: any;
+  taskRepository: any;
   projectRepository: any;
 }

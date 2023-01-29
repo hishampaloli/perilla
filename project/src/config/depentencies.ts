@@ -2,6 +2,7 @@ import {
   clientRepository,
   employeeRepository,
   projectRepository,
+  taskRepository,
 } from "../app/repository/mongo";
 
 import {
@@ -19,6 +20,7 @@ import {
   editProject_UseCase,
   removeTeamFromProject_UseCase,
   getSingleEmployees_UseCase,
+  createTask_UseCase,
 } from "../usecase";
 
 import { repositoryData, useCaseData } from "../entities/interfaces";
@@ -38,12 +40,14 @@ const useCases: useCaseData = {
   editProject_UseCase,
   removeTeamFromProject_UseCase,
   getSingleEmployees_UseCase,
+  createTask_UseCase,
 };
 
 const repository: repositoryData = {
   clientRepository,
   employeeRepository,
   projectRepository,
+  taskRepository,
 };
 
 export = {
