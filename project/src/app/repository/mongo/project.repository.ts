@@ -86,11 +86,9 @@ export = {
     status: string,
     userId: string
   ) => {
-    console.log(companyName, status, userId);
-
-    const mongooseObj = await Project.aggregate([
-      { $match: { $and: [{ companyName }] } },
-    ]);
+    const mongooseObj = await Project.find({
+      $and: [{ companyName }, { team: { $in: [userId] } }, { status }],
+    });
 
     return mongooseObj;
   },

@@ -41,6 +41,13 @@ export = (dependencies: any) => {
   );
 
   router.get(
+    "/myProjects",
+    currentUser,
+    requireUserAuth,
+    getMyProjectController
+  )
+
+  router.get(
     "/:projectId",
     currentUser,
     currentTenant,
@@ -72,11 +79,5 @@ export = (dependencies: any) => {
     removeTeamFromProjectController
   );
 
-  router.get(
-    "/myProjects",
-    currentUser,
-    requireUserAuth,
-    getMyProjectController
-  );
   return router;
 };
