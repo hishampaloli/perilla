@@ -13,7 +13,8 @@ import { taskController } from "../../controller";
 
 export = (dependencies: any) => {
   const router = express.Router();
-  const { createTaskController } = taskController(dependencies);
+  const { createTaskController, getAllProjectTasksController } =
+    taskController(dependencies);
 
   router.post(
     "/create",
@@ -21,7 +22,15 @@ export = (dependencies: any) => {
     isHr,
     requireUserAuth,
     createTaskController
-  )
+  );
+
+  router.get(
+    "/allProjectTask/:projectId",
+    currentUser,
+    currentTenant,
+    requireTenantOrUser,
+    getAllProjectTasksController
+  );
 
   return router;
 };

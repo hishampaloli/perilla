@@ -23,26 +23,29 @@ export = (dependencies: DepenteniciesData): any => {
         taskDescription,
         assignedTo,
         priority,
-        deadLine,
+        deadline,
       } = req.body;
 
-      const projectFound = await getSingleProject_UseCase(project);
+      const projectFound = await getSingleProject_UseCase(dependencies).execute(
+        project
+      );
       if (!projectFound) throw new BadRequestError("No such project found!");
 
       const employeeFound = await getSingleEmployees_UseCase(
-        req.currentUser?.id.companyName,
-        assignedTo
-      );
+        dependencies
+      ).execute(req.currentUser?.id.companyName, assignedTo);
+
+
       if (!employeeFound) throw new BadRequestError("No such Employee found!");
 
-      const taskCreated = await createTask_UseCase({
+      const taskCreated = await createTask_UseCase(dependencies).execute({
         project,
         taskName,
         taskDescription,
         assignedTo,
         assignedBy: req.currentUser?.id.id,
         priority,
-        deadLine,
+        deadline,
         startDate: Date(),
       });
 

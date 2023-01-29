@@ -6,7 +6,7 @@ export interface TaskData {
   assignedBy: string;
   startDate: string;
   priority: string;
-  deadLine: string;
+  deadline: string;
 }
 
 export class Task {
@@ -16,12 +16,12 @@ export class Task {
   assignedTo: string;
   startDate: string;
   priority: string;
-  deadLine: string;
+  deadline: string;
   assignedBy: string;
 
   constructor({
     assignedTo,
-    deadLine,
+    deadline,
     priority,
     project,
     startDate,
@@ -30,7 +30,7 @@ export class Task {
     taskName,
   }: TaskData) {
     this.assignedTo = assignedTo;
-    this.deadLine = deadLine;
+    this.deadline = deadline;
     this.priority = priority;
     this.project = project;
     this.startDate = startDate;

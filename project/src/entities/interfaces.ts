@@ -19,6 +19,7 @@ export interface useCaseData {
   removeTeamFromProject_UseCase: any;
   getSingleEmployees_UseCase: any;
   createTask_UseCase: any;
+  getAllProjectTasks_UseCase: any;
 }
 
 export interface repositoryData {

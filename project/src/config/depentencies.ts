@@ -20,6 +20,7 @@ import {
   editProject_UseCase,
   removeTeamFromProject_UseCase,
   getSingleEmployees_UseCase,
+  getAllProjectTasks_UseCase,
   createTask_UseCase,
 } from "../usecase";
 
@@ -41,6 +42,7 @@ const useCases: useCaseData = {
   removeTeamFromProject_UseCase,
   getSingleEmployees_UseCase,
   createTask_UseCase,
+  getAllProjectTasks_UseCase
 };
 
 const repository: repositoryData = {

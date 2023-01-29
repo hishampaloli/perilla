@@ -1,6 +1,7 @@
 import { DepenteniciesData } from "../../entities/interfaces";
 
 export const getSingleProject_UseCase = (dependencies: DepenteniciesData) => {
+  console.log(333333333333333333);
   const {
     repository: { projectRepository },
   } = dependencies;

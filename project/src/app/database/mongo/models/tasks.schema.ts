@@ -9,7 +9,7 @@ interface TaskAttrs {
   assignedBy: string;
   startDate: string;
   priority: string;
-  deadLine: string;
+  deadline: string;
 }
 
 interface TaskModal extends mongoose.Model<TaskDoc> {
@@ -23,7 +23,7 @@ interface TaskDoc extends mongoose.Document {
   assignedTo: string;
   startDate: string;
   priority: string;
-  deadLine: string;
+  deadline: string;
   isApproved: string;
   assignedBy: string;
   isCompleted: string;

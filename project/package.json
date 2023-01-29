@@ -1,7 +1,7 @@
 {
   "name": "tenant",
   "version": "1.0.0",
-  "description": "hi",
+  "description": "h",
   "main": "index.js",
   "scripts": {
     "test": "jest",
