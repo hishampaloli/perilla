@@ -21,6 +21,8 @@ export = (dependencies: any) => {
     reqTaskApprovelController,
     getTasksForApprovalController,
     approveTaskController,
+    getMyTaskPostsController,
+    getMyTasksController,
   } = taskController(dependencies);
 
   router.post(
@@ -70,12 +72,24 @@ export = (dependencies: any) => {
     getTasksForApprovalController
   );
 
-  router.patch(
+  // TEST ME
+  TODO: router.patch(
     "/approveTask/:taskId",
     currentUser,
     isHr,
     requireUserAuth,
     approveTaskController
   );
+
+  // TEST ME
+  TODO: router.get(
+    "/myTaskPosts",
+    currentUser,
+    isHr,
+    requireUserAuth,
+    getMyTaskPostsController
+  );
+
+  router.get("/myTasks", currentUser, requireUserAuth, getMyTasksController);
   return router;
 };

@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resource-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resource
+  template:
+    metadata:
+      labels:
+        app: resource
+    spec:
+      containers:
+        - name: resource
+          image: hishampaloli/resource
+          env:
+            - name: MONGO_URL
+              value: "mongodb://resource-mongo-srv:27017/resource"
+            - name: TWILIO_ACC_SID
+              value: "ACc6812664b3f21c5c669509cff5764bb9"
+            - name: TWILIO_TOKEN_AUTH
+              value: "17bd53cdd16abf02341b7b1d92ac7354"
+            - name: TWILIO_SERVICE_SID
+              value: "VA5597e0ac8e160a7236be137d237e034e"
+            - name: JWT_KEY
+            - name: EMAIL_STR
+              value: "perilla.hrservice@gmail.com"
+            - name: PASSWORD_STR
+              value: "cglzqvagkozftaco"
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: resource-srv
+spec:
+  selector:
+    app: resource
+  ports:
+    - name: resource
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

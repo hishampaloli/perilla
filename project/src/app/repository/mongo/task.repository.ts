@@ -61,4 +61,18 @@ export = {
 
     return mongooseObj;
   },
+
+  getMyTasksPosts: async (assignedBy: string, isApproved: boolean) => {
+    const mongooseObj = await Task.find({
+      $and: [{ assignedBy }, { isApproved }],
+    });
+    return mongooseObj;
+  },
+
+  getMyTasks: async (assignedTo: string, isApproved: boolean) => {
+    const mongooseObj = await Task.find({
+      $and: [{ assignedTo }, { isApproved }],
+    });
+    return mongooseObj;
+  },
 };

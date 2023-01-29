@@ -5,6 +5,8 @@ import getSingleTaskController from "./getSingleTask.controller";
 import editTaskController from "./editTask.controller";
 import getTasksForApprovalController from "./getTasksForApproval.controller";
 import approveTaskController from "./approveTask.controller";
+import getMyTaskPostsController from "./getMyTaskPosts.controller";
+import getMyTasksController from "./getMyTasks.controller";
 
 export = (dependencies: any) => {
   return {
@@ -15,5 +17,7 @@ export = (dependencies: any) => {
     editTaskController: editTaskController(dependencies),
     getTasksForApprovalController: getTasksForApprovalController(dependencies),
     approveTaskController: approveTaskController(dependencies),
+    getMyTaskPostsController: getMyTaskPostsController(dependencies),
+    getMyTasksController: getMyTasksController(dependencies),
   };
 };

@@ -5,6 +5,7 @@ import editProjectController from "./editProject.controller";
 import addTeamToProjectController from "./addTeamToProject.controller";
 import removeTeamFromProjectController from "./removeTeamFromProject.controller";
 import getMyProjectController from "./getMyProject.controller";
+import completeProjectController from "./completeProject.controller";
 
 export = (dependencies: any) => {
   return {
@@ -16,5 +17,6 @@ export = (dependencies: any) => {
     removeTeamFromProjectController:
       removeTeamFromProjectController(dependencies),
     getMyProjectController: getMyProjectController(dependencies),
+    completeProjectController: completeProjectController(dependencies),
   };
 };
