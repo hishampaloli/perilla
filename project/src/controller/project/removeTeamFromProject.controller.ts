@@ -1,6 +1,8 @@
 import { BadRequestError } from "@hr-management/common";
 import { Request, Response, NextFunction } from "express";
 import { DepenteniciesData } from "../../entities/interfaces";
+import { EmployeeRemovedFromProjectPublisher } from "../../events/publishers/employee-removed-from-project-event";
+import { natsWrapper } from "../../nats-wrapper";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
@@ -27,6 +29,15 @@ export = (dependencies: DepenteniciesData): any => {
         );
       }
 
+      await new EmployeeRemovedFromProjectPublisher(natsWrapper.client).publish(
+        {
+          companyName: req.currentUser?.id?.companyName || "",
+          employeeId: req.body.employeeId,
+          message: `You were removed from the project ${projectsData.projectName}`,
+        }
+      );
+
+      
       res.json({ data: projectsData });
     } catch (error: any) {
       throw new Error(error);

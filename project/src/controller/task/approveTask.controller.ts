@@ -1,6 +1,8 @@
 import { BadRequestError, currentUser } from "@hr-management/common";
 import { Request, Response, NextFunction } from "express";
 import { DepenteniciesData } from "../../entities/interfaces";
+import { TaskStatusChangedPublisher } from "../../events/publishers/task-changed-event";
+import { natsWrapper } from "../../nats-wrapper";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
@@ -22,6 +24,12 @@ export = (dependencies: DepenteniciesData): any => {
       );
 
       if (!approvedTask) throw new BadRequestError("no such task found");
+
+      await new TaskStatusChangedPublisher(natsWrapper.client).publish({
+        companyName: req.currentUser?.id?.companyName || "",
+        employeeId: approvedTask.assignedTo,
+        message: `Your task was ${status ? 'accepeted' : 'rejected'} . Please check your task dashboard :)`,
+      });
 
       res.json({ data: approvedTask });
     } catch (error: any) {

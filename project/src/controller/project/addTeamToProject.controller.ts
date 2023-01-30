@@ -2,6 +2,8 @@ import { BadRequestError } from "@hr-management/common";
 import { Request, Response, NextFunction } from "express";
 import { ProjectAddedResponse } from "../../app/externalService/mailService";
 import { DepenteniciesData } from "../../entities/interfaces";
+import { EmployeeAddedToProjectPublisher } from "../../events/publishers/employee-added-to-project-event";
+import { natsWrapper } from "../../nats-wrapper";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
@@ -36,13 +38,18 @@ export = (dependencies: DepenteniciesData): any => {
         );
       }
 
-
       // TODO:  EMAIL
       // const Resemail = await sendMail_UseCase(dependencies).execute({
       //   userEmail: employeeFound.email,
       //   subject: "Project Update",
       //   response: ProjectAddedResponse,
       // });
+
+      await new EmployeeAddedToProjectPublisher(natsWrapper.client).publish({
+        companyName: req.currentUser?.id?.companyName || "",
+        employeeId: req.body.employeeId,
+        message: `You were added to a new project. Please check your project dashboard :)`,
+      });
 
       res.json({ data: projectsData });
     } catch (error: any) {

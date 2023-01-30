@@ -2,6 +2,8 @@ import { BadRequestError, currentUser } from "@hr-management/common";
 import { Request, Response, NextFunction } from "express";
 import { TaskAddedResponse } from "../../app/externalService/mailService";
 import { DepenteniciesData } from "../../entities/interfaces";
+import { TaskAssignedPublisher } from "../../events/publishers/task-assigned-event";
+import { natsWrapper } from "../../nats-wrapper";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
@@ -58,6 +60,12 @@ export = (dependencies: DepenteniciesData): any => {
       // });
 
       if (!taskCreated) throw new BadRequestError("Some thing went wrong");
+
+      await new TaskAssignedPublisher(natsWrapper.client).publish({
+        companyName: req.currentUser?.id?.companyName || "",
+        employeeId: assignedTo,
+        message: `You were assigned to a new task. Please check your task dashboard :)`,
+      });
 
       res.json({ data: taskCreated });
     } catch (error: any) {
