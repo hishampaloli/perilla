@@ -72,8 +72,7 @@ export = (dependencies: any) => {
     getTasksForApprovalController
   );
 
-  // TEST ME
-  TODO: router.patch(
+  router.patch(
     "/approveTask/:taskId",
     currentUser,
     isHr,
@@ -81,8 +80,7 @@ export = (dependencies: any) => {
     approveTaskController
   );
 
-  // TEST ME
-  TODO: router.get(
+  router.get(
     "/myTaskPosts",
     currentUser,
     isHr,

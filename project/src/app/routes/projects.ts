@@ -80,8 +80,7 @@ export = (dependencies: any) => {
     removeTeamFromProjectController
   );
 
-  // TEST ME
-  TODO: router.patch(
+  router.patch(
     "/completeProject/:projectId",
     currentUser,
     isHr,

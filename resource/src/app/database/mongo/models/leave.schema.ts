@@ -1,80 +1,55 @@
 import mongoose from "mongoose";
 import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
-interface clientDetailsAttrs {
+interface leaveDetailsAttrs {
+  employeeId: string;
   companyName: string;
-  clientCompany: string;
-  clientId: string;
-  clientName: string;
-  phone: string;
-  email: string;
-  address: string;
-  gender: string;
-  image: string;
+  reason: string;
+  leaveDuration: string;
+  startingData: Date;
 }
 
-interface clientDetailsModal extends mongoose.Model<clientDetailsDoc> {
-  build(attrs: clientDetailsAttrs): clientDetailsDoc;
+interface leaveDetailsModal extends mongoose.Model<leaveDetailsDoc> {
+  build(attrs: leaveDetailsAttrs): leaveDetailsDoc;
 }
 
-interface clientDetailsDoc extends mongoose.Document {
+interface leaveDetailsDoc extends mongoose.Document {
+  employeeId: string;
   companyName: string;
-  clientCompany: string;
-  clientId: string;
-  clientName: string;
-  phone: string;
-  email: string;
-  address: string;
-  gender: string;
-  image: string;
-  projects: any[];
-  updatedAt: string;
+  reason: string;
+  leaveDuration: string;
+  startingData: Date;
+  isAccepted: boolean;
   version: number;
 }
 
-const clientDetailsSchema = new mongoose.Schema(
+const leaveDetailsSchema = new mongoose.Schema(
   {
-    projects: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Project",
-      },
-    ],
+    employeeId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Employee",
+    },
+
     companyName: {
       type: String,
       required: true,
     },
-    clientCompany: {
+    reason: {
       type: String,
       required: true,
     },
-    clientId: {
-      type: String,
-      required: true,
-    },
-    clientName: {
-      type: String,
-      required: true,
-    },
-    phone: {
+    leaveDuration: {
       type: Number,
       required: true,
     },
-    email: {
-      type: String,
+    startingDate: {
+      type: Date,
       required: true,
     },
-    address: {
-      type: String,
+    isAccepted: {
+      type: Boolean,
       required: true,
-    },
-    gender: {
-      type: String,
-      required: true,
-    },
-    image: {
-      type: String,
-      required: true,
+      default: false,
     },
   },
   {
@@ -87,16 +62,16 @@ const clientDetailsSchema = new mongoose.Schema(
   }
 );
 
-clientDetailsSchema.set("versionKey", "version");
-clientDetailsSchema.plugin(updateIfCurrentPlugin);
+leaveDetailsSchema.set("versionKey", "version");
+leaveDetailsSchema.plugin(updateIfCurrentPlugin);
 
-clientDetailsSchema.statics.build = (attrs: clientDetailsAttrs) => {
-  return new ClientDetails(attrs);
+leaveDetailsSchema.statics.build = (attrs: leaveDetailsAttrs) => {
+  return new LeaveDetails(attrs);
 };
 
-const ClientDetails = mongoose.model<clientDetailsDoc, clientDetailsModal>(
-  "ClientDetails",
-  clientDetailsSchema
+const LeaveDetails = mongoose.model<leaveDetailsDoc, leaveDetailsModal>(
+  "LeaveDetails",
+  leaveDetailsSchema
 );
 
-export { ClientDetails };
+export { LeaveDetails };

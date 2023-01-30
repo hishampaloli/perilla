@@ -13,7 +13,6 @@ export class EmployeeCreatedListener extends Listener<EmployeeCreatedEvent> {
     const createdProfile = await createEmployee_UseCase(dependencies).execute(
       data
     );
-
     msg.ack();
   }
 }

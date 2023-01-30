@@ -1,3 +1,4 @@
 import employeeController from "./employee";
+import leaveController from "./leave";
 
-export { employeeController };
+export { employeeController, leaveController };

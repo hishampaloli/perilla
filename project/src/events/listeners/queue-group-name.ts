@@ -1,2 +1,2 @@
-export const queueGroupName = "user-service";
+export const queueGroupName = "project-service";
 

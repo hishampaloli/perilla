@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 import { app } from "./app";
 import { natsWrapper } from "./nats-wrapper";
 import { connectDB } from "./config/db";
+import { EmployeeAddedToProjectListener } from "./events/listeners/employee-added-to-project-event";
+import { EmployeeRemovedFromProjectListener } from "./events/listeners/employee-removed-from-project-event";
+import { TaskAssignedEventListener } from "./events/listeners/task-assigned-event";
+import { TaskStatusEventListener } from "./events/listeners/task-status-changed-event";
 
 const start = async () => {
   if (!process.env.JWT_KEY) {
@@ -35,11 +39,7 @@ const start = async () => {
   }
 
   try {
-    await natsWrapper.connect(
-      "perilla",
-      '123456',
-      "http://nats-srv:4222"
-    )
+    await natsWrapper.connect("perilla", "123456", "http://nats-srv:4222");
 
     natsWrapper.client.on("close", () => {
       console.log("NATS connetion closed!");
@@ -48,6 +48,11 @@ const start = async () => {
 
     process.on("SIGINT", () => natsWrapper.client.close());
     process.on("SIGTERM", () => natsWrapper.client.close());
+
+    new EmployeeAddedToProjectListener(natsWrapper.client).listen();
+    new EmployeeRemovedFromProjectListener(natsWrapper.client).listen();
+    new TaskAssignedEventListener(natsWrapper.client).listen();
+    new TaskStatusEventListener(natsWrapper.client).listen();
 
     connectDB();
   } catch (err) {

@@ -28,7 +28,7 @@ export = (dependencies: DepenteniciesData): any => {
       await new TaskStatusChangedPublisher(natsWrapper.client).publish({
         companyName: req.currentUser?.id?.companyName || "",
         employeeId: approvedTask.assignedTo,
-        message: `Your task was ${status ? 'accepeted' : 'rejected'} . Please check your task dashboard :)`,
+        message: `Your task was ${status === 'true' ? 'accepeted' : 'rejected'} . Please check your task dashboard :)`,
       });
 
       res.json({ data: approvedTask });
