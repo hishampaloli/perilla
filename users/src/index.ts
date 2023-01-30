@@ -6,6 +6,7 @@ import { EmployeeAddedToProjectListener } from "./events/listeners/employee-adde
 import { EmployeeRemovedFromProjectListener } from "./events/listeners/employee-removed-from-project-event";
 import { TaskAssignedEventListener } from "./events/listeners/task-assigned-event";
 import { TaskStatusEventListener } from "./events/listeners/task-status-changed-event";
+import { LeaveStatusChangedEventListener } from "./events/listeners/leave-status-changed-event";
 
 const start = async () => {
   if (!process.env.JWT_KEY) {
@@ -53,6 +54,7 @@ const start = async () => {
     new EmployeeRemovedFromProjectListener(natsWrapper.client).listen();
     new TaskAssignedEventListener(natsWrapper.client).listen();
     new TaskStatusEventListener(natsWrapper.client).listen();
+    new LeaveStatusChangedEventListener(natsWrapper.client).listen();
 
     connectDB();
   } catch (err) {
