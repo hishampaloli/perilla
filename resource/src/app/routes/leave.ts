@@ -16,6 +16,8 @@ export = (dependencies: any) => {
     applyLeaveController,
     getMyLeaveReportController,
     viewLeaveApplicationController,
+    getLeaveApplicationsController,
+    approveLeaveController,
   } = leaveController(dependencies);
 
   router.post(
@@ -34,10 +36,24 @@ export = (dependencies: any) => {
 
   router.get(
     "/viewLeave/:leaveId",
+    currentTenant,
     currentUser,
-    requireUserAuth,
+    requireTenantOrUser,
     viewLeaveApplicationController
   );
 
+  router.get(
+    "/getLeaveRequests",
+    currentTenant,
+    requireTenantAuth,
+    getLeaveApplicationsController
+  );
+
+  router.patch(
+    "/approveLeave/:leaveId",
+    currentTenant,
+    requireTenantAuth,
+    approveLeaveController
+  );
   return router;
 };

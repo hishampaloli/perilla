@@ -13,12 +13,14 @@ export const viewLeaveApplication_UseCase = (
   const execute = (
     companyName: string,
     leaveId: string,
-    employeeId: string
+    employeeId: string,
+    isAdmin: string
   ) => {
     return leaveRepository.viewLeaveApplication(
       companyName,
       leaveId,
-      employeeId
+      employeeId,
+      isAdmin
     );
   };
   return {

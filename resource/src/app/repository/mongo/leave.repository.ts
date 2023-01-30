@@ -22,9 +22,11 @@ export = {
   },
 
   getLeaveApplications: async (companyName: string, isAccepted: boolean) => {
-    const mongooseObj = LeaveDetails.aggregate([
-      { $match: { $and: [{ companyName }, { isAccepted }] } },
-    ]);
+    console.log(companyName, isAccepted);
+
+    const mongooseObj = LeaveDetails.find({
+      $and: [{ companyName }, { isAccepted }],
+    });
     return mongooseObj;
   },
 
@@ -34,6 +36,8 @@ export = {
     employeeId: string,
     isAdmin: string
   ) => {
+    console.log(companyName, leaveId, employeeId, isAdmin);
+
     const mongooseObj = !isAdmin
       ? LeaveDetails.findOne({
           $and: [{ companyName }, { _id: leaveId }, { employeeId }],
@@ -49,6 +53,8 @@ export = {
     leaveId: string,
     isAccepted: boolean
   ) => {
+    console.log(isAccepted);
+
     const mongooseObj = LeaveDetails.findOneAndUpdate(
       {
         $and: [{ companyName }, { leaveId }],

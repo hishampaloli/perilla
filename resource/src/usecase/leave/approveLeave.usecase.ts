@@ -8,8 +8,12 @@ export const approveLeave_UseCase = (dependencies: DepenteniciesData) => {
   if (!leaveRepository)
     throw new Error("The leave repository should be dependencie");
 
-  const execute = (user: object) => {
-    return leaveRepository.approveLeave(user);
+  const execute = (
+    companyName: string,
+    leaveId: string,
+    isAccepted: boolean
+  ) => {
+    return leaveRepository.approveLeave(companyName, leaveId, isAccepted);
   };
   return {
     execute,
