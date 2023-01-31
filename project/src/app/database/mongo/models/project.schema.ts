@@ -27,6 +27,7 @@ interface ProjectDoc extends mongoose.Document {
   team: any[];
   createdBy: string;
   status: string;
+  id: string;
 }
 
 const projectSchema = new mongoose.Schema(

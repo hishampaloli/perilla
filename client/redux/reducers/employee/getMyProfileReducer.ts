@@ -6,6 +6,7 @@ export const getMyProfileReducer = (
   state: GetMyProfileState = { data: null, loading: false, error: null },
   action: GetMyProfileAction
 ): GetMyProfileState => {
+
   switch (action.type) {
     case EmployeeActionsTypes.GET_MYPROFILE_REQUETS:
       return {

@@ -22,7 +22,10 @@ export = {
           $and: [{ status }, { companyName }],
         });
 
-    return mongooseObj;
+    await Project.populate(mongooseObj, { path: "team" });
+    await Project.populate(mongooseObj, { path: "createdBy" });
+
+    return mongooseObj.reverse();
   },
 
   getSingleProject: async (id: string) => {

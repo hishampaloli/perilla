@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { GetMyProfileState } from "../../models/employee";
 import { GetEmployeeProfileState } from "../../models/profile";
+import { AuthState } from "../../models/tenants";
 import style from "../../styles/profile.module.scss";
 import BankDetailsComponent from "./BankDetailsComponent";
 import PersonalDataComponent from "./PersonalDataComponent";
@@ -24,6 +25,8 @@ const ProfileNav = ({
     (state) => state.myProfile
   );
 
+  const tenant: AuthState = useTypedSelector((state) => state.user);
+
   const employeeData = data?.data ? data.data : employeeProfile?.data?.data;
   const [nav, setNav] = useState<string>("profile");
 
@@ -36,25 +39,34 @@ const ProfileNav = ({
         >
           Profile
         </h2>
-        <h2
-          className={nav === "project" ? style.isActive : ""}
-          onClick={() => setNav("project")}
-        >
-          Projects
-        </h2>
-        <h2
-          className={nav === "bank" ? style.isActive : ""}
-          onClick={() => setNav("bank")}
-        >
-          Bank detail
-        </h2>
 
-        <h2
-          className={nav === "salary" ? style.isActive : ""}
-          onClick={() => setNav("salary")}
-        >
-          Salary Details
-        </h2>
+        {data?.data.role !== "hr" && (
+          <h2
+            className={nav === "project" ? style.isActive : ""}
+            onClick={() => setNav("project")}
+          >
+            Projects
+          </h2>
+        )}
+
+        {(employeeProfile.data?.data.email || tenant.data?.data.email) 
+           && (
+            <>
+              {" "}
+              <h2
+                className={nav === "bank" ? style.isActive : ""}
+                onClick={() => setNav("bank")}
+              >
+                Bank detail
+              </h2>
+              <h2
+                className={nav === "salary" ? style.isActive : ""}
+                onClick={() => setNav("salary")}
+              >
+                Salary Details
+              </h2>
+            </>
+          )}
       </div>
 
       <div>

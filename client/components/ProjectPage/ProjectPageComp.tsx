@@ -3,20 +3,13 @@ import style from "../../styles/projectPage.module.scss";
 import SearchComp from "../SegemanticComponents/SearchComp";
 import CreateProjectComponent from "./CreateProjectComponent";
 import ProjectListComponent from "./ProjectListComponent";
+import ProjectSearchComponent from "./ProjectSearchComponent";
 
 const ProjectPageComp = () => {
-  const [search, setSearch] = useState<string>("");
-  
-  const onSumbit = () => {};
-
   return (
     <div className={style.projectMain}>
       <CreateProjectComponent />
-      <SearchComp
-        placeholder="Project name"
-        setClick={onSumbit}
-        setKeys={setSearch}
-      />
+      <ProjectSearchComponent />
       <ProjectListComponent />
     </div>
   );

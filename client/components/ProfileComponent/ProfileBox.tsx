@@ -25,7 +25,7 @@ const ProfileBox = ({ setEdit, setPass }: { setEdit: any; setPass: any }) => {
   const user: AuthState = useTypedSelector((state) => state.user);
 
   const employeeData = data?.data ? data.data : employeeProfile?.data?.data;
-  console.log(employeeData);
+  
   
   const { removeEmployee } = useActions();
 

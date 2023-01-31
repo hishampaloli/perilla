@@ -8,7 +8,7 @@ const employee = () => {
   return (
     <AdminLayout title="Profile">
       <SubHeader text="Profile" />
-      <ProfileComponent />
+      <ProfileComponent location="all" />
     </AdminLayout>
   );
 };

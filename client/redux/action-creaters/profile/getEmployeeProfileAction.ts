@@ -2,7 +2,7 @@ import { Dispatch } from "react";
 import buildClient from "../../../api/buildClient";
 import { EmployeeProfileDataObj } from "../../../models/profile";
 import { GetEmployeeProfileAction } from "../../action-models";
-import { ProfileActionsTypes } from "../../constants";
+import { EmployeeActionsTypes, ProfileActionsTypes } from "../../constants";
 import { config } from "../../constants/config";
 
 export const getEmployeeProfileData =
@@ -19,11 +19,15 @@ export const getEmployeeProfileData =
       );
 
       console.log(data);
-      console.log("90909()()()()()");
 
       dispatch({
         type: ProfileActionsTypes.GET_EMPLOYEE_PROFILE_SUCCESS,
         payload: data,
+      });
+
+      dispatch({
+        type: EmployeeActionsTypes.GET_MYPROFILE_FAIL,
+        error: [],
       });
     } catch (error: any) {
       dispatch({

@@ -30,6 +30,7 @@ interface clientDetailsDoc extends mongoose.Document {
   projects: any[];
   updatedAt: string;
   version: number;
+  id: string;
 }
 
 const clientDetailsSchema = new mongoose.Schema(

@@ -47,11 +47,10 @@ export = (dependencies: DepenteniciesData): any => {
       if (!createdProject) {
         throw new BadRequestError("Something went wrong!");
       }
-      
 
       res.json({ data: createdProject });
     } catch (error: any) {
-      throw new Error(error);
+      throw new BadRequestError(error);
     }
   };
   return createProject;

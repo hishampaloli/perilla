@@ -16,6 +16,7 @@ const PersonalInformationComponents = ({
     (state) => state.myProfile
   );
 
+  
   return (
     <div className={style.peronalInfo}>
       {data?.data?.email && (

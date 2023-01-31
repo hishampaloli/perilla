@@ -2,10 +2,7 @@ import express, { Request, Response } from "express";
 import { json } from "body-parser";
 import cors from "cors";
 import "express-async-errors";
-import {
-  ErrorHandler,
-  NotFoundError,
-} from "@hr-management/common/build";
+import { ErrorHandler, NotFoundError } from "@hr-management/common/build";
 import { routes } from "./app/routes";
 import cookieSession from "cookie-session";
 import depentencies from "./config/depentencies";
@@ -21,10 +18,6 @@ app.use(
 );
 
 app.use("/api/project", routes(depentencies));
-
-
-
-
 
 app.all("*", async (req, res) => {
   throw new NotFoundError();

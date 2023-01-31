@@ -4,15 +4,37 @@ import style from "../../styles/addForm.module.scss";
 import CancelIcon from "@mui/icons-material/Cancel";
 import SubmitButton from "../AddFormComponent/SubmitButton";
 import AddClient from "./AddClient";
+import { useActions } from "../../hooks/useAction";
+import { toast } from "react-hot-toast";
 
 const ProjectForm = ({ setEdit }: { setEdit: any }) => {
   const [projectName, setProjectName] = useState<string>("");
-  const [projectDescritpion, setProjectDescription] = useState<string>("");
-  const [priority, setPriority] = useState<string>("");
-  const [rate, setRate] = useState<number>();
-  const [cleint, setClient] = useState();
-  const [addClient, setAddClient] = useState<boolean>(false);
+  const [projectDescription, setProjectDescription] = useState<string>("");
+  const [priority, setPriority] = useState<string>("medium");
+  const [rate, setRate] = useState<number>(0);
+  const [client, setClient] = useState<any>();
+  const [startDate, setStartDate] = useState<Date>(new Date());
 
+  const { createProjects } = useActions();
+
+  const handleSubmit = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    const res = await createProjects("sd", {
+      client,
+      priority,
+      projectDescription,
+      projectName,
+      rate,
+      startDate,
+    });
+
+    if (`${res}` === "success") {
+      toast.success("Successfully Updated ");
+    } else {
+      toast.error(`${res}`);
+    }
+  };
   return (
     <div className={style.addFormMain}>
       {" "}
@@ -20,7 +42,7 @@ const ProjectForm = ({ setEdit }: { setEdit: any }) => {
         <CancelIcon />
       </i>
       <h1>Edit Profile</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className={style.InputGroup}>
           <AddInputComp
             value={projectName}
@@ -39,31 +61,35 @@ const ProjectForm = ({ setEdit }: { setEdit: any }) => {
         <div className={style.InputGroup}>
           <div className={style.selectDiv}>
             <label htmlFor="">Priority</label>
-            <select name="cars" id="cars">
-              <option className={style.options} value="volvo">
-                Volvo
-              </option>
+            <select onChange={(e) => setPriority(e.target.value)}>
               <option value="high">High</option>
-              <option value="medium">Medium</option>
+              <option selected value="medium">
+                Medium
+              </option>
               <option value="low">Low</option>
             </select>
           </div>
 
           <AddInputComp
-            value={rate}
+            value={startDate}
             text="Starting Date"
             type="date"
-            handler={setRate}
+            handler={setStartDate}
           />
         </div>
 
         <div className={style.textArea}>
           <label htmlFor="">Project Description</label>
-          <textarea name="" id="" />
+          <textarea
+            value={projectDescription}
+            onChange={(e) => setProjectDescription(e.target.value)}
+            name=""
+            id=""
+          />
         </div>
 
         <div>
-            <label htmlFor="">Add Client</label>
+          <label htmlFor="">Add Client</label>
           <AddClient setClient={setClient} />
         </div>
         <SubmitButton submit={""} />

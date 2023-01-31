@@ -21,7 +21,9 @@ const PersonalDataComponent = ({
     (state) => state.myProfile
   );
 
-  const employeeData = data?.data ? data.data : employeeProfile?.data?.data;
+  const employeeData = employeeProfile?.data?.data
+    ? employeeProfile?.data?.data
+    : data?.data;
 
   return (
     <div className={style.personalDataMain}>
@@ -30,7 +32,7 @@ const PersonalDataComponent = ({
         personalData={employeeData?.personalInformation!}
       />
       <EmergencyContactComponent
-      setEditEmergencyContact={setEditEmergencyContact}
+        setEditEmergencyContact={setEditEmergencyContact}
         emergencyContact={employeeData?.emergencyContact!}
       />
     </div>

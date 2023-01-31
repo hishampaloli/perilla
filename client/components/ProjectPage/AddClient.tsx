@@ -1,14 +1,29 @@
 import React, { useState } from "react";
 import style from "../../styles/projectPage.module.scss";
 import CancelIcon from "@mui/icons-material/Cancel";
+import { useActions } from "../../hooks/useAction";
+import { AllClientsState, ClientData } from "../../models/admin";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const AddClient = ({ setClient }: { setClient: any }) => {
   const [edit, setEdit] = useState<boolean>(false);
   const [client, addClient] = useState<any>();
+  const { data }: AllClientsState = useTypedSelector(
+    (state) => state.allClients
+  );
+
+  console.log(data);
+
+  const { getAllClients } = useActions();
+
+  const handleClick = () => {
+    setEdit(true);
+    getAllClients("");
+  };
 
   return (
     <div className={style.addClient}>
-      <p onClick={() => setEdit(true)} className={style.addClientBtn}>
+      <p onClick={handleClick} className={style.addClientBtn}>
         {client ? (
           <div className={style.selecetdClient}>
             <img src={client.img} alt="" />
@@ -25,22 +40,24 @@ const AddClient = ({ setClient }: { setClient: any }) => {
           <i style={{ color: "white" }} onClick={() => setEdit(false)}>
             <CancelIcon />
           </i>
-          <div
-            onClick={() => {
-              addClient({
-                img: "https://www.gravatar.com/avatar/362a0065dfed2fc6718cb1a6b39522b4?d=retro",
-                name: "Hisham paloli",
-              });
-              setEdit(false);
-            }}
-            className={style.clientlist}
-          >
-            <img
-              src="https://www.gravatar.com/avatar/362a0065dfed2fc6718cb1a6b39522b4?d=retro"
-              alt=""
-            />
-            <p>names cjsi</p>
-          </div>
+          {data?.data.map((el: any) => {
+            return (
+              <div
+                onClick={() => {
+                  addClient({
+                    img: el?.image,
+                    name: el?.clientName,
+                  });
+                  setClient(el?._id);
+                  setEdit(false);
+                }}
+                className={style.clientlist}
+              >
+                <img src={el?.image} alt="" />
+                <p>{el?.clientName}</p>
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

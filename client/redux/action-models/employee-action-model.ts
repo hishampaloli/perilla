@@ -2,6 +2,7 @@ import { EmployeeAuthData } from "../../models/employee";
 import { EmployeeProfileDataObj } from "../../models/profile";
 import { ErrorState } from "../../models/tenants";
 import { EmployeeActionsTypes } from "../constants";
+import { GetEmployeeProfileFailAction } from "./profile-action-models";
 
 interface GetEmployeeLoginOtpRequestAction {
   type: EmployeeActionsTypes.GET_OTP_REQUETS;
@@ -59,7 +60,7 @@ export interface GetMyProfileSuccessAction {
   payload: EmployeeProfileDataObj;
 }
 
-interface GetMyProfileFailAction {
+export interface GetMyProfileFailAction {
   type: EmployeeActionsTypes.GET_MYPROFILE_FAIL;
   error: ErrorState[];
 }
@@ -67,7 +68,8 @@ interface GetMyProfileFailAction {
 export type GetMyProfileAction =
   | GetMyProfileRequestAction
   | GetMyProfileSuccessAction
-  | GetMyProfileFailAction;
+  | GetMyProfileFailAction
+  | GetEmployeeProfileFailAction;
 
 interface SendbankDetailsSuccessAction {
   type: EmployeeActionsTypes.SENT_BANKDETAILS_SUCCESS;

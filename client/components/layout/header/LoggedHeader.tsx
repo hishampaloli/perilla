@@ -33,7 +33,9 @@ const LoggedHeader = ({
   const { GetMyNotifications } = useActions();
 
   useEffect(() => {
-    GetMyNotifications("");
+    if (data?.phone) {
+      GetMyNotifications("");
+    }
   }, []);
 
   const router = useRouter();

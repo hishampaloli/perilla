@@ -14,7 +14,7 @@ import EditClientFormComponent from "./EditProfileComponent";
 import ProfileBox from "./ProfileBox";
 import ProfileNav from "./ProfileNav";
 
-const ProfileComponent = () => {
+const ProfileComponent = ({ location }: { location: string }) => {
   const router = useRouter();
 
   const { data }: EmployeeAuthState = useTypedSelector(
@@ -37,9 +37,8 @@ const ProfileComponent = () => {
 
   useEffect(() => {
     if (router.isReady) {
-      if (data?.email) {
+      if (location === "my") {
         getMyProfile("ds");
-        console.log("me profisle");
       } else {
         getEmployeeProfileData("sd", employee);
       }

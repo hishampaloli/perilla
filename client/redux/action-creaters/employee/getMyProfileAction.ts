@@ -1,7 +1,7 @@
 import { config } from "../../constants/config";
 import buildClient from "../../../api/buildClient";
 import { GetMyProfileAction } from "../../action-models";
-import { EmployeeActionsTypes } from "../../constants";
+import { EmployeeActionsTypes, ProfileActionsTypes } from "../../constants";
 import { Dispatch } from "react";
 import { EmployeeDataObj } from "../../../models/admin";
 import { EmployeeProfileDataObj } from "../../../models/profile";
@@ -21,6 +21,11 @@ export const getMyProfile =
       dispatch({
         type: EmployeeActionsTypes.GET_MYPROFILE_SUCCESS,
         payload: data,
+      });
+
+      dispatch({
+        type: ProfileActionsTypes.GET_EMPLOYEE_PROFILE_FAIL,
+        error: [],
       });
 
       return "success";
