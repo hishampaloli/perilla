@@ -24,7 +24,7 @@ export = (dependencies: DepenteniciesData): any => {
 
       if (!userPresent) throw new BadRequestError("Invalid credentials");
 
-      const otpSend = await getTwilioOtp_UseCase(dependencies).execute(phone);
+      // const otpSend = await getTwilioOtp_UseCase(dependencies).execute(phone);
 
       // FIXME:
       // if (!otpSend) throw new BadRequestError("Oops cannot send OTP ");

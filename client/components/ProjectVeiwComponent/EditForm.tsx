@@ -1,47 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddInputComp from "../AddFormComponent/AddInputComp";
 import style from "../../styles/addForm.module.scss";
 import CancelIcon from "@mui/icons-material/Cancel";
 import SubmitButton from "../AddFormComponent/SubmitButton";
-import AddClient from "./AddClient";
+import AddClient from "../ProjectPage/AddClient";
 import { useActions } from "../../hooks/useAction";
 import { toast } from "react-hot-toast";
+import { GetSingleProjectState } from "../../models/project";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { EditProjectState } from "../../models/project";
-import FixedSpinner from "../layout/FixedSpinner";
 
-const ProjectForm = ({ setEdit }: { setEdit: any }) => {
+const EditProjectForm = ({ setEdit }: { setEdit: any }) => {
   const [projectName, setProjectName] = useState<string>("");
   const [projectDescription, setProjectDescription] = useState<string>("");
   const [priority, setPriority] = useState<string>("medium");
   const [rate, setRate] = useState<number>(0);
-  const [client, setClient] = useState<any>();
-  const [startDate, setStartDate] = useState<Date>(new Date());
-
-  const { loading }: EditProjectState = useTypedSelector(
-    (state) => state.createProject
+  const [startDate, setStartDate] = useState<any>();
+  const { data }: GetSingleProjectState = useTypedSelector(
+    (state) => state.singleProject
   );
+  const projectData = data?.data;
 
-  const { createProjects } = useActions();
+  const { editProjects } = useActions();
+  console.log(data?.data?.id);
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    const res = await createProjects("sd", {
-      client,
-      priority,
-      projectDescription,
-      projectName,
-      rate,
-      startDate,
-    });
+    const res = await editProjects(
+      "sd",
+      {
+        priority,
+        projectDescription,
+        projectName,
+        rate,
+        startDate,
+      },
+      projectData?.id!
+    );
 
     if (`${res}` === "success") {
       toast.success("Successfully Updated ");
+      setEdit(false);
     } else {
       toast.error(`${res}`);
     }
   };
+
+  useEffect(() => {
+    setProjectName(projectData?.projectName!);
+    setProjectDescription(projectData?.projectDescription!);
+    setPriority(projectData?.priority!);
+    setRate(projectData?.rate!);
+    setStartDate(projectData?.startDate);
+  }, []);
+
   return (
     <div className={style.addFormMain}>
       {" "}
@@ -68,11 +80,12 @@ const ProjectForm = ({ setEdit }: { setEdit: any }) => {
         <div className={style.InputGroup}>
           <div className={style.selectDiv}>
             <label htmlFor="">Priority</label>
-            <select onChange={(e) => setPriority(e.target.value)}>
+            <select
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+            >
               <option value="high">High</option>
-              <option selected value="medium">
-                Medium
-              </option>
+              <option value="medium">Medium</option>
               <option value="low">Low</option>
             </select>
           </div>
@@ -95,15 +108,10 @@ const ProjectForm = ({ setEdit }: { setEdit: any }) => {
           />
         </div>
 
-        <div>
-          <label htmlFor="">Add Client</label>
-          <AddClient setClient={setClient} />
-        </div>
         <SubmitButton submit={""} />
       </form>
-      {loading && <FixedSpinner />}
     </div>
   );
 };
 
-export default ProjectForm;
+export default EditProjectForm;

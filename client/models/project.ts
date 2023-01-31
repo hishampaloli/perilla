@@ -34,6 +34,14 @@ export interface CreateProjectData {
   rate: number;
 }
 
+export interface EditProjectData {
+  projectName: string;
+  startDate: Date;
+  priority: string;
+  projectDescription: string;
+  rate: number;
+}
+
 export interface ProjectDataArr {
   data: ProjectData[];
 }
@@ -49,6 +57,32 @@ export interface GetAllProjectsState {
 }
 
 export interface CreateProjectsState {
+  loading: boolean;
+  error: ErrorState[] | null;
+}
+
+export interface EditProjectState {
+  loading: boolean;
+  error: ErrorState[] | null;
+}
+
+export interface AddTeamToProjectState {
+  loading: boolean;
+  error: ErrorState[] | null;
+}
+
+export interface RemoveTeamFromProjectState {
+  loading: boolean;
+  error: ErrorState[] | null;
+}
+
+export interface GetSingleProjectState {
+  loading: boolean;
+  data: ProjectDataObj | null;
+  error: ErrorState[] | null;
+}
+
+export interface CompleteProjectState {
   loading: boolean;
   error: ErrorState[] | null;
 }

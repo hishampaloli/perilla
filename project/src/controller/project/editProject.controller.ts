@@ -13,13 +13,14 @@ export = (dependencies: DepenteniciesData): any => {
     next: NextFunction
   ) => {
     try {
-      const { projectName, priority, projectDescription, rate } = req.body;
+      const { projectName, priority, projectDescription, rate, startDate } =
+        req.body;
       let userId = req.currentUser?.id.id;
 
       const projectData = await editProject_UseCase(dependencies).execute(
         req.params.projectId,
         userId,
-        { projectName, priority, projectDescription, rate }
+        { projectName, priority, projectDescription, rate, startDate }
       );
 
       if (!projectData) {

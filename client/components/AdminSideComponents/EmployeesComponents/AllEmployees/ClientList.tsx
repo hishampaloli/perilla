@@ -14,6 +14,8 @@ const ClientList = ({ type }: { type: string }) => {
   const { data, loading }: AllClientsState = useTypedSelector(
     (state) => state.allClients
   );
+  console.log(data);
+  
 
   useEffect(() => {
     if (type === "Client") {
@@ -29,7 +31,7 @@ const ClientList = ({ type }: { type: string }) => {
           return (
             <EmployeeBox
               type="client"
-              id={el?.id!}
+              id={el?._id!}
               companyName={el?.companyName!}
               phone={el?.phone!}
               key={el?.phone}

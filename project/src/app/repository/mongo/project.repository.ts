@@ -45,6 +45,9 @@ export = {
       }
     );
 
+    await Project.populate(mongooseObj, { path: "team" });
+    await Project.populate(mongooseObj, { path: "createdBy" });
+
     return mongooseObj;
   },
 
@@ -63,6 +66,9 @@ export = {
         runValidators: true,
       }
     );
+
+    await Project.populate(mongooseObj, { path: "team" });
+    await Project.populate(mongooseObj, { path: "createdBy" });
     return mongooseObj;
   },
 

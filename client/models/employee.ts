@@ -12,7 +12,7 @@ export interface GetEmployeeOtpVerificationState {
 }
 
 export interface EmployeeAuthData {
-  _id: string;
+  id: string;
   email: string;
   name: string;
   phone: number;

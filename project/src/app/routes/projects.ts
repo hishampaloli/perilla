@@ -72,7 +72,7 @@ export = (dependencies: any) => {
     addTeamToProjectController
   );
 
-  router.delete(
+  router.put(
     "/removeTeam/:projectId",
     currentUser,
     isHr,

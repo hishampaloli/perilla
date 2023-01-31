@@ -40,7 +40,7 @@ const ProfileNav = ({
           Profile
         </h2>
 
-        {data?.data.role !== "hr" && (
+        {data?.data?.role !== "hr" && (
           <h2
             className={nav === "project" ? style.isActive : ""}
             onClick={() => setNav("project")}

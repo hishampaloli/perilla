@@ -37,6 +37,6 @@ export const createProjects =
       });
       console.log(error);
 
-      return error?.response?.data?.error?.reason;
+      return error?.response?.data?.error?.msg;
     }
   };

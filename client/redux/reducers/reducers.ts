@@ -37,7 +37,14 @@ import {
   sendBankDetailsReducer,
 } from "./employee";
 
-import { createProjectsReducer, getAllProjectsReducer } from "./project";
+import {
+  addTeamToProjectsReducer,
+  createProjectsReducer,
+  editProjectsReducer,
+  getAllProjectsReducer,
+  getSingleProjectsReducer,
+  removeTeamFromProjectsReducer,
+} from "./project";
 import { employeeListLayoutReducer } from "./custom";
 
 const reducers = combineReducers({
@@ -69,6 +76,10 @@ const reducers = combineReducers({
   employeeListLayout: employeeListLayoutReducer,
   allProjects: getAllProjectsReducer,
   createProject: createProjectsReducer,
+  editProject: editProjectsReducer,
+  addTeamToProject: addTeamToProjectsReducer,
+  removeTeamFromProject: removeTeamFromProjectsReducer,
+  singleProject: getSingleProjectsReducer,
 });
 
 export default reducers;

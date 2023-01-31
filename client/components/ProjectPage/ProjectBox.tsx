@@ -7,12 +7,15 @@ import Link from "next/link";
 const ProjectBox = ({ projectData }: { projectData: ProjectData }) => {
   return (
     <div className={style.projectBox}>
-      <h2>{projectData?.projectName}</h2>
-      <p className={style.prP}>{projectData?.projectDescription}</p>
+      <Link href={`/${projectData.companyName}/project/${projectData.id}`}>
+        <h2>{projectData?.projectName}</h2>
+      </Link>
+
+      <p className={style.prP}>{projectData?.projectDescription.slice(0,100)}...</p>
 
       <div>
         <strong>Priority :</strong>{" "}
-        <p>
+        <p style={{ marginTop: "5px" }}>
           <span
             style={{
               color:
@@ -21,6 +24,7 @@ const ProjectBox = ({ projectData }: { projectData: ProjectData }) => {
                   : projectData.priority === "low"
                   ? "green"
                   : "#ff9b44",
+              transform: "scale(.7)",
             }}
           >
             <RadioButtonCheckedIcon />
@@ -31,7 +35,7 @@ const ProjectBox = ({ projectData }: { projectData: ProjectData }) => {
 
       <div>
         <strong>Status :</strong>{" "}
-        <p>
+        <p style={{ marginTop: "5px" }}>
           <span
             style={{
               color:
@@ -40,6 +44,7 @@ const ProjectBox = ({ projectData }: { projectData: ProjectData }) => {
                   : projectData.status === "completed"
                   ? "green"
                   : "red",
+              transform: "scale(.7)",
             }}
           >
             <RadioButtonCheckedIcon />

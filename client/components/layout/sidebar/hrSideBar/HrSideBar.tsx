@@ -12,6 +12,8 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import HouseboatIcon from "@mui/icons-material/Houseboat";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ChatIcon from "@mui/icons-material/Chat";
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import Groups3Icon from "@mui/icons-material/Groups3";
 import LinkDiv from "../LinkDiv";
 
 const HrSideBar = () => {
@@ -35,6 +37,13 @@ const HrSideBar = () => {
         link="profile"
         icon={<AccountCircleIcon />}
       />
+      <LinkDiv
+        type="admin"
+        text="All Employees"
+        link="allEmployees"
+        icon={<PersonOutlineIcon />}
+      />
+      <LinkDiv type="hr" text="Clients" link="clients" icon={<Groups3Icon />} />
       <LinkDiv
         type="hr"
         text="My Tasks"

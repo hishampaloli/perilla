@@ -33,6 +33,7 @@ interface EmployeeDoc extends mongoose.Document {
   bankDetails: string;
   companyName: string;
   emergencyContact: string;
+  id: string;
   taskCompleted: string[];
   projectCompleted: string[];
   salaryDetails: string;

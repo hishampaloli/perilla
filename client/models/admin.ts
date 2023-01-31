@@ -8,6 +8,7 @@ export interface EmployeeData {
   joiningData: Date;
   designation: string;
   isBlocked: boolean;
+  _id: string;
   bankDetaild: string;
   emergencyContact: string;
   personalInformation: string;
@@ -44,6 +45,7 @@ export interface ClientData {
   gender: string;
   image?: string;
   id?: string;
+  _id?: string;
 }
 
 export interface ClientDataArr {
