@@ -5,62 +5,57 @@ import { AuthState } from "../../../../models/tenants";
 import style from "../../../../styles/sideBar.module.scss";
 
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import LinkDiv from "../LinkDiv";
+
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import SplitscreenIcon from "@mui/icons-material/Splitscreen";
 import PaymentIcon from "@mui/icons-material/Payment";
 import HouseboatIcon from "@mui/icons-material/Houseboat";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ChatIcon from "@mui/icons-material/Chat";
+import LinkDiv from "../LinkDiv";
 
-const EmployeeSideBar = () => {
-  const { data }: AuthState = useTypedSelector((state) => state.user);
+const HrSideBar = () => {
   return (
     <div className={style.adminSideBarMain}>
       <LinkDiv
-        type="employee"
+        type="hr"
         text="Dash Board"
         link="dashboard"
         icon={<DashboardIcon />}
+      />{" "}
+      <LinkDiv
+        type="hr"
+        text="Projects"
+        link="projects"
+        icon={<RocketLaunchIcon />}
       />
       <LinkDiv
-        type="employee"
+        type="hr"
         text="Profile"
         link="profile"
         icon={<AccountCircleIcon />}
       />
       <LinkDiv
-        type="employee"
+        type="hr"
         text="My Tasks"
         link="hrs"
         icon={<SplitscreenIcon />}
       />{" "}
       <LinkDiv
-        type="employee"
-        text="My Projects"
-        link="projects"
-        icon={<RocketLaunchIcon />}
-      />
-      <LinkDiv
-        type="employee"
+        type="hr"
         text="Leaves"
         link="holidays"
         icon={<HouseboatIcon />}
       />
       <LinkDiv
-        type="employee"
+        type="hr"
         text="My Payrolls"
         link="payrolls"
         icon={<PaymentIcon />}
       />
-      <LinkDiv
-        type="employee"
-        text="Chats"
-        link="payrolls"
-        icon={<ChatIcon />}
-      />
+      <LinkDiv type="hr" text="Chats" link="payrolls" icon={<ChatIcon />} />
     </div>
   );
 };
 
-export default EmployeeSideBar;
+export default HrSideBar;

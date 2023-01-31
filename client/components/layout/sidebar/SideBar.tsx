@@ -7,6 +7,7 @@ import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { EmployeeAuthState } from "../../../models/employee";
 import EmployeeSideBar from "./employeeSideBar/EmployeeSideBar";
+import HrSideBar from "./hrSideBar/HrSideBar";
 
 const SideBar = ({ mainSmall }: { mainSmall: any }) => {
   const { data }: AuthState = useTypedSelector((state) => state.user);
@@ -27,7 +28,8 @@ const SideBar = ({ mainSmall }: { mainSmall: any }) => {
       </button>
 
       {data?.data.companyName && <AdminSideBar />}
-      {employee.data?.email && <EmployeeSideBar />}
+      {employee.data?.role === "employees" && <EmployeeSideBar />}
+      {employee.data?.role === "hr" && <HrSideBar />}
     </div>
   );
 };

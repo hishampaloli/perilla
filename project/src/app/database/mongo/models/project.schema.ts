@@ -46,7 +46,6 @@ const projectSchema = new mongoose.Schema(
     startDate: {
       type: Date,
       required: true,
-      default: Date(),
     },
     priority: {
       type: String,
