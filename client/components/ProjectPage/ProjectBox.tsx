@@ -7,11 +7,13 @@ import Link from "next/link";
 const ProjectBox = ({ projectData }: { projectData: ProjectData }) => {
   return (
     <div className={style.projectBox}>
-      <Link href={`/${projectData.companyName}/project/${projectData.id}`}>
+      <Link href={`/${projectData?.companyName}/project/${projectData?.id}`}>
         <h2>{projectData?.projectName}</h2>
       </Link>
 
-      <p className={style.prP}>{projectData?.projectDescription.slice(0,100)}...</p>
+      <p className={style.prP}>
+        {projectData?.projectDescription.slice(0, 100)}...
+      </p>
 
       <div>
         <strong>Priority :</strong>{" "}
@@ -19,9 +21,9 @@ const ProjectBox = ({ projectData }: { projectData: ProjectData }) => {
           <span
             style={{
               color:
-                projectData.priority === "high"
+                projectData?.priority === "high"
                   ? "red"
-                  : projectData.priority === "low"
+                  : projectData?.priority === "low"
                   ? "green"
                   : "#ff9b44",
               transform: "scale(.7)",
@@ -39,9 +41,9 @@ const ProjectBox = ({ projectData }: { projectData: ProjectData }) => {
           <span
             style={{
               color:
-                projectData.status === "pending"
+                projectData?.status === "pending"
                   ? "#ff9b44"
-                  : projectData.status === "completed"
+                  : projectData?.status === "completed"
                   ? "green"
                   : "red",
               transform: "scale(.7)",
@@ -62,11 +64,9 @@ const ProjectBox = ({ projectData }: { projectData: ProjectData }) => {
         <strong>Teams: </strong>
         <div>
           {projectData.team.map((el: EmployeeData) => {
-            console.log(el.companyName);
-
             return (
-              <Link href={`/${el.companyName}/profile/employee/${el.phone}`}>
-                <img src={el.image} alt="" />
+              <Link href={`/${el?.companyName}/profile/employee/${el?.phone}`}>
+                <img src={el?.image} alt="" />
               </Link>
             );
           })}{" "}
@@ -77,9 +77,9 @@ const ProjectBox = ({ projectData }: { projectData: ProjectData }) => {
         <strong>Created By :</strong>
         <div>
           <Link
-            href={`/${projectData.companyName}/profile/employee/${projectData.createdBy.phone}`}
+            href={`/${projectData?.companyName}/profile/employee/${projectData?.createdBy?.phone}`}
           >
-            <img src={projectData.createdBy.image} alt="" />
+            <img src={projectData?.createdBy?.image} alt="" />
           </Link>
         </div>
       </div>

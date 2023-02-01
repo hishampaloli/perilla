@@ -4,8 +4,10 @@ import { GetMyProfileState } from "../../models/employee";
 import { GetEmployeeProfileState } from "../../models/profile";
 import { AuthState } from "../../models/tenants";
 import style from "../../styles/profile.module.scss";
+import ProjectListComponent from "../ProjectPage/ProjectListComponent";
 import BankDetailsComponent from "./BankDetailsComponent";
 import PersonalDataComponent from "./PersonalDataComponent";
+import ProjectBox from "./ProjectBox";
 import SalaryDetailsComponent from "./SalaryDetailsComponent";
 
 const ProfileNav = ({
@@ -49,24 +51,23 @@ const ProfileNav = ({
           </h2>
         )}
 
-        {(employeeProfile.data?.data.email || tenant.data?.data.email) 
-           && (
-            <>
-              {" "}
-              <h2
-                className={nav === "bank" ? style.isActive : ""}
-                onClick={() => setNav("bank")}
-              >
-                Bank detail
-              </h2>
-              <h2
-                className={nav === "salary" ? style.isActive : ""}
-                onClick={() => setNav("salary")}
-              >
-                Salary Details
-              </h2>
-            </>
-          )}
+        {(employeeProfile.data?.data.email || tenant.data?.data.email) && (
+          <>
+            {" "}
+            <h2
+              className={nav === "bank" ? style.isActive : ""}
+              onClick={() => setNav("bank")}
+            >
+              Bank detail
+            </h2>
+            <h2
+              className={nav === "salary" ? style.isActive : ""}
+              onClick={() => setNav("salary")}
+            >
+              Salary Details
+            </h2>
+          </>
+        )}
       </div>
 
       <div>
@@ -76,7 +77,7 @@ const ProfileNav = ({
             setEdit={setEditPersonal}
           />
         ) : nav === "project" ? (
-          "Project"
+          <ProjectBox type="employee" />
         ) : nav === "bank" ? (
           <BankDetailsComponent
             setEditBank={setEditBank}

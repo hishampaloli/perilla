@@ -99,6 +99,29 @@ export = {
       $and: [{ companyName }, { team: { $in: [userId] } }, { status }],
     });
 
+    await Project.populate(mongooseObj, { path: "team" });
+    await Project.populate(mongooseObj, { path: "createdBy" });
+    return mongooseObj;
+  },
+
+  getProjectUnderUser: async (companyName: string, userId: string) => {
+    const mongooseObj = await Project.find({
+      $and: [{ companyName }, { team: { $in: [userId] } }],
+    });
+    await Project.populate(mongooseObj, { path: "team" });
+    await Project.populate(mongooseObj, { path: "createdBy" });
+    return mongooseObj;
+  },
+
+  getProjectUnderClient: async (companyName: string, clientId: string) => {
+    console.log(companyName, clientId);
+
+    const mongooseObj = await Project.find({
+      $and: [{ companyName }, { client: clientId }],
+    });
+
+    await Project.populate(mongooseObj, { path: "team" });
+    await Project.populate(mongooseObj, { path: "createdBy" });
     return mongooseObj;
   },
 };

@@ -6,6 +6,8 @@ import { editProject_UseCase } from "./editProject.usecase";
 import { removeTeamFromProject_UseCase } from "./removeTeamFromProject.usecase";
 import { sendMail_UseCase } from "./sendMail.usecase";
 import { getMyProjects_usecase } from "./getMyProjects.usecase";
+import { getProjectsUnderUser_usecase } from "./getProjectUnderUser.usecase";
+import { getProjectsUnderClient_usecase } from "./getProjectUnderClient.usecase";
 
 export {
   createProject_UseCase,
@@ -15,5 +17,7 @@ export {
   editProject_UseCase,
   addTeamToProject_UseCase,
   sendMail_UseCase,
+  getProjectsUnderUser_usecase,
   getMyProjects_usecase,
+  getProjectsUnderClient_usecase,
 };

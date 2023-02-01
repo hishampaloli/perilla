@@ -7,24 +7,37 @@ import { ProjectActionsTypes } from "../../constants";
 import { config } from "../../constants/config";
 
 export const getAllProjects =
-  (req: any, status: string = "pending") =>
+  (req: any, status: string = "pending", type: string) =>
   async (dispatch: Dispatch<GetAllProjectsAction>) => {
     try {
       dispatch({
         type: ProjectActionsTypes.GET_ALL_PROJECTS_REQUEST,
       });
 
-      const { data } = await buildClient(req).get<ProjectDataArr>(
-        `${projectService_Url}/project/allProjects?status=${status}`,
-        config
-      );
+      if (type === "hr") {
+        const { data } = await buildClient(req).get<ProjectDataArr>(
+          `${projectService_Url}/project/allProjects?status=${status}`,
+          config
+        );
 
-      console.log(data);
+        dispatch({
+          type: ProjectActionsTypes.GET_ALL_PROJECTS_SUCCESS,
+          payload: data,
+        });
+      }
+      
+      
+      if (type === "employee") {
+        const { data } = await buildClient(req).get<ProjectDataArr>(
+          `${projectService_Url}/project/myProjects?status=${status}`,
+          config
+        );
 
-      dispatch({
-        type: ProjectActionsTypes.GET_ALL_PROJECTS_SUCCESS,
-        payload: data,
-      });
+        dispatch({
+          type: ProjectActionsTypes.GET_ALL_PROJECTS_SUCCESS,
+          payload: data,
+        });
+      }
 
       return "success";
     } catch (error: any) {

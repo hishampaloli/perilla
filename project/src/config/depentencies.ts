@@ -30,6 +30,8 @@ import {
   getMyProjects_usecase,
   getMyTasksPosts_UseCase,
   getMyTasks_UseCase,
+  getProjectsUnderUser_usecase,
+  getProjectsUnderClient_usecase,
 } from "../usecase";
 
 import { repositoryData, useCaseData } from "../entities/interfaces";
@@ -59,6 +61,8 @@ const useCases: useCaseData = {
   getMyProjects_usecase,
   getMyTasksPosts_UseCase,
   getMyTasks_UseCase,
+  getProjectsUnderUser_usecase,
+  getProjectsUnderClient_usecase,
 };
 
 const repository: repositoryData = {

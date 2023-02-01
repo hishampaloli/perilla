@@ -42,10 +42,12 @@ import {
   createProjectsReducer,
   editProjectsReducer,
   getAllProjectsReducer,
+  getMyProjectsReducer,
   getSingleProjectsReducer,
+  getTaskUnderProjectsReducer,
   removeTeamFromProjectsReducer,
 } from "./project";
-import { employeeListLayoutReducer } from "./custom";
+import { employeeListLayoutReducer, addTaskFormReducer } from "./custom";
 
 const reducers = combineReducers({
   getOtp: getOtpReducer,
@@ -80,6 +82,9 @@ const reducers = combineReducers({
   addTeamToProject: addTeamToProjectsReducer,
   removeTeamFromProject: removeTeamFromProjectsReducer,
   singleProject: getSingleProjectsReducer,
+  getMyProjects: getMyProjectsReducer,
+  getTaskUnderProjects: getTaskUnderProjectsReducer,
+  addTaskForm: addTaskFormReducer,
 });
 
 export default reducers;

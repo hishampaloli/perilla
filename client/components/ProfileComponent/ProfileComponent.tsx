@@ -37,6 +37,8 @@ const ProfileComponent = ({ location }: { location: string }) => {
 
   useEffect(() => {
     if (router.isReady) {
+      console.log(location +'sdsd');
+      
       if (location === "my") {
         getMyProfile("ds");
       } else {

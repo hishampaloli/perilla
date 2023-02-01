@@ -23,6 +23,7 @@ const EditProjectComponent = () => {
       {data?.role === "hr" && (
         <AddButton text="EDIT PROJECT" setAdd={setCreate} />
       )}
+
       {loading && <FixedSpinner />}
       {create && <EditProjectForm setEdit={setCreate} />}
     </div>

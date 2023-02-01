@@ -42,6 +42,28 @@ export interface EditProjectData {
   rate: number;
 }
 
+export interface TaskData {
+  project: string;
+  taskName: string;
+  taskDescription: string;
+  assignedTo: EmployeeData;
+  startDate: string;
+  priority: string;
+  deadline: string;
+  isApproved: string;
+  assignedBy: string;
+  isCompleted: string;
+  id: string;
+}
+
+export interface TaskDataArr {
+  data: TaskData[];
+}
+
+export interface TaskDataObj {
+  data: TaskData;
+}
+
 export interface ProjectDataArr {
   data: ProjectData[];
 }
@@ -85,4 +107,16 @@ export interface GetSingleProjectState {
 export interface CompleteProjectState {
   loading: boolean;
   error: ErrorState[] | null;
+}
+
+export interface GetMyProjectsState {
+  loading: boolean;
+  error: ErrorState[] | null;
+  data: ProjectDataArr | null;
+}
+
+export interface GetAllTaskUnderProjectState {
+  loading: boolean;
+  error: ErrorState[] | null;
+  data: TaskDataArr | null;
 }

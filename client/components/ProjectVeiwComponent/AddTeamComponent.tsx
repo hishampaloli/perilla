@@ -27,14 +27,12 @@ const AddTeamComponent = ({ teamData }: { teamData: any }) => {
   const { project } = router.query;
   const { removeTeamFromProject } = useActions();
   const [addTeam, setAddTeam] = useState<boolean>(false);
-  console.log(projectData.data?.data.createdBy.id);
-  console.log(data?.id);
 
   return (
     <div className={style.addTeam}>
       <div className={style.addSt}>
         <h3>Add Team</h3>
-        {data?.id === projectData.data?.data.createdBy.id && (
+        {data?.id === projectData.data?.data?.createdBy?.id && (
           <button onClick={() => setAddTeam(!addTeam)}>Add</button>
         )}
       </div>

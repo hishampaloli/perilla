@@ -10,11 +10,11 @@ export = {
   },
 
   getAllProjectTask: async (project: string, isApproved: boolean) => {
-    console.log(project);
-
     const mongooseObj = await Task.find({
       $and: [{ project }, { isApproved }],
     });
+
+    await Task.populate(mongooseObj, { path: "assignedTo" });
     return mongooseObj;
   },
 

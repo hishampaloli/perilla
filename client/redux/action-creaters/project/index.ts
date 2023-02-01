@@ -5,3 +5,5 @@ export * from "./editProjectAction";
 export * from "./addTeamToProjectAction";
 export * from "./removeTeamFromProjectAction";
 export * from "./completeProjectAction";
+export * from "./getMyProjctAction";
+export * from "./getTaskUnderProjectAction";

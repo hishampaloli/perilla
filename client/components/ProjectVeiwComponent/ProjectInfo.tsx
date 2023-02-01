@@ -14,7 +14,7 @@ const ProjectInfo = ({ projectData }: { projectData: ProjectData }) => {
         <div className={style.infoDivWhite}></div>
         <div className={style.infoDivBlack}>
           <strong>Start Date</strong>
-          <p>{projectData?.startDate.toString().slice(0,10)}</p>
+          <p>{projectData?.startDate?.toString().slice(0,10)}</p>
         </div>
         <div className={style.infoDivWhite}></div>
         <div className={style.infoDivBlack}>
@@ -47,9 +47,9 @@ const ProjectInfo = ({ projectData }: { projectData: ProjectData }) => {
         <div className={style.infoDivBlack}>
           <strong>CreatedBy</strong>
           <Link
-            href={`/${projectData?.companyName}/profile/employee/${projectData?.createdBy.phone}`}
+            href={`/${projectData?.companyName}/profile/employee/${projectData?.createdBy?.phone}`}
           >
-            {projectData?.createdBy.name}
+            {projectData?.createdBy?.name}
           </Link>
         </div>
 

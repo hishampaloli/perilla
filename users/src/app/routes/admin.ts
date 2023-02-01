@@ -32,8 +32,8 @@ export = (dependencies: any) => {
   router.get(
     "/getEmployee",
     currentUser,
+    currentTenant,
     requireTenantOrUser,
-    isHrOrAdmin,
     getEmployeeController
   );
 

@@ -28,6 +28,8 @@ export interface useCaseData {
   getMyProjects_usecase: any;
   getMyTasksPosts_UseCase: any;
   getMyTasks_UseCase: any;
+  getProjectsUnderUser_usecase: any;
+  getProjectsUnderClient_usecase: any;
 }
 
 export interface repositoryData {

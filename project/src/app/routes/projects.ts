@@ -22,6 +22,8 @@ export = (dependencies: any) => {
     removeTeamFromProjectController,
     getMyProjectController,
     completeProjectController,
+    getProjectsUnderUserController,
+    getProjectsUnderClientController,
   } = projectController(dependencies);
 
   router.post(
@@ -88,5 +90,24 @@ export = (dependencies: any) => {
     completeProjectController
   );
 
+  router.get(
+    "/projectUnderUser/:employeeId",
+    currentUser,
+    currentTenant,
+    requireTenantOrUser,
+    getProjectsUnderUserController
+  );
+
+  router.get(
+    "/projectUnderClient/:clientId",
+    currentUser,
+    currentTenant,
+    requireTenantOrUser,
+    isHrOrAdmin,
+    getProjectsUnderClientController
+  );
+
   return router;
 };
+
+

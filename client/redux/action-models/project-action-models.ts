@@ -1,4 +1,8 @@
-import { ProjectDataArr, ProjectDataObj } from "../../models/project";
+import {
+  ProjectDataArr,
+  ProjectDataObj,
+  TaskDataArr,
+} from "../../models/project";
 import { ErrorState } from "../../models/tenants";
 import { ProjectActionsTypes } from "../constants";
 
@@ -134,3 +138,43 @@ export type CompleteProjectsAction =
   | CompleteProjectsRequestAction
   | CompleteProjectsSuccessAction
   | CompleteProjectsFailAction;
+
+interface GetMyProjectsRequestAction {
+  type: ProjectActionsTypes.GET_MY_PROJECTS_REQUEST;
+}
+
+interface GetMyProjectsSuccessAction {
+  type: ProjectActionsTypes.GET_MY_PROJECTS_SUCCESS;
+  payload: ProjectDataArr;
+}
+
+interface GetMyProjectsFailAction {
+  type: ProjectActionsTypes.GET_MY_PROJECTS_FAIL;
+  error: ErrorState[];
+}
+
+export type GetMyProjectsAction =
+  | GetMyProjectsRequestAction
+  | GetMyProjectsSuccessAction
+  | GetMyProjectsFailAction;
+
+
+  
+interface GetTaskUnderProjectsRequestAction {
+  type: ProjectActionsTypes.GET_TASKS_UNDER_PROJECTS_REQUEST;
+}
+
+interface GetTaskUnderProjectsSuccessAction {
+  type: ProjectActionsTypes.GET_TASKS_UNDER_PROJECTS_SUCCESS;
+  payload: TaskDataArr;
+}
+
+interface GetTaskUnderProjectsFailAction {
+  type: ProjectActionsTypes.GET_TASKS_UNDER_PROJECTS_FAIL;
+  error: ErrorState[];
+}
+
+export type GetTaskUnderProjectsAction =
+  | GetTaskUnderProjectsRequestAction
+  | GetTaskUnderProjectsSuccessAction
+  | GetTaskUnderProjectsFailAction;

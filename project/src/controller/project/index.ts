@@ -6,6 +6,8 @@ import addTeamToProjectController from "./addTeamToProject.controller";
 import removeTeamFromProjectController from "./removeTeamFromProject.controller";
 import getMyProjectController from "./getMyProject.controller";
 import completeProjectController from "./completeProject.controller";
+import getProjectsUnderUserController from "./getProjectsUnderUser.controller";
+import getProjectsUnderClientController from "./getProjectsUnderClient.controller";
 
 export = (dependencies: any) => {
   return {
@@ -18,5 +20,9 @@ export = (dependencies: any) => {
       removeTeamFromProjectController(dependencies),
     getMyProjectController: getMyProjectController(dependencies),
     completeProjectController: completeProjectController(dependencies),
+    getProjectsUnderUserController:
+      getProjectsUnderUserController(dependencies),
+    getProjectsUnderClientController:
+      getProjectsUnderClientController(dependencies),
   };
 };

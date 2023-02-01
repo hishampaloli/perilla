@@ -13,7 +13,7 @@ const Layout = ({
   title: string;
 }) => {
   return (
-    <div>
+    <div >
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />{" "}

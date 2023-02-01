@@ -12,7 +12,7 @@ const NotLoggedHeader = () => {
     <div className={style.notLogged}>
       <Link href={"/register"}>
    
-        <li>Register</li>
+        <li suppressHydrationWarning >Register</li>
       </Link>
       <Link href={"/login"}>
        
