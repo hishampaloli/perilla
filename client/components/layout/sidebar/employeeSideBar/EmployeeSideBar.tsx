@@ -32,7 +32,7 @@ const EmployeeSideBar = () => {
       <LinkDiv
         type="employee"
         text="My Tasks"
-        link="hrs"
+        link="tasks"
         icon={<SplitscreenIcon />}
       />{" "}
       <LinkDiv

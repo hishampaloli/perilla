@@ -70,6 +70,11 @@ const TaskDetailsLeft = ({ taskData }: { taskData: TaskData }) => {
             <strong>Dead line :</strong>
             <p>{taskData?.deadline?.slice(0, 10)}</p>
           </div>
+
+          <div>
+            <strong>Status :</strong>
+            <p>{taskData?.isApproved ? 'Completed' : 'Pending'}</p>
+          </div>
         </div>
       </div>
       <div className={style.leftDivBtnGr}>
@@ -97,7 +102,7 @@ const TaskDetailsLeft = ({ taskData }: { taskData: TaskData }) => {
           </>
         ) : (
           <>
-            {!tenantData.data?.data.adminName &&
+            {!tenantData.data?.data?.adminName &&
               !taskData?.isApproved &&
               !taskData?.isCompleted &&
               data?.id === taskData?.assignedTo?.id && (

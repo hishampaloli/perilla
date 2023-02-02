@@ -8,5 +8,6 @@ export * from "./getMyProjectsReducer";
 export * from "./GetTasksUnderProjectReducer";
 export * from "./AddTaskReducer";
 export * from "./getSingleTaskReducer";
-export * from './approveTaskReducer';
-export * from './reqTaskApprovalReducer'
+export * from "./approveTaskReducer";
+export * from "./reqTaskApprovalReducer";
+export * from "./getMyTasksReducer";

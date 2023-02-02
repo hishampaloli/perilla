@@ -47,7 +47,7 @@ const HrSideBar = () => {
       <LinkDiv
         type="hr"
         text="My Tasks"
-        link="hrs"
+        link="tasks"
         icon={<SplitscreenIcon />}
       />{" "}
       <LinkDiv

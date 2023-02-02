@@ -51,7 +51,7 @@ export interface TaskData {
   priority: string;
   deadline: string;
   isApproved: string;
-  assignedBy: string;
+  assignedBy: EmployeeData;
   isCompleted: string;
   id: string;
 }
@@ -140,4 +140,10 @@ export interface RequestTaskApprovalState {
 export interface ApproveTaskState {
   loading: boolean;
   error: ErrorState[] | null;
+}
+
+export interface GetMyTasksState {
+  loading: boolean;
+  error: ErrorState[] | null;
+  data: TaskDataArr | null;
 }

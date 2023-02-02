@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import style from "../../styles/task.module.scss";
 import CompletedTask from "./CompletedTask";
+import MyPendingTask from "./MyPendingTask";
 import PendingTask from "./PendingTask";
 
-const TaskNav = () => {
+const TaskNav = ({ type }: { type: string }) => {
   const [nav, setNav] = useState<boolean>(true);
   return (
     <>
@@ -21,7 +22,9 @@ const TaskNav = () => {
           Completed
         </button>
       </div>
-      {nav ? <PendingTask /> : <CompletedTask />}
+
+      {type === "my" && <> {nav ? <MyPendingTask /> : <CompletedTask />}</>}
+      {type === "project" && <>{nav ? <PendingTask /> : <CompletedTask />}</>}
     </>
   );
 };

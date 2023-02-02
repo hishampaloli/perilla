@@ -56,7 +56,7 @@ const ProjectDetails = () => {
       </div>
       <div>
         <h2 style={{ color: "#bbc4cc", marginTop: "30px" }}>Tasks</h2>{" "}
-        <TaskNav />
+        <TaskNav type="project" />
         {data?.id === projectData?.createdBy.id && (
           <button
             onClick={() => {

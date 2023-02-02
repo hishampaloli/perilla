@@ -235,10 +235,6 @@ export type ApproveTaskAction =
   | ApproveTaskSuccessAction
   | ApproveTaskFailAction;
 
-
-
-
-  
 interface ReqTaskApprovalRequestAction {
   type: ProjectActionsTypes.REQ_TASK_APPROVAL_REQUEST;
 }
@@ -257,3 +253,22 @@ export type ReqTaskApprovalAction =
   | ReqTaskApprovalRequestAction
   | ReqTaskApprovalSuccessAction
   | ReqTaskApprovalFailAction;
+
+interface GetMyTasksRequestAction {
+  type: ProjectActionsTypes.GET_MY_TASKS_REQUEST;
+}
+
+interface GetMyTasksSuccessAction {
+  type: ProjectActionsTypes.GET_MY_TASKS_SUCCESS;
+  payload: TaskDataArr;
+}
+
+interface GetMyTasksFailAction {
+  type: ProjectActionsTypes.GET_MY_TASKS_FAIL;
+  error: ErrorState[];
+}
+
+export type GetMyTasksAction =
+  | GetMyTasksRequestAction
+  | GetMyTasksSuccessAction
+  | GetMyTasksFailAction;

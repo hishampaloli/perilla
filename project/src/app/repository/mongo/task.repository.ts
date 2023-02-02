@@ -45,7 +45,7 @@ export = {
 
   reqTaskApprovel: async (taskId: string, assignedTo: string) => {
     console.log(assignedTo);
-    
+
     const mongooseObj = await Task.findOneAndUpdate(
       {
         $and: [{ _id: taskId }, { assignedTo }],
@@ -68,16 +68,23 @@ export = {
   },
 
   getMyTasksPosts: async (assignedBy: string, isApproved: boolean) => {
+    console.log(isApproved);
     const mongooseObj = await Task.find({
       $and: [{ assignedBy }, { isApproved }],
     });
+
+    await Task.populate(mongooseObj, { path: "assignedTo" });
     return mongooseObj;
   },
 
   getMyTasks: async (assignedTo: string, isApproved: boolean) => {
+    console.log(isApproved);
+
     const mongooseObj = await Task.find({
       $and: [{ assignedTo }, { isApproved }],
     });
+
+    await Task.populate(mongooseObj, { path: "assignedBy" });
     return mongooseObj;
   },
 };
