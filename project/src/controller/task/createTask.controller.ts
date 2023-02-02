@@ -28,7 +28,10 @@ export = (dependencies: DepenteniciesData): any => {
         assignedTo,
         priority,
         deadline,
+        startDate,
       } = req.body;
+
+      console.log(taskName);
 
       const projectFound = await getSingleProject_UseCase(dependencies).execute(
         project
@@ -49,7 +52,7 @@ export = (dependencies: DepenteniciesData): any => {
         assignedBy: req.currentUser?.id.id,
         priority,
         deadline,
-        startDate: Date(),
+        startDate,
       });
 
       // TODO:  EMAIL

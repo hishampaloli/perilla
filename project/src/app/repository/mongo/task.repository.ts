@@ -6,6 +6,7 @@ const { Task } = schemas;
 export = {
   createTask: async (data: TaskData) => {
     const mongooseObj = Task.build(data);
+    await Task.populate(mongooseObj, { path: "assignedTo" });
     return mongooseObj.save();
   },
 
@@ -18,8 +19,10 @@ export = {
     return mongooseObj;
   },
 
-  getSingleTask: async (taskId: string) => {
-    const mongooseObj = await Task.findById(taskId);
+  getSingleTask: async (companyName: string, taskId: string) => {
+    const mongooseObj = await Task.findOne({
+      $and: [{ companyName }, { _id: taskId }],
+    });
     await Task.populate(mongooseObj, { path: "assignedBy" });
     await Task.populate(mongooseObj, { path: "assignedTo" });
     return mongooseObj;
@@ -41,6 +44,8 @@ export = {
   },
 
   reqTaskApprovel: async (taskId: string, assignedTo: string) => {
+    console.log(assignedTo);
+    
     const mongooseObj = await Task.findOneAndUpdate(
       {
         $and: [{ _id: taskId }, { assignedTo }],

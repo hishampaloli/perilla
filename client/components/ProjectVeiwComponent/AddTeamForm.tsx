@@ -9,6 +9,7 @@ import { toast } from "react-hot-toast";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { AllEmployeesState, EmployeeData } from "../../models/admin";
 import { useRouter } from "next/router";
+import NoDataCopmonent from "../layout/NoDataCopmonent";
 
 const EditProjectForm = ({ setEdit, projectId }: { setEdit: any, projectId: any }) => {
   const [addTeam, setAddTeam] = useState<boolean>(false);
@@ -48,6 +49,7 @@ const EditProjectForm = ({ setEdit, projectId }: { setEdit: any, projectId: any 
         <div className={""}>
           {addTeam && (
             <div className={style.teamList}>
+              {!data?.data.length && <NoDataCopmonent text="" />}
               {data?.data?.map((el: EmployeeData) => {
                 return (
                   <div

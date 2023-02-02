@@ -7,3 +7,7 @@ export * from "./removeTeamFromProjectAction";
 export * from "./completeProjectAction";
 export * from "./getMyProjctAction";
 export * from "./getTaskUnderProjectAction";
+export * from "./addTaskAction";
+export * from "./getSingleTaskAction";
+export * from "./approveTaskAction";
+export * from "./reqTaskApprovalAction";

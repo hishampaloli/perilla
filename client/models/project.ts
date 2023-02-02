@@ -120,3 +120,24 @@ export interface GetAllTaskUnderProjectState {
   error: ErrorState[] | null;
   data: TaskDataArr | null;
 }
+
+export interface AddTaskState {
+  loading: boolean;
+  error: ErrorState[] | null;
+}
+
+export interface GetSingleTaskState {
+  loading: boolean;
+  error: ErrorState[] | null;
+  data: TaskDataObj | null;
+}
+
+export interface RequestTaskApprovalState {
+  loading: boolean;
+  error: ErrorState[] | null;
+}
+
+export interface ApproveTaskState {
+  loading: boolean;
+  error: ErrorState[] | null;
+}

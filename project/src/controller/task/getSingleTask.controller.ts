@@ -14,6 +14,7 @@ export = (dependencies: DepenteniciesData): any => {
   ) => {
     try {
       const taskData = await getSingleTask_UseCase(dependencies).execute(
+        req.currentTenant?.id.companyName || req.currentUser?.id.companyName,
         req.params.taskId
       );
 

@@ -8,8 +8,8 @@ export const getSingleTask_UseCase = (dependencies: DepenteniciesData) => {
   if (!taskRepository)
     throw new Error("The Task repository should be a dependencie");
 
-  const execute = (taskId: string) => {
-    return taskRepository.getSingleTask(taskId);
+  const execute = (companyName: string, taskId: string) => {
+    return taskRepository.getSingleTask(companyName, taskId);
   };
   return {
     execute,

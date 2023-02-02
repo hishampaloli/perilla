@@ -2,6 +2,7 @@ import {
   ProjectDataArr,
   ProjectDataObj,
   TaskDataArr,
+  TaskDataObj,
 } from "../../models/project";
 import { ErrorState } from "../../models/tenants";
 import { ProjectActionsTypes } from "../constants";
@@ -158,8 +159,6 @@ export type GetMyProjectsAction =
   | GetMyProjectsSuccessAction
   | GetMyProjectsFailAction;
 
-
-  
 interface GetTaskUnderProjectsRequestAction {
   type: ProjectActionsTypes.GET_TASKS_UNDER_PROJECTS_REQUEST;
 }
@@ -178,3 +177,83 @@ export type GetTaskUnderProjectsAction =
   | GetTaskUnderProjectsRequestAction
   | GetTaskUnderProjectsSuccessAction
   | GetTaskUnderProjectsFailAction;
+
+interface AddTaskRequestAction {
+  type: ProjectActionsTypes.ADD_TASK_REQUEST;
+}
+
+interface AddTaskSuccessAction {
+  type: ProjectActionsTypes.GET_TASKS_UNDER_PROJECTS_SUCCESS;
+  payload: TaskDataArr;
+}
+
+interface AddTaskFailAction {
+  type: ProjectActionsTypes.ADD_TASK_FAIL;
+  error: ErrorState[];
+}
+
+export type AddTaskAction =
+  | AddTaskRequestAction
+  | AddTaskSuccessAction
+  | AddTaskFailAction;
+
+interface GetSingleTaskRequestAction {
+  type: ProjectActionsTypes.GET_SINGLE_TASK_REQUEST;
+}
+
+interface GetSingleTaskSuccessAction {
+  type: ProjectActionsTypes.GET_SINGLE_TASK_SUCCESS;
+  payload: TaskDataObj;
+}
+
+interface GetSingleTaskFailAction {
+  type: ProjectActionsTypes.GET_SINGLE_TASK_FAIL;
+  error: ErrorState[];
+}
+
+export type GetSingleTaskAction =
+  | GetSingleTaskRequestAction
+  | GetSingleTaskSuccessAction
+  | GetSingleTaskFailAction;
+
+interface ApproveTaskRequestAction {
+  type: ProjectActionsTypes.APPROVE_TASK_REQUEST;
+}
+
+interface ApproveTaskSuccessAction {
+  type: ProjectActionsTypes.GET_SINGLE_TASK_SUCCESS;
+  payload: TaskDataObj;
+}
+
+interface ApproveTaskFailAction {
+  type: ProjectActionsTypes.APPROVE_TASK_FAIL;
+  error: ErrorState[];
+}
+
+export type ApproveTaskAction =
+  | ApproveTaskRequestAction
+  | ApproveTaskSuccessAction
+  | ApproveTaskFailAction;
+
+
+
+
+  
+interface ReqTaskApprovalRequestAction {
+  type: ProjectActionsTypes.REQ_TASK_APPROVAL_REQUEST;
+}
+
+interface ReqTaskApprovalSuccessAction {
+  type: ProjectActionsTypes.GET_SINGLE_TASK_SUCCESS;
+  payload: TaskDataObj;
+}
+
+interface ReqTaskApprovalFailAction {
+  type: ProjectActionsTypes.REQ_TASK_APPROVAL_FAIL;
+  error: ErrorState[];
+}
+
+export type ReqTaskApprovalAction =
+  | ReqTaskApprovalRequestAction
+  | ReqTaskApprovalSuccessAction
+  | ReqTaskApprovalFailAction;

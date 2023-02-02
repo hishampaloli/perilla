@@ -13,3 +13,40 @@ export const useCompleteProject = async (
     toast.error(`${res}`);
   }
 };
+
+export const useAddTask = async (taskData: any, addTask: any) => {
+  const res = await addTask("sd", taskData);
+
+  if (`${res}` === "success") {
+    toast.success("Task added successfully");
+    return true;
+  } else {
+    toast.error(`${res}`);
+  }
+};
+
+export const useApproveTask = async (
+  taskId: string,
+  status: boolean,
+  approveTask: any
+) => {
+  const res = await approveTask("sd", taskId, status);
+
+  if (`${res}` === "success") {
+    toast.success(`Task ${status ? "Approved " : "Rejected "} successfully`);
+    return true;
+  } else {
+    toast.error(`${res}`);
+  }
+};
+
+export const useTaskApproval = async (taskId: string, ReqTaskApproval: any) => {
+  const res = await ReqTaskApproval("sd", taskId);
+
+  if (`${res}` === "success") {
+    toast.success(`Approval Requested successfully`);
+    return true;
+  } else {
+    toast.error(`${res}`);
+  }
+};

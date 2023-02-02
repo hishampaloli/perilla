@@ -13,11 +13,12 @@ export = (dependencies: DepenteniciesData): any => {
     next: NextFunction
   ) => {
     try {
+      console.log(req.params.taskId);
+
       const reqTaskData = await reqTaskApprovel_UseCase(dependencies).execute(
         req.params.taskId,
         req.currentUser?.id.id
       );
-      
 
       if (!reqTaskData) throw new BadRequestError("no such task found");
 

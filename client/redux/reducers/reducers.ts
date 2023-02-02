@@ -39,13 +39,16 @@ import {
 
 import {
   addTeamToProjectsReducer,
+  approveTaskReducer,
   createProjectsReducer,
   editProjectsReducer,
   getAllProjectsReducer,
   getMyProjectsReducer,
   getSingleProjectsReducer,
+  getSingleTaskReducer,
   getTaskUnderProjectsReducer,
   removeTeamFromProjectsReducer,
+  reqTaskApprovalReducer,
 } from "./project";
 import { employeeListLayoutReducer, addTaskFormReducer } from "./custom";
 
@@ -85,6 +88,9 @@ const reducers = combineReducers({
   getMyProjects: getMyProjectsReducer,
   getTaskUnderProjects: getTaskUnderProjectsReducer,
   addTaskForm: addTaskFormReducer,
+  singleTask: getSingleTaskReducer,
+  approveTask: approveTaskReducer,
+  requestTaskApproval: reqTaskApprovalReducer,
 });
 
 export default reducers;

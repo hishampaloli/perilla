@@ -6,6 +6,7 @@ const { Project } = schemas;
 export = {
   createProject: async (data: ProjectData) => {
     const mongooseObj = Project.build(data);
+    await Project.populate(mongooseObj, { path: "createdBy" });
     return mongooseObj.save();
   },
 

@@ -57,21 +57,23 @@ const ProjectDetails = () => {
       <div>
         <h2 style={{ color: "#bbc4cc", marginTop: "30px" }}>Tasks</h2>{" "}
         <TaskNav />
-        <button
-          onClick={() => {
-            AddTaskForm(true);
-          }}
-          style={{
-            padding: "10px",
-            border: "none",
-            backgroundColor: "#ff9b44",
-            color: "white",
-            marginLeft: "auto",
-            cursor: "pointer",
-          }}
-        >
-          Add Task
-        </button>
+        {data?.id === projectData?.createdBy.id && (
+          <button
+            onClick={() => {
+              AddTaskForm(true);
+            }}
+            style={{
+              padding: "10px",
+              border: "none",
+              backgroundColor: "#ff9b44",
+              color: "white",
+              marginLeft: "auto",
+              cursor: "pointer",
+            }}
+          >
+            Add Task
+          </button>
+        )}
         <AddTaskComponent />
       </div>
     </div>
