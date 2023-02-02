@@ -17,7 +17,11 @@ export const getMyTasks =
       const { data } = await buildClient(req).get<TaskDataArr>(
         user === "employee"
           ? `${projectService_Url}/task/myTasks?isApproved=${status}`
-          : `${projectService_Url}/task/myTaskPosts?isApproved=${status}`,
+          : user === "hr"
+          ? `${projectService_Url}/task/myTaskPosts?isApproved=${status}`
+          : user === "approval"
+          ? `${projectService_Url}/task/tasksForApproval`
+          : `${projectService_Url}/task/allTasks?isApproved=${status}`,
         config
       );
       console.log(data);
@@ -34,7 +38,7 @@ export const getMyTasks =
         error: error?.response?.data?.error?.msg,
       });
       console.log(error);
-      
+
       return error?.response?.data?.error?.msg;
     }
   };

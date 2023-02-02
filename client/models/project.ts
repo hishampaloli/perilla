@@ -147,3 +147,8 @@ export interface GetMyTasksState {
   error: ErrorState[] | null;
   data: TaskDataArr | null;
 }
+
+export interface EditTaskState {
+  loading: boolean;
+  error: ErrorState[] | null;
+}

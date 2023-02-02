@@ -6,3 +6,4 @@ export * from "./reqTaskApprovel.usecase";
 export * from "./getTaskForApprovel.usecase";
 export * from "./getMyTaskPosts.usecase";
 export * from "./getMyTasks.usecase";
+export * from './getAllTasks.usecase'

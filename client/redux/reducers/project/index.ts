@@ -11,3 +11,4 @@ export * from "./getSingleTaskReducer";
 export * from "./approveTaskReducer";
 export * from "./reqTaskApprovalReducer";
 export * from "./getMyTasksReducer";
+export * from "./editTaskReducer";

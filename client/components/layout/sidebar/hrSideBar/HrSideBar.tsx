@@ -14,6 +14,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ChatIcon from "@mui/icons-material/Chat";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import Groups3Icon from "@mui/icons-material/Groups3";
+import ApprovalIcon from "@mui/icons-material/Approval";
 import LinkDiv from "../LinkDiv";
 
 const HrSideBar = () => {
@@ -49,6 +50,12 @@ const HrSideBar = () => {
         text="My Tasks"
         link="tasks"
         icon={<SplitscreenIcon />}
+      />{" "}
+      <LinkDiv
+        type="hr"
+        text="Task Approval"
+        link="taskApproval"
+        icon={<ApprovalIcon />}
       />{" "}
       <LinkDiv
         type="hr"

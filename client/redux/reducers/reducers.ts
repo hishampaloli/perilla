@@ -42,6 +42,7 @@ import {
   approveTaskReducer,
   createProjectsReducer,
   editProjectsReducer,
+  editTaskReducer,
   getAllProjectsReducer,
   getMyProjectsReducer,
   getMyTasksReducer,
@@ -93,6 +94,7 @@ const reducers = combineReducers({
   approveTask: approveTaskReducer,
   requestTaskApproval: reqTaskApprovalReducer,
   getMyTasks: getMyTasksReducer,
+  editTask: editTaskReducer,
 });
 
 export default reducers;

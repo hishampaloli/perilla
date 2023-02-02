@@ -8,11 +8,14 @@ import { AuthState } from "../../models/tenants";
 import { TaskData } from "../../models/project";
 import { useActions } from "../../hooks/useAction";
 import { useApproveTask, useTaskApproval } from "../../hooks/useToast";
+import EditIcon from "@mui/icons-material/Edit";
+import EditTaskComponent from "./EditTaskComponent";
 
 const TaskDetailsLeft = ({ taskData }: { taskData: TaskData }) => {
   const { data }: EmployeeAuthState = useTypedSelector(
     (state) => state.employee
   );
+  const [edt, setEdt] = useState<boolean>(false);
 
   const tenantData: AuthState = useTypedSelector((state) => state.user);
 
@@ -30,9 +33,19 @@ const TaskDetailsLeft = ({ taskData }: { taskData: TaskData }) => {
           }}
         >
           <h2>{taskData?.taskName}</h2>
-          <Link href={`/${data?.companyName}/project/${taskData?.project}`}>
-            view project
-          </Link>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Link
+              style={{ color: "white" }}
+              href={`/${data?.companyName}/project/${taskData?.project}`}
+            >
+              view project
+            </Link>
+            {data?.id === taskData?.assignedBy?.id && (
+              <span onClick={() => setEdt(!edt)} className={style.edtIcon}>
+                <EditIcon />
+              </span>
+            )}
+          </div>
         </div>
 
         <p>{taskData?.taskDescription}</p>
@@ -73,10 +86,11 @@ const TaskDetailsLeft = ({ taskData }: { taskData: TaskData }) => {
 
           <div>
             <strong>Status :</strong>
-            <p>{taskData?.isApproved ? 'Completed' : 'Pending'}</p>
+            <p>{taskData?.isApproved ? "Completed" : "Pending"}</p>
           </div>
         </div>
       </div>
+      {edt && <EditTaskComponent setEdit={setEdt} />}
       <div className={style.leftDivBtnGr}>
         {data?.role === "hr" && !tenantData.data?.data.adminName ? (
           <>

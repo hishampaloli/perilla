@@ -30,6 +30,7 @@ export interface useCaseData {
   getMyTasks_UseCase: any;
   getProjectsUnderUser_usecase: any;
   getProjectsUnderClient_usecase: any;
+  getAllTasks_UseCase: any;
 }
 
 export interface repositoryData {

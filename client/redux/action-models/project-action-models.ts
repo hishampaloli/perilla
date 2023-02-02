@@ -272,3 +272,22 @@ export type GetMyTasksAction =
   | GetMyTasksRequestAction
   | GetMyTasksSuccessAction
   | GetMyTasksFailAction;
+
+interface EditTasksRequestAction {
+  type: ProjectActionsTypes.EDIT_TASKS_REQUEST;
+}
+
+interface EditTasksSuccessAction {
+  type: ProjectActionsTypes.GET_SINGLE_TASK_SUCCESS;
+  payload: TaskDataObj;
+}
+
+interface EditTasksFailAction {
+  type: ProjectActionsTypes.EDIT_TASKS_FAIL;
+  error: ErrorState[];
+}
+
+export type EditTasksAction =
+  | EditTasksRequestAction
+  | EditTasksSuccessAction
+  | EditTasksFailAction;

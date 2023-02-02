@@ -32,6 +32,7 @@ import {
   getMyTasks_UseCase,
   getProjectsUnderUser_usecase,
   getProjectsUnderClient_usecase,
+  getAllTasks_UseCase,
 } from "../usecase";
 
 import { repositoryData, useCaseData } from "../entities/interfaces";
@@ -63,6 +64,7 @@ const useCases: useCaseData = {
   getMyTasks_UseCase,
   getProjectsUnderUser_usecase,
   getProjectsUnderClient_usecase,
+  getAllTasks_UseCase,
 };
 
 const repository: repositoryData = {

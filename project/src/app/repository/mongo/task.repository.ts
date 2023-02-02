@@ -19,6 +19,16 @@ export = {
     return mongooseObj;
   },
 
+  getAllTasks: async (companyName: string, isApproved: boolean) => {
+    const mongooseObj = await Task.find({
+      $and: [{ companyName }, { isApproved }],
+    });
+
+    await Task.populate(mongooseObj, { path: "assignedBy" });
+    await Task.populate(mongooseObj, { path: "assignedTo" });
+    return mongooseObj;
+  },
+
   getSingleTask: async (companyName: string, taskId: string) => {
     const mongooseObj = await Task.findOne({
       $and: [{ companyName }, { _id: taskId }],
@@ -58,12 +68,11 @@ export = {
   },
 
   getTaskForApproval: async (assignedBy: string) => {
-    console.log(assignedBy);
-
     const mongooseObj = await Task.find({
       $and: [{ assignedBy }, { isCompleted: true }, { isApproved: false }],
     });
 
+    await Task.populate(mongooseObj, { path: "assignedTo" });
     return mongooseObj;
   },
 

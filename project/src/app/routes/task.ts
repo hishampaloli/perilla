@@ -23,6 +23,7 @@ export = (dependencies: any) => {
     approveTaskController,
     getMyTaskPostsController,
     getMyTasksController,
+    getAllTasksController,
   } = taskController(dependencies);
 
   router.post(
@@ -86,6 +87,13 @@ export = (dependencies: any) => {
     isHr,
     requireUserAuth,
     getMyTaskPostsController
+  );
+
+  router.get(
+    "/allTasks",
+    currentTenant,
+    requireTenantAuth,
+    getAllTasksController
   );
 
   router.get("/myTasks", currentUser, requireUserAuth, getMyTasksController);
