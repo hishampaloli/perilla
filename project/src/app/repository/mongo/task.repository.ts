@@ -50,6 +50,8 @@ export = {
       }
     );
 
+    await Task.populate(mongooseObj, { path: "assignedTo" });
+    await Task.populate(mongooseObj, { path: "assignedBy" });
     return mongooseObj;
   },
 

@@ -8,6 +8,7 @@ import { toast } from "react-hot-toast";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { EditProjectState, GetSingleTaskState } from "../../models/project";
 import FixedSpinner from "../layout/FixedSpinner";
+import { useEditTask } from "../../hooks/useToast";
 
 const EditTaskComponent = ({ setEdit }: { setEdit: any }) => {
   const [taskName, setTaskName] = useState<string>("");
@@ -21,10 +22,16 @@ const EditTaskComponent = ({ setEdit }: { setEdit: any }) => {
   );
   const taskData = data?.data;
 
-  const {} = useActions();
+  const { editTask } = useActions();
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
+    useEditTask(
+      { taskName, taskDescription, priority, startDate, deadline },
+      taskData?.id!,
+      editTask,
+      setEdit
+    );
   };
 
   useEffect(() => {

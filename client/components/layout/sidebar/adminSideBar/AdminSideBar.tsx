@@ -17,6 +17,7 @@ import HouseboatIcon from "@mui/icons-material/Houseboat";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LockIcon from "@mui/icons-material/Lock";
+import NearbyErrorIcon from "@mui/icons-material/NearbyError";
 
 const AdminSideBar = () => {
   const { data }: AuthState = useTypedSelector((state) => state.user);
@@ -76,6 +77,13 @@ const AdminSideBar = () => {
         link="payouts"
         icon={<PaidIcon />}
       />
+      <LinkDiv
+        type="admin"
+        text="Leave Request"
+        link="leaves"
+        icon={<NearbyErrorIcon />}
+      />
+      
       <LinkDiv
         type="admin"
         text="Holidays"

@@ -15,6 +15,8 @@ export class TaskStatusEventListener extends Listener<TaskStatusChangedEvent> {
   queueGroupName = queueGroupName;
 
   async onMessage(data: TaskStatusChangedEvent["data"], msg: Message) {
+    console.log(data);
+    
     await createNotification_UseCase(dependencies).execute({
       companyName: data.companyName,
       message: data.message,

@@ -24,6 +24,7 @@ interface EmployeeDoc extends mongoose.Document {
   image: string;
   phone: string;
   id: string;
+  leavesTaken: number;
   isBlocked: boolean;
 }
 
@@ -40,6 +41,11 @@ const employeeSchema = new mongoose.Schema(
     phone: {
       type: Number,
       required: true,
+    },
+    leavesTaken: {
+      type: Number,
+      required: true,
+      default: 0,
     },
     role: {
       type: String,

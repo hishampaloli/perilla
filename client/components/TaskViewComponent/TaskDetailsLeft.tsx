@@ -69,7 +69,7 @@ const TaskDetailsLeft = ({ taskData }: { taskData: TaskData }) => {
               >
                 <RadioButtonCheckedIcon />
               </span>
-              Meduim
+              {taskData?.priority}
             </p>
           </div>
 

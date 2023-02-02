@@ -50,3 +50,19 @@ export const useTaskApproval = async (taskId: string, ReqTaskApproval: any) => {
     toast.error(`${res}`);
   }
 };
+
+export const useEditTask = async (
+  taskData: any,
+  taskId: string,
+  editTask: any,
+  setEdit: any
+) => {
+  const res = await editTask("sd", taskData, taskId);
+
+  if (`${res}` === "success") {
+    toast.success(`Task edited successfully`);
+    setEdit(false);
+  } else {
+    toast.error(`${res}`);
+  }
+};

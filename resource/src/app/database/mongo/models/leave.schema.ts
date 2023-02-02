@@ -19,7 +19,7 @@ interface leaveDetailsDoc extends mongoose.Document {
   reason: string;
   leaveDuration: string;
   startingData: Date;
-  isAccepted: boolean;
+  isAccepted: string;
   version: number;
 }
 
@@ -47,9 +47,10 @@ const leaveDetailsSchema = new mongoose.Schema(
       required: true,
     },
     isAccepted: {
-      type: Boolean,
+      type: String,
       required: true,
-      default: false,
+      enum: ["pending", "accepted", "rejected"],
+      default: "pending",
     },
   },
   {
