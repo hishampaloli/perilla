@@ -3,10 +3,22 @@ import React from "react";
 import style from "../../styles/leaveRequests.module.scss";
 import NoDataCopmonent from "../layout/NoDataCopmonent";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import {
+  GetLeaveReqState,
+  LeaveData,
+  LeaveDataArr,
+  LeaveDataObj,
+} from "../../models/Leave";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import FixedSpinner from "../layout/FixedSpinner";
 
-const LeaveRequestList = () => {
-  const data: any = "ads";
-  const loading: any = "sd";
+const LeaveRequestList = ({
+  data,
+  loading,
+}: {
+  data: any;
+  loading: boolean;
+}) => {
   return (
     <div className={style.employeelistDiv}>
       <div>
@@ -17,30 +29,31 @@ const LeaveRequestList = () => {
         <p>Role</p>
       </div>
 
-      {data?.data?.length && !loading ? (
-        data?.data?.map((el: any) => {
+      {loading && <FixedSpinner />}
+      {!loading && !data?.length && (
+        <NoDataCopmonent text={`No Leave requests found`} />
+      )}
+      {data?.length &&
+        data?.map((el: LeaveData) => {
           return (
             <Link
-              href={`/${el?.companyName}/profile/employee/${el.phone}`}
+              href={`/${el?.companyName}/leave/${el.id}`}
               className={style.bankDetailDiv}
             >
               <p>
-                <img src={el.image} alt="" />
-                {el.name}
+                <img src={el.employeeId.image} alt="" />
+                {el.employeeId.name}
               </p>
-              <p>{el.email}</p>
-              <p>{el.designation}</p>
-              <p>{el.phone}</p>
-              <p>{el.role}</p>
+              <p>{el.employeeId.email}</p>
+              <p>{el.reason.slice(0, 40)}...</p>
+              <p>{el.leaveDuration}</p>
+              <p>{el.employeeId.role}</p>
               <p>
                 <VisibilityIcon />
               </p>
             </Link>
           );
-        })
-      ) : (
-        <NoDataCopmonent text={`No Leave requests found`} />
-      )}
+        })}
     </div>
   );
 };

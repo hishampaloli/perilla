@@ -53,6 +53,13 @@ import {
   reqTaskApprovalReducer,
 } from "./project";
 import { employeeListLayoutReducer, addTaskFormReducer } from "./custom";
+import {
+  applyLeaveReducer,
+  approveLeaveReducer,
+  getLeaveReqReducer,
+  getMyLeavesReducer,
+  viewSingleLeaveReducer,
+} from "./leave";
 
 const reducers = combineReducers({
   getOtp: getOtpReducer,
@@ -95,6 +102,12 @@ const reducers = combineReducers({
   requestTaskApproval: reqTaskApprovalReducer,
   getMyTasks: getMyTasksReducer,
   editTask: editTaskReducer,
+
+  getleaveRequests: getLeaveReqReducer,
+  getMyleaves: getMyLeavesReducer,
+  approveLeaves: approveLeaveReducer,
+  applyLeave: applyLeaveReducer,
+  singleLeave: viewSingleLeaveReducer,
 });
 
 export default reducers;

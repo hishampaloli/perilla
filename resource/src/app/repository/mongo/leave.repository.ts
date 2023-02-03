@@ -6,6 +6,8 @@ const { LeaveDetails, Employee } = schemas;
 export = {
   applyLeave: async (user: LeaveData) => {
     const mongooseObj = LeaveDetails.build(user);
+
+    await LeaveDetails.populate(mongooseObj, { path: "employeeId" });
     return await mongooseObj.save();
   },
 
@@ -14,12 +16,14 @@ export = {
     employeeId: string,
     isAccepted: boolean
   ) => {
+    console.log(isAccepted);
+
     const mongooseObj = await LeaveDetails.find({
       $and: [{ companyName }, { employeeId }, { isAccepted }],
     });
-
     await LeaveDetails.populate(mongooseObj, { path: "employeeId" });
-    return mongooseObj;
+
+    return mongooseObj.reverse();
   },
 
   getLeaveApplications: async (companyName: string, isAccepted: string) => {
@@ -56,18 +60,17 @@ export = {
   approveLeave: async (
     companyName: string,
     leaveId: string,
-    isAccepted: boolean
+    isAccepted: string
   ) => {
+    console.log(isAccepted + "ssssssssssssssssss");
+
     const mongooseObj = await LeaveDetails.findOneAndUpdate(
       {
-        $and: [{ companyName }, { leaveId }],
+        $and: [{ companyName }, { _id: leaveId }],
       },
-      { isAccepted: isAccepted === true ? "accepted" : "rejected" },
+      { isAccepted: isAccepted == "true" ? "accepted" : "rejected" },
       { new: true, runValidators: true }
     );
-
-    console.log(mongooseObj);
-    console.log(isAccepted);
 
     if (isAccepted) {
       const em = await Employee.findByIdAndUpdate(

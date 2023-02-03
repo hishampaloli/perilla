@@ -66,3 +66,18 @@ export const useEditTask = async (
     toast.error(`${res}`);
   }
 };
+
+export const useApplyLeave = async (
+  leaveData: any,
+  applyLeave: any,
+  setEdit: any
+) => {
+  const res = await applyLeave("sd", leaveData);
+
+  if (`${res}` === "success") {
+    toast.success(`Task edited successfully`);
+    setEdit(false);
+  } else {
+    toast.error(`${res}`);
+  }
+};

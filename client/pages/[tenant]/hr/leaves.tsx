@@ -5,9 +5,9 @@ import LeaveRequestsComponent from "../../../components/LeaveRequests/LeaveReque
 
 const leaves = () => {
   return (
-    <MainLayout title="Leave Requests">
-      <SubHeader text="Leave Requests" />
-      <LeaveRequestsComponent type="admin" />
+    <MainLayout title="My Leaves">
+      <SubHeader text="My Leaves" />
+      <LeaveRequestsComponent type="employee" />
     </MainLayout>
   );
 };

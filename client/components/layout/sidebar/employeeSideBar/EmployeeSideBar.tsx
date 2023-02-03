@@ -44,7 +44,7 @@ const EmployeeSideBar = () => {
       <LinkDiv
         type="employee"
         text="Leaves"
-        link="holidays"
+        link="leaves"
         icon={<HouseboatIcon />}
       />
       <LinkDiv

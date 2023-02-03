@@ -1,33 +1,31 @@
 import { config } from "../../constants/config";
 import buildClient from "../../../api/buildClient";
-import { GetEmployeeLoginVerificationAction } from "../../action-models";
-import { EmployeeActionsTypes } from "../../constants";
+import { GetLeaveReqAction } from "../../action-models";
+import { LeaveActionTypes } from "../../constants";
 import { Dispatch } from "react";
 
-export const getEmployeeOtpVerfication =
-  (req: any, loginData: any) =>
-  async (dispatch: Dispatch<GetEmployeeLoginVerificationAction>) => {
+export const getLeaveRequests =
+  (req: any, status: string) =>
+  async (dispatch: Dispatch<GetLeaveReqAction>) => {
     try {
-      dispatch({ type: EmployeeActionsTypes.GET_OTP_VERIFICATION_REQUETS });
+      dispatch({ type: LeaveActionTypes.GET_LEAVE_REQUEST_REQUEST });
 
-      const { data } = await buildClient(req).post<any>(
-        "/api/user/employee/verifyOtp",
-        loginData,
+      const { data } = await buildClient(req).get<any>(
+        `/api/resource/leave/getLeaveRequests?isAccepted=${status}`,
         config
       );
 
-      localStorage.setItem("employeeInfo", JSON.stringify(data.data));
-
-      dispatch({ type: EmployeeActionsTypes.GET_OTP_VERIFICATION_SUCCESS });
+      console.log(data);
+      
       dispatch({
-        type: EmployeeActionsTypes.EMPLOYEE_LOGIN_SUCCESS,
+        type: LeaveActionTypes.GET_LEAVE_REQUEST_SUCCESS,
         payload: data.data,
       });
 
       return "success";
     } catch (error: any) {
       dispatch({
-        type: EmployeeActionsTypes.GET_OTP_VERIFICATION_FAIL,
+        type: LeaveActionTypes.GET_LEAVE_REQUEST_FAIL,
         error: error.response.data.error.msg,
       });
 

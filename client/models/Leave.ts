@@ -20,11 +20,13 @@ export interface LeaveData {
   startingData: Date;
   isAccepted: string;
   version: number;
+  id: string;
 }
 
 export interface LeaveDataArr {
   data: LeaveData[];
 }
+
 
 export interface LeaveDataObj {
   data: LeaveData;

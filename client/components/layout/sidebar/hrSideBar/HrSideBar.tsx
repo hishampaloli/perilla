@@ -60,7 +60,7 @@ const HrSideBar = () => {
       <LinkDiv
         type="hr"
         text="Leaves"
-        link="holidays"
+        link="leaves"
         icon={<HouseboatIcon />}
       />
       <LinkDiv
