@@ -35,3 +35,25 @@ export interface GetLeaveReqState {
   data: LeaveDataArr | null;
   error: ErrorState[] | null;
 }
+
+export interface ApproveLeaveState {
+  loading: boolean;
+  error: ErrorState[] | null;
+}
+
+export interface ViewSingleLeaveState {
+  loading: boolean;
+  error: ErrorState[] | null;
+  data: LeaveDataObj | null;
+}
+
+export interface ApplyLeaveState {
+  loading: boolean;
+  error: ErrorState[] | null;
+}
+
+export interface GetMyLeavesState {
+  loading: boolean;
+  data: LeaveDataArr | null;
+  error: ErrorState[] | null;
+}
