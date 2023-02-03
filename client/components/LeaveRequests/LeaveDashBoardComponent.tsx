@@ -3,7 +3,7 @@ import React from 'react'
 const LeaveDashBoardComponent = () => {
   return (
     <div>
-      leave dash
+      {/* leave dash */}
     </div>
   )
 }

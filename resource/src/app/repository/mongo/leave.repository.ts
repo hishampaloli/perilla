@@ -46,10 +46,10 @@ export = {
     console.log(companyName, leaveId, employeeId, isAdmin);
 
     const mongooseObj = !isAdmin
-      ? LeaveDetails.findOne({
+      ? await LeaveDetails.findOne({
           $and: [{ companyName }, { _id: leaveId }, { employeeId }],
         })
-      : LeaveDetails.findOne({
+      : await LeaveDetails.findOne({
           $and: [{ companyName }, { _id: leaveId }],
         });
 

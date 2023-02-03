@@ -3,8 +3,6 @@ import swal from "sweetalert";
 import { useActions } from "./useAction";
 
 export const useDeleteEmployee = async (id: string, removeEmployee: any) => {
-  console.log(id);
-
   swal({
     title: "Are you sure?",
     text: "You can delete the employee, the data is still safe !" + id,
@@ -15,7 +13,7 @@ export const useDeleteEmployee = async (id: string, removeEmployee: any) => {
     if (willDelete) {
       const res = await removeEmployee("id", id);
       console.log(res);
-      
+
       swal("Employee has been deleted!", {
         icon: "success",
       });
@@ -50,4 +48,28 @@ export const useDeleteTeamFromProject = async (
   });
 
   return true;
+};
+
+export const useApproveLeave = (
+  leaveId: string,
+  status: boolean,
+  approveLeave: any
+) => {
+  swal({
+    title: "Are you sure?",
+    text: `Are you sure you want to ${status ? "approve" : "reject"} `,
+    icon: "warning",
+    buttons: ["no", true],
+    dangerMode: true,
+  })?.then(async (willDelete) => {
+    if (willDelete) {
+      const res = await approveLeave("id", leaveId, status);
+
+      swal("Leave status updated successfully!", {
+        icon: "success",
+      });
+    } else {
+      swal("Leave request still pending!");
+    }
+  });
 };
