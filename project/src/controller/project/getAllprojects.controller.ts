@@ -13,13 +13,15 @@ export = (dependencies: DepenteniciesData): any => {
     next: NextFunction
   ) => {
     try {
+      const { projectName } = req.query;
       let companyName =
         req.currentUser?.id.companyName || req.currentTenant?.id.companyName;
 
       const projectsData = await getAllProject_UseCase(dependencies).execute(
         companyName,
         req.query.status,
-        req.currentUser ? req.currentUser.id.id : ""
+        req.currentUser ? req.currentUser.id.id : "",
+        projectName
       );
 
       if (!projectsData) {

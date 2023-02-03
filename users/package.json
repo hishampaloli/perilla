@@ -20,6 +20,7 @@
     "md5": "^2.3.0",
     "mongoose": "^6.8.3",
     "mongoose-update-if-current": "^1.4.0",
+    "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.0",
     "stripe": "^11.6.0",
     "ts-node-dev": "^2.0.0",

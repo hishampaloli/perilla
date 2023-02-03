@@ -14,16 +14,23 @@ export = (dependencies: DepenteniciesData): any => {
     next: NextFunction
   ) => {
     try {
-      const { role } = req.query;
+      const { role, name, employeeId, pageNumber } = req.query;
       const companyName =
         req.currentTenant?.id?.companyName || req.currentUser?.id?.companyName;
 
       const allEmployees = await getAllEmployees_UseCase(dependencies).execute(
         companyName,
-        role
+        role,
+        name,
+        employeeId,
+        pageNumber
       );
 
-      res.json({ data: allEmployees });
+      res.json({
+        data: allEmployees.mongooseObj,
+        page: allEmployees.page,
+        pages: allEmployees.pages,
+      });
     } catch (error: any) {
       throw new Error(error);
     }

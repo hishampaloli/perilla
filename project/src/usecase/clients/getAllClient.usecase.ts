@@ -8,8 +8,18 @@ export const getAllClient_UseCase = (dependencies: DepenteniciesData) => {
   if (!clientRepository)
     throw new Error("The client repository should be dependencie");
 
-  const execute = (companyName: string) => {
-    return clientRepository.getAllCLients(companyName);
+  const execute = (
+    companyName: string,
+    name: string,
+    clientId: string,
+    pageNumber: number
+  ) => {
+    return clientRepository.getAllCLients(
+      companyName,
+      name,
+      clientId,
+      pageNumber
+    );
   };
 
   return {

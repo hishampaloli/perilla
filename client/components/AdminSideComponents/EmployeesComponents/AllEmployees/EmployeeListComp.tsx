@@ -24,6 +24,7 @@ const EmployeeListComp = ({
           <ClientList type={type} />
         </>
       )}
+      
     </div>
   );
 };

@@ -19,7 +19,7 @@ export = {
   editClient: async (companyName: string, clientId: string, data: any) => {
     const check = await ClientDetails.findById(clientId);
     console.log(check);
-    
+
     if (!check) return false;
 
     const mongooseObj = ClientDetails.findOneAndUpdate(
@@ -34,10 +34,70 @@ export = {
     return mongooseObj;
   },
 
-  getAllCLients: async (companyName: string) => {
-    const mongooseObj = ClientDetails.aggregate([
-      { $match: { $and: [{ companyName }] } },
-    ]);
-    return mongooseObj;
+  getAllCLients: async (
+    companyName: string,
+    name: string = "",
+    clientId: string = "",
+    pageNumber: number
+  ) => {
+    const pageSize = 3;
+    const page = pageNumber ? pageNumber : 1;
+ console.log(page)
+    const mongooseObj = await ClientDetails.aggregate([
+      {
+        $match: {
+          $and: [
+            { companyName },
+            {
+              clientId: {
+                $regex: clientId,
+                $options: "i",
+              },
+            },
+            {
+              clientName: {
+                $regex: name,
+                $options: "i",
+              },
+            },
+          ],
+        },
+      },
+    ])
+      .skip(pageSize * (page - 1))
+      .limit(pageSize);
+
+    const count = await clientCount(companyName, name, clientId);
+
+    return { mongooseObj, page, pages: Math.ceil(count / pageSize) };
   },
 };
+
+async function clientCount(
+  companyName: string,
+  name: string,
+  clientId: string
+) {
+  const mongooseObj = await ClientDetails.aggregate([
+    {
+      $match: {
+        $and: [
+          { companyName },
+          {
+            clientId: {
+              $regex: clientId,
+              $options: "i",
+            },
+          },
+          {
+            clientName: {
+              $regex: name,
+              $options: "i",
+            },
+          },
+        ],
+      },
+    },
+  ]);
+  return mongooseObj.length;
+}

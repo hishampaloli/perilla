@@ -43,7 +43,11 @@ const EmployeeList = ({ type }: { type: string }) => {
           );
         })
       ) : (
-        <NoDataCopmonent text={`No ${type} found`} />
+        <>
+          {!loading && !data?.data.length && (
+            <NoDataCopmonent text={`No ${type} found`} />
+          )}
+        </>
       )}
     </div>
   );

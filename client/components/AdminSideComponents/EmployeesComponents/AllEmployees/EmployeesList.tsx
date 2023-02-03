@@ -9,9 +9,11 @@ import Spinner from "../../../layout/SpinnerComponent";
 import NoDataCopmonent from "../../../layout/NoDataCopmonent";
 import { ChangeEmployeeListLayoutState } from "../../../../models/custom";
 import EmployeeList from "./EmployeeList";
+import Paginate from "../../../SegemanticComponents/Paginate";
 
 const EmployeesList = ({ type }: { type: string }) => {
   const { getAllEmployees, getAllClients } = useActions();
+  const [page, setPage] = useState<number>(1);
   const { data, error, loading }: AllEmployeesState = useTypedSelector(
     (state) => state.allEmployees
   );
@@ -22,12 +24,12 @@ const EmployeesList = ({ type }: { type: string }) => {
 
   useEffect(() => {
     if (type === "Employees") {
-      getAllEmployees("sd", "employees");
+      getAllEmployees("sd", { role: "employees", pageNumber: page });
     }
     if (type === "HR") {
-      getAllEmployees("sd", "hr");
+      getAllEmployees("sd",  { role: "hr", pageNumber: page });
     }
-  }, []);
+  }, [page]);
   return (
     <div className={style.employeeListMain}>
       {loading && <Spinner />}{" "}
@@ -49,12 +51,17 @@ const EmployeesList = ({ type }: { type: string }) => {
               );
             })
           ) : (
-            <NoDataCopmonent text={`No ${type} found`} />
+            <>
+              {!loading && !data?.data.length && (
+                <NoDataCopmonent text={`No ${type} found`} />
+              )}
+            </>
           )}
         </>
       ) : (
         <EmployeeList type="employee" />
       )}
+      <Paginate count={data?.pages!} giveBack={setPage} />
     </div>
   );
 };

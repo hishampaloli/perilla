@@ -18,6 +18,8 @@ export interface EmployeeData {
 
 export interface EmployeeDataArray {
   data: EmployeeData[];
+  page: number;
+  pages: number;
 }
 
 export interface EmployeeDataObj {
@@ -50,6 +52,8 @@ export interface ClientData {
 
 export interface ClientDataArr {
   data: ClientData[];
+  page: number;
+  pages: number;
 }
 
 export interface CLientDataObj {

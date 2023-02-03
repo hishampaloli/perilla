@@ -9,8 +9,20 @@ export const getAllEmployees_UseCase = (dependencies: DepenteniciesData) => {
   if (!employeeRepository)
     throw new Error("The user repository should be dependencie");
 
-  const execute = (company: string, role: string) => {
-    return employeeRepository.getAllEmployees(company, role);
+  const execute = (
+    company: string,
+    role: string,
+    name: string,
+    employeeId: string,
+    pageNumber: number
+  ) => {
+    return employeeRepository.getAllEmployees(
+      company,
+      role,
+      name,
+      employeeId,
+      pageNumber
+    );
   };
   return {
     execute,

@@ -8,8 +8,18 @@ export const getAllProject_UseCase = (dependencies: DepenteniciesData) => {
   if (!projectRepository)
     throw new Error("The Project repository should be a dependencie");
 
-  const execute = (companyName: string, status: string, userId: string) => {
-    return projectRepository.getAllProjects(companyName, status, userId);
+  const execute = (
+    companyName: string,
+    status: string,
+    userId: string,
+    projectName: string
+  ) => {
+    return projectRepository.getAllProjects(
+      companyName,
+      status,
+      userId,
+      projectName
+    );
   };
   return {
     execute,

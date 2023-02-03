@@ -196,8 +196,17 @@ export = {
     return mongooseObj;
   },
 
-  getAllEmployees: async (company: string, role: string) => {
-    console.log(company, role);
+  getAllEmployees: async (
+    company: string,
+    role: string,
+    name: string,
+    employeeId: string,
+    pageNumber: number
+  ) => {
+    const pageSize = 3;
+    const page = pageNumber ? pageNumber : 1;
+
+
     const mongooseObj = await Employee.aggregate([
       {
         $match: {
@@ -205,11 +214,43 @@ export = {
             { companyName: company },
             { role: role },
             { isBlocked: false },
+            {
+              employeeId: {
+                $regex: employeeId ? employeeId : /^(.+)$/,
+                $options: "i",
+              },
+            },
+            { name: { $regex: name ? name : /^(.+)$/, $options: "i" } },
+          ],
+        },
+      },
+    ])
+      .skip(pageSize * (page - 1))
+      .limit(pageSize);
+    const count = await Employee.aggregate([
+      {
+        $match: {
+          $and: [
+            { companyName: company },
+            { role: role },
+            { isBlocked: false },
+            {
+              employeeId: {
+                $regex: employeeId ? employeeId : /^(.+)$/,
+                $options: "i",
+              },
+            },
+            { name: { $regex: name ? name : /^(.+)$/, $options: "i" } },
           ],
         },
       },
     ]);
-    return mongooseObj;
+
+    return {
+      mongooseObj,
+      page,
+      pages: Math.ceil(count.length / pageSize),
+    };
   },
 
   employeeLogin: async (

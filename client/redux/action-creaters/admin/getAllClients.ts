@@ -6,14 +6,24 @@ import { AdminActionsTypes } from "../../constants";
 import { config } from "../../constants/config";
 
 export const getAllClients =
-  (req: any) => async (dispatch: Dispatch<GetAllClientsAction>) => {
+  (
+    req: any,
+    {
+      name = "",
+      clientId = "",
+      pageNumber = 1,
+    }: { name?: string; clientId?: string; pageNumber?: number }
+  ) =>
+  async (dispatch: Dispatch<GetAllClientsAction>) => {
+    console.log(pageNumber);
+
     try {
       dispatch({
         type: AdminActionsTypes.GET_ALL_CLIENTS_REQUEST,
       });
 
       const { data } = await buildClient(req).get<ClientDataArr>(
-        `/api/project/client/allClients?`,
+        `/api/project/client/allClients?clientName=${name}&clientId=${clientId}&pageNumber=${pageNumber}`,
         config
       );
 

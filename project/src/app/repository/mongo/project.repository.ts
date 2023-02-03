@@ -13,14 +13,26 @@ export = {
   getAllProjects: async (
     companyName: string,
     status: string,
-    createdBy: string
+    createdBy: string,
+    projectName: string
   ) => {
+    console.log(projectName);
+
     const mongooseObj = createdBy
       ? await Project.find({
-          $and: [{ createdBy }, { status }, { companyName }],
+          $and: [
+            { createdBy },
+            { status },
+            { companyName },
+            { projectTitle: { $regex: projectName ? projectName : "" } },
+          ],
         })
       : await Project.find({
-          $and: [{ status }, { companyName }],
+          $and: [
+            { status },
+            { companyName },
+            { projectTitle: { $regex: projectName ? projectName : "" } },
+          ],
         });
 
     await Project.populate(mongooseObj, { path: "team" });
