@@ -2,10 +2,22 @@ import React from "react";
 import SearchComp from "../SegemanticComponents/SearchComp";
 import style from "../../styles/allTaskMain.module.scss";
 
-const TaskSearchComponent = ({ setStatus }: { setStatus: any }) => {
+const TaskSearchComponent = ({
+  setStatus,
+  setSearch,
+  setClick,
+}: {
+  setStatus: any;
+  setSearch: any;
+  setClick: any;
+}) => {
   return (
     <div className={style.taskSearch}>
-      <SearchComp placeholder="search task" setClick={""} setKeys={""} />
+      <SearchComp
+        placeholder="search task"
+        setClick={setClick}
+        setKeys={setSearch}
+      />
       <select
         onChange={(e) => {
           setStatus(e.target.value);

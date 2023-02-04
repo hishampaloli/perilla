@@ -61,4 +61,25 @@ export = {
 
     return mongooseObj.length;
   },
+
+  getMyTasksPosts: async (
+    assignedBy: string,
+    isApproved: boolean,
+    taskName: string
+  ) => {
+    const mongooseObjCount = await Task.find({
+      $and: [
+        { assignedBy },
+        { isApproved },
+        {
+          taskName: {
+            $regex: taskName ? taskName : /^(.+)$/,
+            $options: "i",
+          },
+        },
+      ],
+    }).count()
+
+    return mongooseObjCount
+  },
 };

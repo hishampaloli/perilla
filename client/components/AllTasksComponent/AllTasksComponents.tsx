@@ -13,19 +13,28 @@ const AllTasksComponent = ({ user }: { user: string }) => {
   const { getMyTasks } = useActions();
   const [status, setStatus] = useState(false);
   const [pageNumber, setPage] = useState<number>(1);
+  const [name, setName] = useState<string>("");
 
   const { data, loading }: GetMyTasksState = useTypedSelector(
     (state) => state.getMyTasks
   );
 
+  const hanldeClick = () => {
+    getMyTasks("", status, user, name, pageNumber);
+  };
+
   useEffect(() => {
     console.log(status);
-    getMyTasks("", status, user, "", pageNumber);
+    getMyTasks("", status, user, name, pageNumber);
   }, [status, pageNumber]);
 
   return (
     <div className={style.allTaskMain}>
-      <TaskSearchComponent setStatus={setStatus} />
+      <TaskSearchComponent
+        setClick={hanldeClick}
+        setSearch={setName}
+        setStatus={setStatus}
+      />
       <AllTaskList />
       <Paginate count={data?.pages!} giveBack={setPage} />
     </div>

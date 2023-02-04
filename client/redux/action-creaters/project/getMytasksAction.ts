@@ -22,15 +22,15 @@ export const getMyTasks =
 
       const { data } = await buildClient(req).get<TaskDataArr>(
         user === "employee"
-          ? `${projectService_Url}/task/myTasks?isApproved=${status}`
+          ? `${projectService_Url}/task/myTasks?isApproved=${status}&taskName=${name}&pageNumber=${pageNumber}`
           : user === "hr"
-          ? `${projectService_Url}/task/myTaskPosts?isApproved=${status}`
+          ? `${projectService_Url}/task/myTaskPosts?isApproved=${status}&taskName=${name}&pageNumber=${pageNumber}`
           : user === "approval"
           ? `${projectService_Url}/task/tasksForApproval`
           : `${projectService_Url}/task/allTasks?isApproved=${status}&taskName=${name}&pageNumber=${pageNumber}`,
         config
       );
-      console.log(data);
+      console.log(data)
 
       dispatch({
         type: ProjectActionsTypes.GET_MY_TASKS_SUCCESS,

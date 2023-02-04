@@ -1,5 +1,6 @@
 import { TaskData } from "../../../entities/Task";
 import { schemas } from "../../database/mongo";
+import helperFunction from "./helperFunction";
 
 const { Task } = schemas;
 
@@ -25,7 +26,6 @@ export = {
     taskName: string,
     pageNumber: number
   ) => {
-    
     const pageSize = 1;
     const page = pageNumber ? pageNumber : 1;
 
@@ -102,14 +102,38 @@ export = {
     return mongooseObj;
   },
 
-  getMyTasksPosts: async (assignedBy: string, isApproved: boolean) => {
-    console.log(isApproved);
+  getMyTasksPosts: async (
+    assignedBy: string,
+    isApproved: boolean,
+    taskName: string,
+    pageNumber: number
+  ) => {
+    console.log(taskName, pageNumber + '00000000000000');
+    const pageSize = 1;
+    const page = pageNumber ? pageNumber : 1;
+
+    const count = await helperFunction.getMyTasksPosts(
+      assignedBy,
+      isApproved,
+      taskName
+    );
     const mongooseObj = await Task.find({
-      $and: [{ assignedBy }, { isApproved }],
-    });
+      $and: [
+        { assignedBy },
+        { isApproved },
+        {
+          taskName: {
+            $regex: taskName ? taskName : /^(.+)$/,
+            $options: "i",
+          },
+        },
+      ],
+    })
+      .skip(pageSize * (page - 1))
+      .limit(pageSize);
 
     await Task.populate(mongooseObj, { path: "assignedTo" });
-    return mongooseObj;
+    return { mongooseObj, page, pages: Math.ceil(count / pageSize) };
   },
 
   getMyTasks: async (assignedTo: string, isApproved: boolean) => {
