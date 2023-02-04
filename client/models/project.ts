@@ -58,6 +58,8 @@ export interface TaskData {
 
 export interface TaskDataArr {
   data: TaskData[];
+  page: number;
+  pages: number;
 }
 
 export interface TaskDataObj {

@@ -7,7 +7,13 @@ import { ProjectActionsTypes } from "../../constants";
 import { config } from "../../constants/config";
 
 export const getMyTasks =
-  (req: any, status: boolean, user: string) =>
+  (
+    req: any,
+    status: boolean,
+    user: string,
+    name: string = "",
+    pageNumber: number = 1
+  ) =>
   async (dispatch: Dispatch<GetMyTasksAction>, getState: any) => {
     try {
       dispatch({
@@ -21,7 +27,7 @@ export const getMyTasks =
           ? `${projectService_Url}/task/myTaskPosts?isApproved=${status}`
           : user === "approval"
           ? `${projectService_Url}/task/tasksForApproval`
-          : `${projectService_Url}/task/allTasks?isApproved=${status}`,
+          : `${projectService_Url}/task/allTasks?isApproved=${status}&taskName=${name}&pageNumber=${pageNumber}`,
         config
       );
       console.log(data);

@@ -38,4 +38,27 @@ export = {
         });
     return mongooseObj.length;
   },
+
+  getMyProjectsCount: async (
+    companyName: string,
+    status: string,
+    userId: string,
+    projectName: string
+  ) => {
+    const mongooseObj = await Project.find({
+      $and: [
+        { companyName },
+        { team: { $in: [userId] } },
+        { status },
+        {
+          projectName: {
+            $regex: projectName ? projectName : /^(.+)$/,
+            $options: "i",
+          },
+        },
+      ],
+    });
+
+    return mongooseObj.length;
+  },
 };

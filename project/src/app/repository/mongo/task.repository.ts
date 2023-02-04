@@ -22,13 +22,24 @@ export = {
   getAllTasks: async (
     companyName: string,
     isApproved: boolean,
+    taskName: string,
     pageNumber: number
   ) => {
-    const pageSize = 3;
+    
+    const pageSize = 1;
     const page = pageNumber ? pageNumber : 1;
 
     const mongooseObj = await Task.find({
-      $and: [{ companyName }, { isApproved }],
+      $and: [
+        { companyName },
+        { isApproved },
+        {
+          taskName: {
+            $regex: taskName ? taskName : /^(.+)$/,
+            $options: "i",
+          },
+        },
+      ],
     })
       .skip(pageSize * (page - 1))
       .limit(pageSize);

@@ -35,6 +35,8 @@ export const getAllProjects =
       }
 
       if (type === "employee") {
+        console.log(23333333333);
+        
         const { data } = await buildClient(req).get<ProjectDataArr>(
           `${projectService_Url}/project/myProjects?status=${status}&projectName=${name}&pageNumber=${pageNumber}`,
           config

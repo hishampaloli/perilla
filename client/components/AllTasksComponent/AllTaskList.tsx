@@ -10,6 +10,7 @@ const AllTaskList = () => {
   const { data, loading }: GetMyTasksState = useTypedSelector(
     (state) => state.getMyTasks
   );
+  
   return (
     <div className={style.allTaskList}>
       {loading && <Spinner />}

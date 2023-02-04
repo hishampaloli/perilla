@@ -20,7 +20,7 @@ export = {
   ) => {
     console.log(pageNumber);
     console.log(projectName);
-    
+
     const count = await helperFunction.getAllProjectsCount(
       companyName,
       status,
@@ -137,15 +137,40 @@ export = {
   getMyProjects: async (
     companyName: string,
     status: string,
-    userId: string
+    userId: string,
+    projectName: string,
+    pageNumber: number
   ) => {
+    console.log(projectName, pageNumber);
+    const pageSize = 1;
+    const page = pageNumber ? pageNumber : 1;
+
+    const count = await helperFunction.getMyProjectsCount(
+      companyName,
+      status,
+      userId,
+      projectName
+    );
+
     const mongooseObj = await Project.find({
-      $and: [{ companyName }, { team: { $in: [userId] } }, { status }],
-    });
+      $and: [
+        { companyName },
+        { team: { $in: [userId] } },
+        { status },
+        {
+          projectName: {
+            $regex: projectName ? projectName : /^(.+)$/,
+            $options: "i",
+          },
+        },
+      ],
+    })
+      .skip(pageSize * (page - 1))
+      .limit(pageSize);
 
     await Project.populate(mongooseObj, { path: "team" });
     await Project.populate(mongooseObj, { path: "createdBy" });
-    return mongooseObj;
+    return { mongooseObj, page, pages: Math.ceil(count / pageSize) };
   },
 
   getProjectUnderUser: async (companyName: string, userId: string) => {

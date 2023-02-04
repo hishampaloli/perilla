@@ -13,20 +13,28 @@ export = (dependencies: DepenteniciesData): any => {
     next: NextFunction
   ) => {
     try {
+      const { projectName, pageNumber } = req.query;
+      console.log(projectName, pageNumber);
+      console.log('sdsdsdsdsdsd')
+      
       let companyName =
         req.currentUser?.id.companyName || req.currentTenant?.id.companyName;
 
-      const projectsData = await getMyProjects_usecase(dependencies).execute(
+      const { mongooseObj, page, pages } = await getMyProjects_usecase(
+        dependencies
+      ).execute(
         companyName,
         req.query.status,
-        req.currentUser?.id.id
+        req.currentUser?.id.id,
+        projectName,
+        pageNumber
       );
 
-      if (!projectsData) {
+      if (!mongooseObj) {
         throw new BadRequestError("No projects found");
       }
 
-      res.json({ data: projectsData });
+      res.json({ data: mongooseObj, page, pages });
     } catch (error: any) {
       throw new Error(error);
     }

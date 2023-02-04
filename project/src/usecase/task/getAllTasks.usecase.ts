@@ -8,8 +8,18 @@ export const getAllTasks_UseCase = (dependencies: DepenteniciesData) => {
   if (!taskRepository)
     throw new Error("The Task repository should be a dependencie");
 
-  const execute = (companyName: string, isApproved: boolean) => {
-    return taskRepository.getAllTasks(companyName, isApproved);
+  const execute = (
+    companyName: string,
+    isApproved: boolean,
+    taskName: string,
+    pageNumber: string
+  ) => {
+    return taskRepository.getAllTasks(
+      companyName,
+      isApproved,
+      taskName,
+      pageNumber
+    );
   };
   return {
     execute,

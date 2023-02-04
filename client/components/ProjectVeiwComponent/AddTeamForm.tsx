@@ -11,13 +11,17 @@ import { AllEmployeesState, EmployeeData } from "../../models/admin";
 import { useRouter } from "next/router";
 import NoDataCopmonent from "../layout/NoDataCopmonent";
 
-const EditProjectForm = ({ setEdit, projectId }: { setEdit: any, projectId: any }) => {
+const EditProjectForm = ({
+  setEdit,
+  projectId,
+}: {
+  setEdit: any;
+  projectId: any;
+}) => {
   const [addTeam, setAddTeam] = useState<boolean>(false);
   const [teamData, setTeamData] = useState<EmployeeData>();
-  
 
   const { getAllEmployees, addTeamToProject } = useActions();
-
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -35,7 +39,7 @@ const EditProjectForm = ({ setEdit, projectId }: { setEdit: any, projectId: any 
   );
 
   useEffect(() => {
-    getAllEmployees("sd", "employees");
+    getAllEmployees("sd", { role: "employees" });
   }, []);
 
   return (

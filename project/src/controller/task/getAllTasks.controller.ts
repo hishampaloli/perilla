@@ -13,14 +13,19 @@ export = (dependencies: DepenteniciesData): any => {
     next: NextFunction
   ) => {
     try {
-      const allTasks = await getAllTasks_UseCase(dependencies).execute(
+      const { taskName, pageNumber } = req.query;
+      const { mongooseObj, page, pages } = await getAllTasks_UseCase(
+        dependencies
+      ).execute(
         req.currentTenant?.id.companyName,
-        req.query.isApproved
+        req.query.isApproved,
+        taskName,
+        pageNumber
       );
 
-      if (!allTasks) throw new BadRequestError("no task found");
+      if (!mongooseObj) throw new BadRequestError("no task found");
 
-      res.json({ data: allTasks });
+      res.json({ data: mongooseObj, page, pages });
     } catch (error: any) {
       throw new Error(error);
     }

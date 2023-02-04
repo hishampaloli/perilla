@@ -1,12 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const MyPendingTask = () => {
-  return (
-    <div>
-      MyPendingTask
-MyPendingTask
-    </div>
-  )
-}
+  return <div>MyPendingTask MyPendingTask</div>;
+};
 
-export default MyPendingTask
+export default MyPendingTask;
