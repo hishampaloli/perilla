@@ -13,6 +13,7 @@ import {
   resetPassword_UseCase,
   createDashboard_UseCase,
   editDashboard_UseCase,
+  getDashboard_UseCase,
 } from "../usecases";
 
 const useCases: any = {
@@ -28,6 +29,7 @@ const useCases: any = {
   verifyFireBaseOtp_UseCase,
   resetPassword_UseCase,
   createDashboard_UseCase,
+  getDashboard_UseCase,
   editDashboard_UseCase,
 };
 

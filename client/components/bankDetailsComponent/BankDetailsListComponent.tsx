@@ -6,18 +6,12 @@ import Spinner from "../layout/SpinnerComponent";
 import BankDetailDiv from "./BankDetailDiv";
 import style from "../../styles/bankDetails.module.scss";
 import NoDataCopmonent from "../layout/NoDataCopmonent";
+import Paginate from "../SegemanticComponents/Paginate";
 
-const BankDetailsListComponent = () => {
-  const { data, loading, error }: AllBankDetailsRequestState = useTypedSelector(
-    (state) => state.allBankDetails
-  );
-
-  console.log(data?.data);
-
-  const { getAllBankDetailsData } = useActions();
-  useEffect(() => {
-    getAllBankDetailsData("sd");
-  }, []);
+const BankDetailsListComponent = ({
+  data,
+  loading,
+}: AllBankDetailsRequestState) => {
   return (
     <div className={style.bankDetailsList}>
       {loading && <Spinner />}
@@ -33,7 +27,7 @@ const BankDetailsListComponent = () => {
         return <BankDetailDiv bankData={el} />;
       })}
       {!loading && !data?.data.length && (
-        <div style={{marginTop: '30px'}}>
+        <div style={{ marginTop: "30px" }}>
           <NoDataCopmonent text="No Request Found" />
         </div>
       )}

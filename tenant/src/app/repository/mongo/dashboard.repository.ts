@@ -12,8 +12,7 @@ export = {
 
   editDashBoardData: async (companyName: string, data: string) => {
     console.log(data);
-    console.log('????????????????????/');
-    
+    console.log("????????????????????/");
 
     let increment: any = { $inc: {} };
     increment.$inc[data] = 1;
@@ -30,6 +29,11 @@ export = {
     );
     console.log(mongooseObj);
 
+    return mongooseObj;
+  },
+
+  getDashBoard: async (companyName: string) => {
+    const mongooseObj = await DashBoard.findOne({ companyName });
     return mongooseObj;
   },
 };

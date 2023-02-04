@@ -9,14 +9,15 @@ const EmployeeSearchbox = ({ type }: { type: string }) => {
 
   const handleSearch = (e: React.SyntheticEvent) => {
     e.preventDefault();
+
     if (type === "Employees") {
       getAllEmployees("sd", { role: "employees", name, employeeId: id });
     }
     if (type === "HR") {
-      getAllEmployees("sd", { role: "hr", name, employeeId: id })
+      getAllEmployees("sd", { role: "hr", name, employeeId: id });
     }
     if (type === "Client") {
-      getAllClients("df", {name, clientId: id});
+      getAllClients("df", { name, clientId: id });
     }
   };
   return (

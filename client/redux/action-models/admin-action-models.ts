@@ -33,6 +33,8 @@ export type GetAllEmployeeAction =
   | GetAllEmployeesSuccessAction
   | GetAllEmployeesFailAction;
 
+
+
 interface GetAllClientsRequestAction {
   type: AdminActionsTypes.GET_ALL_CLIENTS_REQUEST;
 }

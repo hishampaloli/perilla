@@ -1,5 +1,6 @@
 import { ProjectData } from "../../../entities/Project";
 import { schemas } from "../../database/mongo";
+import helperFunction from "./helperFunction";
 
 const { Project } = schemas;
 
@@ -14,9 +15,21 @@ export = {
     companyName: string,
     status: string,
     createdBy: string,
-    projectName: string
+    projectName: string,
+    pageNumber: number
   ) => {
+    console.log(pageNumber);
     console.log(projectName);
+    
+    const count = await helperFunction.getAllProjectsCount(
+      companyName,
+      status,
+      createdBy,
+      projectName,
+      pageNumber
+    );
+    const pageSize = 1;
+    const page = pageNumber ? pageNumber : 1;
 
     const mongooseObj = createdBy
       ? await Project.find({
@@ -24,21 +37,39 @@ export = {
             { createdBy },
             { status },
             { companyName },
-            { projectTitle: { $regex: projectName ? projectName : "" } },
+            {
+              projectName: {
+                $regex: projectName ? projectName : /^(.+)$/,
+                $options: "i",
+              },
+            },
           ],
         })
+          .skip(pageSize * (page - 1))
+          .limit(pageSize)
       : await Project.find({
           $and: [
             { status },
             { companyName },
-            { projectTitle: { $regex: projectName ? projectName : "" } },
+            {
+              projectName: {
+                $regex: projectName ? projectName : /^(.+)$/,
+                $options: "i",
+              },
+            },
           ],
-        });
+        })
+          .skip(pageSize * (page - 1))
+          .limit(pageSize);
 
     await Project.populate(mongooseObj, { path: "team" });
     await Project.populate(mongooseObj, { path: "createdBy" });
 
-    return mongooseObj.reverse();
+    return {
+      mongooseObj: mongooseObj.reverse(),
+      page,
+      pages: Math.ceil(count / pageSize),
+    };
   },
 
   getSingleProject: async (id: string) => {

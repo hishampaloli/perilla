@@ -158,8 +158,29 @@ export = {
     return mongooseObj;
   },
 
-  reqestedBankDetails: async (companyName: string) => {
+  reqestedBankDetails: async (companyName: string, pageNumber: number) => {
+    const pageSize = 5;
+    const page = pageNumber ? pageNumber : 1;
+
     const mongooseObj = await BankDetails.aggregate([
+      {
+        $match: {
+          $and: [
+            { companyName: companyName },
+            { approvalReq: true },
+            { isApproved: false },
+          ],
+        },
+      },
+      {
+        $skip: pageSize * (page - 1),
+      },
+      {
+        $limit: pageSize,
+      },
+    ]);
+
+    const count = await BankDetails.aggregate([
       {
         $match: {
           $and: [
@@ -173,7 +194,11 @@ export = {
 
     await BankDetails.populate(mongooseObj, { path: "employee" });
 
-    return mongooseObj;
+    return {
+      mongooseObj,
+      page,
+      pages: Number(Math.ceil(count.length / pageSize)),
+    };
   },
 
   editBankDetails: async (employeeId: string, data: any) => {
@@ -206,7 +231,6 @@ export = {
     const pageSize = 3;
     const page = pageNumber ? pageNumber : 1;
 
-
     const mongooseObj = await Employee.aggregate([
       {
         $match: {
@@ -224,9 +248,13 @@ export = {
           ],
         },
       },
-    ])
-      .skip(pageSize * (page - 1))
-      .limit(pageSize);
+      {
+        $skip: pageSize * (page - 1),
+      },
+      {
+        $limit: pageSize,
+      },
+    ]);
     const count = await Employee.aggregate([
       {
         $match: {
@@ -244,12 +272,13 @@ export = {
           ],
         },
       },
+      { $count: "total_docs" },
     ]);
 
     return {
       mongooseObj,
       page,
-      pages: Math.ceil(count.length / pageSize),
+      pages: Number(Math.ceil(count[0].total_docs / pageSize)),
     };
   },
 

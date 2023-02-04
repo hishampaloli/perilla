@@ -66,6 +66,7 @@ export interface AllClientsState {
   loading: boolean;
 }
 
+
 export interface AddEmployeesState {
   data: EmployeeDataObj | null;
   error: ErrorState[] | null;

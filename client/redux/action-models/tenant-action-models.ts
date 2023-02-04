@@ -1,4 +1,4 @@
-import { ErrorState, TenantData } from "../../models/tenants";
+import { DashBoardDataObj, ErrorState, TenantData } from "../../models/tenants";
 
 import { TenantActionsTypes } from "../constants/tenantTypes";
 
@@ -90,3 +90,22 @@ interface ResetPasswordFailAction {
 export type ResetPasswordAction =
   | ResetPasswordRequestAction
   | ResetPasswordFailAction;
+
+interface GetDashBoardRequestAction {
+  type: TenantActionsTypes.GET_DASHBOARD_REQUEST;
+}
+
+interface GetDashBoardSuccessAction {
+  type: TenantActionsTypes.GET_DASHBOARD_SUCCESS;
+  payload: DashBoardDataObj;
+}
+
+interface GetDashBoardFailAction {
+  type: TenantActionsTypes.GET_DASHBOARD_FAIL;
+  error: ErrorState[];
+}
+
+export type GetDashBoardAction =
+  | GetDashBoardRequestAction
+  | GetDashBoardSuccessAction
+  | GetDashBoardFailAction;

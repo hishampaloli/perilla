@@ -15,11 +15,13 @@ export = (dependencies: DepenteniciesData): any => {
       const companyName =
         req.currentTenant?.id?.companyName || req.currentUser?.id?.companyName;
 
-      const allRequests = await getAllBankDetailsApprovalRequest_UseCase(
-        dependencies
-      ).execute(companyName);
+      const { mongooseObj, page, pages } =
+        await getAllBankDetailsApprovalRequest_UseCase(dependencies).execute(
+          companyName,
+          req.query.pageNumber
+        );
 
-      res.json({ data: allRequests });
+      res.json({ data: mongooseObj, page, pages });
     } catch (error: any) {
       throw new Error(error);
     }

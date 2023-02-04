@@ -42,7 +42,7 @@ export = {
   ) => {
     const pageSize = 3;
     const page = pageNumber ? pageNumber : 1;
- console.log(page)
+    console.log(page);
     const mongooseObj = await ClientDetails.aggregate([
       {
         $match: {
@@ -63,9 +63,13 @@ export = {
           ],
         },
       },
-    ])
-      .skip(pageSize * (page - 1))
-      .limit(pageSize);
+      {
+        $skip: pageSize * (page - 1),
+      },
+      {
+        $limit: pageSize,
+      },
+    ]);
 
     const count = await clientCount(companyName, name, clientId);
 

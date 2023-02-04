@@ -19,14 +19,27 @@ export = {
     return mongooseObj;
   },
 
-  getAllTasks: async (companyName: string, isApproved: boolean) => {
+  getAllTasks: async (
+    companyName: string,
+    isApproved: boolean,
+    pageNumber: number
+  ) => {
+    const pageSize = 3;
+    const page = pageNumber ? pageNumber : 1;
+
     const mongooseObj = await Task.find({
       $and: [{ companyName }, { isApproved }],
-    });
+    })
+      .skip(pageSize * (page - 1))
+      .limit(pageSize);
+
+    const count = await Task.find({
+      $and: [{ companyName }, { isApproved }],
+    }).count();
 
     await Task.populate(mongooseObj, { path: "assignedBy" });
     await Task.populate(mongooseObj, { path: "assignedTo" });
-    return mongooseObj;
+    return { mongooseObj, page, pages: Math.ceil(count / pageSize) };
   },
 
   getSingleTask: async (companyName: string, taskId: string) => {

@@ -10,11 +10,13 @@ const ProjectPageComp = () => {
   const router = useRouter();
 
   
+  
   return (
     <div className={style.projectMain}>
       <CreateProjectComponent />
       <ProjectSearchComponent />
       <ProjectListComponent />
+      
     </div>
   );
 };

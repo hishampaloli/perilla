@@ -6,19 +6,18 @@ import { AdminActionsTypes } from "../../constants";
 import { config } from "../../constants/config";
 
 export const getAllBankDetailsData =
-  (req: any) => async (dispatch: Dispatch<GetAllBankDetailsReqAction>) => {
+  (req: any, pageNumber: number = 1) =>
+  async (dispatch: Dispatch<GetAllBankDetailsReqAction>) => {
     try {
       dispatch({
         type: AdminActionsTypes.GET_ALL_BANK_DETAILS_REQUETS,
       });
 
       const { data } = await buildClient(req).get<BankDetailsArr>(
-        `/api/user/employee/allBankReq`,
+        `/api/user/employee/allBankReq?pageNumber=${pageNumber}`,
         config
       );
 
-      console.log(data);
-      console.log("90909()()()()()");
 
       dispatch({
         type: AdminActionsTypes.GET_ALL_BANK_DETAILS_SUCCESS,

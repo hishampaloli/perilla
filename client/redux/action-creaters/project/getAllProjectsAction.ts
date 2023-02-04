@@ -7,7 +7,15 @@ import { ProjectActionsTypes } from "../../constants";
 import { config } from "../../constants/config";
 
 export const getAllProjects =
-  (req: any, status: string = "pending", type: string) =>
+  (
+    req: any,
+    {
+      status,
+      type,
+      name = '',
+      pageNumber,
+    }: { status: string; type: string; name?: string; pageNumber?: number }
+  ) =>
   async (dispatch: Dispatch<GetAllProjectsAction>) => {
     try {
       dispatch({
@@ -16,7 +24,7 @@ export const getAllProjects =
 
       if (type === "hr") {
         const { data } = await buildClient(req).get<ProjectDataArr>(
-          `${projectService_Url}/project/allProjects?status=${status}`,
+          `${projectService_Url}/project/allProjects?status=${status}&projectName=${name}&pageNumber=${pageNumber}`,
           config
         );
 
@@ -25,14 +33,12 @@ export const getAllProjects =
           payload: data,
         });
       }
-      
-      
+
       if (type === "employee") {
         const { data } = await buildClient(req).get<ProjectDataArr>(
-          `${projectService_Url}/project/myProjects?status=${status}`,
+          `${projectService_Url}/project/myProjects?status=${status}&projectName=${name}&pageNumber=${pageNumber}`,
           config
         );
-
         dispatch({
           type: ProjectActionsTypes.GET_ALL_PROJECTS_SUCCESS,
           payload: data,

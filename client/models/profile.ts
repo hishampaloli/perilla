@@ -38,7 +38,10 @@ export interface PersonalInformation {
 
 export interface BankDetailsArr {
   data: BankDetails[];
+  page: number;
+  pages: number;
 }
+
 export interface EmployeeProfileData {
   _id: string;
   email: string;

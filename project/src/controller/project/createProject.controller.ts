@@ -1,6 +1,8 @@
 import { BadRequestError } from "@hr-management/common";
 import { Request, Response, NextFunction } from "express";
 import { DepenteniciesData } from "../../entities/interfaces";
+import { ProjectCreatedPublisher } from "../../events/publishers/project-created-event";
+import { natsWrapper } from "../../nats-wrapper";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
@@ -48,6 +50,9 @@ export = (dependencies: DepenteniciesData): any => {
         throw new BadRequestError("Something went wrong!");
       }
 
+      await new ProjectCreatedPublisher(natsWrapper.client).publish({
+        companyName: req.currentUser?.id?.companyName || "",
+      });
       res.json({ data: createdProject });
     } catch (error: any) {
       throw new BadRequestError(error);

@@ -1,7 +1,10 @@
 import { BadRequestError } from "@hr-management/common";
 import { Request, Response, NextFunction } from "express";
 import { DepenteniciesData } from "../../entities/interfaces";
+
 import md5 from "md5";
+import { ClientCreatedPublisher } from "../../events/publishers/client-created-event";
+import { natsWrapper } from "../../nats-wrapper";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
@@ -29,7 +32,6 @@ export = (dependencies: DepenteniciesData): any => {
       )}?d=retro`;
 
       console.log(avatar);
-      
 
       const createdClient = await createClient_UseCase(dependencies).execute({
         companyName: req.currentTenant?.id?.companyName,
@@ -46,6 +48,10 @@ export = (dependencies: DepenteniciesData): any => {
       if (!createdClient) {
         throw new BadRequestError("Opps somthing went wrong!");
       }
+
+      await new ClientCreatedPublisher(natsWrapper.client).publish({
+        companyName: req.currentTenant?.id?.companyName || "",
+      });
 
       res.json({ data: createdClient });
     } catch (error: any) {

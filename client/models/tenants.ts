@@ -68,3 +68,24 @@ export interface ResetPasswordState {
   error: ErrorState[] | null;
   loading: boolean;
 }
+
+export interface DashBoardData {
+  companyName: string;
+  adminName: string;
+  employeeCount: number;
+  totalProject: number;
+  totalTask: number;
+  totalExpense: number;
+  clientCount: number;
+  version: number;
+}
+
+export interface DashBoardDataObj {
+  data: DashBoardData;
+}
+
+export interface GetDashBoardState {
+  data: DashBoardDataObj | null;
+  error: ErrorState[] | null;
+  loading: boolean;
+}

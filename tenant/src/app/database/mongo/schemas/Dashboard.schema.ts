@@ -7,17 +7,15 @@ interface DashBoardAttrs {
 }
 
 interface DashBoardModal extends mongoose.Model<DashBoardDoc> {
-  build(attrs: DashBoardAttrs):DashBoardDoc;
+  build(attrs: DashBoardAttrs): DashBoardDoc;
 }
 
 interface DashBoardDoc extends mongoose.Document {
   companyName: string;
   adminName: string;
   employeeCount: number;
-  onGoingProject: number;
-  completedProject: number;
-  taskCompleted: number;
-  pendingTask: number;
+  totalProject: number;
+  totalTask: number;
   totalExpense: number;
   clientCount: number;
   version: number;
@@ -37,24 +35,14 @@ const dashBoardSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    onGoingProject: {
+    totalProject: {
       type: Number,
       default: 0,
     },
-    completedProject: {
+    totalTask: {
       type: Number,
       default: 0,
     },
-    taskCompleted: {
-      type: Number,
-      default: 0,
-    },
-
-    pendingTask: {
-      type: Number,
-      default: 0,
-    },
-
     totalExpense: {
       type: Number,
       default: 0,
@@ -75,8 +63,6 @@ const dashBoardSchema = new mongoose.Schema(
   }
 );
 
-
-
 dashBoardSchema.set("versionKey", "version");
 dashBoardSchema.plugin(updateIfCurrentPlugin);
 
@@ -84,6 +70,9 @@ dashBoardSchema.statics.build = (attrs: DashBoardAttrs) => {
   return new DashBoard(attrs);
 };
 
-const DashBoard = mongoose.model<DashBoardDoc, DashBoardModal>("DashBoard", dashBoardSchema);
+const DashBoard = mongoose.model<DashBoardDoc, DashBoardModal>(
+  "DashBoard",
+  dashBoardSchema
+);
 
 export { DashBoard };

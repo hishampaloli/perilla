@@ -1,35 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "../../../../styles/dashboard.module.scss";
 import DashBoardCountDiv from "./DashBoardCountDiv";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import DiamondIcon from '@mui/icons-material/Diamond';
-import Person3Icon from '@mui/icons-material/Person3';
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import DiamondIcon from "@mui/icons-material/Diamond";
+import Person3Icon from "@mui/icons-material/Person3";
+import { GetDashBoardState } from "../../../../models/tenants";
+import { useTypedSelector } from "../../../../hooks/useTypedSelector";
+import { useActions } from "../../../../hooks/useAction";
 
 const DashBoardCounts = () => {
+  const { data, loading }: GetDashBoardState = useTypedSelector(
+    (state) => state.getDashBoard
+  );
+  const { getDashboard } = useActions();
+
+  useEffect(() => {
+    getDashboard("");
+  }, []);
+  console.log(data);
   return (
     <div className={style.dashboardcount}>
       <DashBoardCountDiv
         text="Projects"
-        count="122"
+        count={data?.data.totalProject!}
         icon={<AccountTreeIcon />}
       />
 
       <DashBoardCountDiv
         text="Clients"
-        count="44"
+        count={data?.data?.clientCount!}
         icon={<AttachMoneyIcon />}
       />
 
       <DashBoardCountDiv
         text="Tasks"
-        count="390"
+        count={data?.data?.totalTask!}
         icon={<DiamondIcon />}
       />
 
       <DashBoardCountDiv
         text="Employees"
-        count="298"
+        count={data?.data.employeeCount!}
         icon={<Person3Icon />}
       />
     </div>

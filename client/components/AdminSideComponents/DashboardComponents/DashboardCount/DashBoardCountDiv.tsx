@@ -6,7 +6,7 @@ const DashBoardCountDiv = ({
   text,
   icon,
 }: {
-  count: string;
+  count: number;
   text: string;
   icon: any;
 }) => {

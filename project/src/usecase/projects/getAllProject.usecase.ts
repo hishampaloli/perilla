@@ -12,13 +12,15 @@ export const getAllProject_UseCase = (dependencies: DepenteniciesData) => {
     companyName: string,
     status: string,
     userId: string,
-    projectName: string
+    projectName: string,
+    pageNumber: string
   ) => {
     return projectRepository.getAllProjects(
       companyName,
       status,
       userId,
-      projectName
+      projectName,
+      pageNumber
     );
   };
   return {

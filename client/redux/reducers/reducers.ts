@@ -6,6 +6,7 @@ import {
   getPaidTenantReducer,
   getStripeLinkReducer,
   resetPasswordReducer,
+  getDashBoardReducer,
 } from "./tenants";
 
 import {
@@ -71,6 +72,7 @@ const reducers = combineReducers({
   allClients: getAllClientsReducer,
   addEmployees: addEmployeeReducer,
   employeeProfile: getEmployeeProfileReducer,
+  getDashBoard: getDashBoardReducer,
   clientProfile: getClientProfileReducer,
   editEmployeeProfile: EditEmployeeProfileReducer,
   editClient: EditClientReducer,

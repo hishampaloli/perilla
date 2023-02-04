@@ -4,8 +4,7 @@ import { BankDetails } from "../../models/profile";
 import style from "../../styles/bankDetails.module.scss";
 
 const BankDetailDiv = ({ bankData }: { bankData: BankDetails }) => {
-  console.log(bankData);
-  console.log("////////////////");
+  
 
   return (
     <Link

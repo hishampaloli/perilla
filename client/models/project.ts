@@ -66,6 +66,8 @@ export interface TaskDataObj {
 
 export interface ProjectDataArr {
   data: ProjectData[];
+  page: number;
+  pages: number;
 }
 
 export interface ProjectDataObj {
