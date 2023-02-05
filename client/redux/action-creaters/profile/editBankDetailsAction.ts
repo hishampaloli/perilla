@@ -18,7 +18,7 @@ export const editBankDetails =
         type: ProfileActionsTypes.EDIT_BANK_DETAILS_REQUETS,
       });
 
-      const { data } = await editBankDetails__API(req, bankData);
+      await editBankDetails__API(req, bankData);
 
       getState().myProfile.data.data.bankDetails.bankName = bankData.bankName;
       getState().myProfile.data.data.bankDetails.accountNumber =

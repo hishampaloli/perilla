@@ -11,7 +11,7 @@ export const changeEmployeePassword =
         type: ProfileActionsTypes.CHANGE_EMPLOYEE_PASSWORD_REQUEST,
       });
 
-      const { data } = await changeEmployeePassword__API(req, id, password);
+      await changeEmployeePassword__API(req, id, password);
 
       dispatch({
         type: ProfileActionsTypes.CHANGE_EMPLOYEE_PASSWORD_SUCCESS,

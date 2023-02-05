@@ -4,7 +4,7 @@ import { projectService_Url } from "../../../api/baseURLs";
 import { AddTaskState, TaskDataObj } from "../../../models/project";
 import { AddTaskAction } from "../../action-models";
 import { ProjectActionsTypes } from "../../constants";
-import { config } from "../../constants/config";
+import { addTask__API } from "../../../api";
 
 export const addTask =
   (req: any, taskData: any) =>
@@ -14,11 +14,7 @@ export const addTask =
         type: ProjectActionsTypes.ADD_TASK_REQUEST,
       });
 
-      const { data } = await buildClient(req).post<TaskDataObj>(
-        `${projectService_Url}/task/create`,
-        taskData,
-        config
-      );
+      const { data } = await addTask__API(req, taskData);
 
       getState().getTaskUnderProjects.data.data.push(data.data);
 
@@ -33,7 +29,6 @@ export const addTask =
         type: ProjectActionsTypes.ADD_TASK_FAIL,
         error: error?.response?.data?.error?.msg,
       });
-      console.log(error);
 
       return error?.response?.data?.error?.msg;
     }

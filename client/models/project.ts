@@ -28,7 +28,7 @@ export interface ProjectData {
 export interface CreateProjectData {
   projectName: string;
   client: string;
-  startDate: Date;
+  startDate?: Date;
   priority: string;
   projectDescription: string;
   rate: number;

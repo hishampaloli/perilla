@@ -1,14 +1,16 @@
 import { Dispatch } from "react";
 import buildClient from "../../../api/buildClient";
 import { ClientData, CLientDataObj } from "../../../models/admin";
-import { EditClientState } from "../../../models/profile";
 import { EditClientAction } from "../../action-models";
 import { ProfileActionsTypes } from "../../constants";
 import { config } from "../../constants/config";
 
 export const editClientProfile =
   (req: any, id: string, clientData: ClientData) =>
-  async (dispatch: Dispatch<EditClientAction>, getState: any): Promise<string> => {
+  async (
+    dispatch: Dispatch<EditClientAction>,
+    getState: any
+  ): Promise<string> => {
     try {
       dispatch({
         type: ProfileActionsTypes.EDIT_CLIENT_PROFILE_REQUETS,
@@ -19,9 +21,6 @@ export const editClientProfile =
         clientData,
         config
       );
-
-      console.log(data);
-      console.log("()()()()()()()()()()()()(");
 
       dispatch({
         type: ProfileActionsTypes.GET_CLIENT_PROFILE_SUCCESS,

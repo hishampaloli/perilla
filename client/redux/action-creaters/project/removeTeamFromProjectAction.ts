@@ -9,21 +9,20 @@ import {
 import { RemoveTeamFromProjectsAction } from "../../action-models";
 import { ProjectActionsTypes } from "../../constants";
 import { config } from "../../constants/config";
+import { removeTeamFromProject__API } from "../../../api";
 
 export const removeTeamFromProject =
   (req: any, employeeId: string, projectId: any) =>
-  async (dispatch: Dispatch<RemoveTeamFromProjectsAction>, getState: any) => {
+  async (
+    dispatch: Dispatch<RemoveTeamFromProjectsAction>,
+    getState: any
+  ): Promise<string> => {
     try {
       dispatch({
         type: ProjectActionsTypes.REMOVE_TEAM_FROM_PROJECTS_REQUEST,
       });
 
-      const { data } = await buildClient(req).put<ProjectDataObj>(
-        `${projectService_Url}/project/removeTeam/${projectId}`,
-        { employeeId },
-        config
-      );
-console.log(data);
+      await removeTeamFromProject__API(req, employeeId, projectId);
 
       getState().singleProject.data.data.team =
         getState().singleProject.data.data.team.filter((el: EmployeeData) => {
@@ -41,8 +40,6 @@ console.log(data);
         type: ProjectActionsTypes.REMOVE_TEAM_FROM_PROJECTS_FAIL,
         error: error?.response?.data?.error?.msg,
       });
-      console.log(error);
-
       return error?.response?.data?.error?.msg;
     }
   };

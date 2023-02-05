@@ -18,7 +18,7 @@ const AddClient = ({ setClient }: { setClient: any }) => {
 
   const handleClick = () => {
     setEdit(true);
-    getAllClients("");
+    getAllClients("", { name: "", clientId: '', pageNumber: 1 });
   };
 
   return (

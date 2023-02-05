@@ -14,7 +14,7 @@ export const tenantLoginOtp__API = (req: any, loginData: LoginData) =>
     `${tenantService_Url}/tenantLogin`,
     loginData,
     config
-  );
+  )
 
 export const getRegisterOtp__API = (
   req: any,

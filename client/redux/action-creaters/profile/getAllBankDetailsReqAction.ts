@@ -1,10 +1,7 @@
 import { Dispatch } from "react";
 import { editallBankDetailsData__API } from "../../../api";
-import buildClient from "../../../api/buildClient";
-import { BankDetailsArr } from "../../../models/profile";
 import { GetAllBankDetailsReqAction } from "../../action-models";
 import { AdminActionsTypes } from "../../constants";
-import { config } from "../../constants/config";
 
 export const getAllBankDetailsData =
   (req: any, pageNumber: number = 1) =>

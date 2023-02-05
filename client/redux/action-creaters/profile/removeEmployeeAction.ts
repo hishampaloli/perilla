@@ -1,9 +1,7 @@
 import { Dispatch } from "react";
 import { removeEmployee__API } from "../../../api";
-import buildClient from "../../../api/buildClient";
 import { RemoveEmployeeAction } from "../../action-models";
 import { ProfileActionsTypes } from "../../constants";
-import { config } from "../../constants/config";
 
 export const removeEmployee =
   (req: any, id: any) =>
@@ -16,7 +14,7 @@ export const removeEmployee =
         type: ProfileActionsTypes.REMOVE_EMPLOYEE_PROFILE_REQUETS,
       });
 
-      const { data } = await removeEmployee__API(req, id);
+      await removeEmployee__API(req, id);
 
       getState().employeeProfile.data.data.isBlocked = true;
 

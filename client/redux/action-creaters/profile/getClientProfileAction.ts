@@ -6,7 +6,8 @@ import { ProfileActionsTypes } from "../../constants";
 import { config } from "../../constants/config";
 
 export const getClientProfileData =
-  (req: any, id: any) => async (dispatch: Dispatch<GetClientProfileAction>) => {
+  (req: any, id: any) =>
+  async (dispatch: Dispatch<GetClientProfileAction>): Promise<void> => {
     try {
       dispatch({
         type: ProfileActionsTypes.GET_CLIENT_PROFILE_REQUETS,
@@ -16,9 +17,6 @@ export const getClientProfileData =
         `/api/project/client/${id}`,
         config
       );
-
-      console.log(data);
-      console.log("()()()()()");
 
       dispatch({
         type: ProfileActionsTypes.GET_CLIENT_PROFILE_SUCCESS,

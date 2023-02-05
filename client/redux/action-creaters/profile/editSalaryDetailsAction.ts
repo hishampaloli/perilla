@@ -1,14 +1,8 @@
 import { Dispatch } from "react";
 import { editSalaryDetails__API } from "../../../api";
-import buildClient from "../../../api/buildClient";
-import {
-  SalaryDetailsDataObj,
-  SalaryDetailsData,
-} from "../../../models/profile";
-import { EditSalaryDetailsState } from "../../../models/profile";
+import { SalaryDetailsData } from "../../../models/profile";
 import { EditSalaryDetailsAction } from "../../action-models";
 import { ProfileActionsTypes } from "../../constants";
-import { config } from "../../constants/config";
 
 export const editSalaryDetails =
   (req: any, id: string, salaryDetails: SalaryDetailsData) =>

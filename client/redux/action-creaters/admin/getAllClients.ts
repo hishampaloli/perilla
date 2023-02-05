@@ -1,5 +1,6 @@
 import { Dispatch } from "react";
 import buildClient from "../../../api/buildClient";
+import { getAllClients_API } from "../../../api/projectAPIs";
 import { ClientDataArr } from "../../../models/admin";
 import { GetAllClientsAction } from "../../action-models";
 import { AdminActionsTypes } from "../../constants";
@@ -14,18 +15,17 @@ export const getAllClients =
       pageNumber = 1,
     }: { name?: string; clientId?: string; pageNumber?: number }
   ) =>
-  async (dispatch: Dispatch<GetAllClientsAction>) => {
-    console.log(pageNumber);
-
+  async (dispatch: Dispatch<GetAllClientsAction>): Promise<string> => {
     try {
       dispatch({
         type: AdminActionsTypes.GET_ALL_CLIENTS_REQUEST,
       });
 
-      const { data } = await buildClient(req).get<ClientDataArr>(
-        `/api/project/client/allClients?clientName=${name}&clientId=${clientId}&pageNumber=${pageNumber}`,
-        config
-      );
+      const { data } = await getAllClients_API(req, {
+        name,
+        clientId,
+        pageNumber,
+      });
 
       dispatch({
         type: AdminActionsTypes.GET_ALL_CLIENTS_SUCCESS,
@@ -38,6 +38,6 @@ export const getAllClients =
         type: AdminActionsTypes.GET_ALL_CLIENTS_FAIL,
         error: error?.response?.data?.error?.msg,
       });
-      console.log(error);
+      return error?.response?.data?.error?.msg;
     }
   };

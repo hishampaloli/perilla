@@ -9,6 +9,7 @@ import {
 import { EditProjectsAction } from "../../action-models";
 import { ProjectActionsTypes } from "../../constants";
 import { config } from "../../constants/config";
+import { editProjects__API } from "../../../api";
 
 export const editProjects =
   (req: any, projectData: EditProjectData, projectId: string) =>
@@ -18,15 +19,9 @@ export const editProjects =
         type: ProjectActionsTypes.EDIT_PROJECTS_REQUEST,
       });
 
-      const { data } = await buildClient(req).put<ProjectDataObj>(
-        `${projectService_Url}/project/${projectId}`,
-        projectData,
-        config
-      );
-      console.log(data);
+      const { data } = await editProjects__API(req, projectData, projectId);
 
       getState().singleProject.data.data = data.data;
-      console.log(getState().singleProject.data);
 
       dispatch({
         type: ProjectActionsTypes.GET_SINGLE_PROJECTS_SUCCESS,
@@ -39,7 +34,6 @@ export const editProjects =
         type: ProjectActionsTypes.EDIT_PROJECTS_FAIL,
         error: error?.response?.data?.error?.msg,
       });
-      console.log(error);
 
       return error?.response?.data?.error?.msg;
     }

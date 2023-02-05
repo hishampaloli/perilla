@@ -11,8 +11,7 @@ export const getEmployeeOtp =
     try {
       dispatch({ type: EmployeeActionsTypes.GET_OTP_REQUETS });
 
-      const { data } = await getEmployeeOtp__API(req, loginData);
-
+      await getEmployeeOtp__API(req, loginData);
 
       dispatch({ type: EmployeeActionsTypes.GET_OTP_SUCCESS });
 

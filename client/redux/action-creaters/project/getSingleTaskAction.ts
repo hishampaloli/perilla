@@ -1,25 +1,17 @@
 import { Dispatch } from "react";
-import buildClient from "../../../api/buildClient";
-import { projectService_Url } from "../../../api/baseURLs";
-import { TaskDataObj } from "../../../models/project";
 import { GetSingleTaskAction } from "../../action-models";
 import { ProjectActionsTypes } from "../../constants";
-import { config } from "../../constants/config";
+import { getSingleTask__API } from "../../../api";
 
 export const getSingleTask =
   (req: any, taskId: string | string[]) =>
-  async (dispatch: Dispatch<GetSingleTaskAction>) => {
+  async (dispatch: Dispatch<GetSingleTaskAction>): Promise<string> => {
     try {
       dispatch({
         type: ProjectActionsTypes.GET_SINGLE_TASK_REQUEST,
       });
 
-      const { data } = await buildClient(req).get<TaskDataObj>(
-        `${projectService_Url}/task/singleTask/${taskId}`,
-        config
-      );
-
-      console.log(data);
+      const { data } = await getSingleTask__API(req, taskId);
 
       dispatch({
         type: ProjectActionsTypes.GET_SINGLE_TASK_SUCCESS,

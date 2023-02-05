@@ -9,6 +9,7 @@ import { toast } from "react-hot-toast";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { EditProjectState } from "../../models/project";
 import FixedSpinner from "../layout/FixedSpinner";
+import { log } from "console";
 
 const ProjectForm = ({ setEdit }: { setEdit: any }) => {
   const [projectName, setProjectName] = useState<string>("");
@@ -16,7 +17,7 @@ const ProjectForm = ({ setEdit }: { setEdit: any }) => {
   const [priority, setPriority] = useState<string>("medium");
   const [rate, setRate] = useState<number>(0);
   const [client, setClient] = useState<any>();
-  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [startDate, setStartDate] = useState<Date>();
 
   const { loading }: EditProjectState = useTypedSelector(
     (state) => state.createProject
@@ -39,6 +40,7 @@ const ProjectForm = ({ setEdit }: { setEdit: any }) => {
     if (`${res}` === "success") {
       toast.success("Successfully Updated ");
     } else {
+      console.log(res);
       toast.error(`${res}`);
     }
   };

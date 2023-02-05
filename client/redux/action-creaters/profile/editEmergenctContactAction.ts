@@ -1,9 +1,7 @@
 import { Dispatch } from "react";
 import { editEmergencyContact__API } from "../../../api";
-import buildClient from "../../../api/buildClient";
 import { EditEmergencyContactAction } from "../../action-models";
 import { EmployeeActionsTypes, ProfileActionsTypes } from "../../constants";
-import { config } from "../../constants/config";
 
 export const editEmergencyContact =
   (req: any, emergencyData: any) =>
@@ -16,7 +14,7 @@ export const editEmergencyContact =
         type: ProfileActionsTypes.EDIT_EMERGENCY_CONTACT_REQUETS,
       });
 
-      const { data } = await editEmergencyContact__API(req, emergencyData);
+      await editEmergencyContact__API(req, emergencyData);
 
       getState().myProfile.data.data.emergencyContact.primary =
         emergencyData.primary;

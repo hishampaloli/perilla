@@ -14,7 +14,7 @@ export const deleteNotification =
         type: ProfileActionsTypes.DELETE_MY_NOTIFICATIONS_REQUETS,
       });
 
-      const { data } = await deleteNotification__API(req, id);
+      await deleteNotification__API(req, id);
 
       getState().notification.data.data =
         getState().notification.data.data.filter((el: any) => {

@@ -5,21 +5,20 @@ import { CreateProjectData, ProjectDataObj } from "../../../models/project";
 import { CreateProjectsAction } from "../../action-models";
 import { ProjectActionsTypes } from "../../constants";
 import { config } from "../../constants/config";
+import { createProjects__API } from "../../../api";
 
 export const createProjects =
   (req: any, projectData: CreateProjectData) =>
-  async (dispatch: Dispatch<CreateProjectsAction>, getState: any) => {
+  async (
+    dispatch: Dispatch<CreateProjectsAction>,
+    getState: any
+  ): Promise<string> => {
     try {
       dispatch({
         type: ProjectActionsTypes.CREATE_PROJECTS_REQUEST,
       });
 
-      console.log(getState());
-      const { data } = await buildClient(req).post<ProjectDataObj>(
-        `${projectService_Url}/project/create?status=${status}`,
-        projectData,
-        config
-      );
+      const { data } = await createProjects__API(req, projectData);
 
       getState().allProjects.data.data.push(data.data);
       getState().allProjects.data.data.reverse();
@@ -35,8 +34,7 @@ export const createProjects =
         type: ProjectActionsTypes.CREATE_PROJECTS_FAIL,
         error: error?.response?.data?.error?.msg,
       });
-      console.log(error);
-
-      return error?.response?.data?.error?.msg;
+      console.log(error?.response?.data?.error?.msg);
+      return error?.response?.data?.error?.msg?.message;
     }
   };

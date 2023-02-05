@@ -1,10 +1,8 @@
 import { Dispatch } from "react";
 import { editEmployeeProfile__API } from "../../../api";
-import buildClient from "../../../api/buildClient";
 import { EmployeeProfileDataObj } from "../../../models/profile";
 import { EditEmployeeProfileAction } from "../../action-models";
 import { ProfileActionsTypes } from "../../constants";
-import { config } from "../../constants/config";
 
 export const editEmployeeProfile =
   (
@@ -28,7 +26,7 @@ export const editEmployeeProfile =
         type: ProfileActionsTypes.EDIT_EMPLOYEE_PROFILE_REQUETS,
       });
 
-      const { data } = await editEmployeeProfile__API(req, id, employeeData);
+      await editEmployeeProfile__API(req, id, employeeData);
 
       getState().employeeProfile.data.data.name = employeeData.name;
       getState().employeeProfile.data.data.email = employeeData.email;

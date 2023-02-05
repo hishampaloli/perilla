@@ -5,20 +5,20 @@ import { ProjectDataObj } from "../../../models/project";
 import { ApproveTaskAction } from "../../action-models";
 import { ProjectActionsTypes } from "../../constants";
 import { config } from "../../constants/config";
+import { approvedTask__API } from "../../../api";
 
 export const approvedTask =
   (req: any, taskId: any, status: boolean) =>
-  async (dispatch: Dispatch<ApproveTaskAction>, getState: any) => {
+  async (
+    dispatch: Dispatch<ApproveTaskAction>,
+    getState: any
+  ): Promise<string> => {
     try {
       dispatch({
         type: ProjectActionsTypes.APPROVE_TASK_REQUEST,
       });
 
-      const { data } = await buildClient(req).patch<any>(
-        `${projectService_Url}/task/approveTask/${taskId}?status=${status}`,
-
-        config
-      );
+      await approvedTask__API(req, taskId, status);
 
       getState().singleTask.data.data.isApproved = status;
       getState().singleTask.data.data.isCompleted = status;
@@ -34,8 +34,6 @@ export const approvedTask =
         type: ProjectActionsTypes.APPROVE_TASK_FAIL,
         error: error?.response?.data?.error?.msg,
       });
-      console.log(error);
-
       return error?.response?.data?.error?.msg;
     }
   };
