@@ -1,5 +1,4 @@
-import { baseURL } from "./baseURLs";
-export const userService_Url = `${baseURL}/user`;
+import { baseURL, userService_Url } from "./baseURLs";
 import buildClient from "./buildClient";
 import { config } from "../redux/constants/config";
 

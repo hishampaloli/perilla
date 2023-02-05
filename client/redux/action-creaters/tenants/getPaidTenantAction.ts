@@ -1,25 +1,13 @@
 import { Dispatch } from "react";
-import buildClient from "../../../api/buildClient";
-import { GetOtpState, LoginData, TenantData } from "../../../models/tenants";
-import {
-  AuthAction,
-  GetOtpAction,
-  GetPaidTenantAction,
-} from "../../action-models";
+import { getPaidTenantData__API } from "../../../api/tenantAPIs";
+import { GetPaidTenantAction } from "../../action-models";
 import { TenantActionsTypes } from "../../constants";
-import { config } from "../../constants/config";
 
 export const getPaidTenantData =
   (req: any, companyName: any) =>
-  async (dispatch: Dispatch<GetPaidTenantAction>) => {
+  async (dispatch: Dispatch<GetPaidTenantAction>): Promise<string> => {
     try {
-      const { data } = await buildClient(req).get<TenantData>(
-        `/api/tenant/getTenant?companyName=${companyName}`,
-        config
-      );
-
-      console.log(data);
-      
+      const { data } = await getPaidTenantData__API(req, companyName);
 
       dispatch({
         type: TenantActionsTypes.GET_PAID_TENANT_SUCCESS,
@@ -32,6 +20,6 @@ export const getPaidTenantData =
         type: TenantActionsTypes.GET_PAID_TENANT_FAIL,
         error: error?.response?.data?.error?.msg,
       });
-      console.log(error);
+      return error?.response?.data?.error?.msg;
     }
   };

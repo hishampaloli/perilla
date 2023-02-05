@@ -1,20 +1,16 @@
 import { config } from "../../constants/config";
-import buildClient from "../../../api/buildClient";
 import { GetOtpAction } from "../../action-models";
 import { TenantActionsTypes } from "../../constants";
 import { Dispatch } from "react";
+import { getRegisterOtp__API } from "../../../api/tenantAPIs";
 
 export const getRegisterOtp =
   (req: any, number: string, companyName: string) =>
-  async (dispatch: Dispatch<GetOtpAction>) => {
+  async (dispatch: Dispatch<GetOtpAction>): Promise<any> => {
     try {
       dispatch({ type: TenantActionsTypes.GET_OTP_REQUEST });
 
-      const { data } = await buildClient(req).post<string>(
-        "/api/tenant/getOtp",
-        { number, companyName },
-        config
-      );
+      const { data } = await getRegisterOtp__API(req, number, companyName);
 
       return true;
     } catch (error: any) {

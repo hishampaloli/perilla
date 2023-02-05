@@ -1,23 +1,18 @@
 import { Dispatch } from "react";
-import buildClient from "../../../api/buildClient";
-import { AuthState, LoginData, TenantData } from "../../../models/tenants";
+import { tenantLoginVerification__API } from "../../../api/tenantAPIs";
+import { LoginData } from "../../../models/tenants";
 import { AuthAction } from "../../action-models";
 import { TenantActionsTypes } from "../../constants";
-import { config } from "../../constants/config";
 
 export const tenantLoginVerification =
   (req: any, loginData: LoginData) =>
-  async (dispatch: Dispatch<AuthAction>) => {
+  async (dispatch: Dispatch<AuthAction>): Promise<string | void> => {
     try {
       dispatch({
         type: TenantActionsTypes.AUTH_REQUETS,
       });
 
-      const { data } = await buildClient(req).post<TenantData>(
-        "/api/tenant/tenantVerifyLogin",
-        loginData,
-        config
-      );
+      const { data } = await tenantLoginVerification__API(req, loginData);
 
       localStorage.setItem("userInfo", JSON.stringify(data));
 

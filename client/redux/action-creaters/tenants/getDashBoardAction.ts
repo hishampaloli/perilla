@@ -1,21 +1,17 @@
 import { Dispatch } from "react";
-import buildClient from "../../../api/buildClient";
-import { DashBoardDataObj } from "../../../models/tenants";
+import { getDashboard__API } from "../../../api/tenantAPIs";
 import { GetDashBoardAction } from "../../action-models";
 import { TenantActionsTypes } from "../../constants";
-import { config } from "../../constants/config";
 
 export const getDashboard =
-  (req: any) => async (dispatch: Dispatch<GetDashBoardAction>) => {
+  (req: any) =>
+  async (dispatch: Dispatch<GetDashBoardAction>): Promise<string> => {
     try {
       dispatch({
         type: TenantActionsTypes.GET_DASHBOARD_REQUEST,
       });
 
-      const { data } = await buildClient(req).get<DashBoardDataObj>(
-        "/api/tenant/getDashboard",
-        config
-      );
+      const { data } = await getDashboard__API(req);
 
       dispatch({
         type: TenantActionsTypes.GET_DASHBOARD_SUCCESS,

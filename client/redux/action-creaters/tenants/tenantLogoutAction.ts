@@ -1,17 +1,13 @@
 import { Dispatch } from "react";
-import buildClient from "../../../api/buildClient";
+import { tenantLogout__API } from "../../../api/tenantAPIs";
 import { LogoutAction } from "../../action-models";
 import { TenantActionsTypes } from "../../constants";
-import { config } from "../../constants/config";
 
 export const tenantLogout =
-  (req: any) => async (dispatch: Dispatch<LogoutAction>) => {
+  (req: any) =>
+  async (dispatch: Dispatch<LogoutAction>): Promise<any> => {
     try {
-      const { data } = await buildClient(req).post<any>(
-        "/api/tenant/tenantLogout",
-        config
-      );
-
+      const { data } = await tenantLogout__API(req);
       localStorage.removeItem("userInfo");
 
       dispatch({
@@ -25,6 +21,6 @@ export const tenantLogout =
         type: TenantActionsTypes.AUTH_FAIL,
         error: error?.response?.data?.error?.msg,
       });
-      console.log(error);
+      return error?.response?.data?.error?.msg;
     }
   };

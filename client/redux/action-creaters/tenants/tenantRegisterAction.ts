@@ -1,22 +1,17 @@
 import { Dispatch } from "react";
-import buildClient from "../../../api/buildClient";
-import { TenantData } from "../../../models/tenants";
+import { tenantRegister__API } from "../../../api/tenantAPIs";
 import { AuthAction } from "../../action-models";
 import { TenantActionsTypes } from "../../constants";
-import { config } from "../../constants/config";
 
 export const tenantRegister =
-  (req: any, purchaseDate: any) => async (dispatch: Dispatch<AuthAction>) => {
+  (req: any, purchaseDate: any) =>
+  async (dispatch: Dispatch<AuthAction>): Promise<string | boolean> => {
     try {
       dispatch({
         type: TenantActionsTypes.AUTH_REQUETS,
       });
 
-      const { data } = await buildClient(req).post<TenantData>(
-        "/api/tenant/createTenant",
-        purchaseDate,
-        config
-      );
+      const { data } = await tenantRegister__API(req, purchaseDate);
 
       localStorage.setItem("userInfo", JSON.stringify(data));
 
@@ -31,7 +26,6 @@ export const tenantRegister =
         type: TenantActionsTypes.AUTH_FAIL,
         error: error?.response?.data?.error?.msg,
       });
-      console.log(error);
-      return false
+      return false;
     }
   };
