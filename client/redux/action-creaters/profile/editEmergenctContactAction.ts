@@ -1,4 +1,5 @@
 import { Dispatch } from "react";
+import { editEmergencyContact__API } from "../../../api";
 import buildClient from "../../../api/buildClient";
 import { EditEmergencyContactAction } from "../../action-models";
 import { EmployeeActionsTypes, ProfileActionsTypes } from "../../constants";
@@ -9,27 +10,18 @@ export const editEmergencyContact =
   async (
     dispatch: Dispatch<EditEmergencyContactAction>,
     getState: any
-  ): Promise<any> => {
+  ): Promise<string> => {
     try {
       dispatch({
         type: ProfileActionsTypes.EDIT_EMERGENCY_CONTACT_REQUETS,
       });
 
-      const { data } = await buildClient(req).patch<any>(
-        `/api/user/employee/addEmergencyContact`,
-        emergencyData,
-        config
-      );
+      const { data } = await editEmergencyContact__API(req, emergencyData);
 
-      console.log(data);
-      console.log('((((((((((((((((((((((((((9');
-      
-      console.log(getState().myProfile.data.data);
-      
       getState().myProfile.data.data.emergencyContact.primary =
         emergencyData.primary;
       getState().myProfile.data.data.emergencyContact.secondary =
-        emergencyData.secondary
+        emergencyData.secondary;
 
       dispatch({
         type: ProfileActionsTypes.EDIT_EMERGENCY_CONTACT_SUCCESS,

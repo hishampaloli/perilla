@@ -3,6 +3,7 @@ import buildClient from "../../../api/buildClient";
 import { GetEmployeeLoginOtpAction } from "../../action-models";
 import { EmployeeActionsTypes } from "../../constants";
 import { Dispatch } from "react";
+import { getEmployeeOtp__API } from "../../../api";
 
 export const getEmployeeOtp =
   (req: any, loginData: any) =>
@@ -10,17 +11,12 @@ export const getEmployeeOtp =
     try {
       dispatch({ type: EmployeeActionsTypes.GET_OTP_REQUETS });
 
-      const { data } = await buildClient(req).post<string>(
-        "/api/user/employee/login",
-        loginData,
-        config
-      );
+      const { data } = await getEmployeeOtp__API(req, loginData);
 
-      console.log(data);
 
       dispatch({ type: EmployeeActionsTypes.GET_OTP_SUCCESS });
 
-      return 'success';
+      return "success";
     } catch (error: any) {
       dispatch({
         type: EmployeeActionsTypes.GET_OTP_FAIL,

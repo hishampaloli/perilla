@@ -9,7 +9,7 @@ export const editPersonalInfo =
   async (
     dispatch: Dispatch<EditPersonalInfoAction>,
     getState: any
-  ): Promise<any> => {
+  ): Promise<string> => {
     try {
       dispatch({
         type: ProfileActionsTypes.EDIT_PERSONALINFO_REQUETS,
@@ -21,23 +21,8 @@ export const editPersonalInfo =
         config
       );
 
-      console.log(data);
-      // getState().myProfile.data.data.personalInformation.employementOfPartner =
-      //   personalData.employementOfPartner;
-      // getState().myProfile.data.data.personalInformation.martialStatus =
-      //   personalData.martialStatus;
-      // getState().myProfile.data.data.personalInformation.nationality =
-      //   personalData.nationality;
-      // getState().myProfile.data.data.personalInformation.noOfChildren =
-      //   personalData.noOfChildren;
-      // getState().myProfile.data.data.personalInformation.passportNumber =
-      //   personalData.passportNumber;
-      // getState().myProfile.data.data.personalInformation.religion =
-      //   personalData.religion;
-
       getState().myProfile.data.data.personalInformation = data.data;
-      console.log(getState().myProfile.data.data.personalInformation);
-      
+
       dispatch({
         type: ProfileActionsTypes.EDIT_PERSONALINFO_SUCCESS,
       });

@@ -1,9 +1,7 @@
 import { Dispatch } from "react";
-import buildClient from "../../../api/buildClient";
-import { EmployeeDataObj } from "../../../models/admin";
+import { addEmployee__API } from "../../../api";
 import { AddEmploteeAction } from "../../action-models";
 import { AdminActionsTypes } from "../../constants";
-import { config } from "../../constants/config";
 
 export const addEmployee =
   (req: any, employeeDetails: object) =>
@@ -13,11 +11,7 @@ export const addEmployee =
         type: AdminActionsTypes.ADD_EMPLOYEE_REQUEST,
       });
 
-      const { data } = await buildClient(req).post<EmployeeDataObj>(
-        `/api/user/employee/createEmployee`,
-        employeeDetails,
-        config
-      );
+      const { data } = await addEmployee__API(req, employeeDetails);
 
       getState().allEmployees.data.data.push(data.data);
       dispatch({
@@ -25,15 +19,12 @@ export const addEmployee =
         payload: getState().allEmployees.data,
       });
 
-      console.log(getState().allEmployees.data);
-
       return "success";
     } catch (error: any) {
       dispatch({
         type: AdminActionsTypes.ADD_EMPLOYEE_FAIL,
         error: error?.response?.data?.error?.msg,
       });
-      console.log(error);
 
       return error?.response?.data?.error?.msg;
     }

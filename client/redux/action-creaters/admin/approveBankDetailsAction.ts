@@ -1,4 +1,5 @@
 import { Dispatch } from "react";
+import { approveBankDetails__API } from "../../../api";
 import buildClient from "../../../api/buildClient";
 import { ClientDataArr } from "../../../models/admin";
 import { ApproveBankDetailsAction } from "../../action-models";
@@ -13,10 +14,7 @@ export const approveBankDetails =
         type: AdminActionsTypes.APPROVE_BANK_DETAILS_REQUETS,
       });
 
-      const { data } = await buildClient(req).patch<any>(
-        `/api/user/employee/bankStatus/${employeeId}?status=${status}`,
-        config
-      );
+      const { data } = await approveBankDetails__API(req, employeeId, status);
 
       getState().employeeProfile.data.data.bankDetails.approvalReq = false;
       getState().employeeProfile.data.data.bankDetails.isApproved = status;
@@ -32,6 +30,5 @@ export const approveBankDetails =
         type: AdminActionsTypes.APPROVE_BANK_DETAILS_FAIL,
         error: error?.response?.data?.error?.msg,
       });
-      console.log(error);
     }
   };

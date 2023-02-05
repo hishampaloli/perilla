@@ -1,4 +1,5 @@
 import { Dispatch } from "react";
+import { removeEmployee__API } from "../../../api";
 import buildClient from "../../../api/buildClient";
 import { RemoveEmployeeAction } from "../../action-models";
 import { ProfileActionsTypes } from "../../constants";
@@ -6,16 +7,16 @@ import { config } from "../../constants/config";
 
 export const removeEmployee =
   (req: any, id: any) =>
-  async (dispatch: Dispatch<RemoveEmployeeAction>, getState: any) => {
+  async (
+    dispatch: Dispatch<RemoveEmployeeAction>,
+    getState: any
+  ): Promise<string> => {
     try {
       dispatch({
         type: ProfileActionsTypes.REMOVE_EMPLOYEE_PROFILE_REQUETS,
       });
 
-      const { data } = await buildClient(req).patch<any>(
-        `/api/user/employee/remove/${id}`,
-        config
-      );
+      const { data } = await removeEmployee__API(req, id);
 
       getState().employeeProfile.data.data.isBlocked = true;
 
@@ -30,5 +31,6 @@ export const removeEmployee =
         type: ProfileActionsTypes.REMOVE_EMPLOYEE_PROFILE_FAIL,
         error: error?.response?.data?.error?.msg,
       });
+      return error?.response?.data?.error?.msg;
     }
   };

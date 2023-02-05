@@ -1,4 +1,5 @@
 import { Dispatch } from "react";
+import { editBankDetails__API } from "../../../api";
 import buildClient from "../../../api/buildClient";
 import { ClientData, CLientDataObj } from "../../../models/admin";
 
@@ -11,20 +12,14 @@ export const editBankDetails =
   async (
     dispatch: Dispatch<EditBankDetailsAction>,
     getState: any
-  ): Promise<any> => {
+  ): Promise<string> => {
     try {
       dispatch({
         type: ProfileActionsTypes.EDIT_BANK_DETAILS_REQUETS,
       });
 
-      const { data } = await buildClient(req).put<any>(
-        `/api/user/employee/editBankDetails`,
-        bankData,
-        config
-      );
+      const { data } = await editBankDetails__API(req, bankData);
 
-      console.log(data);
-      console.log("***************");
       getState().myProfile.data.data.bankDetails.bankName = bankData.bankName;
       getState().myProfile.data.data.bankDetails.accountNumber =
         bankData.accountNumber;

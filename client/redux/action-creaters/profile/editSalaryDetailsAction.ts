@@ -1,4 +1,5 @@
 import { Dispatch } from "react";
+import { editSalaryDetails__API } from "../../../api";
 import buildClient from "../../../api/buildClient";
 import {
   SalaryDetailsDataObj,
@@ -14,17 +15,13 @@ export const editSalaryDetails =
   async (
     dispatch: Dispatch<EditSalaryDetailsAction>,
     getState: any
-  ): Promise<any> => {
+  ): Promise<string> => {
     try {
       dispatch({
         type: ProfileActionsTypes.EDIT_SALARY_DETAILS_REQUETS,
       });
 
-      const { data } = await buildClient(req).put<SalaryDetailsDataObj>(
-        `/api/user/employee/salaryDetails/${id}`,
-        salaryDetails,
-        config
-      );
+      const { data } = await editSalaryDetails__API(req, id, salaryDetails);
 
       getState().employeeProfile.data.data.salaryDetails = data.data;
 

@@ -1,4 +1,5 @@
 import { Dispatch } from "react";
+import { editEmployeeProfile__API } from "../../../api";
 import buildClient from "../../../api/buildClient";
 import { EmployeeProfileDataObj } from "../../../models/profile";
 import { EditEmployeeProfileAction } from "../../action-models";
@@ -21,19 +22,13 @@ export const editEmployeeProfile =
   async (
     dispatch: Dispatch<EditEmployeeProfileAction>,
     getState: any
-  ): Promise<any> => {
+  ): Promise<string> => {
     try {
       dispatch({
         type: ProfileActionsTypes.EDIT_EMPLOYEE_PROFILE_REQUETS,
       });
 
-      const { data } = await buildClient(req).put<EmployeeProfileDataObj>(
-        `/api/user/employee/edit/${id}`,
-        employeeData,
-        config
-      );
-
-      
+      const { data } = await editEmployeeProfile__API(req, id, employeeData);
 
       getState().employeeProfile.data.data.name = employeeData.name;
       getState().employeeProfile.data.data.email = employeeData.email;

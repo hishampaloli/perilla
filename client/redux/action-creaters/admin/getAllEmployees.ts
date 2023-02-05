@@ -1,13 +1,7 @@
 import { Dispatch } from "react";
-import buildClient from "../../../api/buildClient";
-import {
-  AllEmployeesState,
-  EmployeeData,
-  EmployeeDataArray,
-} from "../../../models/admin";
+import { getAllEmployees__API } from "../../../api";
 import { GetAllEmployeeAction } from "../../action-models";
 import { AdminActionsTypes } from "../../constants";
-import { config } from "../../constants/config";
 
 export const getAllEmployees =
   (
@@ -27,10 +21,12 @@ export const getAllEmployees =
         type: AdminActionsTypes.GET_ALL_EMPLOYEE_REQUEST,
       });
 
-      const { data } = await buildClient(req).get<EmployeeDataArray>(
-        `/api/user/employee/getAllEmployees?role=${role}&name=${name}&employeeId=${employeeId}&pageNumber=${pageNumber}`,
-        config
-      );
+      const { data } = await getAllEmployees__API(req, {
+        role,
+        name,
+        employeeId,
+        pageNumber,
+      });
 
       dispatch({
         type: AdminActionsTypes.GET_ALL_EMPLOYEE_SUCCESS,
@@ -43,6 +39,5 @@ export const getAllEmployees =
         type: AdminActionsTypes.GET_ALL_EMPLOYEE_FAIL,
         error: error?.response?.data?.error?.msg,
       });
-      console.log(error);
     }
   };

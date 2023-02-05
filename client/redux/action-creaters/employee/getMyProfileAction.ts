@@ -5,18 +5,14 @@ import { EmployeeActionsTypes, ProfileActionsTypes } from "../../constants";
 import { Dispatch } from "react";
 import { EmployeeDataObj } from "../../../models/admin";
 import { EmployeeProfileDataObj } from "../../../models/profile";
+import { getMyProfile__API } from "../../../api";
 
 export const getMyProfile =
   (req: any) => async (dispatch: Dispatch<GetMyProfileAction>) => {
     try {
       dispatch({ type: EmployeeActionsTypes.GET_MYPROFILE_REQUETS });
 
-      const { data } = await buildClient(req).get<EmployeeProfileDataObj>(
-        "/api/user/employee/myProfile",
-        config
-      );
-
-      console.log(data);
+      const { data } = await getMyProfile__API(req);
 
       dispatch({
         type: EmployeeActionsTypes.GET_MYPROFILE_SUCCESS,

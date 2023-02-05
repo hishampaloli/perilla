@@ -3,6 +3,7 @@ import buildClient from "../../../api/buildClient";
 import { GetEmployeeLoginVerificationAction } from "../../action-models";
 import { EmployeeActionsTypes } from "../../constants";
 import { Dispatch } from "react";
+import { getEmployeeOtpVerfication__API } from "../../../api";
 
 export const getEmployeeOtpVerfication =
   (req: any, loginData: any) =>
@@ -10,11 +11,7 @@ export const getEmployeeOtpVerfication =
     try {
       dispatch({ type: EmployeeActionsTypes.GET_OTP_VERIFICATION_REQUETS });
 
-      const { data } = await buildClient(req).post<any>(
-        "/api/user/employee/verifyOtp",
-        loginData,
-        config
-      );
+      const { data } = await getEmployeeOtpVerfication__API(req, loginData);
 
       localStorage.setItem("employeeInfo", JSON.stringify(data.data));
 

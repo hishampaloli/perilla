@@ -3,6 +3,7 @@ import buildClient from "../../../api/buildClient";
 import { SendbankDetailsAction } from "../../action-models";
 import { EmployeeActionsTypes } from "../../constants";
 import { Dispatch } from "react";
+import { sendBankDetails__API } from "../../../api";
 
 export const sendBankDetails =
   (req: any) =>
@@ -10,10 +11,7 @@ export const sendBankDetails =
     try {
       dispatch({ type: EmployeeActionsTypes.SENT_BANKDETAILS_REQUETS });
 
-      const { data } = await buildClient(req).patch<any>(
-        "/api/user/employee/sendBankDetails",
-        config
-      );
+      const { data } = await sendBankDetails__API(req);
 
       getState().myProfile.data.data.bankDetails.approvalReq = true;
 

@@ -8,7 +8,7 @@ import { config } from "../../constants/config";
 
 export const editClientProfile =
   (req: any, id: string, clientData: ClientData) =>
-  async (dispatch: Dispatch<EditClientAction>, getState: any): Promise<any> => {
+  async (dispatch: Dispatch<EditClientAction>, getState: any): Promise<string> => {
     try {
       dispatch({
         type: ProfileActionsTypes.EDIT_CLIENT_PROFILE_REQUETS,

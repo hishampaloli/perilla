@@ -1,4 +1,5 @@
 import { Dispatch } from "react";
+import { editallBankDetailsData__API } from "../../../api";
 import buildClient from "../../../api/buildClient";
 import { BankDetailsArr } from "../../../models/profile";
 import { GetAllBankDetailsReqAction } from "../../action-models";
@@ -7,17 +8,13 @@ import { config } from "../../constants/config";
 
 export const getAllBankDetailsData =
   (req: any, pageNumber: number = 1) =>
-  async (dispatch: Dispatch<GetAllBankDetailsReqAction>) => {
+  async (dispatch: Dispatch<GetAllBankDetailsReqAction>): Promise<void> => {
     try {
       dispatch({
         type: AdminActionsTypes.GET_ALL_BANK_DETAILS_REQUETS,
       });
 
-      const { data } = await buildClient(req).get<BankDetailsArr>(
-        `/api/user/employee/allBankReq?pageNumber=${pageNumber}`,
-        config
-      );
-
+      const { data } = await editallBankDetailsData__API(req, pageNumber);
 
       dispatch({
         type: AdminActionsTypes.GET_ALL_BANK_DETAILS_SUCCESS,
