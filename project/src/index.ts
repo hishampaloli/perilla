@@ -13,9 +13,9 @@ import { evnCheckers } from "./config/env-checkers";
 
 const start = async () => {
   try {
+    evnCheckers();
     connectNats();
     connectDB();
-    evnCheckers();
   } catch (err) {
     console.error(err);
   }
