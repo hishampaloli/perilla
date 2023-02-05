@@ -1,4 +1,4 @@
-import { baseURL, projectService_Url } from "./baseURLs";
+import { projectService_Url } from "./baseURLs";
 import buildClient from "./buildClient";
 import { config } from "../redux/constants/config";
 import { ClientDataArr, CLientDataObj } from "../models/admin";

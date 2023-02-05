@@ -1,23 +1,16 @@
-import { config } from "../../constants/config";
-import buildClient from "../../../api/buildClient";
 import { GetMyLeavesAction } from "../../action-models";
-import { LeaveDataArr } from "../../../models/Leave";
 import { LeaveActionTypes } from "../../constants";
 import { Dispatch } from "react";
+import { getMyLeaves__API } from "../../../api";
 
 export const getMyLeaves =
   (req: any, status: string) =>
-  async (dispatch: Dispatch<GetMyLeavesAction>) => {
+  async (dispatch: Dispatch<GetMyLeavesAction>): Promise<string> => {
     try {
       dispatch({ type: LeaveActionTypes.GET_MY_LEAVES_REQUEST });
 
-      const { data } = await buildClient(req).get<LeaveDataArr>(
-        `/api/resource/leave/getMyLeave?isAccepted=${status}`,
-        config
-      );
+      const { data } = await getMyLeaves__API(req, status);
 
-      console.log(data);
-      
       dispatch({
         type: LeaveActionTypes.GET_MY_LEAVES_SUCCESS,
         payload: data,

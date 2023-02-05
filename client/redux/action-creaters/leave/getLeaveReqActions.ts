@@ -1,22 +1,16 @@
-import { config } from "../../constants/config";
-import buildClient from "../../../api/buildClient";
 import { GetLeaveReqAction } from "../../action-models";
 import { LeaveActionTypes } from "../../constants";
 import { Dispatch } from "react";
+import { getLeaveRequests__API } from "../../../api";
 
 export const getLeaveRequests =
   (req: any, status: string) =>
-  async (dispatch: Dispatch<GetLeaveReqAction>) => {
+  async (dispatch: Dispatch<GetLeaveReqAction>): Promise<string> => {
     try {
       dispatch({ type: LeaveActionTypes.GET_LEAVE_REQUEST_REQUEST });
 
-      const { data } = await buildClient(req).get<any>(
-        `/api/resource/leave/getLeaveRequests?isAccepted=${status}`,
-        config
-      );
+      const { data } = await getLeaveRequests__API(req, status);
 
-      console.log(data);
-      
       dispatch({
         type: LeaveActionTypes.GET_LEAVE_REQUEST_SUCCESS,
         payload: data.data,

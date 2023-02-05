@@ -1,4 +1,4 @@
-import { baseURL, tenantService_Url } from "./baseURLs";
+import { tenantService_Url } from "./baseURLs";
 import buildClient from "./buildClient";
 import { config } from "../redux/constants/config";
 import { DashBoardDataObj, LoginData, TenantData } from "../models/tenants";

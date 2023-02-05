@@ -31,7 +31,6 @@ export = (dependencies: DepenteniciesData): any => {
         email.trim().toLowerCase()
       )}?d=retro`;
 
-      console.log(avatar);
 
       const createdClient = await createClient_UseCase(dependencies).execute({
         companyName: req.currentTenant?.id?.companyName,

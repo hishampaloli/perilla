@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import {
-  GetClientProfileState,
-  GetEmployeeProfileState,
-} from "../../models/profile";
+import { GetClientProfileState } from "../../models/profile";
 import style from "../../styles/profile.module.scss";
 import EditIcon from "@mui/icons-material/Edit";
 import { AuthState } from "../../models/tenants";
-import EditClientForm from "./EditClientComponent";
 
 const ClientProfileBox = ({ setEdit }: { setEdit: any }) => {
   const { data, error, loading }: GetClientProfileState = useTypedSelector(
@@ -22,9 +18,12 @@ const ClientProfileBox = ({ setEdit }: { setEdit: any }) => {
     <div className={style.profileBox}>
       {user.data?.data.adminName && (
         <div className={style.edtIconDiv}>
-        <span onClick={() => setEdit(true)} className={`${style.Icon} ${style.edtIcon}`}>
-          <EditIcon />
-        </span>
+          <span
+            onClick={() => setEdit(true)}
+            className={`${style.Icon} ${style.edtIcon}`}
+          >
+            <EditIcon />
+          </span>
         </div>
       )}
       <div className={style.profileLeft}>

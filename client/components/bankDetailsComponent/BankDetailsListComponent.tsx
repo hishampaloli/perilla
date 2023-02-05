@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
-import { useActions } from "../../hooks/useAction";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { AllBankDetailsRequestState } from "../../models/profile";
 import Spinner from "../layout/SpinnerComponent";
 import BankDetailDiv from "./BankDetailDiv";
 import style from "../../styles/bankDetails.module.scss";
 import NoDataCopmonent from "../layout/NoDataCopmonent";
-import Paginate from "../SegemanticComponents/Paginate";
 
 const BankDetailsListComponent = ({
   data,

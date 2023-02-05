@@ -2,7 +2,6 @@ import React from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { GetLeaveReqState, GetMyLeavesState } from "../../models/Leave";
 import style from "../../styles/leaveRequests.module.scss";
-import SearchComp from "../SegemanticComponents/SearchComp";
 import ApplyLeaveComponent from "./ApplyLeaveComponent";
 import LeaveDashBoardComponent from "./LeaveDashBoardComponent";
 import LeaveRequestList from "./LeaveRequestList";

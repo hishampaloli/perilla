@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import SearchComp from "../SegemanticComponents/SearchComp";
-import TaskNav from "../TaskComponents/TaskNav";
 import TaskSearchComponent from "./TaskSearchComponent";
 import style from "../../styles/allTaskMain.module.scss";
 import AllTaskList from "./AllTaskList";

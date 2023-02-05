@@ -1,22 +1,15 @@
-import { config } from "../../constants/config";
-import buildClient from "../../../api/buildClient";
 import { ViewSingleLeaveAction } from "../../action-models";
-import { LeaveDataObj } from "../../../models/Leave";
 import { LeaveActionTypes } from "../../constants";
 import { Dispatch } from "react";
+import { viewSingleLeave__API } from "../../../api";
 
 export const viewSingleLeave =
   (req: any, leaveId: string | string[]) =>
-  async (dispatch: Dispatch<ViewSingleLeaveAction>) => {
+  async (dispatch: Dispatch<ViewSingleLeaveAction>): Promise<string> => {
     try {
       dispatch({ type: LeaveActionTypes.VIEW_SINGLE_LEAVE_REQUEST });
 
-      const { data } = await buildClient(req).get<LeaveDataObj>(
-        `/api/resource/leave/viewLeave/${leaveId}`,
-        config
-      );
-
-      console.log(data);
+      const { data } = await viewSingleLeave__API(req, leaveId);
 
       dispatch({
         type: LeaveActionTypes.VIEW_SINGLE_LEAVE_SUCCESS,

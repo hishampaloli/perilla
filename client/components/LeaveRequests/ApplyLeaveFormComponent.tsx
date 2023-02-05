@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { AddTaskFormState } from "../../models/custom";
 import SubmitButton from "../AddFormComponent/SubmitButton";
 import style from "../../styles/addForm.module.scss";
 import CancelIcon from "@mui/icons-material/Cancel";

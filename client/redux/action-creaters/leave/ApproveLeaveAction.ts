@@ -4,17 +4,18 @@ import { LeaveDataObj } from "./../../../models/Leave";
 import { ApplyLeaveAction } from "../../action-models";
 import { LeaveActionTypes } from "../../constants";
 import { Dispatch } from "react";
+import { approveLeave__API } from "../../../api";
 
 export const approveLeave =
   (req: any, leaveId: string, status: boolean) =>
-  async (dispatch: Dispatch<ApplyLeaveAction>, getState: any) => {
+  async (
+    dispatch: Dispatch<ApplyLeaveAction>,
+    getState: any
+  ): Promise<string> => {
     try {
       dispatch({ type: LeaveActionTypes.APPLY_LEAVE_REQUEST });
 
-      const { data } = await buildClient(req).patch<LeaveDataObj>(
-        `/api/resource/leave/approveLeave/${leaveId}?isAccepted=${status}`,
-        config
-      );
+      await approveLeave__API(req, leaveId, status);
 
       getState().singleLeave.data.data.isAccepted = status
         ? "accepted"

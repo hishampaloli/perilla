@@ -3,6 +3,8 @@ export interface DepenteniciesData {
   repository: repositoryData;
 }
 
+import {clientRepository} from "../app/repository/mongo";
+
 export interface useCaseData {
   createClient_UseCase: any;
   getAllClient_UseCase: any;
