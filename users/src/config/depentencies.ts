@@ -19,6 +19,7 @@ import {
   deleteMyNotification_UseCase,
   editSalary_UseCase,
   getSalaryDetails_UseCase,
+  uploadProfilePic_UseCase,
 } from "../usecases";
 
 import { repositoryData, useCaseData } from "../entities/interfaces";
@@ -43,6 +44,7 @@ const useCases: useCaseData = {
   deleteMyNotification_UseCase,
   editSalary_UseCase,
   getSalaryDetails_UseCase,
+  uploadProfilePic_UseCase,
 };
 
 const repository: repositoryData = {

@@ -23,6 +23,7 @@ export interface useCaseData {
   deleteMyNotification_UseCase: any;
   editSalary_UseCase: any;
   getSalaryDetails_UseCase: any;
+  uploadProfilePic_UseCase: any;
 }
 
 export interface repositoryData {

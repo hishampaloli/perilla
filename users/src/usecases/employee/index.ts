@@ -8,6 +8,7 @@ import { getBankDetails_UseCase } from "./getBankDetails.usecase";
 import { editBankDetails_UseCase } from "./editBankDetails.usecase";
 import { getMyNotification_UseCase } from "./getMyNotification.usecase";
 import { deleteMyNotification_UseCase } from "./deleteNotification.usecase";
+import { uploadProfilePic_UseCase } from "./uploadProfilePic.usecase";
 
 export {
   employeeLogin_UseCase,
@@ -20,4 +21,5 @@ export {
   editBankDetails_UseCase,
   getMyNotification_UseCase,
   deleteMyNotification_UseCase,
+  uploadProfilePic_UseCase,
 };

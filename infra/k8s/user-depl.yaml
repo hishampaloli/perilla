@@ -28,6 +28,14 @@ spec:
               value: "perilla.hrservice@gmail.com"
             - name: PASSWORD_STR
               value: "cglzqvagkozftaco"
+            - name: BUCKET_NAME
+              value: "perilla"
+            - name: ACCESS_KEY_ID
+              value: "AKIAYUKL2MSDWO34MUNV"
+            - name: PRIVATE_ACCESS_KEY_ID
+              value: "dcdmaYKRtSA/GpZ5YAIRd3MiafTIVnz35Ky+BA/n"
+            - name: REGION_KEY_ID
+              value: "ap-south-1"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:

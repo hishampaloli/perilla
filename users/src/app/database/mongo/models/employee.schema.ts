@@ -37,6 +37,7 @@ interface EmployeeDoc extends mongoose.Document {
   taskCompleted: string[];
   projectCompleted: string[];
   salaryDetails: string;
+  bucketKey: string;
   isBlocked: boolean;
 }
 
@@ -53,6 +54,9 @@ const employeeSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
+    },
+    bucketKey: {
+      type: String,
     },
     phone: {
       type: Number,

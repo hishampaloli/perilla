@@ -8,8 +8,12 @@ import {
   requireTenantOrUser,
   requireUserAuth,
 } from "@hr-management/common";
+import multer from "multer";
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 import { employeeController } from "../../controllers";
+import { downloadFileFromBucket } from "../externalServices/awsS3Bucket";
 
 export = (dependencies: any) => {
   const router = express.Router();
@@ -26,6 +30,7 @@ export = (dependencies: any) => {
     getMyNotificationController,
     deleteNotificationController,
     employeeLogoutController,
+    uploadProfileImageController,
   } = employeeController(dependencies);
 
   router.get(
@@ -94,5 +99,22 @@ export = (dependencies: any) => {
     requireUserAuth,
     deleteNotificationController
   );
+
+  router.post(
+    "/uploadProfile",
+    currentUser,
+    requireUserAuth,
+    upload.single("image"),
+    uploadProfileImageController
+  );
+
+  router.get("/do/:id", async (req, res) => {
+    const downLoad = await downloadFileFromBucket(req.params.id);
+    console.log(downLoad);
+    console.log("//777&&&&&&&&&&&&&&&&&&");
+
+    res.send(downLoad)
+    // fileStream.pipe(res);
+  });
   return router;
 };

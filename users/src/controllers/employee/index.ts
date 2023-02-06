@@ -10,6 +10,7 @@ import sendBankDetailsController from "./sendBankDetails.controller";
 import getMyNotificationController from "./getMyNotification.controller";
 import deleteNotificationController from "./deleteNotification.controller";
 import employeeLogoutController from "./employeeLogout.controller";
+import uploadProfileImageController from "./uploadProfileImage.controller";
 
 export = (dependencies: any) => {
   return {
@@ -26,5 +27,6 @@ export = (dependencies: any) => {
     getMyNotificationController: getMyNotificationController(dependencies),
     deleteNotificationController: deleteNotificationController(dependencies),
     employeeLogoutController: employeeLogoutController(dependencies),
+    uploadProfileImageController: uploadProfileImageController(dependencies),
   };
 };
