@@ -14,9 +14,24 @@ export interface useCaseData {
   getLeaveApplications_UseCase: any;
   getMyLeaveReport_UseCase: any;
   viewLeaveApplication_UseCase: any;
+
+  createAsset_UseCase: any;
+  deleteAssets_UseCase: any;
+  getAllAssets_UseCase: any;
+  getSingleAsset_UseCase: any;
+  editAssets_UseCase: any;
+
+  createExpense_UseCase: any;
+  deleteExpense_UseCase: any;
+  editExpense_UseCase: any;
+  getAllExpense_UseCase: any;
+  getSingleExpense_UseCase: any;
 }
 
 export interface repositoryData {
   employeeRepository: any;
   leaveRepository: any;
+  assetRepository: any;
+  expenseRepository: any;
+  payoutRepository: any;
 }

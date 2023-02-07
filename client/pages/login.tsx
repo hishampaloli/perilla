@@ -16,13 +16,7 @@ const login = () => {
       <div className={styles.buyProduct}>
         <LogoImage />
         <LoginComponent />
-      </div>
-      <iframe
-        width="350"
-        height="430"
-        allow="microphone;"
-        src="https://console.dialogflow.com/api-client/demo/embedded/8d9f81d7-a206-40a8-a248-fb2113ce87d5"
-      ></iframe>
+      </div>    
     </Layout>
   );
 };

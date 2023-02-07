@@ -28,7 +28,7 @@ export = {
       projectName,
       pageNumber
     );
-    const pageSize = 1;
+    const pageSize = 3;
     const page = pageNumber ? pageNumber : 1;
 
     const mongooseObj = createdBy

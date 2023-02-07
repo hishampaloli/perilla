@@ -26,7 +26,7 @@ export = {
     taskName: string,
     pageNumber: number
   ) => {
-    const pageSize = 1;
+    const pageSize = 3;
     const page = pageNumber ? pageNumber : 1;
 
     const mongooseObj = await Task.find({
@@ -109,7 +109,7 @@ export = {
     pageNumber: number
   ) => {
     console.log(taskName, pageNumber + '00000000000000');
-    const pageSize = 1;
+    const pageSize = 3;
     const page = pageNumber ? pageNumber : 1;
 
     const count = await helperFunction.getMyTasksPosts(

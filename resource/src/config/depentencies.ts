@@ -1,4 +1,10 @@
-import { employeeRepository, leaveRepository } from "../app/repository/mongo";
+import {
+  employeeRepository,
+  leaveRepository,
+  assetRepository,
+  expenseRepository,
+  payoutRepository,
+} from "../app/repository/mongo";
 
 import {
   createEmployee_UseCase,
@@ -10,7 +16,19 @@ import {
   getLeaveApplications_UseCase,
   getMyLeaveReport_UseCase,
   viewLeaveApplication_UseCase,
+  createAsset_UseCase,
+  deleteAssets_UseCase,
+  getAllAssets_UseCase,
+  getSingleAsset_UseCase,
+  editAssets_UseCase,
 } from "../usecase";
+import {
+  createExpense_UseCase,
+  deleteExpense_UseCase,
+  editExpense_UseCase,
+  getAllExpense_UseCase,
+  getSingleExpense_UseCase,
+} from "../usecase/expense";
 
 import { repositoryData, useCaseData } from "../entities/interfaces";
 
@@ -24,11 +42,25 @@ const useCases: useCaseData = {
   getLeaveApplications_UseCase,
   getMyLeaveReport_UseCase,
   viewLeaveApplication_UseCase,
+  createAsset_UseCase,
+  deleteAssets_UseCase,
+  getAllAssets_UseCase,
+  editAssets_UseCase,
+  getSingleAsset_UseCase,
+
+  createExpense_UseCase,
+  deleteExpense_UseCase,
+  editExpense_UseCase,
+  getAllExpense_UseCase,
+  getSingleExpense_UseCase,
 };
 
 const repository: repositoryData = {
   employeeRepository,
   leaveRepository,
+  assetRepository,
+  expenseRepository,
+  payoutRepository,
 };
 
 export = {

@@ -65,7 +65,7 @@ export const deleteImageFromBucket = async (key: string) => {
 };
 
 export const downloadFileFromBucket = async (key: string) => {
-  console.log(key);
+  
   const downloadParams = { Bucket: bucketName, Key: key };
   let x = await s3Client.send(new GetObjectCommand(downloadParams));
 

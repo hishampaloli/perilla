@@ -9,8 +9,9 @@ export default function NewPost() {
 
     const formData = new FormData();
     formData.append("image", file[0]!);
-    formData.append("caption", caption);
-    console.log(formData);
+    formData.append("caption", caption);  
+    
+    console.log(formData)
   };
 
   return (

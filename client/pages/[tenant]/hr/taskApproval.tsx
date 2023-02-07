@@ -5,8 +5,8 @@ import MainLayout from "../../../components/layout/MainLayout";
 
 const tasks = () => {
   return (
-    <MainLayout title="Tasks Posted">
-      <SubHeader text="Tasks Posted" />
+    <MainLayout title="Tasks Approval">
+      <SubHeader text="Tasks Approval" />
       <AllTasksComponent user="approval" />
     </MainLayout>
   );
