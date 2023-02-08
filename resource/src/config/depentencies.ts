@@ -21,6 +21,12 @@ import {
   getAllAssets_UseCase,
   getSingleAsset_UseCase,
   editAssets_UseCase,
+  completePayouts_usecase,
+  getAllPayout_usecase,
+  getMyPayouts_usecase,
+  getSinglePayout_usecase,
+  requestPayout_usecase,
+  getMyAssetPosts_UseCase,
 } from "../usecase";
 import {
   createExpense_UseCase,
@@ -46,6 +52,7 @@ const useCases: useCaseData = {
   deleteAssets_UseCase,
   getAllAssets_UseCase,
   editAssets_UseCase,
+  getMyAssetPosts_UseCase,
   getSingleAsset_UseCase,
 
   createExpense_UseCase,
@@ -53,6 +60,12 @@ const useCases: useCaseData = {
   editExpense_UseCase,
   getAllExpense_UseCase,
   getSingleExpense_UseCase,
+
+  completePayouts_usecase,
+  getAllPayout_usecase,
+  getMyPayouts_usecase,
+  getSinglePayout_usecase,
+  requestPayout_usecase,
 };
 
 const repository: repositoryData = {

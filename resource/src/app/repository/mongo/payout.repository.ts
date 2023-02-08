@@ -4,8 +4,8 @@ import { schemas } from "../../database/mongo/";
 const { PayoutDetails } = schemas;
 
 export = {
-  requestPayout: async (asset: PayoutData) => {
-    const mongooseObj = PayoutDetails.build(asset);
+  requestPayout: async (payout: PayoutData) => {
+    const mongooseObj = PayoutDetails.build(payout);
     await PayoutDetails.populate(mongooseObj, { path: "requestedBy" });
     return await mongooseObj.save();
   },
@@ -16,10 +16,11 @@ export = {
     requestedAt: Date,
     status: boolean
   ) => {
+    console.log(companyName, requestedAt, status);
     const mongooseObj = await PayoutDetails.aggregate([
       {
         $match: {
-          $and: [{ companyName }, { requestedAt }, { isPaid: status }],
+          $or: [{ companyName }, { isPaid: status }],
         },
       },
     ]);
@@ -34,7 +35,7 @@ export = {
     return mongooseObj;
   },
 
-  completePayoutDetails: async (companyName: string, payoutId: string) => {
+  completePayouts: async (companyName: string, payoutId: string) => {
     const mongooseObj = await PayoutDetails.findOneAndUpdate(
       {
         $and: [{ companyName }, { _id: payoutId }],
@@ -46,9 +47,8 @@ export = {
   },
 
   getMyPayouts: async (companyName: string, requestedBy: string) => {
-    const mongooseObj = await PayoutDetails.aggregate([
-      { $match: { $and: [{ companyName }, { requestedBy }] } },
-    ]);
-    return mongooseObj;
+    const mongooseObj = await PayoutDetails.find({ $and: [{ companyName }, {requestedBy}] });
+    console.log(mongooseObj);
+    return mongooseObj.reverse();
   },
 };

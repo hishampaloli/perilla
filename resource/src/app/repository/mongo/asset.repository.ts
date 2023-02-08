@@ -18,6 +18,13 @@ export = {
     return mongooseObj;
   },
 
+  getMyAssetPosts: async (companyName: string, createdBy: string) => {
+    const mongooseObj = await AssetDetails.aggregate([
+      { $match: { $and: [{ companyName }, { createdBy }] } },
+    ]);
+    return mongooseObj;
+  },
+
   getSingleAsset: async (companyName: string, assetId: string) => {
     const mongooseObj = await AssetDetails.findOne({
       $and: [{ companyName }, { _id: assetId }],

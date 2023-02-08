@@ -29,11 +29,11 @@ export = (dependencies: any): any => {
       if (!session) throw new BadRequestError("Already paid");
 
       // TODO: UNCOMMENT BELOW CODE TO GET EMAILS
-      const email = await sendMail_UseCase(dependencies).execute({
-        userEmail: req.currentTenant?.id.email,
-        subject: "Product purchased successfully",
-        response: PurchaseResponse,
-      });
+      // const email = await sendMail_UseCase(dependencies).execute({
+      //   userEmail: req.currentTenant?.id.email,
+      //   subject: "Product purchased successfully",
+      //   response: PurchaseResponse,
+      // });
 
       let token = generateToken(session);
 

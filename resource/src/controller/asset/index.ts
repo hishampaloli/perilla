@@ -3,6 +3,7 @@ import getAllAssetsController from "./getAllAssets.controller";
 import getSingleAssetController from "./getSingleAsset.controller";
 import editAssetsController from "./editAssets.controller";
 import deleteAssetController from "./deleteAsset.controller";
+import getMyAssetPostsController from "./getMyAssetPosts.controller";
 
 export = (dependencies: any) => {
   return {
@@ -11,5 +12,6 @@ export = (dependencies: any) => {
     getSingleAssetController: getSingleAssetController(dependencies),
     editAssetsController: editAssetsController(dependencies),
     deleteAssetController: deleteAssetController(dependencies),
+    getMyAssetPostsController: getMyAssetPostsController(dependencies),
   };
 };

@@ -39,6 +39,13 @@ import {
 } from "./employee";
 
 import {
+  createAssetReducer,
+  deleteAssetReducer,
+  editAssetReducer,
+  getAllAssetReducer,
+  getSingleAssetReducer,
+} from "./resource";
+import {
   addTeamToProjectsReducer,
   approveTaskReducer,
   createProjectsReducer,
@@ -110,6 +117,12 @@ const reducers = combineReducers({
   approveLeaves: approveLeaveReducer,
   applyLeave: applyLeaveReducer,
   singleLeave: viewSingleLeaveReducer,
+
+  createAsset: createAssetReducer,
+  editAsset: editAssetReducer,
+  deleteAsset: deleteAssetReducer,
+  allAssets: getAllAssetReducer,
+  singleAsset: getSingleAssetReducer,
 });
 
 export default reducers;

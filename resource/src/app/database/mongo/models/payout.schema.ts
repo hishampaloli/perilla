@@ -41,7 +41,7 @@ const payoutDetailsSchema = new mongoose.Schema(
       required: true,
     },
     isPaid: {
-      type: Number,
+      type: Boolean,
       required: true,
       default: false,
     },

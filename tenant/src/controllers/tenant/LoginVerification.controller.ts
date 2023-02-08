@@ -47,11 +47,11 @@ export = (dependencies: any): any => {
       if (!verifyOtp) throw new BadRequestError("incorrect otp");
 
       // TODO: UNCOMMENT BELOW CODE TO GET EMAILS
-      const email = await sendMail_UseCase(dependencies).execute({
-        userEmail: istenant.email,
-        subject: "New Login found",
-        response: LoginResponse,
-      });
+      // const email = await sendMail_UseCase(dependencies).execute({
+      //   userEmail: istenant.email,
+      //   subject: "New Login found",
+      //   response: LoginResponse,
+      // });
 
       let token = generateToken(istenant);
 

@@ -20,6 +20,7 @@ interface assetDetailsDoc extends mongoose.Document {
   price: number;
   createdAt: Date;
   version: number;
+  id: string
 }
 
 const assetDetailsSchema = new mongoose.Schema(

@@ -30,6 +30,9 @@ interface EmployeeDoc extends mongoose.Document {
   isBlocked: boolean;
 }
 
+const date = new Date();
+date.setDate(date.getDate() + 1)
+
 const employeeSchema = new mongoose.Schema(
   {
     email: {
@@ -46,6 +49,7 @@ const employeeSchema = new mongoose.Schema(
     },
     lastPayout: {
       type: Date,
+      default: date
     },
     leavesTaken: {
       type: Number,

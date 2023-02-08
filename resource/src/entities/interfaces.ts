@@ -20,12 +20,19 @@ export interface useCaseData {
   getAllAssets_UseCase: any;
   getSingleAsset_UseCase: any;
   editAssets_UseCase: any;
+  getMyAssetPosts_UseCase: any;
 
   createExpense_UseCase: any;
   deleteExpense_UseCase: any;
   editExpense_UseCase: any;
   getAllExpense_UseCase: any;
   getSingleExpense_UseCase: any;
+
+  completePayouts_usecase: any;
+  getAllPayout_usecase: any;
+  getMyPayouts_usecase: any;
+  getSinglePayout_usecase: any;
+  requestPayout_usecase: any;
 }
 
 export interface repositoryData {
