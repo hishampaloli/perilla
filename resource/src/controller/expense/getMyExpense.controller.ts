@@ -4,26 +4,24 @@ import { DepenteniciesData } from "../../entities/interfaces";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
-    useCases: { getAllExpense_UseCase },
+    useCases: { getMyExpensePosts_UseCase },
   } = dependencies;
 
-  const getAllExpenses = async (
+  const getMyExpenses = async (
     req: Request,
     res: Response,
     next: NextFunction
   ) => {
     try {
-      const { pageNumber } = req.query;
-      const companyName =
-        req.currentTenant?.id.companyName || req.currentUser?.id.companyName;
+      const { companyName, id } = req.currentUser?.id!;
 
-      const allExpense = await getAllExpense_UseCase(dependencies).execute(
+      const allExpense = await getMyExpensePosts_UseCase(dependencies).execute(
         companyName,
-        pageNumber
+        id
       );
 
       if (!allExpense) {
-        throw new BadRequestError("No such expense found");
+        throw new BadRequestError("No expense found");
       }
 
       res.json({ data: allExpense });
@@ -31,5 +29,5 @@ export = (dependencies: DepenteniciesData): any => {
       throw new BadRequestError(error);
     }
   };
-  return getAllExpenses;
+  return getMyExpenses;
 };

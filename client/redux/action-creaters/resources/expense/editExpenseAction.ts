@@ -11,6 +11,7 @@ export const editExpenses =
     getState: any
   ): Promise<string> => {
     try {
+      console.log('///////////')
       dispatch({ type: ResourceActionTypes.EDIT_EXPENSE_REQUEST });
 
       const { data } = await editExpense_API("", expenseId, expenseData);
@@ -22,7 +23,7 @@ export const editExpenses =
       getState().allExpenses.data.data.unshift(data.data);
       dispatch({
         type: ResourceActionTypes.GET_ALL_EXPENSES_SUCCESS,
-        payload: getState().allAssets.data,
+        payload: getState().allExpenses.data,
       });
 
       return "success";

@@ -7,7 +7,7 @@ const CreatExpenseComponent = () => {
 
   return (
     <div>
-      <AddButton text="CREATE ASSET" setAdd={setAdd} />
+      <AddButton text="ADD EXPENSE" setAdd={setAdd} />
       {add && <CreateExpenseBox setEdit={setAdd} />}
     </div>
   );

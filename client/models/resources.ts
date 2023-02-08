@@ -17,7 +17,7 @@ export interface ResouseEmployeeData {
 export interface AssetsData {
   createdBy: ResouseEmployeeData;
   companyName: string;
-  itemName: string;
+  assetName: string;
   price: number;
   createdAt: Date;
   version: number;
@@ -61,7 +61,7 @@ export interface GetSingleAssetState {
 
 export interface ExpenseData {
   companyName: string;
-  itemName: string;
+  expenseName: string;
   createdBy: ResouseEmployeeData;
   createdAt: Date;
   price: number;
@@ -102,3 +102,37 @@ export interface GetSingleExpenseState {
   error: ErrorState[] | null;
   data: ExpenseDataObj | null;
 }
+
+export interface PayoutData {
+  requestedBy: string;
+  salary: string;
+  requestedAt: Date;
+  companyName: string;
+  isPaid: boolean;
+  id: string;
+}
+export interface PayoutDataObj {
+  data: PayoutData;
+}
+
+export interface PayoutDataArr {
+  data: PayoutData[];
+}
+
+export interface RequestPayoutState {
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+export interface GetAllPayoutsState {
+  data: PayoutDataArr | null;
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+
+
+export interface CompletePayoutsState {
+  error: ErrorState[] | null;
+  loading: boolean;
+}
+

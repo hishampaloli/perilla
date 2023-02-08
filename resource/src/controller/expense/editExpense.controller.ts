@@ -15,18 +15,18 @@ export = (dependencies: DepenteniciesData): any => {
     try {
       const { companyName, id } = req.currentUser?.id!;
       const { price, expenseName } = req.body;
-      const editedAssets = await editExpense_UseCase(dependencies).execute(
+      const editedExpense = await editExpense_UseCase(dependencies).execute(
         companyName,
         req.params.expenseId,
         id,
         { price, expenseName }
       );
 
-      if (!editedAssets) {
+      if (!editedExpense) {
         throw new BadRequestError("No such expence found");
       }
 
-      res.json({ data: editedAssets });
+      res.json({ data: editedExpense });
     } catch (error: any) {
       throw new BadRequestError(error);
     }

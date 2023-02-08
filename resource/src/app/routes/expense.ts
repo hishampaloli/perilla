@@ -5,6 +5,7 @@ import {
   requireTenantOrUser,
   currentUser,
   requireUserAuth,
+  isHr,
 } from "@hr-management/common";
 
 import { expenseController } from "../../controller";
@@ -17,6 +18,7 @@ export = (dependencies: any) => {
     editExpenseController,
     getAllExpensesController,
     getSingleExpenseController,
+    getMyExpenseController,
   } = expenseController(dependencies);
 
   router.post(
@@ -33,6 +35,14 @@ export = (dependencies: any) => {
     requireTenantOrUser,
     isHrOrAdmin,
     getAllExpensesController
+  );
+
+  router.get(
+    "/myExpense",
+    currentUser,
+    requireUserAuth,
+    isHr,
+    getMyExpenseController
   );
 
   router.get(

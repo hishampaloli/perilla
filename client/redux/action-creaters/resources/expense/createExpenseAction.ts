@@ -14,10 +14,10 @@ export const createExpense =
 
       const { data } = await createExpense_API(req, expenseData);
 
-      getState().allAssets.data.data.unshift(data.data);
+      getState().allExpenses.data.data.unshift(data.data);
       dispatch({
         type: ResourceActionTypes.GET_ALL_EXPENSES_SUCCESS,
-        payload: getState().allAssets.data,
+        payload: getState().allExpenses.data,
       });
 
       return "success";

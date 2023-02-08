@@ -48,6 +48,9 @@ import {
   deleteExpenseReducer,
   editExpenseReducer,
   getAlExpensesReducer,
+  completePayoutReducer,
+  getAllPayoutsReducer,
+  requestPayoutReducer,
 } from "./resource";
 import {
   addTeamToProjectsReducer,
@@ -132,6 +135,9 @@ const reducers = combineReducers({
   editExpense: editExpenseReducer,
   deleteExpense: deleteExpenseReducer,
   allExpenses: getAlExpensesReducer,
+  completePayout: completePayoutReducer,
+  allPayouts: getAllPayoutsReducer,
+  requestPayout: requestPayoutReducer,
 });
 
 export default reducers;

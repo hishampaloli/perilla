@@ -15,17 +15,17 @@ export = (dependencies: DepenteniciesData): any => {
     try {
       const { companyName, id } = req.currentUser?.id!;
 
-      const deleteAssets = await deleteExpense_UseCase(dependencies).execute(
+      const deleteExpense = await deleteExpense_UseCase(dependencies).execute(
         companyName,
         req.params.expenseId,
         id
       );
 
-      if (!deleteAssets) {
+      if (!deleteExpense) {
         throw new BadRequestError("No such expense found");
       }
 
-      res.json({ data: deleteAssets });
+      res.json({ data: deleteExpense });
     } catch (error: any) {
       throw new BadRequestError(error);
     }

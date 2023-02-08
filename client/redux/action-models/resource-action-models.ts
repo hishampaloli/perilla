@@ -4,6 +4,8 @@ import {
   AssetsDataObj,
   ExpenseDataArr,
   ExpenseDataObj,
+  PayoutDataArr,
+  PayoutDataObj,
 } from "../../models/resources";
 import { ResourceActionTypes } from "../constants";
 
@@ -166,3 +168,50 @@ export type DeleteExpenseAction =
   | DeleteExpenseRequestAction
   | GetAllExpensesSuccessAction
   | DeleteExpenseFailAction;
+
+interface GetAllPayoutsRequestAction {
+  type: ResourceActionTypes.GET_ALL_PAYOUTS_REQUEST;
+}
+
+interface GetAllPayoutsSuccessAction {
+  type: ResourceActionTypes.GET_ALL_PAYOUTS_SUCCESS;
+  payload: PayoutDataArr;
+}
+
+interface GetAllPayoutsFailAction {
+  type: ResourceActionTypes.GET_ALL_PAYOUTS_FAIL;
+  error: ErrorState[];
+}
+
+export type GetAllPayoutsAction =
+  | GetAllPayoutsRequestAction
+  | GetAllPayoutsSuccessAction
+  | GetAllPayoutsFailAction;
+
+interface RequestPayoutRequestAction {
+  type: ResourceActionTypes.REQUEST_PAYOUT_REQUEST;
+}
+
+interface RequestPayoutFailAction {
+  type: ResourceActionTypes.REQUEST_PAYOUT_FAIL;
+  error: ErrorState[];
+}
+
+export type RequestPayoutAction =
+  | RequestPayoutRequestAction
+  | GetAllPayoutsSuccessAction
+  | RequestPayoutFailAction;
+
+interface CompletePayoutRequestAction {
+  type: ResourceActionTypes.COMPLETE_PAYOUT_REQUEST;
+}
+
+interface CompletePayoutFailAction {
+  type: ResourceActionTypes.COMPLETE_PAYOUT_FAIL;
+  error: ErrorState[];
+}
+
+export type CompletePayoutAction =
+  | CompletePayoutRequestAction
+  | GetAllPayoutsSuccessAction
+  | CompletePayoutFailAction;

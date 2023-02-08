@@ -10,12 +10,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import { EmployeeAuthState } from "../../../models/employee";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import EditAssetForm from "./editAssetComponent";
+import EditExpenseForm from "./edotExpenseComponents";
 
 const ItemsList = ({
   el,
   type,
 }: {
-  el: AssetsData | ExpenseData;
+  el: AssetsData | ExpenseData | any;
   type: string;
 }) => {
   const employee: EmployeeAuthState = useTypedSelector(
@@ -36,13 +37,25 @@ const ItemsList = ({
 
   return (
     <>
-      {edit && <EditAssetForm data={el} setEdit={setEdit} />}
+      {edit && type === "asset" ? (
+        <EditAssetForm data={el} setEdit={setEdit} />
+      ) : (
+        <>
+          {edit && type === "expense" && (
+            <EditExpenseForm data={el} setEdit={setEdit} />
+          )}
+        </>
+      )}
       <div className={style.bankDetailDiv}>
         <p>
           <img src={el?.createdBy?.image} alt="" />
           {el?.createdBy?.name}
         </p>
-        <p>{el?.itemName?.slice(0, 40)}</p>
+        <p>
+          {type === "asset"
+            ? el?.assetName?.slice(0, 40)
+            : el?.expenseName?.slice(0, 40)}
+        </p>
         <p>{el?.price}</p>
         <p>{el?.createdAt?.toString().slice(0, 10)}</p>
 

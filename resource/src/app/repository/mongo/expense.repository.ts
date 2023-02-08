@@ -15,6 +15,7 @@ export = {
       { $match: { companyName } },
       { $sort: { createdAt: -1 } },
     ]);
+    await ExpenseDetails.populate(mongooseObj, { path: "createdBy" });
     return mongooseObj;
   },
 
@@ -48,6 +49,7 @@ export = {
       data,
       { new: true, runValidators: true }
     );
+    await ExpenseDetails.populate(mongooseObj, { path: "createdBy" });
 
     return mongooseObj;
   },
@@ -60,6 +62,7 @@ export = {
     const mongooseObj = await ExpenseDetails.findOneAndDelete({
       $and: [{ companyName }, { _id: expenseId }, { createdBy }],
     });
+    await ExpenseDetails.populate(mongooseObj, { path: "createdBy" });
     return mongooseObj;
   },
 };
