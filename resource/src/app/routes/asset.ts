@@ -5,6 +5,7 @@ import {
   requireTenantOrUser,
   currentUser,
   requireUserAuth,
+  isHr,
 } from "@hr-management/common";
 
 import { assetController } from "../../controller";
@@ -17,12 +18,14 @@ export = (dependencies: any) => {
     editAssetsController,
     getAllAssetsController,
     getSingleAssetController,
+    getMyAssetPostsController,
   } = assetController(dependencies);
 
   router.post(
     "/createAsset",
     currentUser,
     requireUserAuth,
+    isHr,
     createAssetController
   );
 
@@ -33,6 +36,14 @@ export = (dependencies: any) => {
     requireTenantOrUser,
     isHrOrAdmin,
     getAllAssetsController
+  );
+
+  router.get(
+    "/MyAssets",
+    currentUser,
+    requireUserAuth,
+    isHr,
+    getMyAssetPostsController
   );
 
   router.get(
@@ -50,6 +61,7 @@ export = (dependencies: any) => {
     "/:assetId",
     currentUser,
     requireUserAuth,
+    isHr,
     deleteAssetController
   );
   return router;

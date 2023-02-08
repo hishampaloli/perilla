@@ -5,6 +5,7 @@ export interface ResouseEmployeeData {
   employeeId: string;
   companyName: string;
   email: string;
+  name: string;
   image: string;
   phone: string;
   id: string;
@@ -16,7 +17,7 @@ export interface ResouseEmployeeData {
 export interface AssetsData {
   createdBy: ResouseEmployeeData;
   companyName: string;
-  assetName: string;
+  itemName: string;
   price: number;
   createdAt: Date;
   version: number;
@@ -56,4 +57,48 @@ export interface GetSingleAssetState {
   loading: boolean;
   error: ErrorState[] | null;
   data: AssetsDataObj | null;
+}
+
+export interface ExpenseData {
+  companyName: string;
+  itemName: string;
+  createdBy: ResouseEmployeeData;
+  createdAt: Date;
+  price: number;
+  id: string;
+}
+
+export interface ExpenseDataArr {
+  data: ExpenseData[];
+}
+
+export interface ExpenseDataObj {
+  data: ExpenseData;
+}
+
+export interface CreateExpenseState {
+  loading: boolean;
+  error: ErrorState[] | null;
+}
+
+export interface EditExpenseState {
+  loading: boolean;
+  error: ErrorState[] | null;
+}
+
+export interface DeleteExpenseState {
+  loading: boolean;
+  error: ErrorState[] | null;
+}
+
+export interface GetAllExpensesState {
+  loading: boolean;
+  error: ErrorState[] | null;
+  data: ExpenseDataArr | null;
+}
+
+export interface GetSingleExpenseState {
+  loading: boolean;
+  error: ErrorState[] | null;
+  data: ExpenseDataObj | null;
 }

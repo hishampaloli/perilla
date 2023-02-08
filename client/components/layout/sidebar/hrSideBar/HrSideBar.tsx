@@ -14,7 +14,9 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ChatIcon from "@mui/icons-material/Chat";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import Groups3Icon from "@mui/icons-material/Groups3";
+import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 import ApprovalIcon from "@mui/icons-material/Approval";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
 import LinkDiv from "../LinkDiv";
 
 const HrSideBar = () => {
@@ -57,17 +59,19 @@ const HrSideBar = () => {
         link="taskApproval"
         icon={<ApprovalIcon />}
       />{" "}
-      <LinkDiv
-        type="hr"
-        text="Leaves"
-        link="leaves"
-        icon={<HouseboatIcon />}
-      />
+      <LinkDiv type="hr" text="Leaves" link="leaves" icon={<HouseboatIcon />} />
       <LinkDiv
         type="hr"
         text="My Payrolls"
         link="payrolls"
         icon={<PaymentIcon />}
+      />
+      <LinkDiv type="hr" text="Assets" link="assets" icon={<LocalMallIcon />} />
+      <LinkDiv
+        type="hr"
+        text="My Expense"
+        link="expenses"
+        icon={<LocalAtmIcon />}
       />
       <LinkDiv type="hr" text="Chats" link="payrolls" icon={<ChatIcon />} />
     </div>

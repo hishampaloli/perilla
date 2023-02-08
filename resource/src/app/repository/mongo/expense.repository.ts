@@ -25,6 +25,16 @@ export = {
     return mongooseObj;
   },
 
+  getMyExpenses: async (companyName: string, createdBy: string) => {
+    console.log(createdBy + "888888888888888");
+    const mongooseObj = await ExpenseDetails.find({
+      $and: [{ companyName }, { createdBy }],
+    });
+    await ExpenseDetails.populate(mongooseObj, { path: "createdBy" });
+
+    return mongooseObj;
+  },
+
   editExpense: async (
     companyName: string,
     expenseId: string,

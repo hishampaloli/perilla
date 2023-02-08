@@ -73,3 +73,45 @@ export const useApproveLeave = (
     }
   });
 };
+
+export const useDeleteAsset = (assetId: string, deleteAsset: any) => {
+  swal({
+    title: "Are you sure?",
+    text: `Are you sure you want to delete this asset `,
+    icon: "warning",
+    buttons: ["no", true],
+    dangerMode: true,
+  })?.then(async (willDelete) => {
+    if (willDelete) {
+      const res = await deleteAsset("id", assetId);
+
+      swal("Asset deleted successfully!", {
+        icon: "success",
+      });
+    } else {
+      swal("Asset not deleted !");
+    }
+  });
+};
+
+
+
+export const useDeleteExpense = (expenseId: string, deleteExpense: any) => {
+  swal({
+    title: "Are you sure?",
+    text: `Are you sure you want to delete this expense `,
+    icon: "warning",
+    buttons: ["no", true],
+    dangerMode: true,
+  })?.then(async (willDelete) => {
+    if (willDelete) {
+      const res = await deleteExpense("id", expenseId);
+
+      swal("Expense deleted successfully!", {
+        icon: "success",
+      });
+    } else {
+      swal("Expense not deleted !");
+    }
+  });
+};

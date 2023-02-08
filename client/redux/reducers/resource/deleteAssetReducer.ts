@@ -13,7 +13,7 @@ export const deleteAssetReducer = (
         error: null,
       };
 
-    case ResourceActionTypes.DELETE_ASSET_SUCCESS:
+    case ResourceActionTypes.GET_ALL_ASSETS_SUCCESS:
       return {
         loading: false,
         error: null,

@@ -26,6 +26,7 @@ export interface useCaseData {
   deleteExpense_UseCase: any;
   editExpense_UseCase: any;
   getAllExpense_UseCase: any;
+  getMyExpensePosts_UseCase: any;
   getSingleExpense_UseCase: any;
 
   completePayouts_usecase: any;

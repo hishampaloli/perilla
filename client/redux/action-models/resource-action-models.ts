@@ -1,5 +1,10 @@
 import { ErrorState } from "../../models/admin";
-import { AssetsDataArr, AssetsDataObj } from "../../models/resources";
+import {
+  AssetsDataArr,
+  AssetsDataObj,
+  ExpenseDataArr,
+  ExpenseDataObj,
+} from "../../models/resources";
 import { ResourceActionTypes } from "../constants";
 
 interface GetAllAssetsRequestAction {
@@ -63,7 +68,7 @@ interface EditAssetFailAction {
 
 export type EditAssetAction =
   | EditAssetRequestAction
-  | GetSingleAssetSuccessAction
+  | GetAllAssetsSuccessAction
   | EditAssetFailAction;
 
 interface DeleteAssetRequestAction {
@@ -81,5 +86,83 @@ interface DeleteAssetFailAction {
 
 export type DeleteAssetAction =
   | DeleteAssetRequestAction
-  | DeleteAssetSuccessAction
+  | GetAllAssetsSuccessAction
   | DeleteAssetFailAction;
+
+interface GetAllExpensesRequestAction {
+  type: ResourceActionTypes.GET_ALL_EXPENSES_REQUEST;
+}
+
+interface GetAllExpensesSuccessAction {
+  type: ResourceActionTypes.GET_ALL_EXPENSES_SUCCESS;
+  payload: ExpenseDataArr;
+}
+interface GetAllExpensesFailAction {
+  type: ResourceActionTypes.GET_ALL_EXPENSES_FAIL;
+  error: ErrorState[];
+}
+
+export type GetAllExpensesAction =
+  | GetAllExpensesRequestAction
+  | GetAllExpensesFailAction
+  | GetAllExpensesSuccessAction;
+
+interface GetSingleExpenseRequestAction {
+  type: ResourceActionTypes.GET_SINGLE_EXPENSE_REQUEST;
+}
+
+interface GetSingleExpenseSuccessAction {
+  type: ResourceActionTypes.GET_SINGLE_EXPENSE_SUCCESS;
+  payload: ExpenseDataObj;
+}
+interface GetSingleExpenseFailAction {
+  type: ResourceActionTypes.GET_SINGLE_EXPENSE_FAIL;
+  error: ErrorState[];
+}
+
+export type GetSingleExpenseAction =
+  | GetSingleExpenseRequestAction
+  | GetSingleExpenseFailAction
+  | GetSingleExpenseSuccessAction;
+
+interface CreateExpenseRequestAction {
+  type: ResourceActionTypes.CREATE_EXPENSE_REQUEST;
+}
+
+interface CreateExpenseFailAction {
+  type: ResourceActionTypes.CREATE_EXPENSE_FAIL;
+  error: ErrorState[];
+}
+
+export type CreateExpenseAction =
+  | CreateExpenseRequestAction
+  | GetAllExpensesSuccessAction
+  | CreateExpenseFailAction;
+
+interface EditExpenseRequestAction {
+  type: ResourceActionTypes.EDIT_EXPENSE_REQUEST;
+}
+
+interface EditExpenseFailAction {
+  type: ResourceActionTypes.EDIT_EXPENSE_FAIL;
+  error: ErrorState[];
+}
+
+export type EditExpenseAction =
+  | EditExpenseRequestAction
+  | GetAllExpensesSuccessAction
+  | EditExpenseFailAction;
+
+interface DeleteExpenseRequestAction {
+  type: ResourceActionTypes.DELETE_EXPENSE_REQUEST;
+}
+
+interface DeleteExpenseFailAction {
+  type: ResourceActionTypes.DELETE_EXPENSE_FAIL;
+  error: ErrorState[];
+}
+
+export type DeleteExpenseAction =
+  | DeleteExpenseRequestAction
+  | GetAllExpensesSuccessAction
+  | DeleteExpenseFailAction;

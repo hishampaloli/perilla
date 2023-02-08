@@ -81,3 +81,65 @@ export const useApplyLeave = async (
     toast.error(`${res}`);
   }
 };
+
+export const useCreateAsset = async (
+  assetData: any,
+  createAsset: any,
+  setEdit: any
+) => {
+  const res = await createAsset("d", assetData);
+
+  if (`${res}` === "success") {
+    toast.success(`Asset added successfully`);
+    setEdit(false);
+  } else {
+    toast.error(`${res}`);
+  }
+};
+
+export const useEditAsset = async (
+  assetData: any,
+  assetId: string,
+  editAsset: any,
+  setEdit: any
+) => {
+  const res = await editAsset("d", assetId, assetData);
+
+  if (`${res}` === "success") {
+    toast.success(`Asset edited successfully`);
+    setEdit(false);
+  } else {
+    toast.error(`${res}`);
+  }
+};
+
+export const useCreateExpense = async (
+  expenseData: any,
+  createExpense: any,
+  setEdit: any
+) => {
+  const res = await createExpense("d", expenseData);
+
+  if (`${res}` === "success") {
+    toast.success(`Expense added successfully`);
+    setEdit(false);
+  } else {
+    toast.error(`${res}`);
+  }
+};
+
+export const useEditExpense = async (
+  expenseData: any,
+  expenseId: string,
+  editExpense: any,
+  setEdit: any
+) => {
+  const res = await editExpense("d", expenseId, expenseData);
+
+  if (`${res}` === "success") {
+    toast.success(`Expense edited successfully`);
+    setEdit(false);
+  } else {
+    toast.error(`${res}`);
+  }
+};

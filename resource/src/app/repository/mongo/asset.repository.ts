@@ -15,13 +15,18 @@ export = {
       { $match: { companyName } },
       { $sort: { createdAt: -1 } },
     ]);
+    
+    await AssetDetails.populate(mongooseObj, { path: "createdBy" });
     return mongooseObj;
   },
 
   getMyAssetPosts: async (companyName: string, createdBy: string) => {
-    const mongooseObj = await AssetDetails.aggregate([
-      { $match: { $and: [{ companyName }, { createdBy }] } },
-    ]);
+    console.log(createdBy + "888888888888888");
+    const mongooseObj = await AssetDetails.find({
+      $and: [{ companyName }, { createdBy }],
+    });
+    await AssetDetails.populate(mongooseObj, { path: "createdBy" });
+
     return mongooseObj;
   },
 
@@ -29,6 +34,8 @@ export = {
     const mongooseObj = await AssetDetails.findOne({
       $and: [{ companyName }, { _id: assetId }],
     });
+    
+    await AssetDetails.populate(mongooseObj, { path: "createdBy" });
     return mongooseObj;
   },
 
@@ -45,6 +52,8 @@ export = {
       data,
       { new: true, runValidators: true }
     );
+    
+    await AssetDetails.populate(mongooseObj, { path: "createdBy" });
 
     return mongooseObj;
   },

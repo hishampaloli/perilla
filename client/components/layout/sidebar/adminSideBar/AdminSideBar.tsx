@@ -15,6 +15,7 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import PaidIcon from "@mui/icons-material/Paid";
 import HouseboatIcon from "@mui/icons-material/Houseboat";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import SettingsIcon from "@mui/icons-material/Settings";
 import LockIcon from "@mui/icons-material/Lock";
 import NearbyErrorIcon from "@mui/icons-material/NearbyError";
@@ -67,9 +68,9 @@ const AdminSideBar = () => {
       />
       <LinkDiv
         type="admin"
-        text="Payrolls"
-        link="payrolls"
-        icon={<PaymentIcon />}
+        text="Expenses"
+        link="expenses"
+        icon={<LocalAtmIcon />}
       />
       <LinkDiv
         type="admin"
@@ -77,6 +78,7 @@ const AdminSideBar = () => {
         link="payouts"
         icon={<PaidIcon />}
       />
+
       <LinkDiv
         type="admin"
         text="Leave Request"

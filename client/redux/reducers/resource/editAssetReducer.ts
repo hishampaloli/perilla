@@ -13,7 +13,7 @@ export const editAssetReducer = (
         error: null,
       };
 
-    case ResourceActionTypes.GET_SINGLE_ASSET_SUCCESS:
+    case ResourceActionTypes.GET_ALL_ASSETS_SUCCESS:
       return {
         loading: false,
         error: null,

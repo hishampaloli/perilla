@@ -3,3 +3,4 @@ export * from "./deleteExpense.usecase";
 export * from "./editExpense.usecase";
 export * from "./getAllExpense.usecase";
 export * from "./getSingleExpense.usecase";
+export * from "./getMyExpense.usecase";

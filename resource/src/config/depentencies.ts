@@ -34,6 +34,7 @@ import {
   editExpense_UseCase,
   getAllExpense_UseCase,
   getSingleExpense_UseCase,
+  getMyExpensePosts_UseCase
 } from "../usecase/expense";
 
 import { repositoryData, useCaseData } from "../entities/interfaces";
@@ -59,6 +60,7 @@ const useCases: useCaseData = {
   deleteExpense_UseCase,
   editExpense_UseCase,
   getAllExpense_UseCase,
+  getMyExpensePosts_UseCase,
   getSingleExpense_UseCase,
 
   completePayouts_usecase,

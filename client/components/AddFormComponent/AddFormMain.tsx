@@ -8,8 +8,7 @@ const AddForm = ({ close }: { close: any }) => {
     <div className={style.addFormMain}>
       <i onClick={() => close(false)}>
         <CancelIcon />
-      </i>
-      AddForm
+      </i>      
     </div>
   );
 };
