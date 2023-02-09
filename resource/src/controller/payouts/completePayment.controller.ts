@@ -13,13 +13,13 @@ export = (dependencies: DepenteniciesData): any => {
     next: NextFunction
   ) => {
     try {
-      
       const payoutData = await completePayouts_usecase(dependencies).execute(
         req.currentTenant?.id.companyName,
         req.params.payoutId
       );
-
+      
       if (!payoutData) throw new BadRequestError("no such payout found");
+
       res.json({ data: payoutData });
     } catch (error: any) {
       throw new Error(error);

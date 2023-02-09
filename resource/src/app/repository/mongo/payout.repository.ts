@@ -36,6 +36,7 @@ export = {
   },
 
   completePayouts: async (companyName: string, payoutId: string) => {
+    console.log(companyName,payoutId);
     const mongooseObj = await PayoutDetails.findOneAndUpdate(
       {
         $and: [{ companyName }, { _id: payoutId }],
@@ -43,12 +44,17 @@ export = {
       { isPaid: true },
       { new: true, runValidators: true }
     );
+    console.log(mongooseObj);
+    await PayoutDetails.populate(mongooseObj, { path: "requestedBy" });
+
     return mongooseObj;
   },
 
   getMyPayouts: async (companyName: string, requestedBy: string) => {
-    const mongooseObj = await PayoutDetails.find({ $and: [{ companyName }, {requestedBy}] });
-    console.log(mongooseObj);
+    const mongooseObj = await PayoutDetails.find({
+      $and: [{ companyName }, { requestedBy }],
+    });
+    await PayoutDetails.populate(mongooseObj, { path: "requestedBy" });
     return mongooseObj.reverse();
   },
 };

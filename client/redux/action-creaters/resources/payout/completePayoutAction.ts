@@ -2,7 +2,7 @@ import { CompletePayoutAction } from "../../../action-models";
 import { ResourceActionTypes } from "../../../constants";
 import { Dispatch } from "react";
 import { completePayout_API } from "../../../../api";
-import { ExpenseData } from "../../../../models/resources";
+import { ExpenseData, PayoutData } from "../../../../models/resources";
 
 export const completePayout =
   (req: any, payoutId: string) =>
@@ -16,8 +16,8 @@ export const completePayout =
       const { data } = await completePayout_API("", payoutId);
 
       getState().allPayouts.data.data = getState().allPayouts.data.data.filter(
-        (el: ExpenseData) => {
-          return el.id !== payoutId;
+        (el: PayoutData) => {
+          return el._id !== payoutId;
         }
       );
       getState().allPayouts.data.data.unshift(data.data);

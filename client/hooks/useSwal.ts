@@ -94,8 +94,6 @@ export const useDeleteAsset = (assetId: string, deleteAsset: any) => {
   });
 };
 
-
-
 export const useDeleteExpense = (expenseId: string, deleteExpense: any) => {
   swal({
     title: "Are you sure?",
@@ -112,6 +110,27 @@ export const useDeleteExpense = (expenseId: string, deleteExpense: any) => {
       });
     } else {
       swal("Expense not deleted !");
+    }
+  });
+};
+
+export const useCompletePayout = (completePayout: any, payoutId: string) => {
+  swal({
+    title: "Are you sure?",
+    text: `Are you sure you want to Complete this Payout `,
+    icon: "warning",
+    buttons: ["no", true],
+    dangerMode: true,
+  })?.then(async (willDelete) => {
+    if (willDelete) {
+      console.log(payoutId);
+      const res = await completePayout("id", payoutId);
+
+      swal("Payout completed successfully!", {
+        icon: "success",
+      });
+    } else {
+      swal("Payout pending !");
     }
   });
 };

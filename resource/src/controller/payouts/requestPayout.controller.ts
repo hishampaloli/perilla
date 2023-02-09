@@ -22,17 +22,13 @@ export = (dependencies: DepenteniciesData): any => {
       const date = new Date();
       date.setDate(date.getDate() + 30);
 
-      const currentDate = new Date();
-      if (date > currentDate) {
-        console.log("sdsdsd");
-      }
       const { companyName, id } = req.currentUser?.id!;
       const employee = await getSingleEmployees_UseCase(dependencies).execute(
         companyName,
         id
       );
 
-      if (employee.lastPayout < new Date() )
+      if (employee.lastPayout > new Date())
         throw new BadRequestError(
           "You can only sent request 30 after your previous request "
         );
@@ -49,7 +45,7 @@ export = (dependencies: DepenteniciesData): any => {
         id,
         { lastPayout: date }
       );
-      
+
       if (!payoutReq) {
         throw new BadRequestError("Some thing went wrong");
       }

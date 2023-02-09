@@ -27,6 +27,6 @@ export const requestPayout =
         error: error.response.data.error.msg,
       });
 
-      return error.response.data.error.msg.message;
+      return error.response.data.error.msg;
     }
   };

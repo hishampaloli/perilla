@@ -61,9 +61,9 @@ const HrSideBar = () => {
       />{" "}
       <LinkDiv type="hr" text="Leaves" link="leaves" icon={<HouseboatIcon />} />
       <LinkDiv
-        type="hr"
-        text="My Payrolls"
-        link="payrolls"
+        type="/"
+        text="My Payouts"
+        link="payouts"
         icon={<PaymentIcon />}
       />
       <LinkDiv type="hr" text="Assets" link="assets" icon={<LocalMallIcon />} />

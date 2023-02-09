@@ -104,12 +104,12 @@ export interface GetSingleExpenseState {
 }
 
 export interface PayoutData {
-  requestedBy: string;
+  requestedBy: ResouseEmployeeData;
   salary: string;
   requestedAt: Date;
   companyName: string;
   isPaid: boolean;
-  id: string;
+  _id: string;
 }
 export interface PayoutDataObj {
   data: PayoutData;
@@ -130,9 +130,7 @@ export interface GetAllPayoutsState {
   loading: boolean;
 }
 
-
 export interface CompletePayoutsState {
   error: ErrorState[] | null;
   loading: boolean;
 }
-

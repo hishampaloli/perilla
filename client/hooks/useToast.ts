@@ -143,3 +143,13 @@ export const useEditExpense = async (
     toast.error(`${res}`);
   }
 };
+
+export const useRequestPauout = async (requestPayout: any) => {
+  const res = await requestPayout("d");
+
+  if (`${res}` === "success") {
+    toast.success(`Requested successfully`);
+  } else {
+    toast.error(`${res}`);
+  }
+};

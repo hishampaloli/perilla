@@ -48,9 +48,9 @@ const EmployeeSideBar = () => {
         icon={<HouseboatIcon />}
       />
       <LinkDiv
-        type="employee"
-        text="My Payrolls"
-        link="payrolls"
+        type=""
+        text="My Payouts"
+        link="payouts"
         icon={<PaymentIcon />}
       />
       <LinkDiv
