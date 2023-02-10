@@ -4,6 +4,8 @@ import cors from "cors";
 import "express-async-errors";
 import { ErrorHandler, NotFoundError } from "@hr-management/common/build";
 import cookieSession from "cookie-session";
+import { routes } from "./app/routes";
+import depentencies from "./config/depentencies";
 
 const app = express();
 
@@ -14,6 +16,8 @@ app.use(
     signed: false,
   })
 );
+
+app.use("/api/chat", routes(depentencies));
 
 app.all("*", async (req, res) => {
   throw new NotFoundError();

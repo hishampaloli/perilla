@@ -1,6 +1,4 @@
-import mongoose from "mongoose";
 import { app } from "./app";
-import { natsWrapper } from "./nats-wrapper";
 
 import { connectDB } from "./config/db";
 import { connectNats } from "./config/message-broker";

@@ -9,7 +9,7 @@ import { natsWrapper } from "../nats-wrapper";
 
 const connectNats = async () => {
   try {
-    await natsWrapper.connect("perilla", "123", "http://nats-srv:4222");
+    await natsWrapper.connect("perilla", "123893", "http://nats-srv:4222");
 
     natsWrapper.client.on("close", () => {
       console.log("NATS connetion closed!");
