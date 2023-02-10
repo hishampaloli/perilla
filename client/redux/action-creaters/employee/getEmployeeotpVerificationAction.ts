@@ -11,7 +11,7 @@ export const getEmployeeOtpVerfication =
 
       const { data } = await getEmployeeOtpVerfication__API(req, loginData);
 
-      localStorage.setItem("employeeInfo", JSON.stringify(data.data));
+      localStorage.setItem("employeeInfo", JSON.stringify(data));
 
       dispatch({ type: EmployeeActionsTypes.GET_OTP_VERIFICATION_SUCCESS });
       dispatch({

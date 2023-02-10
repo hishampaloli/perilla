@@ -1,5 +1,4 @@
-import { app } from "./app";
-
+import { app, httpServer } from "./app";
 import { connectDB } from "./config/db";
 import { connectNats } from "./config/message-broker";
 import { evnCheckers } from "./config/env-checkers";
@@ -13,7 +12,8 @@ const start = async () => {
     console.error(err);
   }
 
-  app.listen(3000, () => {
+
+  httpServer.listen(3000, () => {
     console.log("Listening on port 3000 @@@@@@@@@@@@@@@@@@");
   });
 };

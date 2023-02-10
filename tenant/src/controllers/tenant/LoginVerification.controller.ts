@@ -60,7 +60,7 @@ export = (dependencies: any): any => {
         userDetails: istenant,
       };
 
-      res.json({ data: istenant });
+      res.json({ data: istenant, token });
     } catch (error: any) {
       throw new Error(error);
     }

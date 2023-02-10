@@ -15,6 +15,7 @@ const SideBar = ({ mainSmall }: { mainSmall: any }) => {
     (state) => state.employee
   );
   const [small, setSmall] = useState(false);
+  console.log(employee);
   return (
     <div className={small ? style.sidebarMain : style.sidebarMainSmall}>
       <button

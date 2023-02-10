@@ -36,7 +36,7 @@ export = (dependencies: DepenteniciesData): any => {
         userJwt: token,
         userDetails: userPresent,
       };
-      res.json({ data: userPresent });
+      res.json({ data: userPresent, token });
     } catch (error: any) {
       throw new Error(error);
     }
