@@ -14,6 +14,9 @@ import {
   getSingleEmployees_UseCase,
   getSingleRoom_UseCase,
   removeMemberFromRoom_UseCase,
+  createChat_UseCase,
+  deleteChat_UseCase,
+  getAllChatsInRoom_UseCase,
 } from "../usecase";
 
 import { repositoryData, useCaseData } from "../entities/interfaces";
@@ -29,6 +32,10 @@ const useCases: useCaseData = {
   getSingleEmployees_UseCase,
   getSingleRoom_UseCase,
   removeMemberFromRoom_UseCase,
+
+  createChat_UseCase,
+  deleteChat_UseCase,
+  getAllChatsInRoom_UseCase,
 };
 
 const repository: repositoryData = {

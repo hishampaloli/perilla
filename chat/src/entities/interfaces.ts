@@ -14,6 +14,10 @@ export interface useCaseData {
   getSingleEmployees_UseCase: any;
   getSingleRoom_UseCase: any;
   removeMemberFromRoom_UseCase: any;
+
+  createChat_UseCase: any;
+  deleteChat_UseCase: any;
+  getAllChatsInRoom_UseCase: any;
 }
 
 export interface repositoryData {
