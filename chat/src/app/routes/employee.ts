@@ -5,6 +5,7 @@ import {
   isHrOrAdmin,
   requireTenantOrUser,
   currentUser,
+  requireUserAuth,
 } from "@hr-management/common";
 
 import { employeeController } from "../../controller";
@@ -16,9 +17,7 @@ export = (dependencies: any) => {
   router.get(
     "/getAllEmployees",
     currentUser,
-    currentTenant,
-    requireTenantOrUser,
-    isHrOrAdmin,
+    requireUserAuth,
     getAllEmployeesController
   );
 

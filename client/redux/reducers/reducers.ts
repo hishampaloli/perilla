@@ -17,6 +17,12 @@ import {
 } from "./admin";
 
 import {
+  connectSocketReducer,
+  getChatsUnderRoomReducer,
+  getMyRoomsReducer,
+  getSingleRoomsReducer,
+} from "./socket";
+import {
   getEmployeeProfileReducer,
   getClientProfileReducer,
   EditEmployeeProfileReducer,
@@ -32,6 +38,7 @@ import {
 
 import {
   employeeReducer,
+  getAllEmployeeForChatReducer,
   getLoginOtpReducer,
   getLoginOtpVerificationReducer,
   getMyProfileReducer,
@@ -138,6 +145,13 @@ const reducers = combineReducers({
   completePayout: completePayoutReducer,
   allPayouts: getAllPayoutsReducer,
   requestPayout: requestPayoutReducer,
+
+  socketConnection: connectSocketReducer,
+  allEmployeeForChat: getAllEmployeeForChatReducer,
+  myRooms: getMyRoomsReducer,
+  singleRoom: getSingleRoomsReducer,
+
+  allChatsUnderRoom: getChatsUnderRoomReducer,
 });
 
 export default reducers;

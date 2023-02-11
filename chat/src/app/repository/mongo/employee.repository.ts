@@ -33,11 +33,20 @@ export = {
     return mongooseObj;
   },
 
-  getAllEmployees: async (company: string) => {
+  getAllEmployees: async (company: string, name: string) => {
     const mongooseObj = await Employee.aggregate([
       {
         $match: {
-          $and: [{ companyName: company }, { isBlocked: false }],
+          $and: [
+            { companyName: company },
+            { isBlocked: false },
+            {
+              name: {
+                $regex: name ? name : /^(.+)$/,
+                $options: "i",
+              },
+            },
+          ],
         },
       },
     ]);

@@ -10,8 +10,10 @@ export interface useCaseData {
 
   addMemberToRoom_UseCase: any;
   createRoom_UseCase: any;
+  findExistingRoom_UseCase: any;
   getMyRooms_UseCase: any;
   getSingleEmployees_UseCase: any;
+  updateRoomMessage_UseCase: any;
   getSingleRoom_UseCase: any;
   removeMemberFromRoom_UseCase: any;
 

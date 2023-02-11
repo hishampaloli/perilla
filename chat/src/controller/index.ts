@@ -1,3 +1,5 @@
 import employeeController from "./employee";
+import chatController from "./chat";
+import roomController from "./room";
 
-export { employeeController };
+export { employeeController, chatController, roomController };

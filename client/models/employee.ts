@@ -1,5 +1,6 @@
 import { ErrorState } from "./tenants";
 import { EmployeeProfileDataObj } from "./profile";
+import { ChatEmployeeDataArr } from "../redux/action-models";
 
 export interface GetEmployeeOtpState {
   error: ErrorState[] | null;
@@ -39,4 +40,8 @@ export interface SendbankDetailsForAprovalState {
   loading: boolean;
 }
 
-
+export interface GetAllEmployeesForChatState {
+  data: ChatEmployeeDataArr | null;
+  error: ErrorState[] | null;
+  loading: boolean;
+}

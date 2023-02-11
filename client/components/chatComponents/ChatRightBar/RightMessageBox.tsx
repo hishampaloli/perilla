@@ -1,20 +1,20 @@
 import React from "react";
+import { MessageData } from "../../../models/socket";
 import styles from "../../../styles/chat.module.scss";
 
-const RightMessageBoxDiv = () => {
+const RightMessageBoxDiv = ({ messageData }: { messageData: MessageData }) => {
   return (
     <div className={styles.rightMessage}>
       <div>
         <span>
-          <p>hisham</p>
-          <p>11.13pm</p>
+          <p>{messageData?.messagedAt.toString().slice(0, 10)}</p>
+          <p>
+            <strong>{messageData?.messageBy?.name}</strong>{" "}
+          </p>
         </span>
-        <p>Lorem ipsum dolor, sit amet ctetur adipisicing elit. </p>
+        <p>{messageData?.content}</p>
       </div>
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrJ83DK_RTZsTrPsq_BtRT2-Hiju7FwYchFA&usqp=CAU"
-        alt=""
-      />
+      <img src={messageData.messageBy.image} alt="" />
     </div>
   );
 };

@@ -16,6 +16,7 @@ import { Websocket } from "./app/socket/webSocket";
 import http from "http";
 import { Server, Socket } from "socket.io";
 import jwt from "jsonwebtoken";
+import { sockets } from "./app/routes/socket";
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -32,12 +33,9 @@ app.use("/api/chat", routes(depentencies));
 
 const io = Websocket.getInstance(httpServer);
 
-io.use(protectSocket)
+io.use(protectSocket);
 
-io.on("connection", async (socket: Socket) => {
-  console.log(2323)
-  console.log(socket.data.user);
-});
+io.on("connection", sockets);
 
 app.all("*", async (req, res) => {
   throw new NotFoundError();

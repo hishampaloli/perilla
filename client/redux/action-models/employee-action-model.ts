@@ -1,3 +1,4 @@
+import { EmployeeDataArray } from "../../models/admin";
 import { EmployeeAuthData } from "../../models/employee";
 import { EmployeeProfileDataObj } from "../../models/profile";
 import { ErrorState } from "../../models/tenants";
@@ -87,3 +88,32 @@ export type SendbankDetailsAction =
   | SendbankDetailsSuccessAction
   | SendbankDetailsRequestAction
   | SendbankDetailsFailAction;
+
+export interface ChatEmployeeDataArr {
+  data: {
+    _id: string;
+    email: string;
+    name: string;
+    phone: number;
+    role: string;
+    image: string;
+  }[];
+}
+
+interface GetAllEmployeesForChatSuccessAction {
+  type: EmployeeActionsTypes.GET_ALL_EMPLOYEES_FOR_CHAT_SUCCESS;
+  payload: ChatEmployeeDataArr;
+}
+
+interface GetAllEmployeesForChatRequestAction {
+  type: EmployeeActionsTypes.GET_ALL_EMPLOYEES_FOR_CHAT_REQUEST;
+}
+interface GetAllEmployeesForChatFailAction {
+  type: EmployeeActionsTypes.GET_ALL_EMPLOYEES_FOR_CHAT_FAIL;
+  error: ErrorState[];
+}
+
+export type GetAllEmployeesForChatAction =
+  | GetAllEmployeesForChatSuccessAction
+  | GetAllEmployeesForChatRequestAction
+  | GetAllEmployeesForChatFailAction;

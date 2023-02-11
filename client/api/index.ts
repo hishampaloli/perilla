@@ -5,3 +5,4 @@ export * from "./resourceAPIs";
 export * from './assetAPIs'
 export * from './expenseAPIs'
 export * from './payoutAPIs'
+export * from './chatAPIs'

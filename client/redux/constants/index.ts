@@ -6,3 +6,4 @@ export * from "./customTypes";
 export * from "./projectTypes";
 export * from "./leaveTypes";
 export * from "./resourceTypes";
+export * from "./socketTypes";

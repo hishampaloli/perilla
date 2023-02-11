@@ -2,15 +2,13 @@ import { EmployeeAuthState, EmployeeAuthData } from "../../../models/employee";
 
 import { EmployeeActionsTypes } from "../../constants";
 
-let employeeDatas: EmployeeAuthData;
+let employeeDatas: any;
 
 if (typeof window !== "undefined") {
-  const userInfoFromStorage: EmployeeAuthData = localStorage.getItem(
-    "employeeInfo"
-  )
+  const userInfoFromStorage: any = localStorage.getItem("employeeInfo")
     ? JSON.parse(localStorage.getItem("employeeInfo")!)
     : null;
-  employeeDatas = userInfoFromStorage;
+  employeeDatas = userInfoFromStorage?.data;
 }
 
 export const employeeReducer = (

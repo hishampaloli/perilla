@@ -8,22 +8,13 @@ export const addTeamToProjectsReducer = (
 ): AddTeamToProjectState => {
   switch (action.type) {
     case ProjectActionsTypes.ADD_TEAM_TO_PROJECTS_REQUEST:
-      return {
-        loading: true,
-        error: null,
-      };
+      return { loading: true, error: null };
 
     case ProjectActionsTypes.GET_SINGLE_PROJECTS_SUCCESS:
-      return {
-        loading: false,
-        error: null,
-      };
+      return { loading: false, error: null };
 
     case ProjectActionsTypes.ADD_TEAM_TO_PROJECTS_FAIL:
-      return {
-        loading: false,
-        error: action.error,
-      };
+      return { loading: false, error: action.error };
 
     default:
       return state;

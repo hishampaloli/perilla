@@ -6,3 +6,4 @@ export * from "./custom-action-models";
 export * from "./project-action-models";
 export * from './leave-action-models'
 export * from './resource-action-models'
+export * from './socket-action-models'

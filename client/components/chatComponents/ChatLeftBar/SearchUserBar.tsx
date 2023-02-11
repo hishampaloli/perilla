@@ -20,7 +20,7 @@ const SearchUserBar = () => {
           <SearchIcon />
         </span>
       </div>
-      {user.length > 0 && <UserListComponent setUser={setUser} />}
+      {user.length > 0 && <UserListComponent user={user} setUser={setUser} />}
     </div>
   );
 };

@@ -59,6 +59,7 @@ const EmployeeSideBar = () => {
         link="payrolls"
         icon={<ChatIcon />}
       />
+      <Link href={'/hp/chat'}>sdf</Link>
     </div>
   );
 };
