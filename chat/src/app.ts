@@ -1,21 +1,18 @@
 import express, { Request, Response } from "express";
 import { json } from "body-parser";
-import cors from "cors";
+
 import "express-async-errors";
 import {
   ErrorHandler,
   NotFoundError,
-  requireUserAuth,
   protectSocket,
-  NotAuthorizedError,
 } from "@hr-management/common/build";
 import cookieSession from "cookie-session";
 import { routes } from "./app/routes";
 import depentencies from "./config/depentencies";
 import { Websocket } from "./app/socket/webSocket";
 import http from "http";
-import { Server, Socket } from "socket.io";
-import jwt from "jsonwebtoken";
+
 import { sockets } from "./app/routes/socket";
 
 const app = express();
