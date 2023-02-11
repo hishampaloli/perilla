@@ -3,6 +3,7 @@ import { MessageData } from "../../../models/socket";
 import styles from "../../../styles/chat.module.scss";
 
 const LeftMessageBoxDiv = ({ messageData }: { messageData: MessageData }) => {
+  const date = new Date(messageData?.messagedAt);
   return (
     <div className={styles.leftMessage}>
       <img src={messageData.messageBy.image} alt="" />
@@ -11,7 +12,9 @@ const LeftMessageBoxDiv = ({ messageData }: { messageData: MessageData }) => {
           <p>
             <strong>{messageData?.messageBy?.name}</strong>{" "}
           </p>
-          <p>{messageData?.messagedAt.toString().slice(0, 10)}</p>
+          <p style={{ fontSize: "10px", marginTop: "12px" }}>
+            {date.toLocaleTimeString()}
+          </p>
         </span>
         <p>{messageData?.content}</p>
       </div>

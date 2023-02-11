@@ -12,6 +12,8 @@ import styles from "../../../styles/chat.module.scss";
 
 const ChatSentDiv = ({ roomData }: { roomData: RoomData }) => {
   const [message, setMessage] = useState<string>("");
+
+  const [typingTimeOut, setTypingTimeout] = useState<any>();
   const { pushMessageToRoom } = useActions();
   const { socket }: ConnectSocketState = useTypedSelector(
     (state) => state.socketConnection
@@ -35,35 +37,47 @@ const ChatSentDiv = ({ roomData }: { roomData: RoomData }) => {
     },
   };
 
-  const handleclick = () => {
+  const handleclick = (e: React.SyntheticEvent) => {
+    e.preventDefault();
     if (message.length > 0) {
       socket.emit("message", {
         roomId: roomData.id,
         message,
       });
       pushMessageToRoom(pushMessage);
+      setMessage("");
     }
   };
 
   return (
-    <div className={styles.sendChatDiv}>
+    <form onSubmit={handleclick} className={styles.sendChatDiv}>
       <input
         onChange={(e) => {
           setMessage(e.target.value);
+          socket.emit("typing-started-client", { roomId: roomData.id });
+          if (typingTimeOut) {
+            clearTimeout(typingTimeOut);
+          }
+          setTypingTimeout(
+            setTimeout(() => {
+              socket.emit("typing-stopped-client", { roomId: roomData.id });
+            }, 300)
+          );
         }}
+        value={message}
         type="text"
         placeholder="send"
         name=""
         id=""
       />
-      <button onClick={handleclick}>
+      <button>
         <span>
           <div>
             <SendIcon />
           </div>
         </span>
       </button>
-    </div>
+    </form>
   );
 };
 

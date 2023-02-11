@@ -3,11 +3,14 @@ import { MessageData } from "../../../models/socket";
 import styles from "../../../styles/chat.module.scss";
 
 const RightMessageBoxDiv = ({ messageData }: { messageData: MessageData }) => {
+  const date = new Date(messageData?.messagedAt);
   return (
     <div className={styles.rightMessage}>
       <div>
         <span>
-          <p>{messageData?.messagedAt.toString().slice(0, 10)}</p>
+          <p style={{ fontSize: "10px", marginTop: "12px" }}>
+            {date.toLocaleTimeString()}
+          </p>
           <p>
             <strong>{messageData?.messageBy?.name}</strong>{" "}
           </p>

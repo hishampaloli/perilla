@@ -15,15 +15,37 @@ const ChatWindowBox = () => {
   const { data, loading }: GetChatsUnderRoomState = useTypedSelector(
     (state) => state.allChatsUnderRoom
   );
+  const { socket }: ConnectSocketState = useTypedSelector(
+    (state) => state.socketConnection
+  );
+  const [isTyping, setIsTyping] = useState<boolean>(false);
+  const [typingUser, setTypingUser] = useState<string>("");
   const me: EmployeeAuthState = useTypedSelector((state) => state.employee);
 
   const messagesEndRef: any = useRef(null);
-  console.log(data);
 
   useEffect(() => {
     messagesEndRef.current.scrollIntoView();
   });
 
+  useEffect(() => {
+    if (socket) {
+      socket?.on(
+        "typing-started-server",
+        ({ typingUser }: { typingUser: string }) => {
+          setTypingUser(typingUser);
+          setIsTyping(true);
+          console.log("786");
+        }
+      );
+
+      socket?.on("typing-stopped-server", () => {
+        setTypingUser("");
+        setIsTyping(false);
+        console.log("***(");
+      });
+    }
+  }, [socket]);
 
   return (
     <div className={styles.chatWindowBox}>
@@ -40,7 +62,7 @@ const ChatWindowBox = () => {
           </>
         );
       })}
-
+      {isTyping && `${typingUser} is typing`}
       <div ref={messagesEndRef} />
     </div>
   );
