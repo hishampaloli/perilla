@@ -23,6 +23,8 @@ const ChatTopBar = ({ roomData }: { roomData: RoomData }) => {
     return arr.includes(str);
   }
 
+  const lastSeen = new Date();
+
   return (
     <div className={styles.chatRightTop}>
       <div>
@@ -30,7 +32,25 @@ const ChatTopBar = ({ roomData }: { roomData: RoomData }) => {
         <div>
           <h3>{user[0]?.name}</h3>
           <p>
-            {checkStringInArray(user[0]?.id, users) ? "active now" : `offline`}
+            {checkStringInArray(user[0]?.id, users) ? (
+              "active now"
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginTop: "10px",
+                  marginLeft: '0px'
+                }}
+              >
+                <p>offline</p>
+                <p style={{ marginLeft: "30px" }}>
+                  last seen at {lastSeen.toLocaleTimeString()}
+                </p>
+              </div>
+            )}
           </p>
         </div>
       </div>
