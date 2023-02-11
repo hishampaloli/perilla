@@ -23,6 +23,7 @@ export const sockets = (socket: Socket) => {
   socket.on("message", messageController.sendMessage);
 
   socket.on("disconnect", (socket: any) => {
+    console.log('left >>>>>>>>>>>>>>>>')
     io.emit("user-left", { disconnectedUser: userId });
   });
 };

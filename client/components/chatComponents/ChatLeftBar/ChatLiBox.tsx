@@ -29,11 +29,11 @@ const ChatLiBox = ({ roomdata }: { roomdata: RoomData }) => {
   });
 
   const date = new Date(roomdata.lastMessageAt);
-  
+
+  console.log(users);
   function checkStringInArray(str: string, arr: string[]): boolean {
     return arr.includes(str);
   }
-
 
   return (
     <div

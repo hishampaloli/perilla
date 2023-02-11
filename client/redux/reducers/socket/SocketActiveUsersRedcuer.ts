@@ -1,13 +1,18 @@
 import { AddOnlineUsersState } from "../../../models/socket";
-import { AddOnlineUserAction } from "../../action-models";
+import { SocketActiveUserAction } from "../../action-models";
 import { SocketActionsTypes } from "../../constants";
 
 export const socketActiveUsersReducer = (
   state: AddOnlineUsersState = { users: [] },
-  action: AddOnlineUserAction
+  action: SocketActiveUserAction
 ): AddOnlineUsersState => {
   switch (action.type) {
     case SocketActionsTypes.ADD_LIVE_USERS:
+      return {
+        users: action.payload,
+      };
+
+    case SocketActionsTypes.REMOVE_OFFLINE_USERS:
       return {
         users: action.payload,
       };

@@ -4,3 +4,4 @@ export * from "./getSingleRoomAction";
 export * from "./getChatsUnderRoomAction";
 export * from "./pushMessageToRoomAction";
 export * from './SocketAddOnlineUsersAction'
+export * from './SocketRemoveOfflineUsersAction'

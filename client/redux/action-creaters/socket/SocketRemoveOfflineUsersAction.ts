@@ -1,17 +1,21 @@
 import { Dispatch } from "react";
-import { MessageData, RoomData } from "../../../models/socket";
 import { SocketActiveUserAction } from "../../action-models";
 import { SocketActionsTypes } from "../../constants";
 
-export const AddLiveUsers =
+export const removeOfflineUsers =
   (userId: string) =>
   async (dispatch: Dispatch<SocketActiveUserAction>, getState: any) => {
     try {
-      getState().onlineUsers.users.push(userId);
-      console.log(getState().onlineUsers);
+      getState().onlineUsers.users = getState().onlineUsers.users.filter(
+        (el: string) => {
+          return el !== userId;
+        }
+      );
 
+      console.log(getState().onlineUsers);
+      console.log("user arr rem");
       dispatch({
-        type: SocketActionsTypes.ADD_LIVE_USERS,
+        type: SocketActionsTypes.REMOVE_OFFLINE_USERS,
         payload: getState().onlineUsers.users,
       });
     } catch (error: any) {
