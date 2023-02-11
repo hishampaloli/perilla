@@ -8,6 +8,7 @@ import {
 } from "../../../models/socket";
 import styles from "../../../styles/chat.module.scss";
 import Spinner from "../../layout/SpinnerComponent";
+import TypingCompoent from "../../TypingComonent/TypingCompoent";
 import LeftMessageBoxDiv from "./LeftMessageBoxDiv";
 import RightMessageBoxDiv from "./RightMessageBox";
 
@@ -62,7 +63,7 @@ const ChatWindowBox = () => {
           </>
         );
       })}
-      {isTyping && `${typingUser} is typing`}
+      {isTyping && <TypingCompoent user={typingUser} />}
       <div ref={messagesEndRef} />
     </div>
   );

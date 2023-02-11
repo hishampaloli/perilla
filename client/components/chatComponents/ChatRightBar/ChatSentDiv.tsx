@@ -61,7 +61,7 @@ const ChatSentDiv = ({ roomData }: { roomData: RoomData }) => {
           setTypingTimeout(
             setTimeout(() => {
               socket.emit("typing-stopped-client", { roomId: roomData.id });
-            }, 300)
+            }, 1000)
           );
         }}
         value={message}
