@@ -31,7 +31,7 @@ app.use(
 
 app.use("/api/chat", routes(depentencies));
 
-const io = Websocket.getInstance(httpServer);
+export const io = Websocket.getInstance(httpServer);
 
 io.use(protectSocket);
 

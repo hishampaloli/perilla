@@ -60,3 +60,8 @@ export interface GetChatsUnderRoomState {
   error: ErrorState[] | null;
   loading: boolean;
 }
+
+
+export interface AddOnlineUsersState {
+  users: string[] | [];
+}

@@ -72,3 +72,19 @@ export type GetChatsUnderRoomAction =
 export type PushMessageToRoomAction =
   | GetChatsUnderRoomSuccessAction
   | GetMyRoomsSuccessAction;
+
+interface AddOnlineUserSuccessAction {
+  type: SocketActionsTypes.ADD_LIVE_USERS;
+  payload: string[];
+}
+export type AddOnlineUserAction = AddOnlineUserSuccessAction;
+
+interface RemoveOffileUserSuccessAction {
+  type: SocketActionsTypes.REMOVE_OFFLINE_USERS;
+  payload: string[];
+}
+export type RemoveOffileUserAction = RemoveOffileUserSuccessAction;
+
+export type SocketActiveUserAction =
+  | AddOnlineUserSuccessAction
+  | RemoveOffileUserSuccessAction;

@@ -23,7 +23,7 @@ const index = () => {
     token = JSON.parse(localStorage.getItem("employeeInfo")!);
   }
 
-  const { connectSocket, pushMessageToRoom } = useActions();
+  const { connectSocket, pushMessageToRoom, AddLiveUsers } = useActions();
   useEffect(() => {
     connectSocket(
       io("https://perilla.dev", {
@@ -49,6 +49,19 @@ const index = () => {
       socket.on("room-joined", ({ roomIds }: { roomIds: any }) => {
         console.log(roomIds);
       });
+
+      socket.on("user-joined", ({ joinedUser }: { joinedUser: string }) => {
+        console.log("786 joined");
+        AddLiveUsers(joinedUser);
+        console.log(joinedUser);
+      });
+      socket.on(
+        "user-left",
+        ({ disconnectedUser }: { disconnectedUser: string }) => {
+          console.log(disconnectedUser);
+          console.log("user left");
+        }
+      );
     }
   }, [socket]);
 
