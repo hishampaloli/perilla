@@ -61,7 +61,17 @@ export interface GetChatsUnderRoomState {
   loading: boolean;
 }
 
-
 export interface AddOnlineUsersState {
   users: string[] | [];
+}
+
+export interface VideoChatData {
+  roomId: string;
+  callingUser: string;
+  image: string;
+}
+
+export interface VideoChatState {
+  data: VideoChatData | null;
+  calling: VideoChatData | null;
 }

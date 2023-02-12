@@ -1,42 +1,26 @@
+import { useRouter } from "next/router";
 import React, { useRef, useState } from "react";
-import { toast } from "react-hot-toast";
-import Dicd from "../components/Dicd";
-import Layout from "../components/layout/Layout";
-import MainLayout from "../components/layout/MainLayout";
 
-const validFileType = ["image/jpg", "image/jpeg", "image/png"];
 const demo = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [audioRef, setAudioRef] = useState<any>(null);
-
-  const togglePlay = () => {
-    if (isPlaying) {
-      audioRef.pause();
-    } else {
-      audioRef.play();
-    }
-    setIsPlaying(!isPlaying);
-  };
-
-  const handleSounf = () => {
-    audioRef.pause();
-    audioRef.currentTime = 0;
-    audioRef.play();
-  };
-
+  const [roomCode, setRoomCode] = useState<string>();
+  const router = useRouter();
   return (
     <div>
-      <audio
-        ref={(ref) => {
-          setAudioRef(ref);
+      <h1>Join ROOM</h1>
+      <form
+        onSubmit={(e: React.SyntheticEvent) => {
+          e.preventDefault();
+          router.push(`/hp/chat/video/${roomCode}`);
         }}
       >
-        <source
-          src="http://commondatastorage.googleapis.com/codeskulptor-assets/week7-bounce.m4a"
-          type="audio/mpeg"
+        <input
+          onChange={(e) => setRoomCode(e.target.value)}
+          type="text"
+          name=""
+          id=""
         />
-      </audio>
-      <button onClick={handleSounf}>{isPlaying ? "Pause" : "Play"}</button>
+        <button>join</button>
+      </form>
     </div>
   );
 };

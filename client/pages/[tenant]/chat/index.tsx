@@ -11,7 +11,7 @@ const index = () => {
     (state) => state.socketConnection
   );
   let token: any;
-
+  const [callEndaudioRef, setCallEndAudioRef] = useState<any>(null);
   const [audioRef, setAudioRef] = useState<any>(null);
 
   const handleSounf = () => {
@@ -23,8 +23,20 @@ const index = () => {
     token = JSON.parse(localStorage.getItem("employeeInfo")!);
   }
 
-  const { connectSocket, pushMessageToRoom, AddLiveUsers, removeOfflineUsers } =
-    useActions();
+  const handleCallEnd = () => {
+    callEndaudioRef.pause();
+    callEndaudioRef.currentTime = 0;
+    callEndaudioRef.play();
+  };
+
+  const {
+    connectSocket,
+    pushMessageToRoom,
+    AddLiveUsers,
+    removeOfflineUsers,
+    incomingVideoCall,
+    cancelOrJoinVideoCall,
+  } = useActions();
   useEffect(() => {
     connectSocket(
       io("https://perilla.dev", {
@@ -63,6 +75,33 @@ const index = () => {
           removeOfflineUsers(disconnectedUser);
         }
       );
+
+      socket.on(
+        "video-call-request-server",
+        ({
+          callingUser,
+          roomId,
+          image,
+        }: {
+          callingUser: string;
+          roomId: string;
+          image: string;
+        }) => {
+          incomingVideoCall({ callingUser, roomId, image });
+          console.log("incomming video call from " + callingUser);
+        }
+      );
+
+      socket.on("video-call-rejected-server", () => {
+        cancelOrJoinVideoCall();
+        handleCallEnd();
+        console.log("vide rejcetd");
+      });
+
+      socket.on("video-call-canceled-server", () => {
+        cancelOrJoinVideoCall();
+        console.log("vide canceld");
+      });
     }
   }, [socket]);
 
@@ -79,6 +118,17 @@ const index = () => {
       >
         <source
           src="http://commondatastorage.googleapis.com/codeskulptor-assets/week7-bounce.m4a"
+          type="audio/mpeg"
+        />
+      </audio>
+
+      <audio
+        ref={(ref) => {
+          setCallEndAudioRef(ref);
+        }}
+      >
+        <source
+          src=" http://codeskulptor-demos.commondatastorage.googleapis.com/descent/gotitem.mp3"
           type="audio/mpeg"
         />
       </audio>

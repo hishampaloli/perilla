@@ -73,8 +73,7 @@ const HrSideBar = () => {
         link="expenses"
         icon={<LocalAtmIcon />}
       />
-      <LinkDiv type="hr" text="Chats" link="payrolls" icon={<ChatIcon />} />
-      <Link href={"/hp/chat"}>sdf</Link>
+      <LinkDiv type="/" text="Chats" link="chat" icon={<ChatIcon />} />
     </div>
   );
 };

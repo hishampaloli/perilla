@@ -54,12 +54,11 @@ const EmployeeSideBar = () => {
         icon={<PaymentIcon />}
       />
       <LinkDiv
-        type="employee"
+        type="/"
         text="Chats"
-        link="payrolls"
+        link="chat"
         icon={<ChatIcon />}
       />
-      <Link href={'/hp/chat'}>sdf</Link>
     </div>
   );
 };

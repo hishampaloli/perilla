@@ -22,6 +22,7 @@ import {
   getMyRoomsReducer,
   getSingleRoomsReducer,
   socketActiveUsersReducer,
+  videoCallReducer,
 } from "./socket";
 import {
   getEmployeeProfileReducer,
@@ -154,6 +155,7 @@ const reducers = combineReducers({
 
   allChatsUnderRoom: getChatsUnderRoomReducer,
   onlineUsers: socketActiveUsersReducer,
+  videoCall: videoCallReducer,
 });
 
 export default reducers;

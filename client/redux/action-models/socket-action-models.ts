@@ -88,3 +88,27 @@ export type RemoveOffileUserAction = RemoveOffileUserSuccessAction;
 export type SocketActiveUserAction =
   | AddOnlineUserSuccessAction
   | RemoveOffileUserSuccessAction;
+
+interface IncommingVideoCallRequest {
+  type: SocketActionsTypes.VIDEO_CALL_INCOMING;
+  payload: any;
+}
+
+interface CancelVideoCallRequest {
+  type: SocketActionsTypes.CANCEL_VIDEO_CALL;
+}
+
+interface JoinVideoCallRequest {
+  type: SocketActionsTypes.JOIN_VIDEO_CALL;
+}
+
+interface VideoCallRequestingRequest {
+  type: SocketActionsTypes.VIDEO_CALL_REQUESTING;
+  payload: any;
+}
+
+export type VideoChatRequestAction =
+  | IncommingVideoCallRequest
+  | CancelVideoCallRequest
+  | JoinVideoCallRequest
+  | VideoCallRequestingRequest;
