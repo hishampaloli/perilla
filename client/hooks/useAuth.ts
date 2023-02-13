@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import { VerifyMyRoom__API } from "../api";
 import { EmployeeAuthState } from "../models/employee";
 import { AuthState, GetPaidTenantState } from "../models/tenants";
 import { useActions } from "./useAction";
@@ -119,4 +120,20 @@ export const useRequireEmployee = () => {
       }
     }
   }, [router.isReady]);
+};
+
+export const useIsRoomOwner = async (roomId: string) => {
+  const router = useRouter();
+  const { data }: EmployeeAuthState = useTypedSelector(
+    (state) => state.employee
+  );
+
+  try {
+    const datas = await VerifyMyRoom__API("", roomId, data?.id!);
+    console.log(datas);
+  } catch (error) {
+    console.log(error);
+
+    router.back();
+  }
 };

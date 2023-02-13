@@ -29,7 +29,7 @@ export = {
   },
 
   getMyRooms: async (companyName: string, userId: string) => {
-    console.log(userId + '///////////////////');
+    console.log(userId + "///////////////////");
     const mongooseObject = await Room.find({
       $and: [{ companyName }, { roomMembers: { $all: [userId] } }],
     });
@@ -38,9 +38,17 @@ export = {
     return mongooseObject;
   },
 
-  getSingleRoom: async (companyName: string, roomId: string) => {
+  getSingleRoom: async (
+    companyName: string,
+    roomId: string,
+    userId: string
+  ) => {
     const mongooseObject = await Room.findOne({
-      $and: [{ companyName }, { _id: roomId }],
+      $and: [
+        { companyName },
+        { _id: roomId },
+        { roomMembers: { $all: [userId] } },
+      ],
     });
 
     await Room.populate(mongooseObject, { path: "roomMembers" });

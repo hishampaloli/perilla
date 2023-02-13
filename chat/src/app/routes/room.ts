@@ -18,7 +18,7 @@ export = (dependencies: any) => {
   router.get("/myRooms", currentUser, requireUserAuth, getMyRoomsController);
 
   router.get(
-    "/room/:roomId",
+    "/:roomId",
     currentUser,
     requireUserAuth,
     getSingleRoomController

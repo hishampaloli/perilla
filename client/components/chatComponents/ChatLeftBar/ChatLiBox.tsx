@@ -11,6 +11,9 @@ import {
 import styles from "../../../styles/chat.module.scss";
 
 const ChatLiBox = ({ roomdata }: { roomdata: RoomData }) => {
+  const [isTyping, setIsTyping] = useState<boolean>(false);
+  const [typingUser, setTypingUser] = useState<string>("");
+  const [typingId, setTypingId] = useState<string>("");
   const { getSingleRoom, getChatsUnderRoomRooms } = useActions();
   const { data }: EmployeeAuthState = useTypedSelector(
     (state) => state.employee
@@ -35,6 +38,26 @@ const ChatLiBox = ({ roomdata }: { roomdata: RoomData }) => {
     return arr.includes(str);
   }
 
+  useEffect(() => {
+    if (socket) {
+      socket?.on(
+        "typing-started-server",
+        ({ typingUser, roomId }: { typingUser: string; roomId: string }) => {
+          setTypingUser(typingUser);
+          setIsTyping(true);
+          setTypingId(roomId);
+          console.log("786");
+        }
+      );
+
+      socket?.on("typing-stopped-server", () => {
+        setTypingUser("");
+        setIsTyping(false);
+        setTypingId("");
+        console.log("***(");
+      });
+    }
+  }, [socket]);
   return (
     <div
       onClick={() => {
@@ -49,7 +72,13 @@ const ChatLiBox = ({ roomdata }: { roomdata: RoomData }) => {
         <img src={user[0].image} alt="" />
         <div>
           <h4>{user[0].name}</h4>
-          <p>{roomdata?.lastMessage ? roomdata?.lastMessage : "no messages"}</p>
+          {isTyping && typingId === roomdata.id ? (
+            <p>typing...</p>
+          ) : (
+            <p>
+              {roomdata?.lastMessage ? roomdata?.lastMessage : "no messages"}
+            </p>
+          )}
         </div>
       </div>
       <p

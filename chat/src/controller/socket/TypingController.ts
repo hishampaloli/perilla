@@ -7,6 +7,7 @@ export class TypingController extends BaseController {
     skt = roomId ? skt.to(roomId) : skt;
     skt.emit("typing-started-server", {
       typingUser: this.socket.data.user.name,
+      roomId,
     });
   };
 

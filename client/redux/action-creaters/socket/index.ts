@@ -8,3 +8,4 @@ export * from "./SocketRemoveOfflineUsersAction";
 export * from "./videoCallAction";
 export * from "./cancelOrJoinVideoCallAction";
 export * from './requestVideoCallAction'
+export * from './deleteMessageAction'

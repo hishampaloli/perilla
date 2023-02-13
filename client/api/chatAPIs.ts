@@ -14,6 +14,9 @@ export const getAllChatEmployees__API = (req: any, name: string) =>
 export const getMyRooms__API = (req: any) =>
   buildClient(req).get<RoomDataArr>(`${chatService_Url}/room/myRooms`, config);
 
+export const VerifyMyRoom__API = (req: any, roomId: string, userId: string) =>
+  buildClient(req).get<any>(`${chatService_Url}/room/${roomId}?userId=${userId}`, config);
+
 export const getChatsUnderRoom__API = (req: any, roomId: string) =>
   buildClient(req).get<MessageDataArr>(
     `${chatService_Url}/chat/allChats?roomId=${roomId}`,

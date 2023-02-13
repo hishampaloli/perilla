@@ -12,7 +12,7 @@ const UserListComponent = ({ setUser, user }: { setUser: any; user: any }) => {
   const { socket }: ConnectSocketState = useTypedSelector(
     (state) => state.socketConnection
   );
-  const { getAllEmployeeForChat } = useActions();
+  const { getAllEmployeeForChat, getMyRooms } = useActions();
 
   console.log(data);
   useEffect(() => {
@@ -34,6 +34,7 @@ const UserListComponent = ({ setUser, user }: { setUser: any; user: any }) => {
             onClick={() => {
               setUser("");
               socket.emit("create-room", { el });
+              getMyRooms('sd')
             }}
             className={styles.userListBox}
           >

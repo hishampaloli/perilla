@@ -13,9 +13,11 @@ export = (dependencies: DepenteniciesData): any => {
     next: NextFunction
   ) => {
     try {
+      const { companyName, id } = req.currentUser?.id!;
       const roomsDetails = await getSingleRoom_UseCase(dependencies).execute(
-        req.currentUser?.id.companyName,
-        req.params.roomId
+        companyName,
+        req.params.roomId,
+        id
       );
 
       if (!roomsDetails) {

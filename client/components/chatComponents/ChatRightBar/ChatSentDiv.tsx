@@ -24,7 +24,7 @@ const ChatSentDiv = ({ roomData }: { roomData: RoomData }) => {
 
   const pushMessage: MessageData = {
     content: message,
-    id: "sdfsd",
+    id: "",
     messagedAt: new Date(),
     messageRoom: roomData.id,
     messageBy: {

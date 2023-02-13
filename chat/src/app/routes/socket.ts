@@ -4,6 +4,7 @@ import {
   MessageController,
   TypingController,
   VideoCallController,
+  DeleteChatController,
 } from "../../controller/socket";
 import { Socket } from "socket.io";
 import depentencies from "../../config/depentencies";
@@ -16,6 +17,7 @@ export const sockets = (socket: Socket) => {
   const typingController = new TypingController(socket, depentencies);
   const messageController = new MessageController(socket, depentencies);
   const videoCallController = new VideoCallController(socket, depentencies);
+  const deleteChatController = new DeleteChatController(socket, depentencies);
 
   io.emit("user-joined", { joinedUser: socket.data.user.id });
   socket.on("create-room", createRoomController.createRoom);
@@ -23,6 +25,7 @@ export const sockets = (socket: Socket) => {
   socket.on("typing-started-client", typingController.typingStarted);
   socket.on("typing-stopped-client", typingController.typingStopped);
   socket.on("message", messageController.sendMessage);
+  socket.on("message-deleted", deleteChatController.deleteMessage);
   socket.on("send-video-call-request", videoCallController.RequestVideoCall);
   socket.on("video-call-rejected", videoCallController.callRejected);
   socket.on("video-call-canceled", videoCallController.callCancelled);

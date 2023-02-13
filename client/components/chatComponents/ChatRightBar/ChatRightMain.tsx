@@ -16,7 +16,7 @@ const ChatRightMain = () => {
       {data ? (
         <>
           <ChatTopBar roomData={data} />
-          <ChatWindowBox />
+          <ChatWindowBox roomData={data} />
           <ChatSentDiv roomData={data} />
           <VideoCallReqComponent />
         </>

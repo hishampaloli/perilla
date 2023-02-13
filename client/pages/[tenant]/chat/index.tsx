@@ -47,7 +47,6 @@ const index = () => {
     );
   }, []);
 
-  console.log(socket);
   useEffect(() => {
     if (socket) {
       socket.on(
