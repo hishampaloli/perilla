@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(
-      process.env.MONGO_URL! + "hr-user"
+      process.env.MONGO_URL! + "perilla-user"
     );
     console.log(`Chat-db connected: ${conn.connection.host}`);
   } catch (error: any) {

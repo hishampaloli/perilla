@@ -1,12 +1,10 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import { json } from "body-parser";
-import cors from "cors";
 import "express-async-errors";
 import { ErrorHandler, NotFoundError } from "@hr-management/common/build";
 import { routes } from "./app/routes";
 import cookieSession from "cookie-session";
 import depentencies from "./config/depentencies";
-
 const app = express();
 
 app.set("trust proxy", true);

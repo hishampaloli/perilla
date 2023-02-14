@@ -17,7 +17,7 @@ spec:
           image: hishampaloli/chat
           env:
             - name: MONGO_URL
-              value: "mongodb://chat-mongo-srv:27017/chat"
+              value: "mongodb+srv://hisham:hisham@cluster0.yvzeq5u.mongodb.net/"
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:

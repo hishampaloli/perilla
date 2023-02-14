@@ -11,11 +11,11 @@ export class EmployeeCreatedListener extends Listener<EmployeeCreatedEvent> {
 
   async onMessage(data: EmployeeCreatedEvent["data"], msg: Message) {
     console.log(data);
-    
+
     const createdProfile = await createEmployee_UseCase(dependencies).execute(
       data
     );
-
+    console.log(createdProfile)
     msg.ack();
   }
 }

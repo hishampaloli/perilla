@@ -9,7 +9,6 @@ export = {
   },
 
   getEmployee: async (companyName: string, employeeId: string) => {
-   
     const mongooseObj = await Employee.findOne({
       $and: [{ _id: employeeId }, { companyName }],
     });

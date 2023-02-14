@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
-interface EmployeeAttrs {
+export interface EmployeeAttrs {
   role: string;
   employeeId: string;
   companyName: string;
