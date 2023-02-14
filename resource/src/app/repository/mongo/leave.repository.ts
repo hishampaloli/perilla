@@ -4,8 +4,8 @@ import { schemas } from "../../database/mongo/";
 const { LeaveDetails, Employee } = schemas;
 
 export = {
-  applyLeave: async (user: LeaveData) => {
-    const mongooseObj = LeaveDetails.build(user);
+  applyLeave: async (leave: LeaveData) => {
+    const mongooseObj = LeaveDetails.build(leave);
 
     await LeaveDetails.populate(mongooseObj, { path: "employeeId" });
     return await mongooseObj.save();

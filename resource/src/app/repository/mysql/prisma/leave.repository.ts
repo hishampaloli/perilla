@@ -2,8 +2,20 @@ import { LeaveData } from "../../../../entities/Leave";
 import { prisma } from "./index";
 
 export = {
-  applyLeave: async (user: LeaveData) => {
-    // const postgresObj = 
+  applyLeave: async (leave: LeaveData) => {
+    const postgresObj = await prisma.leave.create({
+      data: {
+        companyName: "hp",
+        leaveDuration: Number(leave.leaveDuration),
+        reason: leave.reason,
+        statingDate: new Date(),
+        appliedBy: { connect: { id: leave.employeeId } },
+      },
+      include: {
+        appliedBy: true,
+      },
+    });
+    return postgresObj;
   },
 
   getMyLeaveReport: async (
@@ -11,25 +23,51 @@ export = {
     employeeId: string,
     isAccepted: boolean
   ) => {
-    console.log(isAccepted);
-
-    const mongooseObj = await LeaveDetails.find({
-      $and: [{ companyName }, { employeeId }, { isAccepted }],
+    const postgresObj = await prisma.leave.findMany({
+      where: {
+        AND: [
+          { companyName: "hp" },
+          { employeeId },
+          {
+            isApproved:
+              isAccepted === true
+                ? "peniding"
+                : isAccepted === false
+                ? "accepted"
+                : "rejected",
+          },
+        ],
+      },
+      orderBy: {
+        statingDate: "asc",
+      },
+      include: { appliedBy: true },
     });
-    await LeaveDetails.populate(mongooseObj, { path: "employeeId" });
 
-    return mongooseObj.reverse();
+    return postgresObj;
   },
 
   getLeaveApplications: async (companyName: string, isAccepted: string) => {
     console.log(companyName, isAccepted);
 
-    const mongooseObj = await LeaveDetails.find({
-      $and: [{ companyName }, { isAccepted }],
-    });
+    const postgresObj = await prisma.leave.findMany({
+      where: {
+        AND: [
+          { companyName },
+          {
+            isApproved:
+              isAccepted === "pending"
+                ? "peniding"
+                : isAccepted === "accepted"
+                ? "accepted"
+                : "rejected",
+          },
+        ],
+      },
 
-    await LeaveDetails.populate(mongooseObj, { path: "employeeId" });
-    return mongooseObj;
+      include: { appliedBy: true },
+    });
+    return postgresObj;
   },
 
   viewLeaveApplication: async (
@@ -40,16 +78,17 @@ export = {
   ) => {
     console.log(companyName, leaveId, employeeId, isAdmin);
 
-    const mongooseObj = !isAdmin
-      ? await LeaveDetails.findOne({
-          $and: [{ companyName }, { _id: leaveId }, { employeeId }],
+    const postgresObj = !isAdmin
+      ? await prisma.leave.findFirst({
+          where: { AND: [{ companyName }, { id: leaveId }, { employeeId }] },
+          include: { appliedBy: true },
         })
-      : await LeaveDetails.findOne({
-          $and: [{ companyName }, { _id: leaveId }],
+      : await prisma.leave.findFirst({
+          where: { AND: [{ companyName }, { id: leaveId }] },
+          include: { appliedBy: true },
         });
 
-    await LeaveDetails.populate(mongooseObj, { path: "employeeId" });
-    return mongooseObj;
+    return postgresObj;
   },
 
   approveLeave: async (
@@ -59,24 +98,20 @@ export = {
   ) => {
     console.log(isAccepted + "ssssssssssssssssss");
 
-    const mongooseObj = await LeaveDetails.findOneAndUpdate(
-      {
-        $and: [{ companyName }, { _id: leaveId }],
+    const postgresObj: any = await prisma.leave.updateMany({
+      where: { AND: [{ companyName }, { id: leaveId }] },
+      data: {
+        isApproved: isAccepted === "true" ? "accepted" : "rejected",
       },
-      { isAccepted: isAccepted == "true" ? "accepted" : "rejected" },
-      { new: true, runValidators: true }
-    );
+    });
 
     if (isAccepted) {
-      const em = await Employee.findByIdAndUpdate(
-        mongooseObj?.employeeId,
-        {
-          $inc: { leavesTaken: 1 },
-        },
-        { new: true, runValidators: true }
-      );
-    }
+      const emp = await prisma.employee.update({
+        where: { id: postgresObj.id },
+        data: { leavesTaken: { increment: 1 } },
+      });
 
-    return mongooseObj;
+      return postgresObj;
+    }
   },
 };
