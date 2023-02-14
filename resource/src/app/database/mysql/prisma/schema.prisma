@@ -10,13 +10,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
 model Employee {
   id          String   @id @default(uuid())
   name        String
-  email       String
-  phone       String
+  email       String   @unique
+  phone       String   @unique
   lastPayout  DateTime @default(now())
   leavesTaken Int      @default(0)
   role        String
@@ -25,4 +23,17 @@ model Employee {
   salary      String   @default("0")
   image       String
   isBlocked   Boolean  @default(false)
+  Asset       Asset[]
+
+  @@unique([email, phone])
+}
+
+model Asset {
+  id          String   @id @default(uuid())
+  companyName String
+  assetName   String
+  createdAt   DateTime @default(now())
+  price       Int
+  createdBy   Employee @relation(fields: [employeeId], references: [id])
+  employeeId  String
 }
