@@ -25,6 +25,7 @@ model Employee {
   isBlocked   Boolean   @default(false)
   Asset       Asset[]
   Expense     Expense[]
+  Leave       Leave[]
 
   @@unique([email, phone])
 }
@@ -47,4 +48,21 @@ model Expense {
   createdAt   DateTime @default(now())
   createdBy   Employee @relation(fields: [employeeId], references: [id])
   employeeId  String
+}
+
+model Leave {
+  id            String          @id @default(uuid())
+  appliedBy     Employee        @relation(fields: [employeeId], references: [id])
+  employeeId    String
+  companyName   String
+  reason        String
+  leaveDuration Int
+  statingDate   DateTime
+  isApproved    LeaveAcceptance @default(peniding)
+}
+
+enum LeaveAcceptance {
+  peniding
+  accepted
+  rejected
 }
