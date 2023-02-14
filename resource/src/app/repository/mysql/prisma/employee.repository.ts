@@ -1,9 +1,8 @@
 import { EmployeeAttrs } from "../../../database/mongo/models/employee.schema";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { prisma } from "./index";
 
 export = {
-  createEmployee: async (data: EmployeeAttrs) => {    
+  createEmployee: async (data: EmployeeAttrs) => {
     const postgresObj = await prisma.employee.create({
       data: {
         companyName: data.companyName,

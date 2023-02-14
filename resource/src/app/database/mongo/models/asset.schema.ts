@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
-interface assetDetailsAttrs {
+export interface assetDetailsAttrs {
   createdBy: string;
   companyName: string;
   assetName: string;
