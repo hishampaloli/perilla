@@ -11,19 +11,20 @@ datasource db {
 }
 
 model Employee {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   name        String
-  email       String   @unique
-  phone       String   @unique
-  lastPayout  DateTime @default(now())
-  leavesTaken Int      @default(0)
+  email       String    @unique
+  phone       String    @unique
+  lastPayout  DateTime  @default(now())
+  leavesTaken Int       @default(0)
   role        String
   employeeId  String
   companyName String
-  salary      String   @default("0")
+  salary      String    @default("0")
   image       String
-  isBlocked   Boolean  @default(false)
+  isBlocked   Boolean   @default(false)
   Asset       Asset[]
+  Expense     Expense[]
 
   @@unique([email, phone])
 }
@@ -34,6 +35,16 @@ model Asset {
   assetName   String
   createdAt   DateTime @default(now())
   price       Int
+  createdBy   Employee @relation(fields: [employeeId], references: [id])
+  employeeId  String
+}
+
+model Expense {
+  id          String   @id @default(uuid())
+  companyName String
+  expenseName String
+  price       Int
+  createdAt   DateTime @default(now())
   createdBy   Employee @relation(fields: [employeeId], references: [id])
   employeeId  String
 }
