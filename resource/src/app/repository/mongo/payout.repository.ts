@@ -12,11 +12,8 @@ export = {
 
   getAllPayouts: async (
     companyName: string,
-    pageNumber: number,
-    requestedAt: Date,
     status: boolean
   ) => {
-    console.log(companyName, requestedAt, status);
     const mongooseObj = await PayoutDetails.aggregate([
       {
         $match: {

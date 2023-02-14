@@ -26,6 +26,7 @@ model Employee {
   Asset       Asset[]
   Expense     Expense[]
   Leave       Leave[]
+  Payout      Payout[]
 
   @@unique([email, phone])
 }
@@ -65,4 +66,14 @@ enum LeaveAcceptance {
   peniding
   accepted
   rejected
+}
+
+model Payout {
+  id          String   @id @default(uuid())
+  requestedBy Employee @relation(fields: [employeeId], references: [id])
+  employeeId  String
+  salary      Int
+  requestedAt DateTime @default(now())
+  companyName String
+  isPaid      Boolean  @default(false)
 }
