@@ -3,6 +3,7 @@ import React from "react";
 import style from "../../../../styles/dashboard.module.scss";
 import Charts from "../../../ChartComponent/Chart";
 const DashBoardChartOne = () => {
+  
   return (
     <div className={style.chartOne}>
       <h2 style={{ color: "white", margin: "20px", textAlign: "center" }}>

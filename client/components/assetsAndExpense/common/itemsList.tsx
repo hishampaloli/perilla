@@ -60,10 +60,7 @@ const ItemsList = ({
         <p>{el?.createdAt?.toString().slice(0, 10)}</p>
 
         <p className="plast">
-          <Link href={`/${el?.companyName}/asset/${el?.id}`}>
-            <VisibilityIcon />
-          </Link>
-
+      
           {employee.data?.role === "hr" && (
             <span onClick={() => setEdit(true)}>
               <EditIcon />

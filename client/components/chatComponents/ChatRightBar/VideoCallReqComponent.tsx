@@ -96,7 +96,7 @@ const VideoCallReqComponent = () => {
             alt=""
           />
           <div>
-            <h3>Hisham Paloli</h3>
+            <h3>{data?.callingUser}</h3>
             <p>incoming call</p>
           </div>
 

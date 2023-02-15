@@ -1,6 +1,8 @@
 import { BadRequestError } from "@hr-management/common";
 import { Request, Response, NextFunction } from "express";
 import { DepenteniciesData } from "../../entities/interfaces";
+import { SalaryChangedPublisher } from "../../events/publishers/salary-changed-event";
+import { natsWrapper } from "../../nats-wrapper";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
@@ -31,6 +33,11 @@ export = (dependencies: DepenteniciesData): any => {
 
       if (!editedSalaryDetails) throw new BadRequestError("No such user found");
 
+      await new SalaryChangedPublisher(natsWrapper.client).publish({
+        companyName: companyName!,
+        id: req.params.employeeId,
+        salary: grossSalary,
+      });
       res.json({ data: editedSalaryDetails });
     } catch (error: any) {
       throw new Error(error);

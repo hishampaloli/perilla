@@ -4,6 +4,7 @@ import {
   EmployeeEditedListener,
   EmployeeRemovedListener,
 } from "../events/listeners";
+import { SalaryChangedListener } from "../events/listeners/salary-changed-event";
 
 import { natsWrapper } from "../nats-wrapper";
 
@@ -22,6 +23,7 @@ const connectNats = async () => {
     new EmployeeCreatedListener(natsWrapper.client).listen();
     new EmployeeEditedListener(natsWrapper.client).listen();
     new EmployeeRemovedListener(natsWrapper.client).listen();
+    new SalaryChangedListener(natsWrapper.client).listen();
   } catch (error: any) {
     console.log(error.message);
   }

@@ -4,13 +4,14 @@ import { useRouter } from "next/router";
 import { EmployeeAuthState } from "../../../../models/employee";
 import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 import { useIsRoomOwner } from "../../../../hooks/useAuth";
+import MainLayout from "../../../../components/layout/MainLayout";
 
 const VideoCHat = () => {
   const { data }: EmployeeAuthState = useTypedSelector(
     (state) => state.employee
   );
   const router = useRouter();
-  
+
   const { videoChatId } = router.query;
   const chatId: string = videoChatId!.toString();
 
@@ -34,9 +35,11 @@ const VideoCHat = () => {
     });
   };
   return (
-    <div className="room-page">
-      <div ref={myMeeting} />
-    </div>
+    <MainLayout title="video chat">
+      <div className="room-page">
+        <div ref={myMeeting} />
+      </div>
+    </MainLayout>
   );
 };
 
