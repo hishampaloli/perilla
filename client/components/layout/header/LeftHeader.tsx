@@ -5,7 +5,7 @@ import { AuthState } from "../../../models/tenants";
 import { wrapper } from "../../../redux";
 import style from "../../../styles/header.module.scss";
 
-const LeftHeader = () => {
+const LeftHeader = ({ type }: { type: any }) => {
   const { data }: AuthState = useTypedSelector((state) => state.user);
   const [dt, setDt] = useState("");
 
@@ -25,7 +25,7 @@ const LeftHeader = () => {
       {data?.data.companyName && data.data.isPurchased ? (
         <h1>{dt}</h1>
       ) : (
-        <h1>Perilla</h1>
+        <>{type ? <h1>{type}</h1> : <h1>Perilla</h1>}</>
       )}
     </div>
   );

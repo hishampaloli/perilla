@@ -6,4 +6,5 @@ export * from "./custom";
 export * from "./project";
 export * from "./leave";
 export * from "./resources";
-export * from './socket'
+export * from "./socket";
+export * from "./job";

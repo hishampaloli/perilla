@@ -1,5 +1,6 @@
 import { ErrorState } from "./tenants";
 import { EmployeeProfileDataObj } from "./profile";
+import { JobDataObj } from "./job";
 export interface EmployeeData {
   email: string;
   name: string;

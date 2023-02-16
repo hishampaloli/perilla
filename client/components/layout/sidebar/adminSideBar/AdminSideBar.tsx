@@ -15,10 +15,11 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import PaidIcon from "@mui/icons-material/Paid";
 import HouseboatIcon from "@mui/icons-material/Houseboat";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
-import LocalAtmIcon from '@mui/icons-material/LocalAtm';
+import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LockIcon from "@mui/icons-material/Lock";
 import NearbyErrorIcon from "@mui/icons-material/NearbyError";
+import WorkIcon from "@mui/icons-material/Work";
 
 const AdminSideBar = () => {
   const { data }: AuthState = useTypedSelector((state) => state.user);
@@ -72,20 +73,19 @@ const AdminSideBar = () => {
         link="expenses"
         icon={<LocalAtmIcon />}
       />
+      <LinkDiv type="admin" text="Jobs" link="jobs" icon={<WorkIcon />} />
       <LinkDiv
         type="admin"
         text="Payout Request"
         link="payouts"
         icon={<PaidIcon />}
       />
-
       <LinkDiv
         type="admin"
         text="Leave Request"
         link="leaves"
         icon={<NearbyErrorIcon />}
       />
-      
       <LinkDiv
         type="admin"
         text="Holidays"

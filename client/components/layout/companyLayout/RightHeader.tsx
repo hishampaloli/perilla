@@ -11,10 +11,10 @@ const RightHeader = () => {
 
   return (
     <div className={style.notLogged}>
-      <Link href={`${tenant}/login/employee`}>
+      <Link href={`/${tenant}/login/employee`}>
         <li>Employee Login</li>
       </Link>
-      <Link href={`${tenant}/jobs`}>
+      <Link href={`/${tenant}/jobs`}>
         <li>Jobs</li>
       </Link>
     </div>

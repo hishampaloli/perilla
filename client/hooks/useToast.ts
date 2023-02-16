@@ -153,3 +153,14 @@ export const useRequestPauout = async (requestPayout: any) => {
     toast.error(`${res}`);
   }
 };
+
+export const usePostJob = async (data: any, createJob: any, setEdit: any) => {
+  const res = await createJob("d", data);
+
+  if (`${res}` === "success") {
+    toast.success(`Job posted successfully`);
+    setEdit(false);
+  } else {
+    toast.error(`${res}`);
+  }
+};

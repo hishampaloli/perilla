@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: job-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: job
+  template:
+    metadata:
+      labels:
+        app: job
+    spec:
+      containers:
+        - name: job
+          image: hishampaloli/job
+          env:
+            - name: MONGO_URL
+              value: "mongodb+srv://hisham:hisham@job-service.w6bldbh.mongodb.net/"
+            - name: JWT_KEY
+            - name: EMAIL_STR
+              value: "perilla.hrservice@gmail.com"
+            - name: PASSWORD_STR
+              value: "cglzqvagkozftaco"
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: job-srv
+spec:
+  selector:
+    app: job
+  ports:
+    - name: job
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

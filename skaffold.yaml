@@ -47,7 +47,15 @@ build:
       sync:
         manual:
           - src: "src/**/*.ts"
-            dest: .            
+            dest: .    
+    - image: hishampaloli/job
+      context: job
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: .                       
     - image: hishampaloli/client
       context: client
       docker:

@@ -23,32 +23,39 @@ spec:
               service:
                 name: user-srv
                 port:
-                  number: 3000           
+                  number: 3000
           - path: /api/project/?(.*)
             pathType: Prefix
             backend:
               service:
                 name: project-srv
                 port:
-                  number: 3000   
+                  number: 3000
           - path: /api/resource/?(.*)
             pathType: Prefix
             backend:
               service:
                 name: resource-srv
                 port:
-                  number: 3000   
+                  number: 3000
           - path: /api/chat/?(.*)
             pathType: Prefix
             backend:
               service:
                 name: chat-srv
                 port:
-                  number: 3000                                                                         
+                  number: 3000
+          - path: /api/job/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: job-srv
+                port:
+                  number: 3000
           - path: /?(.*)
             pathType: Prefix
             backend:
               service:
                 name: client-srv
                 port:
-                  number: 3000                       
+                  number: 3000

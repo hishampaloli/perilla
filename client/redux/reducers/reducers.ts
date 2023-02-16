@@ -9,6 +9,7 @@ import {
   getDashBoardReducer,
 } from "./tenants";
 
+import { createJobReducer, getAllJobsReducer } from "./job";
 import {
   getAllClientsReducer,
   getAllEmployeesReducer,
@@ -156,6 +157,9 @@ const reducers = combineReducers({
   allChatsUnderRoom: getChatsUnderRoomReducer,
   onlineUsers: socketActiveUsersReducer,
   videoCall: videoCallReducer,
+
+  createJob: createJobReducer,
+  allJobs: getAllJobsReducer,
 });
 
 export default reducers;
