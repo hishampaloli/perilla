@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
+import SingleJobViewMain from "../../../components/JobComponent/singleJob/SingleJobViewMain";
+import CompanyLayout from "../../../components/layout/companyLayout/CompanyLayout";
+import style from "../../../styles/CompanyLaout.module.scss";
 
 const Jobs = () => {
   return (
-    <div>
-      sdfsfsfsdfsfsf
-    </div>
-  )
-}
+    <CompanyLayout title="Jobs">
+      <div className={style.CompanyLayoutMain}>
+        <SingleJobViewMain />
+      </div>
+    </CompanyLayout>
+  );
+};
 
-export default Jobs
+export default Jobs;

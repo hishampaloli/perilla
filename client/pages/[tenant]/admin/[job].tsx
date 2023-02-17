@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
+import SingleJobViewMain from "../../../components/JobComponent/singleJob/SingleJobViewMain";
+import SubHeader from "../../../components/layout/CommonSubHeader/SubHeader";
+import MainLayout from "../../../components/layout/MainLayout";
 
-const [job] = () => {
+const jo = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <MainLayout title="Jobs View">
+      <SubHeader text="Job Details" />
+      <SingleJobViewMain />
+    </MainLayout>
+  );
+};
 
-export default [job]
+export default jo;

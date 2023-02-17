@@ -3,10 +3,27 @@ import styles from "../../../styles/job.module.scss";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 import { JobData } from "../../../models/job";
+import Link from "next/link";
+import { AuthState } from "../../../models/tenants";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { useRouter } from "next/router";
 
 const SingleJobPostComp = ({ data }: { data: JobData }) => {
+  const tenant: AuthState = useTypedSelector((state) => state.user);
+  const tenantData = tenant.data?.data;
+  console.log(data);
+
+  const router = useRouter();
+
   return (
-    <div className={styles.singleJob}>
+    <Link
+      href={
+        tenantData?.companyName
+          ? `/${tenantData.companyName}/admin/${data._id}`
+          : `/${router.query.tenant}/jobs/${data._id}`
+      }
+      className={styles.singleJob}
+    >
       <div className={styles.top}>
         {" "}
         <div>
@@ -34,7 +51,7 @@ const SingleJobPostComp = ({ data }: { data: JobData }) => {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

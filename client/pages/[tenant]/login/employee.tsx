@@ -5,7 +5,7 @@ import styles from "../../../styles/buyProduct.module.scss";
 
 const employee = () => {
   return (
-    <CompanyLayout title="Company">
+    <CompanyLayout loc="emplogin" title="Company">
       <div className={styles.buyProduct}>
         <EmployeeLoginComponent />
       </div>

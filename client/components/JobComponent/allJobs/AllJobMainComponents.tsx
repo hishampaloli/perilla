@@ -13,7 +13,6 @@ const AllJobMainComponent = () => {
   return (
     <div className={styles.AllJobMain}>
       <JonSearchComponent />
-
       <AllJobs />
     </div>
   );

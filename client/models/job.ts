@@ -15,7 +15,8 @@ export interface JobData {
   vacancy: number;
   location: string;
   startDate: Date;
-  id: string;
+  _id?: string;
+  id?: string;
   applications: string[];
   applicationQuestions: string[];
 }
@@ -38,4 +39,15 @@ export interface GetAllJobsState {
   loading: boolean;
   error: ErrorState[] | null;
   data: JobDataArr | null;
+}
+
+export interface GetSingleJobState {
+  loading: boolean;
+  error: ErrorState[] | null;
+  data: JobDataObj | null;
+}
+
+export interface EditJobState {
+  loading: boolean;
+  error: ErrorState[] | null;
 }

@@ -7,6 +7,8 @@ import { GetAllProjectsState } from "../../../models/project";
 import { useActions } from "../../../hooks/useAction";
 import { AuthState } from "../../../models/tenants";
 import { useRouter } from "next/router";
+import { wrapper } from "../../../redux";
+import { getAllJobs } from "../../../redux/action-creaters";
 
 const JonSearchComponent = () => {
   const [search, setSearch] = useState<string>("");
@@ -41,7 +43,9 @@ const JonSearchComponent = () => {
       />
       {data?.data.adminName && (
         <select
-          onChange={(e) => setStatus(e.target.value)}
+          onChange={(e) => {
+            setStatus(e.target.value);
+          }}
           name="cars"
           id="cars"
         >

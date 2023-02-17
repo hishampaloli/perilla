@@ -11,7 +11,7 @@ const index = () => {
   useIsPaidTenant();
 
   return (
-    <CompanyLayout title="Company">
+    <CompanyLayout loc="home" title="Company">
       <h1>786</h1>
     </CompanyLayout>
   );

@@ -164,3 +164,19 @@ export const usePostJob = async (data: any, createJob: any, setEdit: any) => {
     toast.error(`${res}`);
   }
 };
+
+export const useEditJob = async (
+  data: any,
+  editJob: any,
+  jobId: any,
+  setEdit: any
+) => {
+  const res = await editJob("d", jobId, data);
+
+  if (`${res}` === "success") {
+    toast.success(`Job edited successfully`);
+    setEdit(false);
+  } else {
+    toast.error(`${res}`);
+  }
+};

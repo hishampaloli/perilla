@@ -15,3 +15,16 @@ export const allJob__API = (req: any, companyName: string, status: string) =>
     `${jobService_Url}/allJobs?companyName=${companyName}&status=${status}`,
     config
   );
+
+export const singleJob__API = (req: any, jobId: string) =>
+  buildClient(req).get<JobDataObj>(
+    `${jobService_Url}/singleJob/${jobId}`,
+    config
+  );
+
+export const editJob__API = (req: any, jobId: string, data: any) =>
+  buildClient(req).put<JobDataObj>(
+    `${jobService_Url}/editJob/${jobId}`,
+    data,
+    config
+  );

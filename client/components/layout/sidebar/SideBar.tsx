@@ -8,12 +8,15 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { EmployeeAuthState } from "../../../models/employee";
 import EmployeeSideBar from "./employeeSideBar/EmployeeSideBar";
 import HrSideBar from "./hrSideBar/HrSideBar";
+import UserSideBar from "./userSideBar/UserSideBar";
 
 const SideBar = ({ mainSmall }: { mainSmall: any }) => {
   const { data }: AuthState = useTypedSelector((state) => state.user);
   const employee: EmployeeAuthState = useTypedSelector(
     (state) => state.employee
   );
+
+  const googleData = useTypedSelector((state) => state.googleData);
   const [small, setSmall] = useState(false);
   console.log(employee);
   return (
@@ -31,6 +34,7 @@ const SideBar = ({ mainSmall }: { mainSmall: any }) => {
       {data?.data.companyName && <AdminSideBar />}
       {employee.data?.role === "employees" && <EmployeeSideBar />}
       {employee.data?.role === "hr" && <HrSideBar />}
+      {googleData.data.email && <UserSideBar />}
     </div>
   );
 };

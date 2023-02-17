@@ -9,7 +9,12 @@ import {
   getDashBoardReducer,
 } from "./tenants";
 
-import { createJobReducer, getAllJobsReducer } from "./job";
+import {
+  createJobReducer,
+  editJobReducer,
+  getAllJobsReducer,
+  getSingleJobReducer,
+} from "./job";
 import {
   getAllClientsReducer,
   getAllEmployeesReducer,
@@ -77,7 +82,11 @@ import {
   removeTeamFromProjectsReducer,
   reqTaskApprovalReducer,
 } from "./project";
-import { employeeListLayoutReducer, addTaskFormReducer } from "./custom";
+import {
+  employeeListLayoutReducer,
+  addTaskFormReducer,
+  googleDataReducer,
+} from "./custom";
 import {
   applyLeaveReducer,
   approveLeaveReducer,
@@ -160,6 +169,10 @@ const reducers = combineReducers({
 
   createJob: createJobReducer,
   allJobs: getAllJobsReducer,
+  singleJob: getSingleJobReducer,
+  editJob: editJobReducer,
+
+  googleData: googleDataReducer,
 });
 
 export default reducers;

@@ -12,3 +12,13 @@ interface AddTaskFormSuccessAction {
   payload: boolean;
 }
 export type AddTaskFormAction = AddTaskFormSuccessAction;
+
+interface GoogleAuthSuccessAction {
+  type: CustomActionsTypes.GOOGLE_LOGIN;
+  payload: any;
+}
+interface GoogleAuthFailAction {
+  type: CustomActionsTypes.GOOGLE_LOGOUT;
+}
+
+export type GoogleAuthAction = GoogleAuthSuccessAction | GoogleAuthFailAction;

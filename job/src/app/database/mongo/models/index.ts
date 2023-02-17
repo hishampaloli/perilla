@@ -1,2 +1,4 @@
 import { Job } from "./job.schema";
-export = { Job };
+import { Application } from "./application";
+
+export = { Job, Application };

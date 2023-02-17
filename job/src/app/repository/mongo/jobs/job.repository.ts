@@ -42,4 +42,19 @@ export = {
     );
     return mongooseObj;
   },
+
+  addApplicants: async (
+    companyName: string,
+    jobId: string,
+    applicationId: string
+  ) => {
+    const mongooseObj = await Job.findOneAndUpdate(
+      {
+        $and: [{ companyName }, { _id: jobId }],
+      },
+      {$addToSet: {applications: applicationId}},
+      { new: true, runValidators: true }
+    );
+    return mongooseObj;
+  },
 };

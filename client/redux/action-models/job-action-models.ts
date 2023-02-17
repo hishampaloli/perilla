@@ -40,3 +40,42 @@ export type GetAllJobAction =
   | GetAllJobRequestAction
   | GetAllJobSuccessAction
   | GetAllJobFailAction;
+
+interface GetSingleJobRequestAction {
+  type: JobActionsTypes.GET_SINGLE_JOB_REQUEST;
+}
+
+export interface GetSingleJobSuccessAction {
+  type: JobActionsTypes.GET_SINGLE_JOB_SUCCESS;
+  payload: JobDataObj;
+}
+
+export interface GetSingleJobFailAction {
+  type: JobActionsTypes.GET_SINGLE_JOB_FAIL;
+  error: ErrorState[];
+}
+
+export type GetSingleJobAction =
+  | GetSingleJobRequestAction
+  | GetSingleJobSuccessAction
+  | GetSingleJobFailAction;
+
+interface EditJobRequestAction {
+  type: JobActionsTypes.EDIT_JOB_REQUEST;
+}
+
+export interface EditJobSuccessAction {
+  type: JobActionsTypes.EDIT_JOB_SUCCESS;
+  payload: JobDataObj;
+}
+
+export interface EditJobFailAction {
+  type: JobActionsTypes.EDIT_JOB_FAIL;
+  error: ErrorState[];
+}
+
+export type EditJobAction =
+  | EditJobRequestAction
+  | EditJobFailAction
+  | GetSingleJobSuccessAction
+  | EditJobSuccessAction;
