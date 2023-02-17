@@ -79,3 +79,22 @@ export type EditJobAction =
   | EditJobFailAction
   | GetSingleJobSuccessAction
   | EditJobSuccessAction;
+
+interface ApplyJobRequestAction {
+  type: JobActionsTypes.APPLY_JOB_REQUEST;
+}
+
+export interface ApplyJobSuccessAction {
+  type: JobActionsTypes.APPLY_JOB_SUCCESS;
+  payload: JobDataObj;
+}
+
+export interface ApplyJobFailAction {
+  type: JobActionsTypes.APPLY_JOB_FAIL;
+  error: ErrorState[];
+}
+
+export type ApplyJobAction =
+  | ApplyJobRequestAction
+  | ApplyJobFailAction
+  | ApplyJobSuccessAction;

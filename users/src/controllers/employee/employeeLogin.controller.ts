@@ -4,7 +4,7 @@ import { DepenteniciesData } from "../../entities/interfaces";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
-    useCases: { employeeLogin_UseCase, getTwilioOtp_UseCase },
+    useCases: { employeeLogin_UseCase, getTwilioOtp_UseCase,  },
   } = dependencies;
 
   const employeeLogin = async (

@@ -6,14 +6,18 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import ClearIcon from "@mui/icons-material/Clear";
 import { toast } from "react-hot-toast";
 import { useActions } from "../../../hooks/useAction";
-import { useEditJob, usePostJob } from "../../../hooks/useToast";
+import { useApplyJob, useEditJob, usePostJob } from "../../../hooks/useToast";
 import { GetSingleJobState } from "../../../models/job";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { useRouter } from "next/router";
 
 const ApplyJobForm = ({ setEdit }: { setEdit: any }) => {
   const { data }: GetSingleJobState = useTypedSelector(
     (state) => state.singleJob
   );
+  const googleData = useTypedSelector((state) => state.googleData);
+  const router = useRouter();
+  const { applyJob } = useActions();
   const jobData = data?.data;
 
   const [number, setNumber] = useState<number>();
@@ -22,10 +26,24 @@ const ApplyJobForm = ({ setEdit }: { setEdit: any }) => {
   const [jobQuestions, setJobQuestions] = useState<any>([]);
   const [name, setName] = useState<string>("");
   const [ctc, setCtc] = useState<string>("");
+  console.log(googleData.data);
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
-    console.log(jobData);
-
+    useApplyJob(
+      {
+        number,
+        experience,
+        coverLetter,
+        interviewQsr: jobQuestions,
+        name,
+        verifyToken: googleData.data.accessToken,
+        ctc,
+        jobId: jobData?.id,
+        companyName: router.query.tenant,
+      },
+      applyJob,
+      setEdit
+    );
     e.preventDefault();
   };
 

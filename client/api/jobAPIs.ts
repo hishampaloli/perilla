@@ -3,6 +3,8 @@ import buildClient from "./buildClient";
 import { config } from "../redux/constants/config";
 import { JobDataArr, JobDataObj } from "../models/job";
 
+const application = "application";
+
 export const createJob__API = (req: any, data: any) =>
   buildClient(req).post<JobDataObj>(
     `${jobService_Url}/createJob`,
@@ -25,6 +27,13 @@ export const singleJob__API = (req: any, jobId: string) =>
 export const editJob__API = (req: any, jobId: string, data: any) =>
   buildClient(req).put<JobDataObj>(
     `${jobService_Url}/editJob/${jobId}`,
+    data,
+    config
+  );
+
+export const applyJob__API = (req: any, data: any) =>
+  buildClient(req).post<JobDataObj>(
+    `${jobService_Url}/${application}/apply`,
     data,
     config
   );

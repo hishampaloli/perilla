@@ -180,3 +180,18 @@ export const useEditJob = async (
     toast.error(`${res}`);
   }
 };
+
+export const useApplyJob = async (
+  data: any,
+  applyJob: any,
+  setEdit: any
+) => {
+  const res = await applyJob("d", data);
+
+  if (`${res}` === "success") {
+    toast.success(`Applied to Job successfully`);
+    setEdit(false);
+  } else {
+    toast.error(`${res}`);
+  }
+};

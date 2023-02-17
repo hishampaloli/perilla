@@ -21,6 +21,27 @@ export interface JobData {
   applicationQuestions: string[];
 }
 
+export interface ApplicationData {
+  companyName: string;
+  name: string;
+  id: string;
+  email: string;
+  number: string;
+  experience: string;
+  ctc: number;
+  coverLetter: string;
+  interviewQsr: string;
+  jobId: string;
+}
+
+export interface ApplicationObj {
+  data: ApplicationData;
+}
+
+export interface ApplicationArr {
+  data: ApplicationData[];
+}
+
 export interface JobDataObj {
   data: JobData;
 }
@@ -48,6 +69,11 @@ export interface GetSingleJobState {
 }
 
 export interface EditJobState {
+  loading: boolean;
+  error: ErrorState[] | null;
+}
+
+export interface ApplyJobState {
   loading: boolean;
   error: ErrorState[] | null;
 }

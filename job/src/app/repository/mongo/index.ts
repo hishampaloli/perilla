@@ -1,3 +1,3 @@
 import jobRepository from "./jobs/job.repository";
-
-export { jobRepository };
+import applicationRepository from "./applications/application.repository";
+export { jobRepository, applicationRepository };
