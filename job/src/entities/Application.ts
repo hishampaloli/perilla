@@ -2,6 +2,7 @@ export interface ApplicationData {
   companyName: string;
   name: string;
   email: string;
+  image: string;
   number: string;
   experience: string;
   ctc: number;
@@ -14,6 +15,7 @@ export class Application {
   companyName: string;
   name: string;
   email: string;
+  image: string;
   number: string;
   experience: string;
   ctc: number;
@@ -25,6 +27,7 @@ export class Application {
     name,
     email,
     number,
+    image,
     experience,
     ctc,
     coverLetter,
@@ -38,6 +41,7 @@ export class Application {
     this.experience = experience;
     this.ctc = ctc;
     this.coverLetter = coverLetter;
+    this.image = image;
     this.interviewQsr = interviewQsr;
     this.jobId = jobId;
   }

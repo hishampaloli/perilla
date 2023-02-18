@@ -10,6 +10,7 @@ interface ApplicationAttrs {
   ctc: number;
   coverLetter: string;
   interviewQsr: string;
+  image: string;
   jobId: string;
 }
 
@@ -27,6 +28,8 @@ interface ApplicationDoc extends mongoose.Document {
   coverLetter: string;
   interviewQsr: string;
   jobId: string;
+  image: string;
+  status: string;
   id: string;
 }
 
@@ -52,6 +55,9 @@ const applicationSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    image: {
+      type: String,
+    },
     ctc: {
       type: String,
       required: true,
@@ -63,6 +69,12 @@ const applicationSchema = new mongoose.Schema(
     interviewQsr: {
       type: String,
       required: true,
+    },
+    status: {
+      type: String,
+      required: true,
+      enum: ["pending", "rejected", "shortlisted", "approved"],
+      default: "pending",
     },
     jobId: {
       type: mongoose.Schema.Types.ObjectId,
