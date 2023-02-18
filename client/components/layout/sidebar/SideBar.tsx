@@ -32,9 +32,9 @@ const SideBar = ({ mainSmall }: { mainSmall: any }) => {
       </button>
 
       {data?.data.companyName && <AdminSideBar />}
-      {employee.data?.role === "employees" && <EmployeeSideBar />}
-      {employee.data?.role === "hr" && <HrSideBar />}
-      {googleData.data.email && <UserSideBar />}
+      {employee?.data?.role === "employees" && <EmployeeSideBar />}
+      {employee?.data?.role === "hr" && <HrSideBar />}
+      {googleData?.data?.email && <UserSideBar />}
     </div>
   );
 };

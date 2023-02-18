@@ -20,6 +20,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import LockIcon from "@mui/icons-material/Lock";
 import NearbyErrorIcon from "@mui/icons-material/NearbyError";
 import WorkIcon from "@mui/icons-material/Work";
+import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 
 const AdminSideBar = () => {
   const { data }: AuthState = useTypedSelector((state) => state.user);
@@ -74,6 +75,12 @@ const AdminSideBar = () => {
         icon={<LocalAtmIcon />}
       />
       <LinkDiv type="admin" text="Jobs" link="jobs" icon={<WorkIcon />} />
+      <LinkDiv
+        type="admin"
+        text="Application"
+        link="applications"
+        icon={<ReceiptLongIcon />}
+      />
       <LinkDiv
         type="admin"
         text="Payout Request"

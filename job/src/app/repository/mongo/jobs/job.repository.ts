@@ -23,12 +23,14 @@ export = {
       { $skip: pageSize * (page - 1) },
       { $limit: pageSize },
     ]);
+    
     return mongooseObj;
   },
 
   getSingleJob: async (jobId: string) => {
     const mongooseObj = await Job.findById(jobId);
 
+    await Job.populate(mongooseObj, { path: "applications" });
     return mongooseObj;
   },
 
@@ -40,6 +42,7 @@ export = {
       data,
       { new: true, runValidators: true }
     );
+    await Job.populate(mongooseObj, { path: "applications" });
     return mongooseObj;
   },
 
@@ -52,7 +55,7 @@ export = {
       {
         $and: [{ companyName }, { _id: jobId }],
       },
-      {$addToSet: {applications: applicationId}},
+      { $addToSet: { applications: applicationId } },
       { new: true, runValidators: true }
     );
     return mongooseObj;

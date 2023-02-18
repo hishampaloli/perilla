@@ -9,14 +9,11 @@ export = {
     return mongooseObj.save();
   },
 
-  getAllApplication: async (
-    companyName: string,
-    jobId: string,
-    status: string
-  ) => {
+  getAllApplication: async (companyName: string, status: string) => {
     const mongooseObj = await Application.aggregate([
-      { $match: { $and: [{ companyName }, { jobId }, { status }] } },
+      { $match: { $and: [{ companyName }, { status }] } },
     ]);
+    await Application.populate(mongooseObj, { path: "jobId" });
     return mongooseObj;
   },
 
@@ -28,6 +25,7 @@ export = {
     const mongooseObj = await Application.aggregate([
       { $match: { $and: [{ companyName }, { email }, { status }] } },
     ]);
+    await Application.populate(mongooseObj, { path: "jobId" });
     return mongooseObj;
   },
 
@@ -35,6 +33,7 @@ export = {
     const mongooseObj = await Application.findOne({
       $and: [{ companyName }, { _id: applicationId }],
     });
+    await Application.populate(mongooseObj, { path: "jobId" });
     return mongooseObj;
   },
 
@@ -42,5 +41,23 @@ export = {
     const mongooseObj = await Application.findOne({
       $and: [{ email }, { _id: applicationId }],
     });
+    await Application.populate(mongooseObj, { path: "jobId" });
     return mongooseObj;
-  },};
+  },
+
+  changeApplicationStatus: async (
+    companyName: string,
+    applicationId: string,
+    status: string
+  ) => {
+    const mongooseObj = await Application.findOneAndUpdate(
+      {
+        $and: [{ companyName }, { _id: applicationId }],
+      },
+      { status },
+      { new: true, runValidators: true }
+    );
+    await Application.populate(mongooseObj, { path: "jobId" });
+    return mongooseObj;
+  },
+};

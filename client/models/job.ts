@@ -17,7 +17,7 @@ export interface JobData {
   startDate: Date;
   _id?: string;
   id?: string;
-  applications: string[];
+  applications: ApplicationData[];
   applicationQuestions: string[];
 }
 
@@ -27,11 +27,13 @@ export interface ApplicationData {
   id: string;
   email: string;
   number: string;
+  status: string;
+  image: string;
   experience: string;
   ctc: number;
   coverLetter: string;
   interviewQsr: string;
-  jobId: string;
+  jobId: JobData;
 }
 
 export interface ApplicationObj {
@@ -76,4 +78,22 @@ export interface EditJobState {
 export interface ApplyJobState {
   loading: boolean;
   error: ErrorState[] | null;
+}
+
+export interface AllApplicationsState {
+  loading: boolean;
+  error: ErrorState[] | null;
+  data: ApplicationArr | null;
+}
+
+export interface GetSingleApplicationState {
+  loading: boolean;
+  error: ErrorState[] | null;
+  data: ApplicationObj | null;
+}
+
+export interface changeApplicationStatusState {
+  loading: boolean;
+  error: ErrorState[] | null;
+  data: ApplicationObj | null;
 }

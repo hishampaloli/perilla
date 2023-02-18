@@ -1,4 +1,9 @@
-import { JobDataArr, JobDataObj } from "../../models/job";
+import {
+  ApplicationArr,
+  ApplicationObj,
+  JobDataArr,
+  JobDataObj,
+} from "../../models/job";
 import { ErrorState } from "../../models/tenants";
 import { JobActionsTypes } from "../constants/jobTypes";
 
@@ -98,3 +103,61 @@ export type ApplyJobAction =
   | ApplyJobRequestAction
   | ApplyJobFailAction
   | ApplyJobSuccessAction;
+
+interface GetAllApplicationsRequestAction {
+  type: JobActionsTypes.ALL_APPLICATION_REQUEST;
+}
+
+export interface GetAllApplicationsSuccessAction {
+  type: JobActionsTypes.ALL_APPLICATION_SUCCESS;
+  payload: ApplicationArr;
+}
+
+export interface GetAllApplicationsFailAction {
+  type: JobActionsTypes.ALL_APPLICATION_FAIL;
+  error: ErrorState[];
+}
+
+export type GetAllApplicationsAction =
+  | GetAllApplicationsRequestAction
+  | GetAllApplicationsFailAction
+  | GetAllApplicationsSuccessAction;
+
+interface SingleApplicationRequestAction {
+  type: JobActionsTypes.GET_SINGLE_APPLICATION_REQUEST;
+}
+
+export interface SingleApplicationSuccessAction {
+  type: JobActionsTypes.GET_SINGLE_APPLICATION_SUCCESS;
+  payload: ApplicationObj;
+}
+
+export interface SingleApplicationFailAction {
+  type: JobActionsTypes.GET_SINGLE_APPLICATION_FAIL;
+  error: ErrorState[];
+}
+
+export type SingleApplicationAction =
+  | SingleApplicationRequestAction
+  | SingleApplicationFailAction
+  | SingleApplicationSuccessAction;
+
+interface ChangeApplicationStatusRequestAction {
+  type: JobActionsTypes.CHANGE_APPLICATION_STATUS_REQUEST;
+}
+
+export interface ChangeApplicationStatusSuccessAction {
+  type: JobActionsTypes.CHANGE_APPLICATION_STATUS_SUCCESS;
+  payload: ApplicationObj;
+}
+
+export interface ChangeApplicationStatusFailAction {
+  type: JobActionsTypes.CHANGE_APPLICATION_STATUS_FAIL;
+  error: ErrorState[];
+}
+
+export type ChangeApplicationStatusAction =
+  | ChangeApplicationStatusRequestAction
+  | ChangeApplicationStatusFailAction
+  | ChangeApplicationStatusSuccessAction
+  | SingleApplicationSuccessAction;

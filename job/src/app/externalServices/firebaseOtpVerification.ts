@@ -8,8 +8,10 @@ export const verifyIdToken = async (code: string) => {
     .auth()
     .verifyIdToken(code)
     .then((decodedToken) => {
-      const phone = decodedToken;
-      return phone.email
+      const user = decodedToken;
+      console.log(user);
+
+      return { email: user.email, image: user.picture };
     })
     .catch((error) => {
       console.log(error);

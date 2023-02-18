@@ -10,6 +10,12 @@ export interface useCaseData {
   getSingleJob_UseCase: any;
   createApplication_UseCase: any;
   addApplications_UseCase: any;
+
+  changeApplicationStatus_UseCase: any;
+  getAllApplications_UseCase: any;
+  getMyApplications_UseCase: any;
+  viewApplicationAdmin_UseCase: any;
+  viewMyApplication_UseCase: any;
 }
 
 export interface repositoryData {

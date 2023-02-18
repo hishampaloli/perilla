@@ -15,6 +15,9 @@ import {
   getAllJobsReducer,
   getSingleJobReducer,
   applyJobReducer,
+  getAllApplicationReducer,
+  getSingleApplicationReducer,
+  changeJobApplicationReducer,
 } from "./job";
 import {
   getAllClientsReducer,
@@ -175,6 +178,11 @@ const reducers = combineReducers({
 
   googleData: googleDataReducer,
   applyJob: applyJobReducer,
+
+  allApplications: getAllApplicationReducer,
+  singleApplication: getSingleApplicationReducer,
+  changeApplication: changeJobApplicationReducer,
+  
 });
 
 export default reducers;

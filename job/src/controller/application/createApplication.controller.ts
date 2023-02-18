@@ -5,7 +5,7 @@ import { DepenteniciesData } from "../../entities/interfaces";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
-    useCases: { createApplication_UseCase },
+    useCases: { createApplication_UseCase, addApplications_UseCase },
   } = dependencies;
 
   const createApplication = async (req: Request, res: Response) => {
@@ -22,16 +22,17 @@ export = (dependencies: DepenteniciesData): any => {
         jobId,
       } = req.body;
 
-      const email = await verifyIdToken(verifyToken);
+      const { email, image }: any = await verifyIdToken(verifyToken);
       if (!email) throw new BadRequestError("not authorized");
 
-      const createdApplication = await createApplication_UseCase(
+      const createdApplication: any = await createApplication_UseCase(
         dependencies
       ).execute({
         companyName,
         name,
         email,
         number,
+        image,
         experience,
         ctc,
         coverLetter,
@@ -39,6 +40,12 @@ export = (dependencies: DepenteniciesData): any => {
         jobId,
       });
       if (!createdApplication) throw new BadRequestError("Please try again");
+
+      await addApplications_UseCase(dependencies).execute(
+        companyName,
+        jobId,
+        createdApplication.id
+      );
       res.json({ data: createdApplication });
     } catch (error: any) {
       throw new Error(error);

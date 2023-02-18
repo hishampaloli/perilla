@@ -1,7 +1,7 @@
 import { jobService_Url } from "./baseURLs";
 import buildClient from "./buildClient";
 import { config } from "../redux/constants/config";
-import { JobDataArr, JobDataObj } from "../models/job";
+import { ApplicationArr, ApplicationObj, JobDataArr, JobDataObj } from "../models/job";
 
 const application = "application";
 
@@ -35,5 +35,51 @@ export const applyJob__API = (req: any, data: any) =>
   buildClient(req).post<JobDataObj>(
     `${jobService_Url}/${application}/apply`,
     data,
+    config
+  );
+
+export const allApplication__API = async (
+  req: any,
+  {
+    status,
+    companyName,
+    verifyToken,
+  }: { status: string; companyName: string; verifyToken: string }
+) => {
+  return verifyToken
+    ? await buildClient(req).put<ApplicationArr>(
+        `${jobService_Url}/${application}/myApplications`,
+        { status, verifyToken, companyName },
+        config
+      )
+    : await buildClient(req).get<ApplicationArr>(
+        `${jobService_Url}/${application}/allApplications?status=${status}`,
+        config
+      );
+};
+
+export const singleApplication_API = async (
+  req: any,
+  { applicationId, verifyToken }: { applicationId: string; verifyToken: string }
+) => {
+  return verifyToken
+    ? await buildClient(req).put<ApplicationObj>(
+        `${jobService_Url}/${application}/viewMyApplication`,
+        { applicationId, verifyToken },
+        config
+      )
+    : await buildClient(req).get<ApplicationObj>(
+        `${jobService_Url}/${application}/viewApplication/${applicationId}`,
+        config
+      );
+};
+
+export const changeApplicationStatus_API = async (
+  req: any,
+  status: string,
+  applicationId: string
+) =>
+  buildClient(req).patch<ApplicationArr>(
+    `${jobService_Url}/${application}/applicationStatus?status=${status}&applicationId=${applicationId}`,
     config
   );

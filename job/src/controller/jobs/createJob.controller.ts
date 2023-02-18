@@ -4,7 +4,7 @@ import { DepenteniciesData } from "../../entities/interfaces";
 
 export = (dependencies: DepenteniciesData): any => {
   const {
-    useCases: { createJob_UseCase },
+    useCases: { createJob_UseCase, addApplications_UseCase },
   } = dependencies;
 
   const createJob = async (req: Request, res: Response) => {
@@ -25,7 +25,7 @@ export = (dependencies: DepenteniciesData): any => {
         location,
         applicationQuestions,
       } = req.body;
-      console.log(salaryTo);
+      
 
       const createdJob = await createJob_UseCase(dependencies).execute({
         companyName: req.currentTenant?.id.companyName,
@@ -44,6 +44,8 @@ export = (dependencies: DepenteniciesData): any => {
         applicationQuestions,
       });
       if (!createdJob) throw new BadRequestError("Please try again");
+
+      
       res.json({ data: createdJob });
     } catch (error: any) {
       throw new Error(error);
