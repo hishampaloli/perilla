@@ -17,21 +17,31 @@ const ApplicationSearchComponent = () => {
   const router = useRouter();
   const { tenant } = router.query;
 
-  console.log(googleData);
-
   const onSumbit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    getAllApplication("", { status, companyName: tenant });
+    getAllApplication("", {
+      status,
+      companyName: tenant,
+      verifyToken: googleData?.data?.accessToken,
+    });
   };
 
   useEffect(() => {
     if (router.isReady)
       if (data?.data.adminName) {
-        getAllApplication("dsf", { status, companyName: tenant });
+        getAllApplication("dsf", {
+          status,
+          companyName: tenant,
+          verifyToken: googleData?.data?.accessToken,
+        });
       } else {
-        getAllApplication("df", { status, companyName: tenant });
+        getAllApplication("df", {
+          status,
+          companyName: tenant,
+          verifyToken: googleData?.data?.accessToken,
+        });
       }
-  }, [status, router.isReady]);
+  }, [status, router.isReady, googleData.data]);
 
   return (
     <div className={style.projectSearch}>
@@ -40,20 +50,19 @@ const ApplicationSearchComponent = () => {
         setClick={onSumbit}
         setKeys={setSearch}
       />
-      {data?.data.adminName && (
-        <select
-          onChange={(e) => {
-            setStatus(e.target.value);
-          }}
-          name="cars"
-          id="cars"
-        >
-          <option value="pending">Pending</option>
-          <option value="shortlisted">Short listed</option>
-          <option value="rejected">rejected</option>
-          <option value="accepted">Accepted</option>
-        </select>
-      )}
+
+      <select
+        onChange={(e) => {
+          setStatus(e.target.value);
+        }}
+        name="cars"
+        id="cars"
+      >
+        <option value="pending">Pending</option>
+        <option value="shortlisted">Short listed</option>
+        <option value="rejected">rejected</option>
+        <option value="accepted">Accepted</option>
+      </select>
     </div>
   );
 };

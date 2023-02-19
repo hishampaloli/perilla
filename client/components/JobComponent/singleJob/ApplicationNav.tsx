@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { ApplicationData, GetSingleJobState } from "../../../models/job";
 import style from "../../../styles/task.module.scss";
 import CompletedTask from "./CompletedTask";
 import PendingTask from "./PendingTask";
 
-const ApplicationNav = ({ type }: { type: string }) => {
+const ApplicationNav = () => {
   const [nav, setNav] = useState<boolean>(true);
+  const { data }: GetSingleJobState = useTypedSelector(
+    (state) => state.singleJob
+  );
+  console.log(data);
+
   return (
     <>
       <div className={style.taskNav}>
@@ -18,11 +25,23 @@ const ApplicationNav = ({ type }: { type: string }) => {
           onClick={() => setNav(false)}
           className={nav === false ? style.clBtn : ""}
         >
-          Completed
+          Shortlisted
         </button>
       </div>
 
-      {nav ? <PendingTask /> : <CompletedTask />}
+      {nav ? (
+        <PendingTask
+          data={data?.data.applications.filter((el: ApplicationData) => {
+            return el.status === "pending";
+          })}
+        />
+      ) : (
+        <CompletedTask
+          data={data?.data.applications.filter((el: ApplicationData) => {
+            return el.status === "shortlisted";
+          })}
+        />
+      )}
     </>
   );
 };

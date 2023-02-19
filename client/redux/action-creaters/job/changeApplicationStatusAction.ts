@@ -18,7 +18,7 @@ export const changeApplicationStatus =
 
       dispatch({
         type: JobActionsTypes.CHANGE_APPLICATION_STATUS_SUCCESS,
-        payload: getState().singleApplication .data,
+        payload: getState().singleApplication.data,
       });
 
       return "success";

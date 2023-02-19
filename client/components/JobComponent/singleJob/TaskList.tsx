@@ -1,5 +1,5 @@
 import React from "react";
-import style from "../../styles/task.module.scss";
+import style from "../../../styles/task.module.scss";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import Link from "next/link";
 
@@ -15,13 +15,17 @@ const TaskList = ({ appliData }: { appliData: ApplicationData }) => {
 
   return (
     <Link
-      href={`/${router.query.tenant}/application/${taskData.id}`}
+      href={`/${router.query.tenant}/${
+        data?.data.adminName ? "admin" : ""
+      }/applications/${appliData.id}`}
       className={style.taskList}
     >
       <div>
-        <img src={appliData?.assignedTo?.image} alt="" />
-        <h4>{appliData?.taskName}</h4>
+        <img src={appliData?.image} alt="" />
+        <h4>{appliData?.name}</h4>
+        <p style={{ marginLeft: "20px" }}>{appliData?.email}</p>
       </div>
+
       <span>
         <VisibilityIcon />
       </span>

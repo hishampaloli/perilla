@@ -25,6 +25,7 @@ export interface ApplicationData {
   companyName: string;
   name: string;
   id: string;
+  _id: string
   email: string;
   number: string;
   status: string;

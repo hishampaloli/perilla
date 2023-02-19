@@ -12,7 +12,14 @@ export const applyJob =
       });
 
       const { data } = await applyJob__API(req, jobData);
-      console.log(data);
+
+      getState().singleJob.data.data.applications.push(data.data);
+      console.log(getState().singleJob.data);
+
+      // dispatch({
+      //   type: JobActionsTypes.GET_SINGLE_JOB_SUCCESS,
+      //   data: getState().singleJob,
+      // });
 
       return "success";
     } catch (error: any) {

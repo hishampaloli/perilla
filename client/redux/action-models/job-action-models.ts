@@ -102,6 +102,7 @@ export interface ApplyJobFailAction {
 export type ApplyJobAction =
   | ApplyJobRequestAction
   | ApplyJobFailAction
+  | GetSingleJobSuccessAction
   | ApplyJobSuccessAction;
 
 interface GetAllApplicationsRequestAction {

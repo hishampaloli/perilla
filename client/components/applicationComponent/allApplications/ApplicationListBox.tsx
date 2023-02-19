@@ -13,6 +13,7 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import FixedSpinner from "../../layout/FixedSpinner";
 import { AllApplicationsState, ApplicationData } from "../../../models/job";
 import { useRouter } from "next/router";
+import { AuthState } from "../../../models/tenants";
 
 const ApplicationListBox = ({
   data,
@@ -22,6 +23,7 @@ const ApplicationListBox = ({
   loading: boolean;
 }) => {
   const router = useRouter();
+  const tenant: AuthState = useTypedSelector((state) => state.user);
   return (
     <div className={style.applicationlistDiv}>
       <div>
@@ -41,7 +43,9 @@ const ApplicationListBox = ({
           let date = new Date(el.jobId.lastDate);
           return (
             <Link
-              href={`/${router.query.tenant}/application/${el.id}`}
+              href={`/${router.query.tenant}/${
+                tenant.data?.data.companyName ? "admin" : ""
+              }/applications/${el._id}`}
               className={style.bankDetailDiv}
             >
               <p>

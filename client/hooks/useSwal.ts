@@ -134,3 +134,46 @@ export const useCompletePayout = (completePayout: any, payoutId: string) => {
     }
   });
 };
+
+export const useChangeApplicationStatus = (
+  status: string,
+  applicationId: string,
+  changeApplicationStatus: any
+) => {
+  swal({
+    title: "Are you sure?",
+    text: `Are you sure you want to ${
+      status === "accepted"
+        ? "Accept"
+        : status === "rejected"
+        ? "Reject"
+        : status === "shortlist"
+        ? "Shortlist"
+        : "do nothing to"
+    } this application `,
+    icon: "warning",
+    buttons: ["no", true],
+    dangerMode: true,
+  })?.then(async (willDelete) => {
+    if (willDelete) {
+      const res = await changeApplicationStatus("id", status, applicationId);
+
+      swal(
+        `Application ${
+          status === "accepted"
+            ? "Accepted"
+            : status === "rejected"
+            ? "Rejected"
+            : status === "shortlist"
+            ? "Shortlisted"
+            : "not changed"
+        } succefully`,
+        {
+          icon: "success",
+        }
+      );
+    } else {
+      swal("status changing pending !");
+    }
+  });
+};

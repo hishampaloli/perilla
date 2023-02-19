@@ -6,7 +6,7 @@ import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 import GroupIcon from "@mui/icons-material/Group";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { GetSingleJobState } from "../../../models/job";
+import { ApplicationData, GetSingleJobState } from "../../../models/job";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { AuthState } from "../../../models/tenants";
 import EditJobForm from "./EditJobForm";
@@ -46,7 +46,15 @@ const JObViewRight = () => {
           EDIT
         </button>
       ) : (
-        <button onClick={handleApply}>APPLY JOB</button>
+        <>
+          {jobData?.applications.some((el: ApplicationData) => {
+            return el.email === googleData.data?.email;
+          }) ? (
+            <button>APPLIED</button>
+          ) : (
+            <button onClick={handleApply}>APPLY JOB</button>
+          )}
+        </>
       )}
 
       {tenant.data?.data.companyName && edit && (
