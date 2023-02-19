@@ -1,4 +1,4 @@
-name: tests
+name: tests-users
 
 on: 
   pull_request
@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd auth && npm install
+      - run: cd user && npm install
