@@ -1,7 +1,9 @@
 name: tests-tenant
 
 on: 
-  pull_request
+  pull_request:
+    paths:
+      - 'tenant/**'
   
 jobs:
   build:
