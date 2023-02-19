@@ -9,7 +9,7 @@ const start = async () => {
   try {
     evnCheckers();
     connectNats()
-    connectDB();
+    connectDB()
   } catch (err) {
     console.error(err);
   }
