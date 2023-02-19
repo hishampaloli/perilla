@@ -1,4 +1,4 @@
-name: tests-users
+name: tests-resource
 
 on: 
   pull_request
@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd users && npm install
+      - run: cd resource && npm install
