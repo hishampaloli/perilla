@@ -4,9 +4,11 @@ import { evnCheckers } from "./config/env-checker";
 import { connectNats } from "./config/message-broker";
 
 const start = async () => {
+  console.log(786);
+  
   try {
     evnCheckers();
-    connectNats();
+    connectNats()
     connectDB();
   } catch (err) {
     console.error(err);
