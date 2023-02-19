@@ -1,7 +1,9 @@
 name: tests-project
 
 on: 
-  pull_request
+  pull_request:
+    paths:
+      - 'project/**'
   
 jobs:
   build:

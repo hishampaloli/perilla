@@ -1,7 +1,9 @@
 name: tests-chat
 
 on: 
-  pull_request
+  pull_request:
+    paths:
+      - 'chat/**'
   
 jobs:
   build:

@@ -1,7 +1,9 @@
 name: tests-resource
 
 on: 
-  pull_request
+  pull_request:
+    paths:
+      - 'resource/**'
   
 jobs:
   build:
