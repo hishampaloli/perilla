@@ -5,6 +5,7 @@ import { connectNats } from "./config/message-broker";
 
 const start = async () => {
 
+
   console.log("starting 786...");
 
   
@@ -12,7 +13,7 @@ const start = async () => {
   try {
     evnCheckers();
     connectNats()
-    connectDB();
+    connectDB()
   } catch (err) {
     console.error(err);
   }
