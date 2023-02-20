@@ -1,0 +1,61 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  rules:
+    - host: perilla.dev
+      http:
+        paths:
+          - path: /api/tenant/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: tenant-srv
+                port:
+                  number: 3000
+          - path: /api/user/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: user-srv
+                port:
+                  number: 3000
+          - path: /api/project/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: project-srv
+                port:
+                  number: 3000
+          - path: /api/resource/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: resource-srv
+                port:
+                  number: 3000
+          - path: /api/chat/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: chat-srv
+                port:
+                  number: 3000
+          - path: /api/job/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: job-srv
+                port:
+                  number: 3000
+          - path: /?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: client-srv
+                port:
+                  number: 3000
