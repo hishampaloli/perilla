@@ -23,7 +23,7 @@ spec:
             - name: PASSWORD_STR
               value: "cglzqvagkozftaco"
             - name: JWT_KEY
-              value: "jisfjispfops"
+              value: "jisfjispfop"
 ---
 apiVersion: v1
 kind: Service
