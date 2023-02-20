@@ -14,6 +14,6 @@ export const logoutEmployee =
 
       return "success";
     } catch (error: any) {
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

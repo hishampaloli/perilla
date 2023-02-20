@@ -17,9 +17,9 @@ export const resetPassword =
     } catch (error: any) {
       dispatch({
         type: TenantActionsTypes.RESET_PASSWORD_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg
     }
   };

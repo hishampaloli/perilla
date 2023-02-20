@@ -20,9 +20,9 @@ export const getMyLeaves =
     } catch (error: any) {
       dispatch({
         type: LeaveActionTypes.GET_MY_LEAVES_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

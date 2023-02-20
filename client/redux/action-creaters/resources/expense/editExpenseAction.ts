@@ -30,9 +30,9 @@ export const editExpenses =
     } catch (error: any) {
       dispatch({
         type: ResourceActionTypes.EDIT_EXPENSE_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

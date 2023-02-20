@@ -24,9 +24,9 @@ export const requestPayout =
     } catch (error: any) {
       dispatch({
         type: ResourceActionTypes.REQUEST_PAYOUT_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

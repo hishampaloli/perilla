@@ -27,6 +27,6 @@ export const sendBankDetails =
         error: error.response.data.error.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

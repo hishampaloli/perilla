@@ -30,9 +30,9 @@ export const completePayout =
     } catch (error: any) {
       dispatch({
         type: ResourceActionTypes.COMPLETE_PAYOUT_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

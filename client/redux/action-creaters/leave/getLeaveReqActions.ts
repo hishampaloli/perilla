@@ -20,9 +20,9 @@ export const getLeaveRequests =
     } catch (error: any) {
       dispatch({
         type: LeaveActionTypes.GET_LEAVE_REQUEST_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

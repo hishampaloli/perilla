@@ -23,9 +23,9 @@ export const getEmployeeOtpVerfication =
     } catch (error: any) {
       dispatch({
         type: EmployeeActionsTypes.GET_OTP_VERIFICATION_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

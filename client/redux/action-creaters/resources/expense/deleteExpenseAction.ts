@@ -28,9 +28,9 @@ export const deleteExpense =
     } catch (error: any) {
       dispatch({
         type: ResourceActionTypes.DELETE_EXPENSE_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

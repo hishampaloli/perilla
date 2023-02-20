@@ -24,9 +24,9 @@ export const createAsset =
     } catch (error: any) {
       dispatch({
         type: ResourceActionTypes.CREATE_ASSET_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg.message;
+      return error?.response?.data?.error?.msg;
     }
   };

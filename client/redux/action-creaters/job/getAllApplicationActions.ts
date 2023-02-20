@@ -24,10 +24,10 @@ export const getAllApplication =
     } catch (error: any) {
       dispatch({
         type: JobActionsTypes.ALL_APPLICATION_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
       console.log(error);
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

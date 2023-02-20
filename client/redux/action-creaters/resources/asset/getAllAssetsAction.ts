@@ -26,9 +26,9 @@ export const getAllAssets =
     } catch (error: any) {
       dispatch({
         type: ResourceActionTypes.GET_ALL_ASSETS_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

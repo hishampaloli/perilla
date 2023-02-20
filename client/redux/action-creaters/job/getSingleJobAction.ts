@@ -21,10 +21,10 @@ export const getSingleJobs =
     } catch (error: any) {
       dispatch({
         type: JobActionsTypes.GET_SINGLE_JOB_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
       console.log(error);
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

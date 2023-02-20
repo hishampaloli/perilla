@@ -16,9 +16,9 @@ export const getRegisterOtp =
     } catch (error: any) {
       dispatch({
         type: TenantActionsTypes.GET_OTP_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

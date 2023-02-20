@@ -23,9 +23,9 @@ export const getAllExpenses =
     } catch (error: any) {
       dispatch({
         type: ResourceActionTypes.GET_ALL_EXPENSES_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

@@ -25,9 +25,9 @@ export const applyJob =
     } catch (error: any) {
       dispatch({
         type: JobActionsTypes.APPLY_JOB_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
       console.log(error);
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

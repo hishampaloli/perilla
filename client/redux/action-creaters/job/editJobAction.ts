@@ -30,10 +30,10 @@ export const editJob =
     } catch (error: any) {
       dispatch({
         type: JobActionsTypes.EDIT_JOB_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
       console.log(error);
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

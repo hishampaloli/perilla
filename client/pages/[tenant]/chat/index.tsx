@@ -39,7 +39,7 @@ const index = () => {
   } = useActions();
   useEffect(() => {
     connectSocket(
-      io("https://perilla.dev", {
+      io("http://www.perilla-app-prod.shop", {
         path: "/api/chats/socket.io",
         transports: ["websocket"],
         auth: { token: token?.token?.toString() },

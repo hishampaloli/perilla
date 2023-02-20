@@ -27,10 +27,10 @@ export const getAllJobs =
     } catch (error: any) {
       dispatch({
         type: JobActionsTypes.GET_ALL_JOBS_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
       console.log(error);
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

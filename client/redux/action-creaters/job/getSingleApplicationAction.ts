@@ -22,9 +22,9 @@ export const getSingleApplication =
     } catch (error: any) {
       dispatch({
         type: JobActionsTypes.GET_SINGLE_APPLICATION_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

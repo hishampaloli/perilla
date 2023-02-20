@@ -29,9 +29,9 @@ export const deleteAssets =
     } catch (error: any) {
       dispatch({
         type: ResourceActionTypes.DELETE_ASSET_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

@@ -29,9 +29,9 @@ export const approveLeave =
     } catch (error: any) {
       dispatch({
         type: LeaveActionTypes.APPLY_LEAVE_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };
