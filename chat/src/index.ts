@@ -4,8 +4,8 @@ import { connectNats } from "./config/message-broker";
 import { evnCheckers } from "./config/env-checkers";
 
 const start = async () => {
-  console.log('786 sdf.');
-  
+  console.log("786.");
+
   try {
     evnCheckers();
     connectNats();

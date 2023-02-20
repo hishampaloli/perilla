@@ -4,6 +4,7 @@ import { connectDB } from "./config/db";
 import { evnCheckers } from "./config/env-checkers";
 
 const start = async () => {
+  console.log('786.');
   try {
     evnCheckers();
     connectNats();
