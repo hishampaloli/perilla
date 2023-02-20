@@ -8,7 +8,7 @@ const DashBoardCountDiv = ({
 }: {
   count: number;
   text: string;
-  icon: any;
+  icon: any
 }) => {
   return (
     <div className={style.dashboardcountDiv}>
