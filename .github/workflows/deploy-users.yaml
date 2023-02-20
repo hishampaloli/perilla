@@ -21,4 +21,4 @@ jobs:
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save perilla
-      - run: kubectl rollout restart deployment users-depl
+      - run: kubectl rollout restart deployment user-depl
