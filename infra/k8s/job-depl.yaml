@@ -17,8 +17,7 @@ spec:
           image: hishampaloli/job
           env:
             - name: MONGO_URL
-              value: "mongodb+srv://hisham:hisham@job-service.w6bldbh.mongodb.net/"
-            - name: JWT_KEY
+              value: "mongodb+srv://hisham:hisham@job-service.w6bldbh.mongodb.net/"            
             - name: EMAIL_STR
               value: "perilla.hrservice@gmail.com"
             - name: PASSWORD_STR

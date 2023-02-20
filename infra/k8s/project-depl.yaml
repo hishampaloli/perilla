@@ -24,7 +24,6 @@ spec:
               value: "462a386cece757f2fc8b6e26f0ef2134"
             - name: TWILIO_SERVICE_SID
               value: "VAaa5e73e6dda961a7ef66da4db67209ce"
-            - name: JWT_KEY
             - name: EMAIL_STR
               value: "perilla.hrservice@gmail.com"
             - name: PASSWORD_STR
