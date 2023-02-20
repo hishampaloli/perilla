@@ -2,12 +2,11 @@ import mongoose from "mongoose";
 import { app } from "./app";
 import { natsWrapper } from "./nats-wrapper";
 
-
 import { connectDB } from "./config/db";
 import { evnCheckers } from "./config/env-checkers";
 
 const start = async () => {
-  console.log('786.');
+  console.log("786......");
   try {
     evnCheckers();
     connectDB();
