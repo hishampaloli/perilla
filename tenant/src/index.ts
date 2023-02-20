@@ -4,8 +4,10 @@ import { connectNats } from "./config/message-broker";
 import { evnCheckers } from "./config/env-checkers";
 
 const start = async () => {
+  console.log("786 ci ");
+
   try {
-    evnCheckers();
+    evnCheckers()
     connectNats();
     connectDB();
   } catch (err) {

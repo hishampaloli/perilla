@@ -1,6 +1,6 @@
 import { schemas } from "../../database/mongo";
 
-const { DashBoard } = schemas;
+const { DashBoard, LandingPage } = schemas;
 
 export = {
   createDashBoardData: async (dashboardData: any) => {
@@ -34,6 +34,30 @@ export = {
 
   getDashBoard: async (companyName: string) => {
     const mongooseObj = await DashBoard.findOne({ companyName });
+    return mongooseObj;
+  },
+
+  createLandingPage: async (data: any) => {
+    const mongooseObj = LandingPage.build(data);
+    return await mongooseObj.save();
+  },
+  editLandingPage: async (
+    companyName: string,
+    title: string,
+    description: string
+  ) => {
+    const mongooseObj = await LandingPage.findOneAndUpdate(
+      { companyName },
+      {
+        $set: { landingPageTitle: title, landingPageDescription: description },
+      },
+      { new: true, runValidators: true }
+    );
+    return mongooseObj;
+  },
+
+  getLandingPageData: async (companyName: string) => {
+    const mongooseObj = await LandingPage.findOne({ companyName });
     return mongooseObj;
   },
 };

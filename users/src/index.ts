@@ -4,10 +4,12 @@ import { evnCheckers } from "./config/env-checker";
 import { connectNats } from "./config/message-broker";
 
 const start = async () => {
+  console.log('staring 786...');
+
   try {
     evnCheckers();
-    connectNats();
-    connectDB();
+    connectNats()
+    connectDB()
   } catch (err) {
     console.error(err);
   }

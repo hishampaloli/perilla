@@ -32,7 +32,7 @@ export = {
     console.log(userId + "///////////////////");
     const mongooseObject = await Room.find({
       $and: [{ companyName }, { roomMembers: { $all: [userId] } }],
-    });
+    }).sort({ lastMessageAt: 1 });
 
     await Room.populate(mongooseObject, { path: "roomMembers" });
     return mongooseObject;

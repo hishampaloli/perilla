@@ -9,8 +9,7 @@ export = (dependencies: DepenteniciesData): any => {
 
   const createJob = async (req: Request, res: Response) => {
     try {
-      const {
-        companyName,
+      const {        
         jobTitle,
         jobDesignation,
         lastDate,

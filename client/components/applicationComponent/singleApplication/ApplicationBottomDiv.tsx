@@ -3,7 +3,7 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { GetSingleApplicationState } from "../../../models/job";
 import style from "../../../styles/application.module.scss";
 const ApplicationBottomDiv = () => {
-  const { data, loading }: GetSingleApplicationState = useTypedSelector(
+  const { data }: GetSingleApplicationState = useTypedSelector(
     (state) => state.singleApplication
   );
 
