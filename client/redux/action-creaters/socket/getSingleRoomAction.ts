@@ -20,9 +20,9 @@ export const getSingleRoom =
     } catch (error: any) {
       dispatch({
         type: SocketActionsTypes.GET_SINGLE_ROOM_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg
     }
   };

@@ -22,9 +22,9 @@ export const getMyRooms =
     } catch (error: any) {
       dispatch({
         type: SocketActionsTypes.GET_MY_ROOMS_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg
     }
   };

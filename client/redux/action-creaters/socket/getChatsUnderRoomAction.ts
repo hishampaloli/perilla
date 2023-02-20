@@ -22,9 +22,9 @@ export const getChatsUnderRoomRooms =
     } catch (error: any) {
       dispatch({
         type: SocketActionsTypes.GET_CHATS_UNDER_ROOM_FAIL,
-        error: error.response.data.error.msg,
+        error: error?.response?.data?.error?.msg,
       });
 
-      return error.response.data.error.msg;
+      return error?.response?.data?.error?.msg;
     }
   };

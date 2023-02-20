@@ -22,6 +22,6 @@ export const deleteChat =
       return "success";
     } catch (error: any) {
       console.log(error);
-      return error.response?.data?.error?.msg;
+      return error?.response?.data?.error?.msg
     }
   };
