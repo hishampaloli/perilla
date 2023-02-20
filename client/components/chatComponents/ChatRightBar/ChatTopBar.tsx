@@ -75,10 +75,7 @@ const ChatTopBar = ({ roomData }: { roomData: RoomData }) => {
           </p>
         </div>
       </div>
-      <div>
-        <span>
-          <CallIcon />
-        </span>
+      <div>    
         {/* {checkStringInArray(user[0]?.id, users) ? (
           <span onClick={handleVideoCall} style={{ cursor: "pointer" }}>
             <VideocamIcon />

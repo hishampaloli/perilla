@@ -10,7 +10,11 @@ const stripe = require("stripe")(
 
 export = (dependencies: any): any => {
   const {
-    useCases: { verifyStripe_UseCase, sendMail_UseCase },
+    useCases: {
+      verifyStripe_UseCase,
+      sendMail_UseCase,
+      createLandingPage_UseCase,
+    },
   } = dependencies;
 
   const stripePayement = async (
@@ -21,9 +25,10 @@ export = (dependencies: any): any => {
     try {
       const { session_id } = req.query;
 
+      const { companyName } = req.currentTenant?.id!;
       const session = await verifyStripe_UseCase(dependencies).execute(
         session_id,
-        req.currentTenant?.id.companyName
+        companyName
       );
 
       if (!session) throw new BadRequestError("Already paid");
@@ -34,6 +39,11 @@ export = (dependencies: any): any => {
       //   subject: "Product purchased successfully",
       //   response: PurchaseResponse,
       // });
+
+      await createLandingPage_UseCase(dependencies).execute({
+        companyName,
+        title: `Welcome to ${companyName}`,
+      });
 
       let token = generateToken(session);
 

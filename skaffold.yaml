@@ -4,6 +4,7 @@ deploy:
   kubectl:
     manifests:
       - ./infra/k8s/*
+      - ./infra/k8s-development/*
 build:
   local:
     push: false
@@ -47,7 +48,7 @@ build:
       sync:
         manual:
           - src: "src/**/*.ts"
-            dest: .    
+            dest: .
     - image: hishampaloli/job
       context: job
       docker:
@@ -55,7 +56,7 @@ build:
       sync:
         manual:
           - src: "src/**/*.ts"
-            dest: .                       
+            dest: .
     - image: hishampaloli/client
       context: client
       docker:

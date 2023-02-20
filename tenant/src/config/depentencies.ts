@@ -14,6 +14,9 @@ import {
   createDashboard_UseCase,
   editDashboard_UseCase,
   getDashboard_UseCase,
+  editLandingPage_UseCase,
+  createLandingPage_UseCase,
+  getLandingPage_UseCase,
 } from "../usecases";
 
 const useCases: any = {
@@ -31,6 +34,9 @@ const useCases: any = {
   createDashboard_UseCase,
   getDashboard_UseCase,
   editDashboard_UseCase,
+  editLandingPage_UseCase,
+  createLandingPage_UseCase,
+  getLandingPage_UseCase,
 };
 
 const repository: any = {

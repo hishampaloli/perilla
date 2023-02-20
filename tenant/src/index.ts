@@ -4,7 +4,8 @@ import { connectNats } from "./config/message-broker";
 import { evnCheckers } from "./config/env-checkers";
 
 const start = async () => {
-  console.log("786 ci ");
+  console.log("786 ci testing");
+
   
   try {
     evnCheckers();

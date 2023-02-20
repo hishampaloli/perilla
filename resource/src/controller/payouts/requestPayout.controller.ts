@@ -17,7 +17,6 @@ export = (dependencies: DepenteniciesData): any => {
     next: NextFunction
   ) => {
     try {
-      const { reason, leaveDuration, startingDate } = req.body;
 
       const date = new Date();
       date.setDate(date.getDate() + 30);

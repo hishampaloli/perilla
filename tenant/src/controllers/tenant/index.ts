@@ -10,6 +10,8 @@ import stripePaymentController from "./stripePayment.controller";
 import stripePayementVerificationController from "./stripePayementVerification.controller";
 import resetPasswordController from "./resetPassword.controller";
 import getDashBoardController from "./getDashBoard.controller";
+import editLandingPageController from "./editLandingPage.controller";
+import getLandingPageController from "./getLandingPage.controller";
 
 export = (dependencies: any) => {
   return {
@@ -27,5 +29,7 @@ export = (dependencies: any) => {
       stripePayementVerificationController(dependencies),
     resetPasswordController: resetPasswordController(dependencies),
     getDashBoardController: getDashBoardController(dependencies),
+    editLandingPageController: editLandingPageController(dependencies),
+    getLandingPageController: getLandingPageController(dependencies),
   };
 };
