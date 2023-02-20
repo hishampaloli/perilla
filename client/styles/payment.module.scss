@@ -1,0 +1,47 @@
+.payMentMain {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 130px;
+
+  .paymentbox {
+    width: 90%;
+    max-width: 500px;
+    background-color: #16191c;
+    border-radius: 5px;
+    padding: 20px;
+    h2 {
+      color: rgb(53, 53, 53);
+      text-align: center;
+      background-color: white;
+      border-radius: 5px;
+      padding: 5px;
+    }
+    button {
+      padding: 10px 15px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      background-color: #0d8ff3;
+      color: white;
+      font-weight: 600;
+    }
+
+    .itm {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 15px;
+      color: rgb(32, 32, 32);
+      background-color: white;
+      padding: 15px;
+      border-radius: 5px;
+      div {
+        p {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}

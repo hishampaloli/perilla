@@ -1,0 +1,199 @@
+.jobViewComponentMain {
+  width: 98%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  .jobViewLeft {
+    width: 70%;
+    .top {
+      background-color: #16191c;
+      padding: 20px;
+      color: #737882;
+
+      h2 {
+        color: #bbc4cc;
+      }
+      div {
+        p {
+          color: #737882;
+          display: block;
+          font-size: 16px;
+          font-weight: 500;
+          margin-top: 10px;
+        }
+      }
+
+      .topContentsList {
+        margin-left: -20px;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        div {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          min-width: 150px;
+          margin-top: 10px;
+          margin-left: 20px;
+          p {
+            margin: 0 10px;
+            font-weight: 300px;
+            font-weight: bolder;
+          }
+          p:last-child {
+            color: #069ce7;
+          }
+        }
+      }
+    }
+
+    .bottom {
+      margin-top: 30px;
+      background-color: #16191c;
+      padding: 20px;
+      color: #737882;
+
+      .jobDesc {
+        h2 {
+          color: #bbc4cc;
+        }
+        p {
+          margin-top: 20px;
+          line-height: 28px;
+          font-weight: bold;
+        }
+
+        ul {
+          margin-left: 30px;
+          li {
+            list-style: none;
+            display: flex;
+            align-items: center;
+
+            div {
+              font-size: 8px;
+              width: 10px;
+              height: 10px;
+              padding: 1px;
+              background-color: #ff9b44;
+              transform: rotate(45deg) translateY(13px);
+            }
+            p {
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+
+      .interviewQst {
+        margin-top: 40px;
+        h2 {
+          color: #bbc4cc;
+        }
+
+        p {
+          margin-top: 20px;
+          line-height: 28px;
+          font-weight: bold;
+        }
+
+        ul {
+          margin-left: 30px;
+          margin-top: 20px;
+          li {
+            list-style: none;
+            display: flex;
+            align-items: center;
+
+            div {
+              font-size: 8px;
+              width: 10px;
+              height: 10px;
+              padding: 1px;
+              background-color: #ff9b44;
+              transform: rotate(45deg) translateY(13px);
+            }
+            p {
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .jobViewRight {
+    height: fit-content;
+    padding: 20px;
+    width: 25%;
+    border-radius: 3px;
+    background-color: #16191c;
+    display: flex;
+    flex-direction: column;
+
+    button {
+      padding: 20px;
+      background-color: #16191c;
+      color: #ff9b44;
+      transition: all 0.4s ease;
+      border: 2px solid #ff9b44;
+    }
+
+    button:hover {
+      background-color: #ff9b44;
+      color: white;
+    }
+
+    .contentList {
+      display: flex;
+      flex-direction: column;
+      margin-top: 50px;
+
+      .contentDiv {
+        margin-bottom: 15px;
+        display: flex;
+
+        span {
+          color: #ff9b44;
+        }
+
+        div {
+          margin-left: 30px;
+          strong {
+            color: #bbc4cc;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+
+            text-transform: uppercase;
+          }
+          h3 {
+            line-height: 1.7;
+            color: #737882;
+            font-size: 13px;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .jobViewComponentMain {
+    flex-direction: column;
+    .jobViewLeft {
+      width: 100%;
+      .top {
+      }
+
+      .bottom {
+      }
+    }
+
+    .jobViewRight {
+      width: 100%;
+      margin-top: 50px;
+    }
+  }
+}

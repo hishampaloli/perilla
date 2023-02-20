@@ -1,0 +1,116 @@
+.sideBtn {
+  margin-left: 20px;
+  margin-top: 5px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.childrens {
+  margin-left: 250px;
+  margin-top: 85px;
+  transition: all 0.4s ease;
+  padding: 20px;
+  width: 100%;
+}
+
+.smallChilders {
+  margin-left: 80px;
+  margin-top: 85px;
+  transition: all 0.4s ease;
+  padding: 10px;
+  width: 100%;
+}
+.sidebarMain {
+  width: 230px;
+  height: 1000px;
+  background-color: #17191c;
+  margin-top: 85px;
+  overflow-y: scroll;
+  position: absolute;
+  transition: all 0.4s ease;
+
+  .adminSideBarMain {
+    color: #868f9b;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .linkTab {
+      display: flex;
+      width: 100%;
+
+      a {
+        display: flex;
+        align-items: flex-end;
+        color: #868f9b;
+        text-decoration: none;
+        margin-top: 15px;
+        margin-left: 10px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        p {
+          margin-left: 20px;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    .linkTab:hover {
+      font-weight: 500;
+      transition: all 0.3s ease;
+      color: white;
+      a {
+        transform: scale(1.1);
+        color: white;
+      }
+    }
+  }
+}
+
+.sidebarMainSmall {
+  width: 70px;
+  height: 1000px;
+  background-color: #17191c;
+  margin-top: 85px;
+  overflow-y: scroll;
+  position: absolute;
+  transition: all 0.4s ease;
+
+  .adminSideBarMain {
+    color: #868f9b;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .linkTab {
+      display: flex;
+      width: 100%;
+
+      a {
+        display: flex;
+        align-items: flex-end;
+        color: #868f9b;
+        text-decoration: none;
+        margin-top: 15px;
+        margin-left: 10px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        p {
+          margin-left: 20px;
+          display: none;
+        }
+      }
+    }
+
+    .linkTab:hover {
+      font-weight: 500;
+      transition: all 0.3s ease;
+      color: white;
+      a {
+        transform: scale(1.1);
+        color: white;
+      }
+    }
+  }
+}

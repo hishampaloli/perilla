@@ -1,0 +1,113 @@
+.dashboardmain {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .dashboardcount {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+
+    .dashboardcountDiv {
+      .iconDiv {
+        transform: scale(1.3);
+        background-color: #00c5fb29;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #00c5fb;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      display: flex;
+      justify-content: space-between;
+      background-color: #17191c;
+      color: white;
+      padding: 20px;
+      margin: 10px;
+      width: 20%;
+      border: 0.5px solid rgba(255, 255, 255, 0.153);
+      border-radius: 3px;
+      h3 {
+        color: #bbc4cc;
+        font-size: 1.5rem;
+      }
+      p {
+        margin-top: 10px;
+        color: #bbc4cc;
+      }
+    }
+  }
+
+  .dashboardChartMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+    margin-top: 30px;
+
+    .chartOne {
+      width: 95%;
+      background-color: #17191c;
+      border: 0.5px solid rgba(255, 255, 255, 0.153);
+      border-radius: 3px;
+    }
+
+    .chartTwo {
+      width: 95%;
+      background-color: #17191c;
+      height: 300px;
+      border: 0.5px solid rgba(255, 255, 255, 0.153);
+      border-radius: 3px;
+    }
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .dashboardmain {
+    .dashboardcount {
+      .dashboardcountDiv {
+        display: flex;
+        padding: 20px;
+        margin: 10px;
+        width: 45%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .dashboardmain {
+    .dashboardcount {
+      .dashboardcountDiv {
+      }
+    }
+
+    .dashboardChartMain {
+      display: flex;
+      flex-direction: column;
+
+      .chartOne {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .chartTwo {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 555px) {
+  .dashboardmain {
+    .dashboardcount {
+      .dashboardcountDiv {
+        width: 100%;
+      }
+    }
+  }
+}

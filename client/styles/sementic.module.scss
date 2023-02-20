@@ -1,0 +1,41 @@
+.addBtn {
+  width: 100%;
+  button {
+    padding: 10px 15px;
+    background-color: #ff9b44;
+    border: #55ce63;
+    border-radius: 25px;
+    color: white;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+
+    span {
+      font-weight: 600;
+    }
+  }
+}
+
+.searchComponent {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+  width: 100%;
+  input {
+    padding: 15px;
+    width: 96%;
+    margin-right: 15px;
+    border-radius: 5px;
+    background-color: #2e3439;
+    border: none;
+    color: white;
+    font-size: 18px;
+  }
+  button {
+    width: 200px;
+    background-color: #55ce63;
+    border: #55ce63;
+    border-radius: 5px;
+    color: white;
+  }
+}

@@ -1,0 +1,80 @@
+.leaveRequestsMain {
+  width: 98%;
+  margin: 10px;
+
+  .leaveSearch {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    select {
+      margin-left: 10px;
+      margin-top: 17px;
+      height: fit-content;
+      border-radius: 5px;
+      padding: 16px;
+    }
+  }
+
+  .applyLeaveMain {
+    
+  }
+
+  .employeelistDiv {
+    width: 100%;
+    margin-top: 30px;
+    min-width: 600px;
+    background-color: #16191c;
+    overflow-x: scroll;
+    border: 1px solid rgba(255, 255, 255, 0.098);
+
+    div {
+      display: flex;
+      padding: 25px 15px;
+      border-bottom: 2px solid white;
+      p {
+        width: 200px;
+        color: white;
+        font-size: 1.3 rem;
+      }
+    }
+
+    .bankDetailDiv {
+      width: 100%;
+      padding: 15px;
+      display: flex;
+      text-decoration: none;
+      border-bottom: 1px solid #bbc4cc;
+      cursor: pointer;
+      transition: all 0.4s ease;
+
+      p {
+        display: flex;
+        align-items: center;
+        width: 200px;
+        transition: all 0.4s ease;
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+        color: #bbc4ccc4;
+        font-size: 1rem;
+      }
+      p:last-child {
+        transform: scale(1.2);
+        width: 50px;
+      }
+    }
+    .bankDetailDiv:hover {
+      background-color: #ffffff0d;
+      p {
+        color: white;
+      }
+    }
+    .bankDetailDiv:last-child {
+      border: none;
+    }
+  }
+}

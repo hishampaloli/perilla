@@ -1,0 +1,441 @@
+.ProfileComponentMain {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .profileBox {
+    position: relative;
+    .edtIconDiv {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      display: flex;
+      align-items: center;
+
+      .Icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      .Icon:active {
+        transform: scale(0.9);
+      }
+
+      .edtIcon {
+        background-color: white;
+      }
+
+      .passIcon {
+        background-color: #ff7f2acd;
+        color: white;
+      }
+
+      .dltIcon {
+        background-color: #ec4134;
+        color: white;
+      }
+    }
+    width: 100%;
+    background-color: #16191c;
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    border: 1px solid rgba(133, 133, 133, 0.221);
+
+    .profileLeft {
+      border-right: 3px solid #23272b;
+      img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+      }
+      width: 100%;
+      height: 100%;
+      display: flex;
+      padding: 10px;
+      padding-bottom: 50px;
+      div {
+        margin-left: 30px;
+        color: #8e8e8e;
+        h2 {
+          margin-top: 20px;
+          font-size: 24px;
+          color: #bbc4c7;
+        }
+        .mp {
+          margin-bottom: 30px;
+        }
+        p {
+          font-size: 12px;
+          font-weight: 600;
+          margin-top: 5px;
+        }
+        strong {
+          color: #bbc4c7;
+        }
+
+        button {
+          border-radius: 5px;
+          border: none;
+          padding: 10px 15px;
+          width: 100px;
+          margin-top: 30px;
+          background-color: #00c5fb;
+          color: white;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .profileRight {
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      color: #bbc4c7;
+      padding-top: 40px;
+
+      p {
+        display: flex;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: space-between;
+        strong {
+          white-space: nowrap;
+          width: 150px;
+        }
+        span {
+          margin-left: 100px;
+          width: 150px;
+        }
+      }
+    }
+  }
+
+  .profileNav {
+    background-color: #16191c;
+    border: 1px solid rgba(133, 133, 133, 0.221);
+    margin-top: 5px;
+    display: flex;
+
+    h2 {
+      color: white;
+      padding: 20px;
+      font-size: 1rem;
+      background-color: #16191c;
+      transition: all 0.3s ease;
+    }
+
+    h2:hover {
+      background-color: white;
+      color: #16191c;
+      border-bottom: 2px solid #00c5fb;
+      transition: all 0.3s ease;
+    }
+
+    .isActive {
+      border-bottom: 2px solid #00c5fb;
+      transition: all 0.7s ease;
+    }
+  }
+
+  .personalDataMain {
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: space-between;
+
+    .peronalInfo {
+      position: relative;
+      background-color: #16191c;
+      width: 47%;
+      padding: 20px;
+      color: white;
+      border: 1px solid rgba(133, 133, 133, 0.221);
+    }
+
+    .emergencyContact {
+      background-color: #16191c;
+      position: relative;
+      width: 47%;
+      padding: 20px;
+      color: white;
+      border: 1px solid rgba(133, 133, 133, 0.221);
+    }
+
+    .persnalUl {
+      color: #bbc4c7;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      div {
+        display: flex;
+        flex-direction: column;
+        h3 {
+          margin-top: 30px;
+        }
+        h4 {
+          margin-top: 51px;
+        }
+        strong {
+          margin-top: 10px;
+        }
+        span {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+
+  .projectList {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .projectBox {
+      color: #bbc4cc;
+      width: 30%;
+      min-width: 300px;
+      border-radius: 5px;
+      background-color: #16191c;
+      margin-right: 20px;
+      padding: 15px;
+      margin-top: 15px;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+      h2 {
+        cursor: pointer;
+      }
+
+      p {
+        color: #8b8b8b;
+        font-size: 14px;
+        line-height: 24px;
+      }
+      .prP {
+        margin-top: 20px;
+      }
+      div {
+        margin: 15px 0;
+        display: flex;
+        align-items: center;
+        p {
+          margin-left: 10px;
+          display: flex;
+          margin-top: -2px;
+          align-items: flex-start;
+          flex-direction: row;
+          span {
+            margin-right: 5px;
+          }
+        }
+
+        div {
+          margin-left: 10px;
+          img {
+            width: 35px;
+            height:35px;
+            border-radius: 50%;
+            margin-right: 5px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .bankDetails {
+    background-color: #16191c;
+    border: 1px solid rgba(133, 133, 133, 0.221);
+    width: 100%;
+    padding: 20px;
+    color: white;
+    margin-top: 20px;
+    position: relative;
+
+    .edtIconDiv {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      span {
+        cursor: pointer;
+      }
+    }
+
+    .btnGroup {
+      display: flex;
+      margin-top: 20px;
+      width: 100%;
+      button {
+        margin-right: 15px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100px;
+      }
+
+      .rjtBtn {
+        background-color: #ec4134;
+        color: white;
+      }
+      .actBtn {
+        color: white;
+        background-color: #51d293;
+      }
+      .sntBtn {
+        background-color: #00c5fb;
+        color: white;
+        width: 150px;
+      }
+    }
+
+    .bankUi {
+      display: flex;
+      // justify-content: space-between;
+      div {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        strong {
+          margin-top: 10px;
+          color: #bbc4c7;
+        }
+
+        span {
+          margin-top: 10px;
+          color: #bbc4c7;
+        }
+      }
+      div:nth-child(2) {
+        margin-left: 100px;
+      }
+    }
+  }
+}
+
+.edt {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: flex;
+  align-items: center;
+
+  .Icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  .Icon:active {
+    transform: scale(0.9);
+  }
+
+  .edtIcon {
+    background-color: white;
+    color: black;
+  }
+
+  .passIcon {
+    background-color: #ff7f2acd;
+    color: white;
+  }
+
+  .dltIcon {
+    background-color: #ec4134;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .ProfileComponentMain {
+    .profileBox {
+      display: flex;
+      flex-direction: column;
+      .profileLeft {
+        width: 100%;
+        border: none;
+        div {
+          margin-left: 20%;
+        }
+      }
+
+      .profileRight {
+        width: 100%;
+        p {
+          span {
+            margin-left: 35%;
+          }
+        }
+      }
+    }
+
+    .personalDataMain {
+      flex-direction: column;
+
+      .peronalInfo {
+        width: 100%;
+      }
+
+      .emergencyContact {
+        width: 100%;
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .ProfileComponentMain {
+    .profileBox {
+      display: flex;
+      flex-direction: column;
+      .profileLeft {
+        width: 100%;
+        flex-direction: column;
+        padding-bottom: 10px;
+        align-items: center;
+        div {
+          margin-left: 0%;
+        }
+      }
+
+      .profileRight {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p {
+          justify-content: space-between;
+          margin-left: 5%;
+          margin-right: 5%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .ProfileComponentMain {
+    .bankDetails {
+      .bankUi {
+        div:nth-child(2) {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,273 @@
+.addFormMain {
+  width: 80%;
+  min-height: 200px;
+  background-color: white;
+  padding: 30px;
+  padding-top: 60px;
+  position: absolute;
+  top: 100px;
+  left: 10%;
+  z-index: 100;
+  border-radius: 5px;
+
+  h1 {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: -30px;
+  }
+
+  i {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  i:hover {
+    transform: scale(0.8);
+    transition: all 0.4s ease;
+  }
+
+  .InputGroup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .textArea {
+    display: flex;
+    flex-direction: column;
+
+    textarea {
+      margin-top: 10px;
+      width: 100%;
+      min-height: 300px;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      padding: 15px;
+    }
+    margin-bottom: 20px;
+  }
+
+  ul {
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.265);
+    margin-bottom: 20px;
+    cursor: pointer;
+    list-style: none;
+
+    .selectedEmployee {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      cursor: pointer;
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      div {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  .teamList {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    background-color: rgb(34, 34, 34);
+    color: white;
+    border-radius: 5px;
+    padding: 15px;
+    .teamBox {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      cursor: pointer;
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      div {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  .formListDiv {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 30px;
+
+    .addInputComp {
+      width: 100%;
+    }
+
+    button {
+      margin-left: 30px;
+      border: none;
+      width: 100px;
+      padding: 13px;
+      height: 45px;
+      margin-top: 25px;
+      background-color: #ff9a44;
+      color: white;
+    }
+  }
+
+  .listItemsDiv {
+    margin-bottom: 20px;
+    width: 100%;
+    div {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      background-color: rgba(239, 239, 239, 0.347);
+      margin: 10px 0;
+
+      span {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.addTeamForm {
+  width: 80%;
+  max-width: 400px;
+  background-color: white;
+  padding: 30px;
+  padding-top: 60px;
+  position: absolute;
+  top: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  border-radius: 5px;
+
+  h1 {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: -30px;
+  }
+
+  i {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  p {
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.265);
+    margin-bottom: 20px;
+
+    .selectedEmployee {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      cursor: pointer;
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+
+      div {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  .teamList {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    .teamBox {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      cursor: pointer;
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      div {
+        margin-left: 15px;
+      }
+    }
+  }
+}
+
+.addInputComp {
+  width: 45%;
+
+  li {
+    margin-bottom: 10px;
+    list-style: none;
+  }
+
+  input {
+    padding: 15px;
+    width: 100%;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+  }
+}
+
+.selectDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;
+  select {
+    padding: 15px;
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+  }
+}
+
+.submitButton {
+  width: 100%;
+  padding: 15px 20px;
+  background-color: #00c5fb;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+}
+
+@media screen and (max-width: 690px) {
+  .addFormMain {
+    width: 90%;
+    left: 5%;
+
+    .InputGroup {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+  }
+
+  .addInputComp {
+    width: 100%;
+    margin-top: 30px;
+  }
+}

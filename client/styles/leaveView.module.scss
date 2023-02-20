@@ -1,0 +1,100 @@
+.leaveViewMain {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  width: 98%;
+
+  .leaveLeftMain {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+
+    .leaveViewLeft {
+      width: 100%;
+      background-color: #16191c;
+      padding: 10px;
+      border: 1px solid rgba(184, 184, 184, 0.146);
+      border-radius: 5px;
+      height: fit-content;
+
+      h2 {
+        color: white;
+      }
+      .detDivs {
+        display: flex;
+        margin-top: 20px;
+        max-width: 600px;
+        justify-content: space-between;
+
+        div {
+          margin-right: 20px;
+          color: #acc0cc;
+          display: flex;
+          align-items: center;
+          margin-right: 20px;
+          p {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+    }
+    .leaveBtnGroup {
+      display: flex;
+      margin-top: 10px;
+      button {
+        padding: 10px 25px;
+        margin-right: 15px;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .leaveViewRight {
+    width: 25%;
+    background-color: #16191c;
+    border: 1px solid rgba(176, 176, 176, 0.151);
+    padding: 10px;
+    color: #bbc4cc;
+    height: fit-content;
+    h3 {
+      text-align: center;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .innerBox {
+      padding: 10px;
+      background-color: #212529;
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+      }
+      .box {
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        div {
+          display: flex;
+          width: 80%;
+          justify-content: space-between;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+.bankDetailsMain {
+  display: flex;
+  flex-direction: column;
+  width: 94%;
+  margin: 10px;
+  overflow-x: scroll;
+
+  .bankDetailsList {
+    background-color: #16191c;
+    border-radius: 3px;
+    border: 1px solid rgba(133, 133, 133, 0.221);
+
+    height: 400px;
+    min-width: 700px;
+    overflow-x: scroll;
+
+    .bankDetailsListHead {
+      display: flex;
+      padding: 15px;
+      border-bottom: 2px solid white;
+      p {
+        color: #bbc4cc;
+        width: 200px;
+        font-size: 1.2rem;
+      }
+    }
+
+    .bankDetailDiv {
+      padding: 15px;
+      display: flex;
+      text-decoration: none;
+      border-bottom: 1px solid #bbc4cc;
+      cursor: pointer;
+      transition: all 0.4s ease;
+
+      p {
+        display: flex;
+        align-items: center;
+        width: 200px;
+        transition: all 0.4s ease;
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+        color: #bbc4ccc4;
+        font-size: 1rem;
+      }
+    }
+    .bankDetailDiv:hover {
+      border-bottom: 1px solid #ffffff;
+      transition: all 0.4s ease;
+      p {
+        color: white;
+        transition: all 0.4s ease;
+      }
+    }
+  }
+}

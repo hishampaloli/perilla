@@ -1,0 +1,76 @@
+.taskNav {
+  width: 100%;
+  background-color: #16191c;
+  margin-top: 20px;
+
+  button {
+    padding: 20px;
+    border: none;
+    color: white;
+    background-color: #16191c;
+  }
+
+  .clBtn {
+    border-bottom: 3px solid #00c5fb;
+  }
+
+  button:hover {
+    border-bottom: 3px solid #00c5fb;
+  }
+}
+
+.taskList {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  align-items: center;
+  color: white;
+  border-radius: 4px;
+  transition: all 0.5s ease;
+  div {
+    display: flex;
+    align-items: center;
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+    h4 {
+      color: white;
+      margin-left: 15px;
+    }
+  }
+
+  span {
+    transform: scale(1.2);
+  }
+}
+
+.taskList:hover {
+  background-color: #30313291;
+  transition: all 0.5s ease;
+}
+
+.pendingTaskMain {
+  width: 100%;
+  background-color: #16191c;
+  margin-top: 20px;
+  height: 200px;
+  overflow-x: scroll;
+  padding: 20px 20px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
+
+.completedTaskMain {
+  width: 100%;
+  background-color: #16191c;
+  margin-top: 20px;
+  height: 200px;
+  overflow-x: scroll;
+  padding: 20px 20px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
