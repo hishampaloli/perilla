@@ -29,7 +29,7 @@ spec:
             - name: PASSWORD_STR
               value: "cglzqvagkozftaco"
             - name: JWT_KEY
-              value: "jisfjispfopf"
+              value: "jisfjispfop"
             - name: NATS_CLIENT_ID
               valueFrom:
                 fieldRef:
