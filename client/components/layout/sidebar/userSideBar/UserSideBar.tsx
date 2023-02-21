@@ -12,6 +12,7 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import HouseboatIcon from "@mui/icons-material/Houseboat";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ChatIcon from "@mui/icons-material/Chat";
+import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 
 const UserSideBar = () => {
   const { data }: AuthState = useTypedSelector((state) => state.user);
@@ -22,7 +23,7 @@ const UserSideBar = () => {
         type=""
         text="Applications"
         link="applications"
-        icon={<AccountCircleIcon />}
+        icon={<ReceiptLongIcon />}
       />
     </div>
   );

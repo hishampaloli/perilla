@@ -10,7 +10,7 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { AuthState } from "../../../models/tenants";
 import { useActions } from "../../../hooks/useAction";
 import { useChangeApplicationStatus } from "../../../hooks/useSwal";
-import AssistantPhotoIcon from '@mui/icons-material/AssistantPhoto';
+import AssistantPhotoIcon from "@mui/icons-material/AssistantPhoto";
 
 const ApplicationTopDiv = () => {
   const { data, loading }: GetSingleApplicationState = useTypedSelector(
@@ -42,15 +42,15 @@ const ApplicationTopDiv = () => {
           value={applicationData?.status}
           onChange={(e) => {
             useChangeApplicationStatus(
-              "sd",
               e.target.value,
-              applicationData?.id
+              applicationData?.id!,
+              changeApplicationStatus
             );
           }}
           name="cars"
           id="cars"
         >
-          <option value="shortlist">ShortList</option>
+          <option value="shortlisted">ShortList</option>
           <option value="rejected">Reject</option>
           <option value="accepted">Accept</option>
           <option value="pending">Pending</option>

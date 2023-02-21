@@ -35,7 +35,7 @@ const JonSearchComponent = () => {
   }, [status, router.isReady]);
 
   return (
-    <div className={style.projectSearch}>
+    <div className={style.projectSearch} style={{marginBottom: '20px'}}>
       <SearchComp
         placeholder="Search Jobs..."
         setClick={onSumbit}

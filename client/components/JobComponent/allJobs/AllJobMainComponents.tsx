@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { AuthState } from "../../../models/tenants";
@@ -10,8 +11,11 @@ import JonSearchComponent from "./SearchJobsComponents";
 
 const AllJobMainComponent = () => {
   const { data }: AuthState = useTypedSelector((state) => state.user);
+  const router = useRouter();
   return (
     <div className={styles.AllJobMain}>
+      {data?.data.companyName === router.query.tenant && <CreateJobComponent />}
+
       <JonSearchComponent />
       <AllJobs />
     </div>

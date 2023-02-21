@@ -14,10 +14,15 @@ export const changeApplicationStatus =
       const { data } = await changeApplicationStatus_API(req, jobId, jobData);
 
       getState().singleApplication.data.data = data.data;
-      console.log(getState().singleApplication);
+      console.log(getState().singleApplication.data.data);
 
       dispatch({
         type: JobActionsTypes.CHANGE_APPLICATION_STATUS_SUCCESS,
+        payload: getState().singleApplication.data,
+      });
+
+      dispatch({
+        type: JobActionsTypes.GET_SINGLE_APPLICATION_SUCCESS,
         payload: getState().singleApplication.data,
       });
 
@@ -25,10 +30,10 @@ export const changeApplicationStatus =
     } catch (error: any) {
       dispatch({
         type: JobActionsTypes.CHANGE_APPLICATION_STATUS_FAIL,
-        error:error?.response?.data?.error?.msg,
+        error: error?.response?.data?.error?.msg,
       });
       console.log(error);
 
-      return error?.response?.data?.error?.msg
+      return error?.response?.data?.error?.msg;
     }
   };

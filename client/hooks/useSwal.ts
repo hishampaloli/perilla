@@ -140,6 +140,8 @@ export const useChangeApplicationStatus = (
   applicationId: string,
   changeApplicationStatus: any
 ) => {
+  console.log(status);
+  
   swal({
     title: "Are you sure?",
     text: `Are you sure you want to ${
@@ -157,7 +159,7 @@ export const useChangeApplicationStatus = (
   })?.then(async (willDelete) => {
     if (willDelete) {
       const res = await changeApplicationStatus("id", status, applicationId);
-
+      console.log(status);
       swal(
         `Application ${
           status === "accepted"
