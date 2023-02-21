@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../../../styles/dashboard.module.scss";
 import DashBoardChartMain from "./DashBoardChartComponent/DashBoardChartMain";
-import DashBoardCounts from "./DashboardCount/DashBoardCounts";
+import DashBoardCounts from "./DashboardCount/DashBoardCounts"
 
 const MainDashboardComponent = () => {
   return (
